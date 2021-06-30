@@ -5,7 +5,7 @@ import {Col, Container, Row} from "react-bootstrap";
 
 import goku from "../images/goku-trainer.png"
 import sakura from "../images/sakura-trainer.png"
-import Katara from "../images/katara-trainer.png"
+import korra from "../images/katara-trainer.png"
 
 import ReactPlayer from "react-player";
 
@@ -24,7 +24,7 @@ export const Home = () => {
                         <img src={sakura} alt="Sakura training" className="rounded-circle border border-dark mx-auto d-block" width="250" height="250"/>
                     </Col>
                     <Col>
-                        <img src={Katara} alt="Katara training" className="rounded-circle border border-dark mx-auto d-block" width="250" height="250"/>
+                        <img src={korra} alt="Korra training" className="rounded-circle border border-dark mx-auto d-block" width="250" height="250"/>
                     </Col>
                 </Row>
                 <Row>
