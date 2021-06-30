@@ -29,6 +29,7 @@ export const Home = () => {
                     </Col>
                 </Row>
                 <Row className="justify-content-center">
+                    {/*npm module for runnning videos, see docs for more functionality*/}
                     <ReactPlayer url="https://www.youtube.com/watch?v=3ZHwkpyvDqE" />
                 </Row>
             </Container>
