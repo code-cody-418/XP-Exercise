@@ -1,4 +1,4 @@
-import React from "react"
+import React, {Suspense} from "react"
 import {Navigation} from "../shared/Navigation";
 import {Footer} from "../shared/Footer";
 import {Col, Container, Row} from "react-bootstrap";
@@ -8,11 +8,23 @@ import sakura from "../../images/sakura-trainer.png"
 import korra from "../../images/korra-trainer.png"
 
 import ReactPlayer from "react-player";
+import Dance from "../../Dance.js"
+import {Canvas} from "@react-three/fiber";
+import "../styles.css"
+import {OrbitControls} from "@react-three/drei";
 
 export const Home = () => {
     return (
         <>
             <Navigation />
+            <Canvas>
+                <OrbitControls />
+                <ambientLight intensity={0.6} />
+                <directionalLight intensity={0.5} />
+                <Suspense fallback={null}>
+                    <Dance />
+                </Suspense>
+            </Canvas>
             <Container>
                 <Row>
                     <h1 className="text-center">Trainers</h1>
