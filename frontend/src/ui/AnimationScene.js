@@ -6,16 +6,16 @@ import React, { Suspense } from "react";
 import "./styles.css";
 import {Canvas} from "@react-three/fiber";
 import {OrbitControls} from "@react-three/drei";
-import Goku from "../Goku";
+import Barret from "../Barret";
 
 export default function AnimationScene() {
     return (
         <Canvas>
             <OrbitControls />
-            <ambientLight intensity={0.6} />
-            <directionalLight intensity={0.5} />
+            {/*<ambientLight intensity={1} />*/}
+            <directionalLight intensity={3} />
             <Suspense fallback={null}>
-                <Goku />
+                <Barret />
             </Suspense>
         </Canvas>
     );
