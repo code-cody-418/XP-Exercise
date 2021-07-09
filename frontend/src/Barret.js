@@ -11,19 +11,21 @@ export default function Barret(props) {
   const { actions } = useAnimations(animations, group)
   useEffect(() => {
     console.log('actions', actions);
-    actions.tPose.play();
+    actions.jumpingJacks.play();
   });
   return (
     <group ref={group} {...props} dispose={null}>
       <group rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
         <primitive object={nodes.mixamorig9Hips} />
-        <skinnedMesh geometry={nodes.Mesh.geometry} material={materials.Ch06_body} skeleton={nodes.Mesh.skeleton} />
+        <skinnedMesh castShadow geometry={nodes.Mesh.geometry} material={materials.Ch06_body} skeleton={nodes.Mesh.skeleton} />
         <skinnedMesh
+          castShadow
           geometry={nodes.Mesh_1.geometry}
           material={materials.Ch06_eyelashes}
           skeleton={nodes.Mesh_1.skeleton}
         />
         <skinnedMesh
+          castShadow
           geometry={nodes.Mesh_2.geometry}
           material={materials.Ch06_body1}
           skeleton={nodes.Mesh_2.skeleton}
