@@ -4,22 +4,22 @@ import React, { Suspense } from "react";
 import "./animation.css";
 import {Canvas} from "@react-three/fiber";
 import {OrbitControls, Environment} from "@react-three/drei";
-import Barret from "../Barret";
+import Abe from "../Abe";
 // import "../../public/simons_town_rocks_1k.hdr"
 import {presetsObj} from "@react-three/drei/helpers/environment-assets";
 
 export default function AnimationScene() {
     return (
         <>
-        <Canvas shadows camera={{ position: [1, 2, 3], fov: 60 }}>
+        <Canvas shadows camera={{ position: [1, 2, 5.5], fov: 40 }}>
 
 
-            <OrbitControls />
-            {/*<ambientLight intensity={1} />*/}
+            {/*<OrbitControls />*/}
+            <ambientLight intensity={1} />
             <directionalLight
                 castShadow
                 position={[0, 10, 0]}
-                intensity={1}
+                intensity={.5}
                 shadow-mapSize-width={1024}
                 shadow-mapSize-height={1024}
                 shadow-camera-far={50}
@@ -32,7 +32,7 @@ export default function AnimationScene() {
             {/*<pointLight position={[0, 0, 0]} intensity={1.5}/>*/}
             <Suspense fallback={null}>
                 <Environment files={'simons_town_rocks_4k.hdr'} background={true}/>
-                <Barret position={[0,0,0]} />
+                <Abe />
             </Suspense>
 
             <group>
@@ -40,7 +40,7 @@ export default function AnimationScene() {
                 rotation={[-Math.PI / 2, 0, 0]}
                 position={[0, 0, 0]}
                 receiveShadow>
-                <planeBufferGeometry attach='geometry' args={[100, 100]}/>
+                <planeBufferGeometry attach='geometry' args={[3, 8]}/>
                 {/*<shadowMaterial attach='material' opacity={0.3} />*/}
                 <meshStandardMaterial attach='material' color={"blue"} />
                 </mesh>
