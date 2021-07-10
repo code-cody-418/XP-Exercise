@@ -12,19 +12,12 @@ import Dance from "../../Dance.js"
 import {Canvas} from "@react-three/fiber";
 import "../styles.css"
 import {OrbitControls} from "@react-three/drei";
+import AnimationScene from "../AnimationScene";
 
 export const Home = () => {
     return (
         <>
             <Navigation />
-            <Canvas>
-                <OrbitControls />
-                <ambientLight intensity={0.6} />
-                <directionalLight intensity={0.5} />
-                <Suspense fallback={null}>
-                    <Dance />
-                </Suspense>
-            </Canvas>
             <Container>
                 <Row>
                     <h1 className="text-center">Trainers</h1>
@@ -41,8 +34,13 @@ export const Home = () => {
                     </Col>
                 </Row>
                 <Row className="justify-content-center">
+                    <Col>
+                        <AnimationScene />
+                    </Col>
+                    <Col>
                     {/*npm module for runnning videos, see docs for more functionality*/}
                     <ReactPlayer url="https://www.youtube.com/watch?v=3ZHwkpyvDqE" />
+                    </Col>
                 </Row>
             </Container>
             <Footer />

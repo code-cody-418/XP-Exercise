@@ -1,19 +1,14 @@
 import React, { Suspense } from "react";
-
-
-import "./animation.css";
+import "./styles.css";
 import {Canvas} from "@react-three/fiber";
 import {OrbitControls, Environment} from "@react-three/drei";
 import Abe from "../Abe";
-// import "../../public/simons_town_rocks_1k.hdr"
-import {presetsObj} from "@react-three/drei/helpers/environment-assets";
 
 export default function AnimationScene() {
     return (
         <>
-        <Canvas shadows camera={{ position: [1, 2, 5.5], fov: 40 }}>
-
-
+            <div className='border border-5 border-dark rounded animeSize'>
+        <Canvas shadows camera={{ position: [5, 10, 40], fov: 60 }} resize={0.5}>
             {/*<OrbitControls />*/}
             <ambientLight intensity={1} />
             <directionalLight
@@ -28,25 +23,25 @@ export default function AnimationScene() {
                 shadow-camera-top={10}
                 shadow-camera-bottom={-10}
             />
-            {/*<pointLight position={[-10, 0, -20]} intensity={0.5}/>*/}
-            {/*<pointLight position={[0, 0, 0]} intensity={1.5}/>*/}
+            <pointLight position={[-10, 0, -20]} intensity={0.5}/>
+            <pointLight position={[0, 0, 0]} intensity={1.5}/>
             <Suspense fallback={null}>
-                <Environment files={'simons_town_rocks_4k.hdr'} background={true}/>
-                <Abe />
+                <Environment files={'lilienstein_4k.hdr'} background={true}/>
+
+                <group>
+                    <Abe />
+                    <mesh
+                        rotation={[-Math.PI / 2, 0, 0]}
+                        position={[0, 0, 0]}
+                        receiveShadow>
+                        <planeBufferGeometry attach='geometry' args={[20, 50]}/>
+                        {/*<shadowMaterial attach='material' opacity={0.3} />*/}
+                        <meshStandardMaterial attach='material' color={"blue"} />
+                    </mesh>
+                </group>
             </Suspense>
-
-            <group>
-                <mesh
-                rotation={[-Math.PI / 2, 0, 0]}
-                position={[0, 0, 0]}
-                receiveShadow>
-                <planeBufferGeometry attach='geometry' args={[3, 8]}/>
-                {/*<shadowMaterial attach='material' opacity={0.3} />*/}
-                <meshStandardMaterial attach='material' color={"blue"} />
-                </mesh>
-            </group>
-
         </Canvas>
+            </div>
         </>
     );
 }
