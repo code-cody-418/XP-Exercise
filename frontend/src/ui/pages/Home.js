@@ -1,15 +1,14 @@
-import React, {Suspense} from "react"
+import React from "react"
 import {Navigation} from "../shared/Navigation";
 import {Footer} from "../shared/Footer";
-import {Col, Container, Row} from "react-bootstrap";
+import {Button, Col, Container, Row} from "react-bootstrap";
 
 import goku from "../../images/goku-trainer.png"
 import sakura from "../../images/sakura-trainer.png"
 import korra from "../../images/korra-trainer.png"
 
 import ReactPlayer from "react-player";
-import Dance from "../../Dance.js"
-import {Canvas} from "@react-three/fiber";
+
 import "../styles.css"
 import {OrbitControls} from "@react-three/drei";
 import AnimationScene from "../AnimationScene";
@@ -36,10 +35,16 @@ export const Home = () => {
                 <Row className="justify-content-center">
                     <Col>
                         <AnimationScene />
+
                     </Col>
                     <Col>
                     {/*npm module for runnning videos, see docs for more functionality*/}
                     <ReactPlayer url="https://www.youtube.com/watch?v=3ZHwkpyvDqE" />
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                    <Button></Button>
                     </Col>
                 </Row>
             </Container>

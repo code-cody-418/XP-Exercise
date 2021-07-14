@@ -19,7 +19,7 @@ export default function Abe(props) {
         // In the clean-up phase, fade it out
         return () => actions[names[index]].fadeOut(0.5)
     }, [index, actions, names])
-    console.log("actions:", actions)
+    console.log("actions:", animations)
   return (
     <group ref={ref} {...props} dispose={null}>
       <group
