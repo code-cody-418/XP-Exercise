@@ -9,74 +9,23 @@ export default function Goku(props) {
   const group = useRef()
   const { nodes, materials, animations } = useGLTF('/goku.glb')
   const { actions } = useAnimations(animations, group)
-  useEffect(() => {
-    console.log('actions', actions);
-    actions.pushUp.play();
-  });
+    useEffect(() => {
+        console.log('actions', actions);
+        actions.situp.play();
+    });
   return (
     <group ref={group} {...props} dispose={null}>
-      <group position={[0, 0.1, 0]} rotation={[Math.PI / 2, 0, 0]} />
-      <group rotation={[Math.PI / 2, 0, 0]}>
+      <group rotation={[-Math.PI / 2, 0, 0]}>
+        <group position={[-0.02, 0.01, 0]} rotation={[0, 0, 3]} />
+      </group>
+      <group rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
         <primitive object={nodes.mixamorigHips} />
         <skinnedMesh
-          geometry={nodes.RefRep259.geometry}
-          material={materials['RefRep.259Mat']}
-          skeleton={nodes.RefRep259.skeleton}
-        />
-        <skinnedMesh
-          geometry={nodes.RefRep261.geometry}
-          material={materials['RefRep.261Mat']}
-          skeleton={nodes.RefRep261.skeleton}
-        />
-        <skinnedMesh
-          geometry={nodes.RefRep263.geometry}
-          material={materials['RefRep.263Mat']}
-          skeleton={nodes.RefRep263.skeleton}
-        />
-        <skinnedMesh
-          geometry={nodes.RefRep265.geometry}
-          material={materials['RefRep.265Mat']}
-          skeleton={nodes.RefRep265.skeleton}
-        />
-        <skinnedMesh
-          geometry={nodes.RefRep267.geometry}
-          material={materials['RefRep.267Mat']}
-          skeleton={nodes.RefRep267.skeleton}
-        />
-        <skinnedMesh
-          geometry={nodes.RefRep269.geometry}
-          material={materials['RefRep.269Mat']}
-          skeleton={nodes.RefRep269.skeleton}
-        />
-        <skinnedMesh
-          geometry={nodes.RefRep271.geometry}
-          material={materials['RefRep.271Mat']}
-          skeleton={nodes.RefRep271.skeleton}
-        />
-        <skinnedMesh
-          geometry={nodes.RefRep273.geometry}
-          material={materials['RefRep.273Mat']}
-          skeleton={nodes.RefRep273.skeleton}
-        />
-        <skinnedMesh
-          geometry={nodes.RefRep275.geometry}
-          material={materials['RefRep.275Mat']}
-          skeleton={nodes.RefRep275.skeleton}
-        />
-        <skinnedMesh
-          geometry={nodes.RefRep277.geometry}
-          material={materials['RefRep.277Mat']}
-          skeleton={nodes.RefRep277.skeleton}
-        />
-        <skinnedMesh
-          geometry={nodes.RefRep279.geometry}
-          material={materials['RefRep.279Mat']}
-          skeleton={nodes.RefRep279.skeleton}
-        />
-        <skinnedMesh
-          geometry={nodes.RefRep281.geometry}
-          material={materials['RefRep.281Mat']}
-          skeleton={nodes.RefRep281.skeleton}
+            castShadow
+            scale={[1500, 1500, 1500]}
+          geometry={nodes.Mesh_0.geometry}
+          material={materials['Scene_-_Root']}
+          skeleton={nodes.Mesh_0.skeleton}
         />
       </group>
     </group>

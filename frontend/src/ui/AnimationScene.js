@@ -2,14 +2,16 @@ import React, { Suspense } from "react";
 import "./styles.css";
 import {Canvas} from "@react-three/fiber";
 import {OrbitControls, Environment} from "@react-three/drei";
-import Abe from "../Abe";
+
+import Goku from "../Goku";
 
 export default function AnimationScene() {
+
     return (
         <>
             <div className='border border-5 border-dark rounded animeSize'>
         <Canvas shadows camera={{ position: [5, 10, 40], fov: 60 }} resize={0.5}>
-            {/*<OrbitControls />*/}
+            <OrbitControls />
             <ambientLight intensity={1} />
             <directionalLight
                 castShadow
@@ -29,7 +31,7 @@ export default function AnimationScene() {
                 <Environment files={'lilienstein_4k.hdr'} background={true}/>
 
                 <group>
-                    <Abe />
+                    <Goku />
                     <mesh
                         rotation={[-Math.PI / 2, 0, 0]}
                         position={[0, 0, 0]}
