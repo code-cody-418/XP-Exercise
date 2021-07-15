@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState} from "react"
 import {Navigation} from "../shared/Navigation";
 import {Footer} from "../shared/Footer";
 import {Button, Col, Container, Row} from "react-bootstrap";
@@ -14,6 +14,11 @@ import {OrbitControls} from "@react-three/drei";
 import AnimationScene from "../AnimationScene";
 
 export const Home = () => {
+    const [value, setValue] = useState('standing')
+
+    const ClickOne = () => <Button onClick={() => setValue('standing')}>Standing</Button>
+
+    const ClickTwo = () => <Button onClick={() => setValue('situps')}>Sit-ups</Button>
     return (
         <>
             <Navigation />
@@ -34,7 +39,7 @@ export const Home = () => {
                 </Row>
                 <Row className="justify-content-center">
                     <Col>
-                        <AnimationScene />
+                        <AnimationScene value={value}/>
 
                     </Col>
                     <Col>
@@ -44,7 +49,8 @@ export const Home = () => {
                 </Row>
                 <Row>
                     <Col>
-                    <Button></Button>
+                        <ClickOne />
+                        <ClickTwo />
                     </Col>
                 </Row>
             </Container>
