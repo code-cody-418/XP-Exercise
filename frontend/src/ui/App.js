@@ -7,9 +7,13 @@ import {Profile} from "./pages/Profile";
 import {Shop} from "./pages/Shop";
 import AnimationScene from "./AnimationScene";
 
+import {Provider} from "react-redux";
 
-export const App = () => (
+
+
+export const App = (store) => (
     <>
+        <Provider store={store}>
         <BrowserRouter>
             <Switch>
                 <Route exact path='/' component={Home} />
@@ -18,5 +22,6 @@ export const App = () => (
                 <Route exact path='/animationscene' component={AnimationScene} />
             </Switch>
         </BrowserRouter>
+        </Provider>
     </>
 )

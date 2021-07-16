@@ -1,8 +1,24 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {Button, Col} from "react-bootstrap";
+import {useDispatch, useSelector} from "react-redux";
+import {getAllAnimations} from "../store/AnimationSlice";
 
 
 export default function SelectCharacterButtons(props) {
+
+    //sets up redux
+    const dispatch = useDispatch()
+    const initialEffects = () => {
+        dispatch(getAllAnimations())
+    }
+
+    React.useEffect(initialEffects, [dispatch])
+
+    const animations = useSelector((state) => state.animations)
+
+    console.log('animations:', animations)
+
+
     //sets state of animation
     const [value, setValue] = useState('standing')
 
@@ -12,9 +28,9 @@ export default function SelectCharacterButtons(props) {
     //gokubuttons
     const ClickJab = () => <Button onClick={() => setValue('jab')}>Jab</Button>
 
-    useEffect(() => {
-        ClickStanding()
-    })
+    // useEffect(() => {
+    //     ClickStanding()
+    // })
 
 
     console.log("value:", value)
