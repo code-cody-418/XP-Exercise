@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useEffect, useState} from "react"
 import {Navigation} from "../shared/Navigation";
 import {Footer} from "../shared/Footer";
 import {Button, Col, Container, Row} from "react-bootstrap";
@@ -15,9 +15,14 @@ import AnimationScene from "../AnimationScene";
 import ClickedComponent from "../ClickedComponent";
 
 export const Home = () => {
+
+
     //set state of Anime Component
     const [character, setCharacter] = useState("naruto")
 
+    //adds hover cursor to character select
+    const [hovered, setHovered] = useState(false)
+    useEffect(() => void (document.body.style.cursor = hovered ? "pointer" : "auto"), [hovered])
 
     //sets state of animation
     const [value, setValue] = useState('standing')
@@ -25,6 +30,8 @@ export const Home = () => {
     const ClickOne = () => <Button onClick={() => setValue('standing')}>Standing</Button>
 
     const ClickTwo = () => <Button onClick={() => setValue('situps')}>Sit-ups</Button>
+
+
     return (
         <>
             <Navigation />
@@ -34,7 +41,13 @@ export const Home = () => {
                 </Row>
                 <Row className="mb-5">
                     <Col>
-                        <img src={goku} alt="Goku training" onClick={() => setCharacter('goku')} className="rounded-circle border border-dark mx-auto d-block" width="250" height="250"/>
+                        <img src={goku} alt="Goku training"
+                             onPointerOver={() => setHovered(true)}
+                             onPointerOut={() => setHovered(false)}
+                             onClick={() => setCharacter('goku')}
+                             className="rounded-circle border border-dark mx-auto d-block"
+                             width="250"
+                             height="250"/>
                     </Col>
                     <Col>
                         <img src={sakura} alt="Sakura training" className="rounded-circle border border-dark mx-auto d-block" width="250" height="250"/>
