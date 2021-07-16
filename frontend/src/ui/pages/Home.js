@@ -12,8 +12,14 @@ import ReactPlayer from "react-player";
 import "../styles.css"
 import {OrbitControls} from "@react-three/drei";
 import AnimationScene from "../AnimationScene";
+import ClickedComponent from "../ClickedComponent";
 
 export const Home = () => {
+    //set state of Anime Component
+    const [character, setCharacter] = useState("naruto")
+
+
+    //sets state of animation
     const [value, setValue] = useState('standing')
 
     const ClickOne = () => <Button onClick={() => setValue('standing')}>Standing</Button>
@@ -28,7 +34,7 @@ export const Home = () => {
                 </Row>
                 <Row className="mb-5">
                     <Col>
-                        <img src={goku} alt="Goku training" className="rounded-circle border border-dark mx-auto d-block" width="250" height="250"/>
+                        <img src={goku} alt="Goku training" onClick={() => setCharacter('goku')} className="rounded-circle border border-dark mx-auto d-block" width="250" height="250"/>
                     </Col>
                     <Col>
                         <img src={sakura} alt="Sakura training" className="rounded-circle border border-dark mx-auto d-block" width="250" height="250"/>
@@ -37,18 +43,20 @@ export const Home = () => {
                         <img src={korra} alt="Korra training" className="rounded-circle border border-dark mx-auto d-block" width="250" height="250"/>
                     </Col>
                 </Row>
+                <Row>
+                    <Col>
+                        {/*npm module for runnning videos, see docs for more functionality*/}
+                        <ReactPlayer url="https://www.youtube.com/watch?v=3ZHwkpyvDqE" />
+                    </Col>
+                </Row>
                 <Row className="justify-content-center">
-                    <Col>
-                        <AnimationScene value={value}/>
-                    </Col>
-                    <Col>
-                    {/*npm module for runnning videos, see docs for more functionality*/}
-                    <ReactPlayer url="https://www.youtube.com/watch?v=3ZHwkpyvDqE" />
-                    </Col>
+                        <AnimationScene value={value} name={character}/>
                 </Row>
                 <Row>
                     <Col>
                         <ClickOne />
+                    </Col>
+                    <Col>
                         <ClickTwo />
                     </Col>
                 </Row>

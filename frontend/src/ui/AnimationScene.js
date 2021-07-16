@@ -5,11 +5,11 @@ import {OrbitControls, Environment} from "@react-three/drei";
 import Goku from "../Goku";
 import Naruto from "../Naruto";
 import Kakashi from "../Kakashi";
+import ClickedComponent from "./ClickedComponent";
 
 
 
 export default function AnimationScene(props) {
-
     return (
         <>
             <div className='border border-5 border-dark rounded animeSize'>
@@ -34,9 +34,7 @@ export default function AnimationScene(props) {
                 <Environment files={'lilienstein_4k.hdr'} background={true}/>
 
                 <group>
-                    {/*<Kakashi name={props.value} />*/}
-                    {/*<Goku />*/}
-                    <Naruto />
+                    <ClickedComponent name={props.name}/>
                     <mesh
                         rotation={[-Math.PI / 2, 0, 0]}
                         position={[0, 0, 0]}
