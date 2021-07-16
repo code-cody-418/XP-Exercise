@@ -2,11 +2,7 @@ import React, { Suspense } from "react";
 import "./styles.css";
 import {Canvas} from "@react-three/fiber";
 import {OrbitControls, Environment} from "@react-three/drei";
-import Goku from "../Goku";
-import Naruto from "../Naruto";
-import Kakashi from "../Kakashi";
-import ClickedComponent from "./ClickedComponent";
-
+import SelectCharacter from "./SelectCharacter";
 
 
 export default function AnimationScene(props) {
@@ -34,7 +30,7 @@ export default function AnimationScene(props) {
                 <Environment files={'lilienstein_4k.hdr'} background={true}/>
 
                 <group>
-                    <ClickedComponent name={props.name}/>
+                    <SelectCharacter name={props.name} value={props.value}/>
                     <mesh
                         rotation={[-Math.PI / 2, 0, 0]}
                         position={[0, 0, 0]}

@@ -12,10 +12,11 @@ import ReactPlayer from "react-player";
 import "../styles.css"
 import {OrbitControls} from "@react-three/drei";
 import AnimationScene from "../AnimationScene";
-import ClickedComponent from "../ClickedComponent";
+import SelectCharacter from "../SelectCharacter";
+import SelectCharacterButtons from "../SelectCharacterButtons";
 
-export const Home = () => {
-
+export const Home = (props) => {
+    const [value, setValue] = useState('standing')
 
     //set state of Anime Component
     const [character, setCharacter] = useState("naruto")
@@ -24,12 +25,6 @@ export const Home = () => {
     const [hovered, setHovered] = useState(false)
     useEffect(() => void (document.body.style.cursor = hovered ? "pointer" : "auto"), [hovered])
 
-    //sets state of animation
-    const [value, setValue] = useState('standing')
-
-    const ClickOne = () => <Button onClick={() => setValue('standing')}>Standing</Button>
-
-    const ClickTwo = () => <Button onClick={() => setValue('situps')}>Sit-ups</Button>
 
 
     return (
@@ -66,12 +61,7 @@ export const Home = () => {
                         <AnimationScene value={value} name={character}/>
                 </Row>
                 <Row>
-                    <Col>
-                        <ClickOne />
-                    </Col>
-                    <Col>
-                        <ClickTwo />
-                    </Col>
+                    <SelectCharacterButtons name={character}/>
                 </Row>
             </Container>
             <Footer />
