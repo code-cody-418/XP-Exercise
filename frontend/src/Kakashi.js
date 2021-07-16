@@ -9,12 +9,11 @@ export default function Kakashi(props) {
   const group = useRef()
   const { nodes, materials, animations } = useGLTF('/kakashi.glb')
   const { actions } = useAnimations(animations, group)
-
   useEffect(() => {
-    actions[props.value].reset().fadeIn(0.5).play()
-    return () => actions[props.value].fadeOut(0.5)
-  }, [actions, props.value]);
-
+    actions[props.kakashiAction].reset().fadeIn(0.5).play()
+    // return () => actions[props.kakashiAction].fadeOut(0.5)
+  }, [actions, props.kakashiAction]);
+  console.log('Kakashi Actions:', actions)
   return (
     <group ref={group} {...props} dispose={null}>
       <group rotation={[Math.PI / 2, 0, 0]} scale={0.1}>

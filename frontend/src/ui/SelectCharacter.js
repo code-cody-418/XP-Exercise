@@ -5,13 +5,13 @@ import Goku01 from "../Goku01";
 
 export default function SelectCharacter(props) {
     if (props.name ==="kakashi") {
-        return <Kakashi value={props.value}/>
+        return <Kakashi kakashiAction={props.kakashiAction}/>
     }
     else if (props.name ==="naurto") {
-        return <Naruto value={props.value}/>
+        return <Naruto narutoAction={props.narutoAction}/>
     }
     else if (props.name ==="goku") {
-        return <Goku01 value={props.value}/>
+        return <Goku01 gokuAction={props.gokuAction}/>
     }
-    return <Naruto value={props.value}/>
+    return <Naruto narutoAction={props.narutoAction}/>
 }

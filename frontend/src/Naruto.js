@@ -10,13 +10,14 @@ export default function Naruto(props) {
   const { nodes, materials, animations } = useGLTF('/naruto.glb')
   const { actions } = useAnimations(animations, group)
   useEffect(() => {
-    console.log('actions', actions);
-    actions.footwork.play();
-  });
+    actions[props.narutoAction].reset().fadeIn(0.5).play()
+    // return () => actions[props.narutoAction].fadeOut(0.5)
+  }, [actions, props.narutoAction]);
+  console.log('naruto Actions:', actions)
   return (
     <group ref={group} {...props} dispose={null}>
       <group rotation={[-Math.PI / 2, 0, 0]} />
-      <group rotation={[Math.PI / 2, 0, 0]} scale={0.1}>
+      <group rotation={[Math.PI / 2, 0, 0]} scale={0.05}>
         <primitive object={nodes.mixamorigHips} />
         <skinnedMesh
           geometry={nodes.Object_10.geometry}

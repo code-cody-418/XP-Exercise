@@ -30,7 +30,7 @@ export default function AnimationScene(props) {
                 <Environment files={'lilienstein_4k.hdr'} background={true}/>
 
                 <group>
-                    <SelectCharacter name={props.name} value={props.value}/>
+                    <SelectCharacter name={props.name} gokuAction={props.gokuAction} narutoAction={props.narutoAction} kakashiAction={props.kakashiAction}/>
                     <mesh
                         rotation={[-Math.PI / 2, 0, 0]}
                         position={[0, 0, 0]}
