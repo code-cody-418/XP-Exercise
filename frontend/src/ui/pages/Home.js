@@ -12,20 +12,19 @@ import ReactPlayer from "react-player";
 import "../styles.css"
 import {OrbitControls} from "@react-three/drei";
 import AnimationScene from "../AnimationScene";
-import SelectCharacter from "../SelectCharacter";
 import SelectCharacterButtons from "../SelectCharacterButtons";
 
 export const Home = (props) => {
-    const [value, setValue] = useState('standing')
+    const [value] = useState('standing')
 
-    //set state of Anime Component
+    //set state of character Component
     const [character, setCharacter] = useState("naruto")
 
     //adds hover cursor to character select
     const [hovered, setHovered] = useState(false)
     useEffect(() => void (document.body.style.cursor = hovered ? "pointer" : "auto"), [hovered])
 
-
+    console.log("value:", value)
 
     return (
         <>
@@ -61,7 +60,7 @@ export const Home = (props) => {
                         <AnimationScene value={value} name={character}/>
                 </Row>
                 <Row>
-                    <SelectCharacterButtons name={character}/>
+                    <SelectCharacterButtons name={character} value={value}/>
                 </Row>
             </Container>
             <Footer />

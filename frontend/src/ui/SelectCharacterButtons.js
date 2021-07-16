@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Button, Col} from "react-bootstrap";
 
 
@@ -11,6 +11,11 @@ export default function SelectCharacterButtons(props) {
 
     //gokubuttons
     const ClickJab = () => <Button onClick={() => setValue('jab')}>Jab</Button>
+
+    useEffect(() => {
+        ClickStanding()
+    })
+
 
     console.log("value:", value)
 
@@ -32,5 +37,14 @@ export default function SelectCharacterButtons(props) {
             </>
         )
     }
-    return <button>Naruto</button>
+    return (
+        <>
+            <Col>
+                <ClickStanding value={value}/>
+            </Col>
+            <Col>
+                <ClickJab value={value}/>
+            </Col>
+        </>
+    )
 }
