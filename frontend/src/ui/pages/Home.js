@@ -40,7 +40,6 @@ export const Home = () => {
                 <Row className="justify-content-center">
                     <Col>
                         <AnimationScene value={value}/>
-
                     </Col>
                     <Col>
                     {/*npm module for runnning videos, see docs for more functionality*/}

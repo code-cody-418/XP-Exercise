@@ -2,6 +2,8 @@ import React, { Suspense } from "react";
 import "./styles.css";
 import {Canvas} from "@react-three/fiber";
 import {OrbitControls, Environment} from "@react-three/drei";
+import Goku from "../Goku";
+import Naruto from "../Naruto";
 import Kakashi from "../Kakashi";
 
 
@@ -32,7 +34,9 @@ export default function AnimationScene(props) {
                 <Environment files={'lilienstein_4k.hdr'} background={true}/>
 
                 <group>
-                    <Kakashi name={props.value} />
+                    {/*<Kakashi name={props.value} />*/}
+                    {/*<Goku />*/}
+                    <Naruto />
                     <mesh
                         rotation={[-Math.PI / 2, 0, 0]}
                         position={[0, 0, 0]}

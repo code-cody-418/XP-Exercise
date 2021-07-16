@@ -8,7 +8,7 @@ import { useGLTF, useAnimations } from '@react-three/drei'
 export default function Kakashi(props) {
   const group = useRef()
   const { nodes, materials, animations } = useGLTF('/kakashi.glb')
-  const { actions} = useAnimations(animations, group)
+  const { actions } = useAnimations(animations, group)
 
   useEffect(() => {
     actions[props.name].reset().fadeIn(0.5).play()

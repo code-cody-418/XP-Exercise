@@ -18,7 +18,7 @@ export default function Goku(props) {
       <group rotation={[-Math.PI / 2, 0, 0]}>
         <group position={[-0.02, 0.01, 0]} rotation={[0, 0, 3]} />
       </group>
-      <group rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
+      <group rotation={[Math.PI / 2, 0, 0]} scale={1}>
         <primitive object={nodes.mixamorigHips} />
         <skinnedMesh
             castShadow
