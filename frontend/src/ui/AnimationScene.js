@@ -3,9 +3,12 @@ import "./styles.css";
 import {Canvas} from "@react-three/fiber";
 import {OrbitControls, Environment} from "@react-three/drei";
 import SelectCharacter from "./SelectCharacter";
+import {SwitchTransition, Transition, TransitionGroup} from "react-transition-group";
+import Goku01 from "../Goku01";
+import Naruto from "../Naruto";
 
 
-export default function AnimationScene(props) {
+export default function AnimationScene({name, kakashiAction, gokuAction, narutoAction}) {
     return (
         <>
             <div className='border border-5 border-dark rounded animeSize'>
@@ -30,8 +33,10 @@ export default function AnimationScene(props) {
                 <Environment files={'lilienstein_4k.hdr'} background={true}/>
 
                 <group>
-                    <SelectCharacter name={props.name} gokuAction={props.gokuAction} narutoAction={props.narutoAction} kakashiAction={props.kakashiAction}/>
-                    <mesh
+
+                    <SelectCharacter name={name} gokuAction={gokuAction} narutoAction={narutoAction} kakashiAction={kakashiAction}/>
+
+                        <mesh
                         rotation={[-Math.PI / 2, 0, 0]}
                         position={[0, 0, 0]}
                         receiveShadow>

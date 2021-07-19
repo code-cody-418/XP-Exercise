@@ -11,29 +11,6 @@ import {OrbitControls} from "@react-three/drei";
 import AnimationScene from "../AnimationScene";
 import SelectCharacter from "../SelectCharacter";
 
-// const ACTIONS = {
-//     ADD_CHARACTER: 'naruto',
-//     TOGGLE_CHARACTER: 'naruto'
-// }
-//
-// function reducer(characters, action) {
-//     switch (action.type){
-//         case ACTIONS.ADD_CHARACTER:
-//             return [...characters, newCharacter(action.payload.name)]
-//         case ACTIONS.TOGGLE_CHARACTER:
-//             return characters.map(character => {
-//                 if (character.id === action.payload.id){
-//                     return {...character, complete: !character.complete}
-//                 }
-//                 return character
-//             })
-//
-//     }
-// }
-
-// function newCharacter(name) {
-//     return {id: Date.now(), name: name, complete: false}
-// }
 
 export const Home = (props) => {
 
@@ -99,27 +76,13 @@ export const Home = (props) => {
     const ClickNarutoStanding = () => <Button onClick={() => setNarutoAction('standing')}>Standing</Button>
     const ClickFootwork = () => <Button onClick={() => setNarutoAction('footwork')}>Footwork</Button>
 
-    //select character without reducer
+    //set state of selected character Component
     const [character, setCharacter] = useState('goku')
+
 
     const ClickGoku = () => <Button onClick={() => setCharacter('goku')}>Goku</Button>
     const ClickNaruto = () => <Button onClick={() => setCharacter('naruto')}>Naruto</Button>
 
-    //set state of selected character Component
-    //useReducer to manage the state of character select
-    // const [characters, dispatch] = useReducer(reducer, [])
-    // const [name, setName] = useState('')
-    //
-    // function handleOnClick(e) {
-    //     e.preventDefault()
-    //     dispatch({ type: ACTIONS.ADD_CHARACTER, payload: {name: name}})
-    //     setName('')
-    // }
-    //
-    // const ClickGoku = () => <Button onSubmit={handleOnClick} onClick={() => setName('goku')}>Goku</Button>
-    // const ClickNaruto = () => <Button onSubmit={handleOnClick} onClick={() => setName('naruto')}>Naruto</Button>
-    //
-    // console.log('useReducer', characters)
 
     //adds hover cursor to character select
     const [hovered, setHovered] = useState(false)
@@ -176,8 +139,8 @@ export const Home = (props) => {
                     </Col>
                 </Row>
                 <Row className="justify-content-center">
-                    {/*<SelectCharacter key={characters.id} characters={characters} dispatch={dispatch}/>*/}
-                        <AnimationScene gokuAction={gokuAction} narutoAction={narutoAction} kakashiAction={kakashiAction} name={character}/>
+
+                    <AnimationScene gokuAction={gokuAction} narutoAction={narutoAction} kakashiAction={kakashiAction} name={character}/>
                 </Row>
                 <Row>
                     <SelectCharacterButtons name={character} />
