@@ -9,11 +9,13 @@ export default function Naruto(props) {
   const group = useRef()
   const { nodes, materials, animations } = useGLTF('/naruto.glb')
   const { actions } = useAnimations(animations, group)
+
   useEffect(() => {
     actions[props.narutoAction].reset().fadeIn(0.5).play()
-    // return () => actions[props.narutoAction].fadeOut(0.5)
+    return () => actions[props.narutoAction].fadeOut(0.5)
   }, [actions, props.narutoAction]);
-  console.log('naruto Actions:', actions)
+  console.log('naruto prop:', props.narutoAction)
+
   return (
     <group ref={group} {...props} dispose={null}>
       <group rotation={[-Math.PI / 2, 0, 0]} />

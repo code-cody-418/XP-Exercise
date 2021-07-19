@@ -1,6 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {useAnimations, useGLTF} from "@react-three/drei";
-import {useRef} from "react";
+import {useGLTF} from "@react-three/drei";
+
 
 
 const animationSlice = createSlice( {

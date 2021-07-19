@@ -9,11 +9,18 @@ export default function Goku01(props) {
   const group = useRef()
   const { nodes, materials, animations } = useGLTF('/goku01.glb')
   const { actions } = useAnimations(animations, group)
-    // useEffect(() => {
-    //       actions[props.gokuAction].reset().fadeIn(0.5).play()
-    //       // return () => actions[props.gokuAction].fadeOut(0.5)
-    //     }, [actions, props.gokuAction]);
-    console.log('goku Actions:', actions)
+
+
+    useEffect(() => {
+          actions[props.gokuAction].reset().fadeIn(0.5).play()
+        console.log('goku props:', props.gokuAction)
+          return () => {
+              actions[props.gokuAction].fadeOut(0.5)
+            }
+        }, [actions, props.gokuAction, props.name]);
+
+
+
 //uses single effect
 //     useEffect(() => {
 //         console.log('actions', actions);
