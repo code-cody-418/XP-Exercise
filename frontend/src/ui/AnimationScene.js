@@ -3,12 +3,9 @@ import "./styles.css";
 import {Canvas} from "@react-three/fiber";
 import {OrbitControls, Environment} from "@react-three/drei";
 import SelectCharacter from "./SelectCharacter";
-import {SwitchTransition, Transition, TransitionGroup} from "react-transition-group";
-import Goku01 from "../Goku01";
-import Naruto from "../Naruto";
 
 
-export default function AnimationScene({name, kakashiAction, gokuAction, narutoAction}) {
+export default function AnimationScene({ name, kakashiAction, gokuAction, narutoAction }) {
     return (
         <>
             <div className='border border-5 border-dark rounded animeSize'>

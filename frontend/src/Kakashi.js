@@ -9,6 +9,7 @@ export default function Kakashi(props) {
   const group = useRef()
   const { nodes, materials, animations } = useGLTF('/kakashi.glb')
   const { actions } = useAnimations(animations, group)
+
   useEffect(() => {
     actions[props.kakashiAction].reset().fadeIn(0.5).play()
     return () => actions[props.kakashiAction].fadeOut(0.5)

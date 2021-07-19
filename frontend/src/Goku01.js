@@ -13,7 +13,6 @@ export default function Goku01(props) {
 
     useEffect(() => {
           actions[props.gokuAction].reset().fadeIn(0.5).play()
-        console.log('goku props:', props.gokuAction)
           return () => {
               actions[props.gokuAction].fadeOut(0.5)
             }
