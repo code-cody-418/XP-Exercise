@@ -3,6 +3,7 @@ import "./styles.css";
 import {Canvas} from "@react-three/fiber";
 import {OrbitControls, Environment} from "@react-three/drei";
 import SelectCharacter from "./SelectCharacter";
+import Korra from "../Korra";
 
 
 export default function AnimationScene({ name, kakashiAction, gokuAction, narutoAction }) {
@@ -11,7 +12,7 @@ export default function AnimationScene({ name, kakashiAction, gokuAction, naruto
             <div className='border border-5 border-dark rounded animeSize'>
         <Canvas shadows camera={{ position: [5, 10, 40], fov: 60 }} resize={0.5}>
             <OrbitControls />
-            <ambientLight intensity={1} />
+            {/*<ambientLight intensity={1} />*/}
             <directionalLight
                 castShadow
                 position={[0, 10, 0]}
@@ -31,7 +32,8 @@ export default function AnimationScene({ name, kakashiAction, gokuAction, naruto
 
                 <group>
 
-                    <SelectCharacter name={name} gokuAction={gokuAction} narutoAction={narutoAction} kakashiAction={kakashiAction}/>
+                    {/*<SelectCharacter name={name} gokuAction={gokuAction} narutoAction={narutoAction} kakashiAction={kakashiAction}/>*/}
+                    <Korra />
 
                         <mesh
                         rotation={[-Math.PI / 2, 0, 0]}
