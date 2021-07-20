@@ -3,10 +3,10 @@ import "./styles.css";
 import {Canvas} from "@react-three/fiber";
 import {OrbitControls, Environment} from "@react-three/drei";
 import SelectCharacter from "./SelectCharacter";
-import Korra from "../Korra";
 
 
-export default function AnimationScene({ name, kakashiAction, gokuAction, narutoAction }) {
+
+export default function AnimationScene({ name, kakashiAction, gokuAction, narutoAction, korraAction }) {
     return (
         <>
             <div className='border border-5 border-dark rounded animeSize'>
@@ -28,21 +28,21 @@ export default function AnimationScene({ name, kakashiAction, gokuAction, naruto
             <pointLight position={[-10, 0, -20]} intensity={0.5}/>
             <pointLight position={[0, 0, 0]} intensity={1.5}/>
             <Suspense fallback={null}>
-                <Environment files={'lilienstein_4k.hdr'} background={true}/>
+                <Environment files={'spiaggia_di_mondello_4k.hdr'} background={true}/>
 
                 <group>
 
-                    {/*<SelectCharacter name={name} gokuAction={gokuAction} narutoAction={narutoAction} kakashiAction={kakashiAction}/>*/}
-                    <Korra />
+                    <SelectCharacter name={name} gokuAction={gokuAction} narutoAction={narutoAction} kakashiAction={kakashiAction} korraAction={korraAction}/>
 
-                        <mesh
-                        rotation={[-Math.PI / 2, 0, 0]}
-                        position={[0, 0, 0]}
-                        receiveShadow>
-                        <planeBufferGeometry attach='geometry' args={[20, 50]}/>
-                        {/*<shadowMaterial attach='material' opacity={0.3} />*/}
-                        <meshStandardMaterial attach='material' color={"blue"} />
-                    </mesh>
+
+                    {/*    <mesh*/}
+                    {/*    rotation={[-Math.PI / 2, 0, 0]}*/}
+                    {/*    position={[0, 0, 0]}*/}
+                    {/*    receiveShadow>*/}
+                    {/*    <planeBufferGeometry attach='geometry' args={[20, 50]}/>*/}
+                    {/*    /!*<shadowMaterial attach='material' opacity={0.3} />*!/*/}
+                    {/*    <meshStandardMaterial attach='material' color={"blue"} />*/}
+                    {/*</mesh>*/}
                 </group>
             </Suspense>
         </Canvas>

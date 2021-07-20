@@ -3,8 +3,9 @@ import {Navigation} from "../shared/Navigation";
 import {Footer} from "../shared/Footer";
 import {Button, Col, Container, Row} from "react-bootstrap";
 import goku from "../../images/goku-trainer.png"
-import naruto from "../../images/naruto-01.png"
+import naruto from "../../images/naruto.png"
 import kakashi from '../../images/kakashi-01.png'
+import korra from '../../images/korra-trainer.png'
 import ReactPlayer from "react-player";
 import "../styles.css"
 import AnimationScene from "../AnimationScene";
@@ -16,6 +17,7 @@ export const Home = () => {
     const [gokuAction, setGokuAction] = useState('standing')
     const [narutoAction, setNarutoAction] = useState('standing')
     const [kakashiAction, setKakashiAction] = useState('standing')
+    const [korraAction, setKorraAction] = useState('standing')
 
     //logic for character button selection
     function SelectCharacterButtons(props) {
@@ -25,10 +27,10 @@ export const Home = () => {
             return (
                 <>
                     <Col>
-                        <Button onClick={() => setNarutoAction('standing')}>Standing</Button>
+                        <Button className='characterButton' onClick={() => setNarutoAction('standing')}>Standing</Button>
                     </Col>
                     <Col>
-                        <Button onClick={() => setNarutoAction('footwork')}>Footwork</Button>
+                        <Button className='characterButton' onClick={() => setNarutoAction('footwork')}>Footwork</Button>
                     </Col>
                 </>
             )
@@ -36,22 +38,22 @@ export const Home = () => {
             return (
                 <>
                     <Col>
-                        <Button onClick={() => setGokuAction('standing')}>Standing</Button>
+                        <Button className='characterButton' onClick={() => setGokuAction('standing')}>Standing</Button>
                     </Col>
                     <Col>
-                        <Button onClick={() => setGokuAction('jab')}>Jab</Button>
+                        <Button className='characterButton' onClick={() => setGokuAction('jab')}>Jab</Button>
                     </Col>
                     <Col>
-                        <Button onClick={() => setGokuAction('hook')}>Hook</Button>
+                        <Button className='characterButton' onClick={() => setGokuAction('hook')}>Hook</Button>
                     </Col>
                     <Col>
-                        <Button onClick={() => setGokuAction('bicepCurl')}>Bicep Curl</Button>
+                        <Button className='characterButton' onClick={() => setGokuAction('bicepCurl')}>Bicep Curl</Button>
                     </Col>
                     <Col>
-                        <Button onClick={() => setGokuAction('punchCombo')}>Punch Combo</Button>
+                        <Button className='characterButton' onClick={() => setGokuAction('punchCombo')}>Punch Combo</Button>
                     </Col>
                     <Col>
-                        <Button onClick={() => setGokuAction('laying')}>Laying</Button>
+                        <Button className='characterButton' onClick={() => setGokuAction('laying')}>Laying</Button>
                     </Col>
                 </>
             )
@@ -75,7 +77,7 @@ export const Home = () => {
             <Navigation />
             <Container>
                 <Row>
-                    <h1 className="text-center">Trainers</h1>
+                    <h1 className="trainerTitle text-center">Trainers</h1>
                 </Row>
                 <Row className="mb-5">
                     <Col>
@@ -85,8 +87,8 @@ export const Home = () => {
                              onPointerOut={() => setHovered(false)}
                              onClick={() => setName('goku')}
                              className="rounded-circle border border-dark mx-auto d-block"
-                             width="250"
-                             height="250" />
+                             width="150"
+                             height="150" />
                     </Col>
                     <Col>
                         <img src={naruto}
@@ -95,8 +97,8 @@ export const Home = () => {
                              onPointerOut={() => setHovered(false)}
                              onClick={() => setName('naruto')}
                              className="rounded-circle border border-dark mx-auto d-block"
-                             width="250"
-                             height="250"/>
+                             width="150"
+                             height="150"/>
                     </Col>
                     <Col>
                         <img src={kakashi}
@@ -105,22 +107,32 @@ export const Home = () => {
                              onPointerOut={() => setHovered(false)}
                              onClick={() => setName('kakashi')}
                              className="rounded-circle border border-dark mx-auto d-block"
-                             width="250"
-                             height="250"/>
+                             width="150"
+                             height="150"/>
                     </Col>
-                </Row>
-                <Row>
                     <Col>
-                        {/*npm module for runnning videos, see docs for more functionality*/}
-                        <ReactPlayer url="https://www.youtube.com/watch?v=3ZHwkpyvDqE" />
+                        <img src={korra}
+                             alt="Korra training"
+                             onPointerOver={() => setHovered(true)}
+                             onPointerOut={() => setHovered(false)}
+                             onClick={() => setName('korra')}
+                             className="rounded-circle border border-dark mx-auto d-block"
+                             width="150"
+                             height="150"/>
                     </Col>
                 </Row>
                 <Row className="justify-content-center">
 
-                    <AnimationScene gokuAction={gokuAction} narutoAction={narutoAction} kakashiAction={kakashiAction} name={name}/>
+                    <AnimationScene gokuAction={gokuAction} narutoAction={narutoAction} kakashiAction={kakashiAction} korraAction={korraAction} name={name}/>
                 </Row>
-                <Row>
+                <Row className='mb-5 justify-content-center'>
                     <SelectCharacterButtons name={name} />
+                </Row>
+                <Row className="justify-content-center mb-5">
+
+                        {/*npm module for runnning videos, see docs for more functionality*/}
+                        <ReactPlayer url="https://www.youtube.com/watch?v=3ZHwkpyvDqE" />
+
                 </Row>
             </Container>
             <Footer />
