@@ -2,7 +2,11 @@ import React, { Suspense } from "react";
 import "./styles.css";
 import {Canvas} from "@react-three/fiber";
 import {OrbitControls, Environment} from "@react-three/drei";
-import SelectCharacter from "./SelectCharacter";
+
+import Goku01 from "../Goku01";
+import Naruto from "../Naruto";
+import Kakashi from "../Kakashi";
+import Korra from "../Korra";
 
 
 
@@ -31,18 +35,19 @@ export default function AnimationScene({ name, kakashiAction, gokuAction, naruto
                 <Environment files={'spiaggia_di_mondello_4k.hdr'} background={true}/>
 
                 <group>
+                    <Goku01 gokuAction={gokuAction} name={name} />
+                    <Naruto narutoAction={narutoAction} name={name} />
+                    <Kakashi kakashiAction={kakashiAction} name={name} />
+                    <Korra korraAction={korraAction} name={name} />
 
-                    <SelectCharacter name={name} gokuAction={gokuAction} narutoAction={narutoAction} kakashiAction={kakashiAction} korraAction={korraAction}/>
-
-
-                    {/*    <mesh*/}
-                    {/*    rotation={[-Math.PI / 2, 0, 0]}*/}
-                    {/*    position={[0, 0, 0]}*/}
-                    {/*    receiveShadow>*/}
-                    {/*    <planeBufferGeometry attach='geometry' args={[20, 50]}/>*/}
-                    {/*    /!*<shadowMaterial attach='material' opacity={0.3} />*!/*/}
-                    {/*    <meshStandardMaterial attach='material' color={"blue"} />*/}
-                    {/*</mesh>*/}
+                        <mesh
+                        rotation={[-Math.PI / 2, 0, 0]}
+                        position={[0, 0, 0]}
+                        receiveShadow>
+                        <planeBufferGeometry attach='geometry' args={[20, 50]}/>
+                        {/*<shadowMaterial attach='material' opacity={0.3} />*/}
+                        <meshStandardMaterial attach='material' color={"blue"} />
+                    </mesh>
                 </group>
             </Suspense>
         </Canvas>

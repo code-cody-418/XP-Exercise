@@ -31,66 +31,79 @@ export default function Naruto(props) {
       <group rotation={[Math.PI / 2, 0, 0]} scale={0.05} visible={visible}>
         <primitive object={nodes.mixamorigHips} />
         <skinnedMesh
+            castShadow
           geometry={nodes.Object_10.geometry}
           material={nodes.Object_10.material}
           skeleton={nodes.Object_10.skeleton}
         />
         <skinnedMesh
+            castShadow
           geometry={nodes.Object_11.geometry}
           material={nodes.Object_11.material}
           skeleton={nodes.Object_11.skeleton}
         />
         <skinnedMesh
+            castShadow
           geometry={nodes.Object_12.geometry}
           material={materials.Model001_Material014}
           skeleton={nodes.Object_12.skeleton}
         />
         <skinnedMesh
+            castShadow
           geometry={nodes.Object_13.geometry}
           material={materials.Model001_Material015}
           skeleton={nodes.Object_13.skeleton}
         />
         <skinnedMesh
+            castShadow
           geometry={nodes.Object_14.geometry}
           material={nodes.Object_14.material}
           skeleton={nodes.Object_14.skeleton}
         />
         <skinnedMesh
+            castShadow
           geometry={nodes.Object_15.geometry}
           material={materials.Model001_Material017}
           skeleton={nodes.Object_15.skeleton}
         />
         <skinnedMesh
+            castShadow
           geometry={nodes.Object_3.geometry}
           material={nodes.Object_3.material}
           skeleton={nodes.Object_3.skeleton}
         />
         <skinnedMesh
+            castShadow
           geometry={nodes.Object_4.geometry}
           material={materials.Model001_Material005}
           skeleton={nodes.Object_4.skeleton}
         />
         <skinnedMesh
+            castShadow
           geometry={nodes.Object_5.geometry}
           material={materials.Model001_Material006}
           skeleton={nodes.Object_5.skeleton}
         />
         <skinnedMesh
+            castShadow
           geometry={nodes.Object_6.geometry}
           material={nodes.Object_6.material}
           skeleton={nodes.Object_6.skeleton}
         />
         <skinnedMesh
+            castShadow
           geometry={nodes.Object_7.geometry}
           material={nodes.Object_7.material}
           skeleton={nodes.Object_7.skeleton}
         />
         <skinnedMesh
+            castShadow
           geometry={nodes.Object_8.geometry}
           material={nodes.Object_8.material}
           skeleton={nodes.Object_8.skeleton}
         />
         <skinnedMesh
+            castShadow
           geometry={nodes.Object_9.geometry}
           material={nodes.Object_9.material}
           skeleton={nodes.Object_9.skeleton}

@@ -37,11 +37,13 @@ export default function Goku01(props) {
       <group rotation={[Math.PI / 2, 0, 0]} scale={0.1} visible={visible}>
         <primitive object={nodes.mixamorigHips} />
         <skinnedMesh
+            castShadow
           geometry={nodes.Body_submesh_3_3_Body_0.geometry}
           material={materials['Body.001']}
           skeleton={nodes.Body_submesh_3_3_Body_0.skeleton}
         />
         <skinnedMesh
+            castShadow
           geometry={nodes.Head_submesh_2_3_Head_0.geometry}
           material={materials['Head.001']}
           skeleton={nodes.Head_submesh_2_3_Head_0.skeleton}
