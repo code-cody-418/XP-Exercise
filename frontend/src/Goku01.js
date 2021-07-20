@@ -10,6 +10,7 @@ export default function Goku01(props) {
   const { nodes, materials, animations } = useGLTF('/goku01.glb')
   const { actions } = useAnimations(animations, group)
 
+    console.log("goku actions:", actions)
 
     useEffect(() => {
           actions[props.gokuAction].reset().fadeIn(0.5).play()
@@ -19,6 +20,7 @@ export default function Goku01(props) {
         }, [actions, props.gokuAction, props.name]);
 
 
+    //This enables the 3d-model to appear and disappear from canvas
     const [visible, setVisible] = useState(false)
 
     useEffect( () => {

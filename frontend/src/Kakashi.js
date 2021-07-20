@@ -16,6 +16,7 @@ export default function Kakashi(props) {
   }, [actions, props.kakashiAction]);
   console.log('Kakashi Actions:', actions)
 
+  //This enables the 3d-model to appear and disappear from canvas
   const [visible, setVisible] = useState(false)
 
   useEffect( () => {

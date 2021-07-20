@@ -14,10 +14,10 @@ import AnimationScene from "../AnimationScene";
 export const Home = () => {
 
     //sets state of buttons for each character
-    const [gokuAction, setGokuAction] = useState('standing')
-    const [narutoAction, setNarutoAction] = useState('standing')
-    const [kakashiAction, setKakashiAction] = useState('standing')
-    const [korraAction, setKorraAction] = useState('standing')
+    const [gokuAction, setGokuAction] = useState('idle')
+    const [narutoAction, setNarutoAction] = useState('idle')
+    const [kakashiAction, setKakashiAction] = useState('idle')
+    const [korraAction, setKorraAction] = useState('idle')
 
     //logic for character button selection
     function SelectCharacterButtons(props) {
