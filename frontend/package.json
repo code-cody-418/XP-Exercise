@@ -3,12 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.32",
-    "@fortawesome/free-solid-svg-icons": "^5.15.1",
-    "@fortawesome/react-fontawesome": "^0.1.12",
-    "@react-spring/three": "^9.2.3",
-    "@react-three/fiber": "^7.0.3",
-    "@reduxjs/toolkit": "^1.4.0",
+    "@react-three/drei": "^7.2.1",
+    "@react-three/fiber": "^7.0.5",
+    "@reduxjs/toolkit": "^1.6.1",
     "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -25,11 +22,10 @@
     "react-router-bootstrap": "^0.25.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.0",
-    "react-three-gui": "^0.4.2",
     "react-transition-group": "^4.4.2",
     "standardx": "^5.0.0",
     "three": "^0.130.1",
-    "yup": "^0.27.0"
+    "yup": "^0.32.9"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -62,7 +58,5 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "@react-three/drei": "^7.0.6"
-  }
+  "devDependencies": {}
 }
