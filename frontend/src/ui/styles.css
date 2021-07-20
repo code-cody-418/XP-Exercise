@@ -43,4 +43,6 @@ body {
     color: black !important;
     font-weight: bold !important;
     background-color: #add4e3 !important;
+    width: 10em;
+    height: 3em;
 }

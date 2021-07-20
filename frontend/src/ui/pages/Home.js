@@ -22,12 +22,25 @@ export const Home = () => {
     //logic for character button selection
     function SelectCharacterButtons(props) {
         if (props.name === "kakashi") {
-            return <button>Kakashi</button>
+            return (
+                <>
+                    <Col>
+                        <Button className='characterButton' onClick={() => setKakashiAction('idle')}>Chillin</Button>
+                        <Button className='characterButton' onClick={() => setKakashiAction('armStretch')}>Arm Stretch</Button>
+                        <Button className='characterButton' onClick={() => setKakashiAction('coolDown')}>Cool Down</Button>
+                        <Button className='characterButton' onClick={() => setKakashiAction('jumpingJack')}>Jumping Jacks</Button>
+                        <Button className='characterButton' onClick={() => setKakashiAction('kick')}>Kick</Button>
+                        <Button className='characterButton' onClick={() => setKakashiAction('neckStretch')}>Neck Stretch</Button>
+                        <Button className='characterButton' onClick={() => setKakashiAction('squat')}>Squat</Button>
+                        <Button className='characterButton' onClick={() => setKakashiAction('touchToes')}>Toe Touch</Button>
+                    </Col>
+                </>
+            )
         } else if (props.name === "naruto") {
             return (
                 <>
                     <Col>
-                        <Button className='characterButton' onClick={() => setNarutoAction('standing')}>Standing</Button>
+                        <Button className='characterButton' onClick={() => setNarutoAction('idle')}>Chillin</Button>
                     </Col>
                     <Col>
                         <Button className='characterButton' onClick={() => setNarutoAction('footwork')}>Footwork</Button>
@@ -38,7 +51,7 @@ export const Home = () => {
             return (
                 <>
                     <Col>
-                        <Button className='characterButton' onClick={() => setGokuAction('standing')}>Standing</Button>
+                        <Button className='characterButton' onClick={() => setGokuAction('idle')}>Chillin</Button>
                     </Col>
                     <Col>
                         <Button className='characterButton' onClick={() => setGokuAction('jab')}>Jab</Button>
@@ -66,7 +79,7 @@ export const Home = () => {
 
 
     //set state of selected character Component
-    const [name, setName] = useState('goku')
+    const [name, setName] = useState('kakashi')
 
     //adds hover cursor to character select
     const [hovered, setHovered] = useState(false)
