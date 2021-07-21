@@ -1,35 +1,16 @@
-import React, {Suspense, useState} from "react";
+import React, {Suspense} from "react";
 import "./styles.css";
-import {Canvas, useFrame, useThree} from "@react-three/fiber";
-import {OrbitControls, Environment, useCamera, PerspectiveCamera} from "@react-three/drei";
+import {Canvas} from "@react-three/fiber";
+import {OrbitControls, Environment} from "@react-three/drei";
 
 import Goku01 from "../Goku01";
 import Naruto from "../Naruto";
 import Kakashi from "../Kakashi";
 import Korra from "../Korra";
-import * as THREE from "@react-three/drei";
-import * as Three from 'three'
+
 
 
 export default function AnimationScene({ name, kakashiAction, gokuAction, narutoAction, korraAction }) {
-
-    // function Camera() {
-    //     const cam = new Three.PerspectiveCamera( () => {
-    //         cam.lookAt(10, 10,10)
-    //         return cam
-    //     })
-    //     }
-
-    // function Camera() {
-    //     useFrame((state) => {
-    //         state.camera.lookAt(100, 100, 100)
-    //     })
-    //     return null
-    // }
-
-    // const set = useThree((state) => state.set)
-    // set({ frameloop: 'demand' })
-
     return (
         <>
             <div className='border border-5 border-dark rounded animeSize'>
@@ -38,10 +19,7 @@ export default function AnimationScene({ name, kakashiAction, gokuAction, naruto
                  camera={{ position: [0, 15, 25], fov: 55 }}
                  resize={0.5}
                  onCreated={({ camera }) => camera.lookAt(0, 0, -35)}
-
             >
-
-            {/*<Camera />*/}
 
             {/*<OrbitControls />*/}
             {/*<ambientLight intensity={1} />*/}
@@ -71,7 +49,7 @@ export default function AnimationScene({ name, kakashiAction, gokuAction, naruto
                         rotation={[-Math.PI / 2, 0, 0]}
                         position={[0, 0, 0]}
                         receiveShadow>
-                        <planeBufferGeometry attach='geometry' args={[20, 50]}/>
+                        <planeBufferGeometry attach='geometry' args={[20, 90]}/>
                         {/*<shadowMaterial attach='material' opacity={0.3} />*/}
                         <meshStandardMaterial attach='material' color={"blue"} />
                     </mesh>
