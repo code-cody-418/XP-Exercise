@@ -1,21 +1,49 @@
-import React, { Suspense } from "react";
+import React, {Suspense, useState} from "react";
 import "./styles.css";
-import {Canvas} from "@react-three/fiber";
-import {OrbitControls, Environment} from "@react-three/drei";
+import {Canvas, useFrame, useThree} from "@react-three/fiber";
+import {OrbitControls, Environment, useCamera, PerspectiveCamera} from "@react-three/drei";
 
 import Goku01 from "../Goku01";
 import Naruto from "../Naruto";
 import Kakashi from "../Kakashi";
 import Korra from "../Korra";
-
+import * as THREE from "@react-three/drei";
+import * as Three from 'three'
 
 
 export default function AnimationScene({ name, kakashiAction, gokuAction, narutoAction, korraAction }) {
+
+    // function Camera() {
+    //     const cam = new Three.PerspectiveCamera( () => {
+    //         cam.lookAt(10, 10,10)
+    //         return cam
+    //     })
+    //     }
+
+    // function Camera() {
+    //     useFrame((state) => {
+    //         state.camera.lookAt(100, 100, 100)
+    //     })
+    //     return null
+    // }
+
+    // const set = useThree((state) => state.set)
+    // set({ frameloop: 'demand' })
+
     return (
         <>
             <div className='border border-5 border-dark rounded animeSize'>
-        <Canvas shadows camera={{ position: [5, 10, 40], fov: 60 }} resize={0.5}>
-            <OrbitControls />
+
+        <Canvas  shadows
+                 camera={{ position: [10, 15, 25], fov: 55 }}
+                 resize={0.5}
+                 onCreated={({ camera }) => camera.lookAt(0, 0, -35)}
+
+            >
+
+            {/*<Camera />*/}
+
+            {/*<OrbitControls />*/}
             {/*<ambientLight intensity={1} />*/}
             <directionalLight
                 castShadow
@@ -33,7 +61,6 @@ export default function AnimationScene({ name, kakashiAction, gokuAction, naruto
             <pointLight position={[0, 0, 0]} intensity={1.5}/>
             <Suspense fallback={null}>
                 <Environment files={'spiaggia_di_mondello_4k.hdr'} background={true}/>
-
                 <group>
                     <Goku01 gokuAction={gokuAction} name={name} />
                     <Naruto narutoAction={narutoAction} name={name} />
@@ -50,6 +77,7 @@ export default function AnimationScene({ name, kakashiAction, gokuAction, naruto
                     </mesh>
                 </group>
             </Suspense>
+
         </Canvas>
             </div>
         </>
