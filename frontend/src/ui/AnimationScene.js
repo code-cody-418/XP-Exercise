@@ -35,7 +35,7 @@ export default function AnimationScene({ name, kakashiAction, gokuAction, naruto
             <div className='border border-5 border-dark rounded animeSize'>
 
         <Canvas  shadows
-                 camera={{ position: [10, 15, 25], fov: 55 }}
+                 camera={{ position: [0, 15, 25], fov: 55 }}
                  resize={0.5}
                  onCreated={({ camera }) => camera.lookAt(0, 0, -35)}
 
@@ -47,8 +47,8 @@ export default function AnimationScene({ name, kakashiAction, gokuAction, naruto
             {/*<ambientLight intensity={1} />*/}
             <directionalLight
                 castShadow
-                position={[0, 10, 0]}
-                intensity={.5}
+                position={[0, 15, 25]}
+                intensity={1}
                 shadow-mapSize-width={1024}
                 shadow-mapSize-height={1024}
                 shadow-camera-far={50}
@@ -60,7 +60,7 @@ export default function AnimationScene({ name, kakashiAction, gokuAction, naruto
             <pointLight position={[-10, 0, -20]} intensity={0.5}/>
             <pointLight position={[0, 0, 0]} intensity={1.5}/>
             <Suspense fallback={null}>
-                <Environment files={'spiaggia_di_mondello_4k.hdr'} background={true}/>
+                <Environment files={'black-hdri.hdr'} background={true}/>
                 <group>
                     <Goku01 gokuAction={gokuAction} name={name} />
                     <Naruto narutoAction={narutoAction} name={name} />

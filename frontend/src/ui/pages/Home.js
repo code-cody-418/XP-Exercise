@@ -26,13 +26,18 @@ export const Home = () => {
                 <>
                     <Col>
                         <Button className='characterButton' onClick={() => setKakashiAction('idle')}>Chillin</Button>
-                        <Button className='characterButton' onClick={() => setKakashiAction('armStretch')}>Arm Stretch</Button>
-                        <Button className='characterButton' onClick={() => setKakashiAction('coolDown')}>Cool Down</Button>
-                        <Button className='characterButton' onClick={() => setKakashiAction('jumpingJack')}>Jumping Jacks</Button>
+                        <Button className='characterButton' onClick={() => setKakashiAction('armStretch')}>Arm
+                            Stretch</Button>
+                        <Button className='characterButton' onClick={() => setKakashiAction('coolDown')}>Cool
+                            Down</Button>
+                        <Button className='characterButton' onClick={() => setKakashiAction('jumpingJack')}>Jumping
+                            Jacks</Button>
                         <Button className='characterButton' onClick={() => setKakashiAction('kick')}>Kick</Button>
-                        <Button className='characterButton' onClick={() => setKakashiAction('neckStretch')}>Neck Stretch</Button>
+                        <Button className='characterButton' onClick={() => setKakashiAction('neckStretch')}>Neck
+                            Stretch</Button>
                         <Button className='characterButton' onClick={() => setKakashiAction('squat')}>Squat</Button>
-                        <Button className='characterButton' onClick={() => setKakashiAction('touchToes')}>Toe Touch</Button>
+                        <Button className='characterButton' onClick={() => setKakashiAction('touchToes')}>Toe
+                            Touch</Button>
                     </Col>
                 </>
             )
@@ -43,7 +48,8 @@ export const Home = () => {
                         <Button className='characterButton' onClick={() => setNarutoAction('idle')}>Chillin</Button>
                     </Col>
                     <Col>
-                        <Button className='characterButton' onClick={() => setNarutoAction('footwork')}>Footwork</Button>
+                        <Button className='characterButton'
+                                onClick={() => setNarutoAction('footwork')}>Footwork</Button>
                     </Col>
                 </>
             )
@@ -60,10 +66,12 @@ export const Home = () => {
                         <Button className='characterButton' onClick={() => setGokuAction('hook')}>Hook</Button>
                     </Col>
                     <Col>
-                        <Button className='characterButton' onClick={() => setGokuAction('bicepCurl')}>Bicep Curl</Button>
+                        <Button className='characterButton' onClick={() => setGokuAction('bicepCurl')}>Bicep
+                            Curl</Button>
                     </Col>
                     <Col>
-                        <Button className='characterButton' onClick={() => setGokuAction('punchCombo')}>Punch Combo</Button>
+                        <Button className='characterButton' onClick={() => setGokuAction('punchCombo')}>Punch
+                            Combo</Button>
                     </Col>
                     <Col>
                         <Button className='characterButton' onClick={() => setGokuAction('laying')}>Laying</Button>
@@ -87,7 +95,7 @@ export const Home = () => {
 
     return (
         <>
-            <Navigation />
+            <Navigation/>
             <Container>
                 <Row>
                     <h1 className="trainerTitle text-center">Trainers</h1>
@@ -101,7 +109,7 @@ export const Home = () => {
                              onClick={() => setName('goku')}
                              className="rounded-circle border border-dark mx-auto d-block"
                              width="150"
-                             height="150" />
+                             height="150"/>
                     </Col>
                     <Col>
                         <img src={naruto}
@@ -134,21 +142,22 @@ export const Home = () => {
                              height="150"/>
                     </Col>
                 </Row>
-                <Row className="justify-content-center">
-
-                    <AnimationScene gokuAction={gokuAction} narutoAction={narutoAction} kakashiAction={kakashiAction} korraAction={korraAction} name={name}/>
-                </Row>
-                <Row className='mb-5 justify-content-center'>
-                    <SelectCharacterButtons name={name} />
-                </Row>
-                <Row className="justify-content-center mb-5">
-
+                <Row className="justify-content-center mb-3">
+                    <Col xs={6}>
+                        <AnimationScene gokuAction={gokuAction} narutoAction={narutoAction}
+                                        kakashiAction={kakashiAction} korraAction={korraAction} name={name}/>
+                    </Col>
+                    <Col md={6}>
                         {/*npm module for runnning videos, see docs for more functionality*/}
-                        <ReactPlayer url="https://www.youtube.com/watch?v=3ZHwkpyvDqE" />
-
+                        <ReactPlayer url="https://www.youtube.com/watch?v=3ZHwkpyvDqE"/>
+                    </Col>
+                </Row>
+                <Row className='mb-5 justify-content-center' s={3}>
+                    <SelectCharacterButtons name={name}/>
+                    <Col></Col>
                 </Row>
             </Container>
-            <Footer />
+            <Footer/>
         </>
     )
 }
