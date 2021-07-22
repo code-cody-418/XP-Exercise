@@ -7,9 +7,17 @@ import { useGLTF, useAnimations } from '@react-three/drei'
 
 export default function Korra(props) {
   const group = useRef()
-  const { nodes, materials, animations } = useGLTF('/korra.glb')
+  const { nodes, animations } = useGLTF('/korra.glb')
   const { actions } = useAnimations(animations, group)
 
+  useEffect(() => {
+    actions[props.korraAction].reset().fadeIn(0.5).play()
+    return () => {
+      actions[props.korraAction].fadeOut(0.5)
+    }
+  }, [actions, props.korraAction, props.name]);
+
+  //This changes korra to not be white light bright
   const [materialPropertyOne, setMaterialPropertyOne] = useState(1)
 
   useEffect(() => {
