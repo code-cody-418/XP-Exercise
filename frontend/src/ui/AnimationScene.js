@@ -13,8 +13,6 @@ import Korra from "../Korra";
 export default function AnimationScene({ name, kakashiAction, gokuAction, narutoAction, korraAction }) {
     return (
         <>
-            {/*<div className='border border-5 border-dark rounded canvasSize'>*/}
-
         <Canvas  shadows
                  camera={{ position: [0, 15, 25], fov: 55 }}
                  resize={0.5}
@@ -55,9 +53,7 @@ export default function AnimationScene({ name, kakashiAction, gokuAction, naruto
                     </mesh>
                 </group>
             </Suspense>
-
         </Canvas>
-            {/*</div>*/}
         </>
     );
 }
