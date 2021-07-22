@@ -22,6 +22,26 @@ export const Home = () => {
     //logic for character button selection
     function SelectCharacterButtons(props) {
         if (props.name === "kakashi") {
+            if (props.kakashiAction === 'idle')
+                return (
+                    <Button
+                        className='characterButton'
+                        onClick={() => {setKakashiAction('armStretch')}}
+                    >Start</Button>
+                )
+            else if (props.kakashiAction === 'armStretch' || 'neckStretch')
+                return (
+                    <Button
+                        className='characterButton'
+                        onClick={() => {
+                            if (kakashiAction === "armStretch") {
+                                return setKakashiAction('neckStretch')
+                            } else if (kakashiAction === 'neckStretch') {
+                                return setKakashiAction('touchToes')
+                            }
+                        }}
+                    >Next</Button>
+                            )
             return (
                 <>
                     <Col>
@@ -208,21 +228,18 @@ export const Home = () => {
                 </Row>
                 <Row className="justify-content-center mb-3 align-items-center">
                     <Col lg={2} >
-                        <Button className='characterButton' onClick={() => setKakashiAction('idle')}>Chillin</Button>
-                        <Button className='characterButton' onClick={() => setKakashiAction('armStretch')}>Arm
-                            Stretch</Button>
+                        <SelectCharacterButtons name={name} gokuAction={gokuAction} narutoAction={narutoAction}
+                                                kakashiAction={kakashiAction} korraAction={korraAction}/>
+
                     </Col>
                     <Col lg={5} className='border border-5 border-dark rounded animeSize'>
                         <AnimationScene gokuAction={gokuAction} narutoAction={narutoAction}
                                         kakashiAction={kakashiAction} korraAction={korraAction}
                                         name={name}/>
                     </Col>
-                    {/*<SelectCharacterButtons name={name}/>*/}
                     <Col lg={5} >
                         {/*npm module for runnning videos, see docs for more functionality*/}
-                        <ReactPlayer url="https://www.youtube.com/watch?v=3ZHwkpyvDqE" controls={true} width={'100%'} height={'400px'}
-                        onProgress={(playedSeconds: 2) => }
-                        />
+                        <ReactPlayer url="https://www.youtube.com/watch?v=3ZHwkpyvDqE" controls={true} width={'100%'} height={'400px'}/>
                     </Col>
                 </Row>
                 {/*<Row className='mb-5 justify-content-center'>*/}
