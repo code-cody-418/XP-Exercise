@@ -39,7 +39,7 @@ export default function Korra(props) {
 
   return (
     <group ref={group} {...props} dispose={null}>
-      <group rotation={[Math.PI / 2, 0, 0]} scale={0.05} visible={visible}>
+      <group rotation={[Math.PI / 2, 0, 0]} scale={0.04} visible={visible}>
         <primitive object={nodes.mixamorigHips} />
         <skinnedMesh
             castShadow

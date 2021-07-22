@@ -6,7 +6,7 @@ import goku from "../../images/goku-trainer.png"
 import naruto from "../../images/naruto.png"
 import kakashi from '../../images/kakashi-01.png'
 import korra from '../../images/korra-trainer.png'
-import ReactPlayer from "react-player";
+import ReactPlayer from "react-player/youtube";
 import "../styles.css"
 import AnimationScene from "../AnimationScene";
 
@@ -159,7 +159,7 @@ export const Home = () => {
 
     return (
         <>
-            <Navigation/>
+            {/*<Navigation/>*/}
             <Container fluid={true}>
                 <Row>
                     <h1 className="trainerTitle text-center">Trainers</h1>
@@ -172,8 +172,8 @@ export const Home = () => {
                              onPointerOut={() => setHovered(false)}
                              onClick={() => setName('goku')}
                              className="rounded-circle border border-dark mx-auto d-block"
-                             width="150"
-                             height="150"/>
+                             width="125"
+                             height="125"/>
                     </Col>
                     <Col>
                         <img src={naruto}
@@ -182,8 +182,8 @@ export const Home = () => {
                              onPointerOut={() => setHovered(false)}
                              onClick={() => setName('naruto')}
                              className="rounded-circle border border-dark mx-auto d-block"
-                             width="150"
-                             height="150"/>
+                             width="125"
+                             height="125"/>
                     </Col>
                     <Col>
                         <img src={kakashi}
@@ -192,8 +192,8 @@ export const Home = () => {
                              onPointerOut={() => setHovered(false)}
                              onClick={() => setName('kakashi')}
                              className="rounded-circle border border-dark mx-auto d-block"
-                             width="150"
-                             height="150"/>
+                             width="125"
+                             height="125"/>
                     </Col>
                     <Col>
                         <img src={korra}
@@ -202,33 +202,34 @@ export const Home = () => {
                              onPointerOut={() => setHovered(false)}
                              onClick={() => setName('korra')}
                              className="rounded-circle border border-dark mx-auto d-block"
-                             width="150"
-                             height="150"/>
+                             width="125"
+                             height="125"/>
                     </Col>
                 </Row>
-                <Row className="justify-content-center mb-3">
-                    <Col xs={6}>
+                <Row className="justify-content-center mb-3 align-items-center">
+                    <Col lg={2} >
+                        <Button className='characterButton' onClick={() => setKakashiAction('idle')}>Chillin</Button>
+                        <Button className='characterButton' onClick={() => setKakashiAction('armStretch')}>Arm
+                            Stretch</Button>
+                    </Col>
+                    <Col lg={5} className='border border-5 border-dark rounded animeSize'>
                         <AnimationScene gokuAction={gokuAction} narutoAction={narutoAction}
                                         kakashiAction={kakashiAction} korraAction={korraAction}
                                         name={name}/>
                     </Col>
                     {/*<SelectCharacterButtons name={name}/>*/}
-                    <Col>
-                        <Button className='characterButton' onClick={() => setKakashiAction('idle')}>Chillin</Button>
-                        {/*<Button className='characterButton' onClick={() => setKakashiAction('armStretch')}>Arm*/}
-                        {/*    Stretch</Button>*/}
-                    </Col>
-                    <Col md={6}>
+                    <Col lg={5} >
                         {/*npm module for runnning videos, see docs for more functionality*/}
-                        <ReactPlayer url="https://www.youtube.com/watch?v=3ZHwkpyvDqE"/>
+                        <ReactPlayer url="https://www.youtube.com/watch?v=3ZHwkpyvDqE" controls={true} width={'100%'} height={'400px'}
+                        onProgress={(playedSeconds: 2) => }
+                        />
                     </Col>
-
                 </Row>
                 {/*<Row className='mb-5 justify-content-center'>*/}
                 {/*    <SelectCharacterButtons name={name}/>*/}
                 {/*</Row>*/}
             </Container>
-            <Footer/>
+            {/*<Footer/>*/}
         </>
     )
 }
