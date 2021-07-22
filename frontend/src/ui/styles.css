@@ -24,18 +24,15 @@ body {
 /*    width: 5em;*/
 /*}*/
 
-.animeSize {
+.canvasSize {
     /*width: 100%;*/
     height: 400px;
 }
 
 .trainerTitle {
     color: #add4e3;
-
     font-family: trajan-pro-3, serif;
-
     font-weight: 700;
-
     font-style: normal;
 }
 
@@ -45,4 +42,20 @@ body {
     background-color: #add4e3 !important;
     width: 10em;
     height: 3em;
+    border: none !important;
+    margin-left: 1em;
+    margin-top: 1em;
+
+}
+
+.characterButton:hover {
+    color: black !important;
+    font-weight: bold !important;
+    background-color: #add4e3 !important;
+    width: 10em;
+    height: 3em;
+    border: none !important;
+    box-shadow: 0 0 5px 3px #FFF,
+    0 0 9px 5px #790079,
+    0 0 12px 8px #0FF;
 }
