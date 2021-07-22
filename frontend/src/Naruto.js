@@ -14,7 +14,7 @@ export default function Naruto(props) {
     actions[props.narutoAction].reset().fadeIn(0.5).play()
     return () => actions[props.narutoAction].fadeOut(0.5)
   }, [actions, props.narutoAction]);
-  console.log('naruto action:', actions)
+  // console.log('naruto action:', actions)
 
   //This enables the 3d-model to appear and disappear from canvas
   const [visible, setVisible] = useState(false)

@@ -21,10 +21,9 @@ export default function Korra(props) {
   const [materialPropertyOne, setMaterialPropertyOne] = useState(1)
 
   useEffect(() => {
-    console.log('useeffect on korra material property', materialPropertyOne)
     setMaterialPropertyOne(1)
   }, [props.name])
-  console.log('korra action:', actions)
+  // console.log('korra action:', actions)
 
   //This enables the 3d-model to appear and disappear from canvas
   const [visible, setVisible] = useState(false)

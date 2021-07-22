@@ -1,14 +1,16 @@
 import React, {useEffect, useState} from "react"
 import {Navigation} from "../shared/Navigation";
 import {Footer} from "../shared/Footer";
-import {Button, Col, Container, Row} from "react-bootstrap";
+import {Button, Col, Container, Row, Modal} from "react-bootstrap";
 import goku from "../../images/goku-trainer.png"
 import naruto from "../../images/naruto.png"
 import kakashi from '../../images/kakashi-01.png'
 import korra from '../../images/korra-trainer.png'
+import trainInsaiyan from '../../images/train-insaiyan.jpg'
 import ReactPlayer from "react-player/youtube";
 import "../styles.css"
 import AnimationScene from "../AnimationScene";
+
 
 
 export const Home = () => {
@@ -201,9 +203,31 @@ export const Home = () => {
     //set state of playing video
     const [videoPlay, setVideoPlay] = useState(false)
 
+    //set state of Seconds played on Video
+    const [duration, setDuration] = useState(0)
+
+    //sets up modal
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     return (
         <>
             {/*<Navigation/>*/}
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Great Job Training!!!</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {/*<image src={trainInsaiyan}/>*/}
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Close
+                    </Button>
+                </Modal.Footer>
+            </Modal>
             <Container fluid={true}>
                 <Row>
                     <h1 className="trainerTitle text-center">Trainers</h1>
@@ -263,14 +287,25 @@ export const Home = () => {
                     </Col>
                     <Col lg={5} className='ms-0 ps-0'>
                         {/*npm module for runnning videos, see docs for more functionality*/}
-                        <ReactPlayer url="https://www.youtube.com/watch?v=3ZHwkpyvDqE" controls={true} width={'100%'}
-                                     height={'400px'} playing={videoPlay}/>
+                        <ReactPlayer url="https://www.youtube.com/watch?v=3ZHwkpyvDqE"
+                                     controls={true}
+                                     width={'100%'}
+                                     height={'400px'}
+                                     playing={videoPlay}
+                                     // onStart={ () => console.log('onStart')}
+                                     // onDuration={ (duration) => {
+                                     //     return (
+                                     //         setDuration,
+                                     //             console.log('is this working', duration)
+                                     //
+                                     // )}}
+                                        onEnded={ handleShow }
+                        />
+
                     </Col>
                 </Row>
-                {/*<Row className='mb-5 justify-content-center'>*/}
-                {/*    <SelectCharacterButtons name={name}/>*/}
-                {/*</Row>*/}
             </Container>
+
             {/*<Footer/>*/}
         </>
     )
