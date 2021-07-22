@@ -13,6 +13,7 @@ import AnimationScene from "../AnimationScene";
 
 
 
+
 export const Home = () => {
 
     //sets state of buttons for each character
@@ -215,19 +216,19 @@ export const Home = () => {
     return (
         <>
             {/*<Navigation/>*/}
-            <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Great Job Training!!!</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    {/*<image src={trainInsaiyan}/>*/}
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Close
-                    </Button>
-                </Modal.Footer>
-            </Modal>
+                <Modal show={show} onHide={handleClose}>
+                    <Modal.Header>
+                        <Modal.Title>Great Job Training!!!</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body className='text-center'>
+                        <img src={trainInsaiyan} alt="training image" />
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>
+                            Close
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
             <Container fluid={true}>
                 <Row>
                     <h1 className="trainerTitle text-center">Trainers</h1>
