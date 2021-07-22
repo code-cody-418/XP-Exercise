@@ -42,7 +42,7 @@ export const Home = () => {
                         }}
                     >Next</Button>
                             )
-            return (
+                return (
                 <>
                     <Col>
                         <Button className='characterButton' onClick={() => setKakashiAction('idle')}>Chillin</Button>
