@@ -19,11 +19,6 @@ body {
     helvetica neue, helvetica, ubuntu, roboto, noto, segoe ui, arial, sans-serif;
 }
 
-/*canvas {*/
-/*    height: 5em;*/
-/*    width: 5em;*/
-/*}*/
-
 .canvasSize {
     /*width: 100%;*/
     height: 400px;
@@ -47,7 +42,7 @@ body {
     border: none !important;
     margin-left: 1em;
     margin-top: 1em;
-
+    opacity: 85%;
 }
 
 .characterButton:hover {
