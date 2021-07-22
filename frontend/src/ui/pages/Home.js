@@ -27,8 +27,9 @@ export const Home = () => {
                     <Button
                         className='characterButton'
                         onClick={() => {
-                            setKakashiAction('armStretch')
-                        }}
+                            return (
+                            setKakashiAction('armStretch'), setVideoPlay(true)
+                            )}}
                     >Start</Button>
                 )
             else if (props.kakashiAction === 'armStretch' || 'neckStretch')
@@ -197,6 +198,9 @@ export const Home = () => {
     const [hovered, setHovered] = useState(false)
     useEffect(() => void (document.body.style.cursor = hovered ? "pointer" : "auto"), [hovered])
 
+    //set state of playing video
+    const [videoPlay, setVideoPlay] = useState(false)
+
     return (
         <>
             {/*<Navigation/>*/}
@@ -260,7 +264,7 @@ export const Home = () => {
                     <Col lg={5} className='ms-0 ps-0'>
                         {/*npm module for runnning videos, see docs for more functionality*/}
                         <ReactPlayer url="https://www.youtube.com/watch?v=3ZHwkpyvDqE" controls={true} width={'100%'}
-                                     height={'400px'}/>
+                                     height={'400px'} playing={videoPlay}/>
                     </Col>
                 </Row>
                 {/*<Row className='mb-5 justify-content-center'>*/}

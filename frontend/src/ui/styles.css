@@ -38,7 +38,9 @@ body {
 
 .characterButton {
     color: black !important;
-    font-weight: bold !important;
+    font-family: roboto-slab, serif;
+    font-weight: 700;
+    font-style: normal;
     background-color: #add4e3 !important;
     width: 10em;
     height: 3em;
@@ -56,6 +58,6 @@ body {
     height: 3em;
     border: none !important;
     box-shadow: 0 0 5px 3px #FFF,
-    0 0 9px 5px #790079,
-    0 0 12px 8px #0FF;
+    0 0 9px 5px #add4e3,
+    0 0 12px 8px #add4e3;
 }
