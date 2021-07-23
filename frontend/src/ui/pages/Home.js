@@ -12,8 +12,6 @@ import "../styles.css"
 import AnimationScene from "../AnimationScene";
 
 
-
-
 export const Home = () => {
 
     //sets state of buttons for each character
@@ -24,77 +22,83 @@ export const Home = () => {
 
     //logic for character button selection
     function SelectCharacterButtons(props) {
-        if (props.name === "kakashi") {
-            if (props.kakashiAction === 'idle')
-                return (
+        if (autoWorkout === true) {
+            return (
+                <>
                     <Button
                         className='characterButton'
                         onClick={() => {
+                            setAutoWorkout(true)
                             return (
-                            setKakashiAction('armStretch'), setVideoPlay(true)
-                            )}}
+                                setVideoPlay(true)
+                            )
+                        }}
                     >Start</Button>
-                )
-            else if (props.kakashiAction === 'armStretch' || 'neckStretch')
-                return (
-                    <>
                     <Button
                         className='characterButton'
                         onClick={() => {
-                            if (kakashiAction === "armStretch") {
-                                return setKakashiAction('neckStretch')
-                            } else if (kakashiAction === 'neckStretch') {
-                                return setKakashiAction('touchToes')
-                            }
+                            setVideoPlay(true)
+                            setAutoWorkout(false)
                         }}
-                    >Next</Button>
-                    <Button
-                        className='characterButton'
-                        onClick={() => {
-                            if (kakashiAction === "neckStretch") {
-                                return setKakashiAction('armStretch')
-                            } else if (kakashiAction === 'touchToes') {
-                                return setKakashiAction('neckStretch')
-                            }
-                        }}
-                    >Previous</Button>
-
-                    </>
-                )
+                    >Manuel</Button>
+                </>
+            )
+        }
+        else if (props.name === "kakashi" && autoWorkout === false) {
             return (
                 <>
                     <Col>
-                        <Button className='characterButton' onClick={() => setKakashiAction('idle')}>Chillin</Button>
+                        <Button
+                            className='characterButton'
+                            onClick={() => {
+                                setAutoWorkout(true)
+                                return (
+                                    setVideoPlay(true)
+                                )
+                            }}
+                        >Auto</Button>
                     </Col>
                     <Col>
-                        <Button className='characterButton' onClick={() => setKakashiAction('armStretch')}>Arm
+                        <Button className='characterButton'
+                                onClick={() => setKakashiAction('idle')}>Chillin</Button>
+                    </Col>
+                    <Col>
+                        <Button className='characterButton'
+                                onClick={() => setKakashiAction('armStretch')}>Arm
                             Stretch</Button>
                     </Col>
                     <Col>
-                        <Button className='characterButton' onClick={() => setKakashiAction('coolDown')}>Cool
+                        <Button className='characterButton'
+                                onClick={() => setKakashiAction('coolDown')}>Cool
                             Down</Button>
                     </Col>
                     <Col>
-                        <Button className='characterButton' onClick={() => setKakashiAction('jumpingJack')}>Jumping
+                        <Button className='characterButton'
+                                onClick={() => setKakashiAction('jumpingJack')}>Jumping
                             Jacks</Button>
                     </Col>
                     <Col>
-                        <Button className='characterButton' onClick={() => setKakashiAction('kick')}>Kick</Button>
+                        <Button className='characterButton'
+                                onClick={() => setKakashiAction('kick')}>Kick</Button>
                     </Col>
                     <Col>
-                        <Button className='characterButton' onClick={() => setKakashiAction('neckStretch')}>Neck
+                        <Button className='characterButton'
+                                onClick={() => setKakashiAction('neckStretch')}>Neck
                             Stretch</Button>
                     </Col>
                     <Col>
-                        <Button className='characterButton' onClick={() => setKakashiAction('squat')}>Squat</Button>
+                        <Button className='characterButton'
+                                onClick={() => setKakashiAction('squat')}>Squat</Button>
                     </Col>
                     <Col>
-                        <Button className='characterButton' onClick={() => setKakashiAction('touchToes')}>Toe
+                        <Button className='characterButton'
+                                onClick={() => setKakashiAction('touchToes')}>Toe
                             Touch</Button>
                     </Col>
                 </>
             )
-        } else if (props.name === "naruto") {
+        }
+        else if (props.name === "naruto") {
             return (
                 <>
                     <Col>
@@ -204,31 +208,31 @@ export const Home = () => {
     //set state of playing video
     const [videoPlay, setVideoPlay] = useState(false)
 
-    //set state of Seconds played on Video
-    const [duration, setDuration] = useState(0)
-
-    //sets up modal
+    //sets up modal for when
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    //set an auto workout vs a manuel workout
+    const [autoWorkout, setAutoWorkout] = useState(true)
+
     return (
         <>
             {/*<Navigation/>*/}
-                <Modal show={show} onHide={handleClose}>
-                    <Modal.Header>
-                        <Modal.Title>Great Job Training!!!</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body className='text-center'>
-                        <img src={trainInsaiyan} alt="training image" />
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="secondary" onClick={handleClose}>
-                            Close
-                        </Button>
-                    </Modal.Footer>
-                </Modal>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header>
+                    <Modal.Title>Great Job Training!!!</Modal.Title>
+                </Modal.Header>
+                <Modal.Body className='text-center'>
+                    <img src={trainInsaiyan} alt="training "/>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Close
+                    </Button>
+                </Modal.Footer>
+            </Modal>
             <Container fluid={true}>
                 <Row>
                     <h1 className="trainerTitle text-center">Trainers</h1>
@@ -279,7 +283,6 @@ export const Home = () => {
                     <Col xl={2} className='ps-sm-5 ml-auto'>
                         <SelectCharacterButtons name={name} gokuAction={gokuAction} narutoAction={narutoAction}
                                                 kakashiAction={kakashiAction} korraAction={korraAction}/>
-
                     </Col>
                     <Col lg={5} className='canvasSize me-0 pe-0'>
                         <AnimationScene gokuAction={gokuAction} narutoAction={narutoAction}
@@ -293,20 +296,39 @@ export const Home = () => {
                                      width={'100%'}
                                      height={'400px'}
                                      playing={videoPlay}
-                                     // onStart={ () => console.log('onStart')}
-                                     // onDuration={ (duration) => {
-                                     //     return (
-                                     //         setDuration,
-                                     //             console.log('is this working', duration)
-                                     //
-                                     // )}}
-                                        onEnded={ handleShow }
-                        />
+                                     onEnded={handleShow}
+                                     onStart={() => console.log('onStart')}
 
+                            // this is logic that determines auto-workouts
+                                     onProgress={(played) => {
+                                         if (autoWorkout === true) {
+                                             if (name === 'kakashi') {
+                                                 if (played.playedSeconds === 0) {
+                                                     return setKakashiAction('idle')
+                                                 } else if (played.playedSeconds < 30) {
+                                                     return setKakashiAction('armStretch')
+                                                 } else if (played.playedSeconds < 60) {
+                                                     return setKakashiAction('neckStretch')
+                                                 } else if (played.playedSeconds < 90) {
+                                                     return setKakashiAction("touchToes")
+                                                 } else if (played.playedSeconds < 120) {
+                                                     return setKakashiAction("jumpingJack")
+                                                 } else if (played.playedSeconds < 150) {
+                                                     return setKakashiAction("kick")
+                                                 } else if (played.playedSeconds < 180) {
+                                                     return setKakashiAction("squat")
+                                                 } else if (played.playedSeconds < 210) {
+                                                     return (
+                                                         setName('korra'), setKorraAction('burpee')
+                                                     )
+                                                 }
+                                             }
+                                         }
+                                     }}
+                        />
                     </Col>
                 </Row>
             </Container>
-
             {/*<Footer/>*/}
         </>
     )
