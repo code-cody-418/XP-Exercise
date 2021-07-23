@@ -10,6 +10,8 @@ import trainInsaiyan from '../../images/train-insaiyan.jpg'
 import ReactPlayer from "react-player/youtube";
 import "../styles.css"
 import AnimationScene from "../AnimationScene";
+import {moves} from "../../moves";
+import Duration from "../../Duration";
 
 
 export const Home = () => {
@@ -43,8 +45,7 @@ export const Home = () => {
                     >Manuel</Button>
                 </>
             )
-        }
-        else if (props.name === "kakashi" && autoWorkout === false) {
+        } else if (props.name === "kakashi" && autoWorkout === false) {
             return (
                 <>
                     <Col>
@@ -60,7 +61,7 @@ export const Home = () => {
                     </Col>
                     <Col>
                         <Button className='characterButton'
-                                onClick={() => setKakashiAction('idle')}>Chillin</Button>
+                                onClick={() => setKakashiAction(moves.idle)}>Chillin</Button>
                     </Col>
                     <Col>
                         <Button className='characterButton'
@@ -97,8 +98,7 @@ export const Home = () => {
                     </Col>
                 </>
             )
-        }
-        else if (props.name === "naruto") {
+        } else if (props.name === "naruto") {
             return (
                 <>
                     <Col>
@@ -217,6 +217,25 @@ export const Home = () => {
     //set an auto workout vs a manuel workout
     const [autoWorkout, setAutoWorkout] = useState(true)
 
+    //array of youtube videos
+    const youTubePlaylists = [
+        'https://www.youtube.com/watch?v=3ZHwkpyvDqE',
+        'https://www.youtube.com/watch?v=7HNlGR9sSVI'
+    ]
+
+    //idea of counting seconds to level up
+    // const [seconds, setSeconds] = useState(0)
+
+
+    // function timeInterval() {
+    //         console.log('timeinterval', seconds)
+    //     // setSeconds(seconds + 1)
+    //     setSeconds( ondurationchange(seconds+1) )
+    //     ondurationchange () => setSeconds(seconds + 1)
+    // }
+
+
+
     return (
         <>
             {/*<Navigation/>*/}
@@ -291,43 +310,45 @@ export const Home = () => {
                     </Col>
                     <Col lg={5} className='ms-0 ps-0'>
                         {/*npm module for runnning videos, see docs for more functionality*/}
-                        <ReactPlayer url="https://www.youtube.com/watch?v=3ZHwkpyvDqE"
+                        <ReactPlayer url={youTubePlaylists}
                                      controls={true}
                                      width={'100%'}
                                      height={'400px'}
                                      playing={videoPlay}
                                      onEnded={handleShow}
-                                     onStart={() => console.log('onStart')}
+                                     // onStart={}
 
-                            // this is logic that determines auto-workouts
+                                     // onPlay={ () => timeInterval()}
+
+
+                            //this is logic that determines auto-workouts
                                      onProgress={(played) => {
                                          if (autoWorkout === true) {
-                                             if (name === 'kakashi') {
-                                                 if (played.playedSeconds === 0) {
+                                             if (played.playedSeconds === 0) {
+                                                 if (name === 'kakashi') {
                                                      return setKakashiAction('idle')
-                                                 } else if (played.playedSeconds < 30) {
-                                                     return setKakashiAction('armStretch')
-                                                 } else if (played.playedSeconds < 60) {
-                                                     return setKakashiAction('neckStretch')
-                                                 } else if (played.playedSeconds < 90) {
-                                                     return setKakashiAction("touchToes")
-                                                 } else if (played.playedSeconds < 120) {
-                                                     return setKakashiAction("jumpingJack")
-                                                 } else if (played.playedSeconds < 150) {
-                                                     return setKakashiAction("kick")
-                                                 } else if (played.playedSeconds < 180) {
-                                                     return setKakashiAction("squat")
-                                                 } else if (played.playedSeconds < 210) {
-                                                     return (
-                                                         setName('korra'), setKorraAction('burpee')
-                                                     )
+                                                 } else if (name === 'korra') {
+                                                     return setKorraAction('idle')
                                                  }
+                                             } else if (played.playedSeconds < 30) {
+                                                 return setKakashiAction('armStretch')
+                                             } else if (played.playedSeconds < 60) {
+                                                 return setKakashiAction('neckStretch')
+                                             } else if (played.playedSeconds < 90) {
+                                                 return setKakashiAction("touchToes")
+                                             } else if (played.playedSeconds < 120) {
+                                                 return setKakashiAction("jumpingJack")
+                                             } else if (played.playedSeconds < 150) {
+                                                 return setKakashiAction("kick")
+                                             } else if (played.playedSeconds < 180) {
+                                                 return setKakashiAction("squat")
                                              }
                                          }
                                      }}
                         />
                     </Col>
                 </Row>
+                <Duration seconds={duration * (1-played)}> </Duration>
             </Container>
             {/*<Footer/>*/}
         </>
