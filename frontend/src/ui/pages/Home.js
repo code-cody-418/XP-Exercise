@@ -11,7 +11,6 @@ import ReactPlayer from "react-player/youtube";
 import "../styles.css"
 import AnimationScene from "../AnimationScene";
 import {moves} from "../../moves";
-import Duration from "../../Duration";
 
 
 export const Home = () => {
@@ -224,17 +223,23 @@ export const Home = () => {
     ]
 
     //idea of counting seconds to level up
-    // const [seconds, setSeconds] = useState(0)
+    const [seconds, setSeconds] = useState(0)
 
 
     // function timeInterval() {
-    //         console.log('timeinterval', seconds)
-    //     // setSeconds(seconds + 1)
-    //     setSeconds( ondurationchange(seconds+1) )
-    //     ondurationchange () => setSeconds(seconds + 1)
+        let i = 1
+        let interval = setInterval(increment, 1000)
+
+
+        function increment() {
+            i = i % 300 + 1
+            console.log('timeinterval', i)
+        }
     // }
 
 
+
+    console.log("seconds:", seconds)
 
     return (
         <>
@@ -316,9 +321,9 @@ export const Home = () => {
                                      height={'400px'}
                                      playing={videoPlay}
                                      onEnded={handleShow}
-                                     // onStart={}
+                            // onStart={}
 
-                                     // onPlay={ () => timeInterval()}
+                                     onPlay={() => interval}
 
 
                             //this is logic that determines auto-workouts
@@ -348,7 +353,6 @@ export const Home = () => {
                         />
                     </Col>
                 </Row>
-                <Duration seconds={duration * (1-played)}> </Duration>
             </Container>
             {/*<Footer/>*/}
         </>
