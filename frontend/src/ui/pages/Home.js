@@ -225,23 +225,19 @@ export const Home = () => {
     //idea of counting seconds to level up
 
     let i = 0
+    let addSecondsCoinUp = 0
     let interval
 
     const [seconds, setSeconds] = useState({i})
+    const [coinUp, setCoinUp] = useState({addSecondsCoinUp})
 
-    useEffect( () => {
-        setSeconds({i})
+    useEffect(() => {
+        addSecondsCoinUp = seconds.i + coinUp.addSecondsCoinUp
+        setCoinUp({addSecondsCoinUp})
             console.log('seconds have changed', seconds)
-    }, [i]
-        )
+        }, [seconds]
+    )
 
-    // interval = setInterval(increment, 1000)
-    //
-    // function increment() {
-    //     i = i % 300 + 1
-    //     console.log('timeinterval', i)
-    // }
-    //
     // function timeInterval() {
     //     if (videoPlay === true) {
     //         increment()
@@ -251,7 +247,6 @@ export const Home = () => {
     //     }
     // }
 
-    // console.log("interval:", i)
 
     return (
         <>
@@ -328,21 +323,25 @@ export const Home = () => {
                     <Col lg={5} className='ms-0 ps-0'>
                         {/*npm module for runnning videos, see docs for more functionality*/}
                         <ReactPlayer url={youTubePlaylists}
-                                     // USING CONTORLS CAUSES onPause to not work controls={true}
+                            // USING CONTORLS CAUSES onPause to not work controls={true}
                                      width={'100%'}
                                      height={'400px'}
                                      playing={videoPlay}
                                      onEnded={handleShow}
                                      muted={true}
-                                     onPlay={() => {
-                                         interval = setInterval(increment, 1000)
-
-                                         function increment() {
-                                             i = i % 300 + 1
-                                             console.log('timeinterval', i)
-                                         }
+                            ///onPlay and onPause set up timer on video
+                            //          onPlay={() => {
+                            //              interval = setInterval(increment, 1000)
+                            //
+                            //              function increment() {
+                            //                  i = i % 300 + 1
+                            //                  console.log('timeinterval', i)
+                            //              }
+                            //          }}
+                                     onPause={() => {
+                                         clearInterval(interval);
+                                         setSeconds({i})
                                      }}
-                                     onPause={() => {clearInterval(interval); setSeconds({i})}}
                             // onStart={}
 
 
@@ -373,17 +372,21 @@ export const Home = () => {
                         />
                     </Col>
                 </Row>
-                {/*<Button onClick={() => {*/}
-                {/*    interval = setInterval(increment, 1000)*/}
-
-                {/*    function increment() {*/}
-                {/*        i = i % 300 + 1*/}
-                {/*        console.log('timeinterval', i)*/}
-                {/*    }*/}
-                {/*}}>Start</Button>*/}
+                <Button onClick={() => {
+                    if (i < 1) {
+                        interval = setInterval(increment, 1000)
+                        function increment() {
+                            i = i + 1
+                            console.log('timeinterval', i)
+                        }
+                    } else if (i > 1) {
+                        clearInterval(interval); setSeconds({i})
+                    }
+                }}>Start/End</Button>
                 {/*<Button onClick={() => {clearInterval(interval); setSeconds({i})}}>end</Button>*/}
                 {/*<Button onClick={ () => setSeconds({i})}>setSeconds</Button>*/}
-                <Button onClick={ () => console.log('seconds', seconds)}>seconds</Button>
+                <Button onClick={() => console.log('seconds', seconds)}>seconds</Button>
+                <Button onClick={() => console.log('coinUp', coinUp)}>coinUp</Button>
                 {/*<h3>{i}</h3>*/}
             </Container>
             {/*<Footer/>*/}
