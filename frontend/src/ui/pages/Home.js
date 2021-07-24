@@ -7,7 +7,7 @@ import naruto from "../../images/naruto.png"
 import kakashi from '../../images/kakashi-01.png'
 import korra from '../../images/korra-trainer.png'
 import trainInsaiyan from '../../images/train-insaiyan.jpg'
-import ReactPlayer from "react-player/youtube";
+import ReactPlayer from "react-player";
 import "../styles.css"
 import AnimationScene from "../AnimationScene";
 import {moves} from "../../moves";
@@ -223,23 +223,35 @@ export const Home = () => {
     ]
 
     //idea of counting seconds to level up
-    const [seconds, setSeconds] = useState(0)
 
+    let i = 0
+    let interval
 
+    const [seconds, setSeconds] = useState({i})
+
+    useEffect( () => {
+        setSeconds({i})
+            console.log('seconds have changed', seconds)
+    }, [i]
+        )
+
+    // interval = setInterval(increment, 1000)
+    //
+    // function increment() {
+    //     i = i % 300 + 1
+    //     console.log('timeinterval', i)
+    // }
+    //
     // function timeInterval() {
-        let i = 1
-        let interval = setInterval(increment, 1000)
-
-
-        function increment() {
-            i = i % 300 + 1
-            console.log('timeinterval', i)
-        }
+    //     if (videoPlay === true) {
+    //         increment()
+    //
+    //     } else if (videoPlay === false) {
+    //         clearInterval(interval)
+    //     }
     // }
 
-
-
-    console.log("seconds:", seconds)
+    // console.log("interval:", i)
 
     return (
         <>
@@ -316,14 +328,22 @@ export const Home = () => {
                     <Col lg={5} className='ms-0 ps-0'>
                         {/*npm module for runnning videos, see docs for more functionality*/}
                         <ReactPlayer url={youTubePlaylists}
-                                     controls={true}
+                                     // USING CONTORLS CAUSES onPause to not work controls={true}
                                      width={'100%'}
                                      height={'400px'}
                                      playing={videoPlay}
                                      onEnded={handleShow}
-                            // onStart={}
+                                     muted={true}
+                                     onPlay={() => {
+                                         interval = setInterval(increment, 1000)
 
-                                     onPlay={() => interval}
+                                         function increment() {
+                                             i = i % 300 + 1
+                                             console.log('timeinterval', i)
+                                         }
+                                     }}
+                                     onPause={() => {clearInterval(interval); setSeconds({i})}}
+                            // onStart={}
 
 
                             //this is logic that determines auto-workouts
@@ -353,6 +373,18 @@ export const Home = () => {
                         />
                     </Col>
                 </Row>
+                {/*<Button onClick={() => {*/}
+                {/*    interval = setInterval(increment, 1000)*/}
+
+                {/*    function increment() {*/}
+                {/*        i = i % 300 + 1*/}
+                {/*        console.log('timeinterval', i)*/}
+                {/*    }*/}
+                {/*}}>Start</Button>*/}
+                {/*<Button onClick={() => {clearInterval(interval); setSeconds({i})}}>end</Button>*/}
+                {/*<Button onClick={ () => setSeconds({i})}>setSeconds</Button>*/}
+                <Button onClick={ () => console.log('seconds', seconds)}>seconds</Button>
+                {/*<h3>{i}</h3>*/}
             </Container>
             {/*<Footer/>*/}
         </>
