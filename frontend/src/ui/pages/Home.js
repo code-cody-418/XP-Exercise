@@ -213,6 +213,7 @@ export const Home = () => {
     //set state of playing video
     const [videoPlay, setVideoPlay] = useState(false)
 
+
     //sets up modal for when
     const [show, setShow] = useState(false);
 
@@ -228,7 +229,8 @@ export const Home = () => {
     //array of youtube videos
     const youTubePlaylists = [
         'https://www.youtube.com/watch?v=3ZHwkpyvDqE',
-        'https://www.youtube.com/watch?v=7HNlGR9sSVI'
+        'https://www.youtube.com/watch?v=DXclt1CaRK4',
+        'https://www.youtube.com/watch?v=dY09rc_8-Rc'
     ]
 
     //Functionality to time events
@@ -352,7 +354,7 @@ export const Home = () => {
 
                             //this is logic that determines auto-workouts
                                      onProgress={(played) => {
-                                         if (autoWorkout === true) {
+                                         if (autoWorkout === true && videoPlay === true) {
                                              //determines an action of each character based on elapsed seconds
                                              if (played.playedSeconds === 0) {
                                                  if (name === 'kakashi') {
@@ -372,6 +374,11 @@ export const Home = () => {
                                                  return setKakashiAction("kick")
                                              } else if (played.playedSeconds < 180) {
                                                  return setKakashiAction("squat")
+                                             }
+                                             //when video stops character turns idle
+                                         } else if (autoWorkout === true && videoPlay === false) {
+                                             if (name === "kakashi") {
+                                                 return setKakashiAction(moves.idle)
                                              }
                                          }
                                      }}
