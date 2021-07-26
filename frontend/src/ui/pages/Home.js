@@ -326,14 +326,14 @@ export const Home = () => {
                     <Col lg={5} className='ms-0 ps-0'>
                         {/*npm module for runnning videos, see docs for more functionality*/}
                         <ReactPlayer url={youTubePlaylists}
-                                     controls={false}
                                      width={'100%'}
-                                     height={'500px'}
+                                     height={'400px'}
                                      playing={videoPlay}
                                      onEnded={handleShow}
-                                     muted={true}
                                      onPlay={() => setVideoPlay(true)}
                                      onPause={() => setVideoPlay(false)}
+                            // controls={false}
+                            // muted={true}
 
 
                             // onProgress={ () => {
