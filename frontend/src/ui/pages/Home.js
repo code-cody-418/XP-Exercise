@@ -11,6 +11,7 @@ import ReactPlayer from "react-player";
 import "../styles.css"
 import AnimationScene from "../AnimationScene";
 import {moves} from "../../moves";
+import {names} from "../names";
 
 
 export const Home = () => {
@@ -46,7 +47,7 @@ export const Home = () => {
                     </Col>
                 </>
             )
-        } else if (name === "kakashi" && autoWorkout === false) {
+        } else if (name === names.kakashi && autoWorkout === false) {
             return (
                 <>
                     <Col md={2} lg={1} className='mx-0 px-0'>
@@ -103,7 +104,7 @@ export const Home = () => {
                     </Col>
                 </>
             )
-        } else if (name === "naruto") {
+        } else if (name === names.naruto) {
             return (
                 <>
 
@@ -135,7 +136,7 @@ export const Home = () => {
 
                 </>
             )
-        } else if (name === "goku") {
+        } else if (name === names.goku) {
             return (
                 <>
 
@@ -167,7 +168,7 @@ export const Home = () => {
 
                 </>
             )
-        } else if (name === "korra") {
+        } else if (name === names.korra) {
             return (
                 <>
 
@@ -204,7 +205,7 @@ export const Home = () => {
     }
 
     //set state of selected character Component
-    const [name, setName] = useState('kakashi')
+    const [name, setName] = useState(names.kakashi)
 
     //adds hover cursor to character select
     const [hovered, setHovered] = useState(false)
@@ -357,9 +358,9 @@ export const Home = () => {
                                          if (autoWorkout === true && videoPlay === true) {
                                              //determines an action of each character based on elapsed seconds
                                              if (played.playedSeconds === 0) {
-                                                 if (name === 'kakashi') {
+                                                 if (name === names.kakashi) {
                                                      return setKakashiAction(moves.idle)
-                                                 } else if (name === 'korra') {
+                                                 } else if (name === names.korra) {
                                                      return setKorraAction('idle')
                                                  }
                                              } else if (played.playedSeconds < 30) {
@@ -377,7 +378,7 @@ export const Home = () => {
                                              }
                                              //when video stops character turns idle
                                          } else if (autoWorkout === true && videoPlay === false) {
-                                             if (name === "kakashi") {
+                                             if (name === names.kakashi) {
                                                  return setKakashiAction(moves.idle)
                                              }
                                          }
