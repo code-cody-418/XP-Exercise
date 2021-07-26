@@ -22,82 +22,88 @@ export const Home = () => {
     const [korraAction, setKorraAction] = useState(moves.idle)
 
     //logic for character button selection
-    function SelectCharacterButtons(props) {
+    function SelectCharacterButtons({name}) {
         if (autoWorkout === true) {
             return (
                 <>
-                    <Button
-                        className='characterButton'
-                        onClick={() => {
-                            setAutoWorkout(true)
-                            return (
+                    <Col xl={2} className='ps-sm-5 ml-auto'>
+                        <Button
+                            className='startWorkoutButton'
+                            onClick={() => {
+                                setAutoWorkout(true)
+                                return (
+                                    setVideoPlay(true)
+                                )
+                            }}
+                        >Start Workout</Button>
+                        <Button
+                            className='startWorkoutButton'
+                            onClick={() => {
                                 setVideoPlay(true)
-                            )
-                        }}
-                    >Start</Button>
-                    <Button
-                        className='characterButton'
-                        onClick={() => {
-                            setVideoPlay(true)
-                            setAutoWorkout(false)
-                        }}
-                    >Manuel</Button>
+                                setAutoWorkout(false)
+                            }}
+                        >Customize Workout</Button>
+                    </Col>
                 </>
             )
-        } else if (props.name === "kakashi" && autoWorkout === false) {
+        } else if (name === "kakashi" && autoWorkout === false) {
             return (
                 <>
+                    <Col md={2} lg={1} className='mx-0 px-0'>
+                        <Button
+                            className='characterButton'
+                            onClick={() => {
+                                setAutoWorkout(true)
+                                return (
+                                    setVideoPlay(true)
+                                )
+                            }}
+                        >Auto</Button>
 
-                    <Button
-                        className='characterButton'
-                        onClick={() => {
-                            setAutoWorkout(true)
-                            return (
-                                setVideoPlay(true)
-                            )
-                        }}
-                    >Auto</Button>
+                        <Button className='characterButton'
+                                onClick={() => setKakashiAction(moves.idle)}>Chillin</Button>
 
+                        <Button className='characterButton'
+                                onClick={() => setKakashiAction(moves.armStretch)}>Arm
+                            Stretch</Button>
+                    </Col>
+                    <Col md={2} lg={1} className='mx-0 px-0'>
+                        <Button className='characterButton'
+                                onClick={() => setKakashiAction(moves.coolDown)}>Cool
+                            Down</Button>
 
-                    <Button className='characterButton'
-                            onClick={() => setKakashiAction(moves.idle)}>Chillin</Button>
+                        <Button className='characterButton'
+                                onClick={() => setKakashiAction(moves.jumpingJack)}>Jumping
+                            Jacks</Button>
 
+                        <Button className='characterButton'
+                                onClick={() => setKakashiAction(moves.kick)}>Kick</Button>
+                    </Col>
+                    <Col md={2} lg={1} className='mx-0 px-0'>
+                        <Button className='characterButton'
+                                onClick={() => setKakashiAction(moves.neckStretch)}>Neck
+                            Stretch</Button>
 
-                    <Button className='characterButton'
-                            onClick={() => setKakashiAction('armStretch')}>Arm
-                        Stretch</Button>
+                        <Button className='characterButton'
+                                onClick={() => setKakashiAction(moves.squat)}>Squat</Button>
 
+                        <Button className='characterButton'
+                                onClick={() => setKakashiAction(moves.touchToes)}>Toe
+                            Touch</Button>
+                    </Col>
+                    <Col md={2} lg={1} className='mx-0 px-0'>
+                        <Button className='characterButton'
+                                onClick={() => setKakashiAction(moves.bicepCurl)}>Bicep Curl</Button>
 
-                    <Button className='characterButton'
-                            onClick={() => setKakashiAction('coolDown')}>Cool
-                        Down</Button>
+                        <Button className='characterButton'
+                                onClick={() => setKakashiAction(moves.pushUp)}>Push Ups</Button>
 
-
-                    <Button className='characterButton'
-                            onClick={() => setKakashiAction('jumpingJack')}>Jumping
-                        Jacks</Button>
-
-
-                    <Button className='characterButton'
-                            onClick={() => setKakashiAction('kick')}>Kick</Button>
-
-
-                    <Button className='characterButton'
-                            onClick={() => setKakashiAction('neckStretch')}>Neck
-                        Stretch</Button>
-
-
-                    <Button className='characterButton'
-                            onClick={() => setKakashiAction('squat')}>Squat</Button>
-
-
-                    <Button className='characterButton'
-                            onClick={() => setKakashiAction('touchToes')}>Toe
-                        Touch</Button>
-
+                        <Button className='characterButton'
+                                onClick={() => setKakashiAction(moves.sitUps)}>Sit-ups</Button>
+                    </Col>
                 </>
             )
-        } else if (props.name === "naruto") {
+        } else if (name === "naruto") {
             return (
                 <>
 
@@ -129,7 +135,7 @@ export const Home = () => {
 
                 </>
             )
-        } else if (props.name === "goku") {
+        } else if (name === "goku") {
             return (
                 <>
 
@@ -161,7 +167,7 @@ export const Home = () => {
 
                 </>
             )
-        } else if (props.name === "korra") {
+        } else if (name === "korra") {
             return (
                 <>
 
@@ -248,7 +254,7 @@ export const Home = () => {
         if (videoPlay === true) {
             const intervalId = setInterval(() => {
                 setSeconds(seconds => seconds + 1)
-                console.log('seconds', seconds)
+                // console.log('seconds', seconds)
             }, 1000)
             return () => clearInterval(intervalId)
         }
@@ -316,17 +322,15 @@ export const Home = () => {
                              height="125"/>
                     </Col>
                 </Row>
-                <Row className="justify-content-center mb-3 align-items-center mx-lg-2 mx-md-1">
-                    <Col xl={2} className='ps-sm-5 ml-auto'>
-                        <SelectCharacterButtons name={name} gokuAction={gokuAction} narutoAction={narutoAction}
-                                                kakashiAction={kakashiAction} korraAction={korraAction}/>
-                    </Col>
-                    <Col lg={5} className='canvasSize me-0 pe-0'>
+                <Row className="justify-content-center mb-3 align-items-center">
+                    <SelectCharacterButtons name={name} gokuAction={gokuAction} narutoAction={narutoAction}
+                                            kakashiAction={kakashiAction} korraAction={korraAction}/>
+                    <Col md={6} lg={4} className='canvasSize me-0 pe-0'>
                         <AnimationScene gokuAction={gokuAction} narutoAction={narutoAction}
                                         kakashiAction={kakashiAction} korraAction={korraAction}
                                         name={name}/>
                     </Col>
-                    <Col lg={5} className='ms-0 ps-0'>
+                    <Col lg={4} className='ms-0 ps-0'>
                         {/*npm module for runnning videos, see docs for more functionality*/}
                         <ReactPlayer url={youTubePlaylists}
                                      width={'100%'}
@@ -335,7 +339,7 @@ export const Home = () => {
                                      onEnded={handleShow}
                                      onPlay={() => setVideoPlay(true)}
                                      onPause={() => setVideoPlay(false)}
-                            // controls={true}
+                                     controls={true}
                             // muted={true}
 
 
