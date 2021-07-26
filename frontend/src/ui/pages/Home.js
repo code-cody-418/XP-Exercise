@@ -16,10 +16,10 @@ import {moves} from "../../moves";
 export const Home = () => {
 
     //sets state of buttons for each character
-    const [gokuAction, setGokuAction] = useState('idle')
-    const [narutoAction, setNarutoAction] = useState('idle')
-    const [kakashiAction, setKakashiAction] = useState('idle')
-    const [korraAction, setKorraAction] = useState('idle')
+    const [gokuAction, setGokuAction] = useState(moves.idle)
+    const [narutoAction, setNarutoAction] = useState(moves.idle)
+    const [kakashiAction, setKakashiAction] = useState(moves.idle)
+    const [korraAction, setKorraAction] = useState(moves.idle)
 
     //logic for character button selection
     function SelectCharacterButtons(props) {
@@ -47,147 +47,147 @@ export const Home = () => {
         } else if (props.name === "kakashi" && autoWorkout === false) {
             return (
                 <>
-                    <Col>
-                        <Button
-                            className='characterButton'
-                            onClick={() => {
-                                setAutoWorkout(true)
-                                return (
-                                    setVideoPlay(true)
-                                )
-                            }}
-                        >Auto</Button>
-                    </Col>
-                    <Col>
-                        <Button className='characterButton'
-                                onClick={() => setKakashiAction(moves.idle)}>Chillin</Button>
-                    </Col>
-                    <Col>
-                        <Button className='characterButton'
-                                onClick={() => setKakashiAction('armStretch')}>Arm
-                            Stretch</Button>
-                    </Col>
-                    <Col>
-                        <Button className='characterButton'
-                                onClick={() => setKakashiAction('coolDown')}>Cool
-                            Down</Button>
-                    </Col>
-                    <Col>
-                        <Button className='characterButton'
-                                onClick={() => setKakashiAction('jumpingJack')}>Jumping
-                            Jacks</Button>
-                    </Col>
-                    <Col>
-                        <Button className='characterButton'
-                                onClick={() => setKakashiAction('kick')}>Kick</Button>
-                    </Col>
-                    <Col>
-                        <Button className='characterButton'
-                                onClick={() => setKakashiAction('neckStretch')}>Neck
-                            Stretch</Button>
-                    </Col>
-                    <Col>
-                        <Button className='characterButton'
-                                onClick={() => setKakashiAction('squat')}>Squat</Button>
-                    </Col>
-                    <Col>
-                        <Button className='characterButton'
-                                onClick={() => setKakashiAction('touchToes')}>Toe
-                            Touch</Button>
-                    </Col>
+
+                    <Button
+                        className='characterButton'
+                        onClick={() => {
+                            setAutoWorkout(true)
+                            return (
+                                setVideoPlay(true)
+                            )
+                        }}
+                    >Auto</Button>
+
+
+                    <Button className='characterButton'
+                            onClick={() => setKakashiAction(moves.idle)}>Chillin</Button>
+
+
+                    <Button className='characterButton'
+                            onClick={() => setKakashiAction('armStretch')}>Arm
+                        Stretch</Button>
+
+
+                    <Button className='characterButton'
+                            onClick={() => setKakashiAction('coolDown')}>Cool
+                        Down</Button>
+
+
+                    <Button className='characterButton'
+                            onClick={() => setKakashiAction('jumpingJack')}>Jumping
+                        Jacks</Button>
+
+
+                    <Button className='characterButton'
+                            onClick={() => setKakashiAction('kick')}>Kick</Button>
+
+
+                    <Button className='characterButton'
+                            onClick={() => setKakashiAction('neckStretch')}>Neck
+                        Stretch</Button>
+
+
+                    <Button className='characterButton'
+                            onClick={() => setKakashiAction('squat')}>Squat</Button>
+
+
+                    <Button className='characterButton'
+                            onClick={() => setKakashiAction('touchToes')}>Toe
+                        Touch</Button>
+
                 </>
             )
         } else if (props.name === "naruto") {
             return (
                 <>
-                    <Col>
-                        <Button className='characterButton' onClick={() => setNarutoAction('idle')}>Chillin</Button>
-                    </Col>
-                    <Col>
-                        <Button className='characterButton'
-                                onClick={() => setNarutoAction('footwork')}>Footwork</Button>
-                    </Col>
-                    <Col>
-                        <Button className='characterButton'
-                                onClick={() => setNarutoAction('bikeCrunch')}>Crunch's</Button>
-                    </Col>
-                    <Col>
-                        <Button className='characterButton' onClick={() => setNarutoAction('coolDown')}>Cool
-                            Down</Button>
-                    </Col>
-                    <Col>
-                        <Button className='characterButton' onClick={() => setNarutoAction('freeze')}>Freeze</Button>
-                    </Col>
-                    <Col>
-                        <Button className='characterButton' onClick={() => setNarutoAction('sitUps')}>Sit Ups</Button>
-                    </Col>
-                    <Col>
-                        <Button className='characterButton' onClick={() => setNarutoAction('stretch')}>Stretch</Button>
-                    </Col>
-                    <Col>
-                        <Button className='characterButton' onClick={() => setNarutoAction('upRock')}>Uprock</Button>
-                    </Col>
+
+                    <Button className='characterButton' onClick={() => setNarutoAction('idle')}>Chillin</Button>
+
+
+                    <Button className='characterButton'
+                            onClick={() => setNarutoAction('footwork')}>Footwork</Button>
+
+
+                    <Button className='characterButton'
+                            onClick={() => setNarutoAction('bikeCrunch')}>Crunch's</Button>
+
+
+                    <Button className='characterButton' onClick={() => setNarutoAction('coolDown')}>Cool
+                        Down</Button>
+
+
+                    <Button className='characterButton' onClick={() => setNarutoAction('freeze')}>Freeze</Button>
+
+
+                    <Button className='characterButton' onClick={() => setNarutoAction('sitUps')}>Sit Ups</Button>
+
+
+                    <Button className='characterButton' onClick={() => setNarutoAction('stretch')}>Stretch</Button>
+
+
+                    <Button className='characterButton' onClick={() => setNarutoAction('upRock')}>Uprock</Button>
+
                 </>
             )
         } else if (props.name === "goku") {
             return (
                 <>
-                    <Col>
-                        <Button className='characterButton' onClick={() => setGokuAction('idle')}>Chillin</Button>
-                    </Col>
-                    <Col>
-                        <Button className='characterButton' onClick={() => setGokuAction('jab')}>Jab</Button>
-                    </Col>
-                    <Col>
-                        <Button className='characterButton' onClick={() => setGokuAction('hook')}>Hook</Button>
-                    </Col>
-                    <Col>
-                        <Button className='characterButton' onClick={() => setGokuAction('bicepCurl')}>Bicep
-                            Curl</Button>
-                    </Col>
-                    <Col>
-                        <Button className='characterButton' onClick={() => setGokuAction('punchCombo')}>Punch
-                            Combo</Button>
-                    </Col>
-                    <Col>
-                        <Button className='characterButton' onClick={() => setGokuAction('laying')}>Laying</Button>
-                    </Col>
-                    <Col>
-                        <Button className='characterButton'
-                                onClick={() => setGokuAction('kettlebell')}>Kettlebell</Button>
-                    </Col>
-                    <Col>
-                        <Button className='characterButton' onClick={() => setGokuAction('legStretch')}>Stretch</Button>
-                    </Col>
+
+                    <Button className='characterButton' onClick={() => setGokuAction('idle')}>Chillin</Button>
+
+
+                    <Button className='characterButton' onClick={() => setGokuAction('jab')}>Jab</Button>
+
+
+                    <Button className='characterButton' onClick={() => setGokuAction('hook')}>Hook</Button>
+
+
+                    <Button className='characterButton' onClick={() => setGokuAction('bicepCurl')}>Bicep
+                        Curl</Button>
+
+
+                    <Button className='characterButton' onClick={() => setGokuAction('punchCombo')}>Punch
+                        Combo</Button>
+
+
+                    <Button className='characterButton' onClick={() => setGokuAction('laying')}>Laying</Button>
+
+
+                    <Button className='characterButton'
+                            onClick={() => setGokuAction('kettlebell')}>Kettlebell</Button>
+
+
+                    <Button className='characterButton' onClick={() => setGokuAction('legStretch')}>Stretch</Button>
+
                 </>
             )
         } else if (props.name === "korra") {
             return (
                 <>
-                    <Col>
-                        <Button className='characterButton' onClick={() => setKorraAction('idle')}>Chillin</Button>
-                    </Col>
-                    <Col>
-                        <Button className='characterButton' onClick={() => setKorraAction('burpee')}>Burpee</Button>
-                    </Col>
-                    <Col>
-                        <Button className='characterButton' onClick={() => setKorraAction('coolDown')}>Cool
-                            Down</Button>
-                    </Col>
-                    <Col>
-                        <Button className='characterButton' onClick={() => setKorraAction('crossJumps')}>Cross
-                            Jumps</Button>
-                    </Col>
-                    <Col>
-                        <Button className='characterButton' onClick={() => setKorraAction('crossRotation')}>Cross
-                            Rotations</Button>
-                    </Col>
-                    <Col>
-                        <Button className='characterButton' onClick={() => setKorraAction('pushUp')}>Push Ups</Button>
-                    </Col>
-                    <Col>
-                        <Button className='characterButton' onClick={() => setKorraAction('stretch')}>Stretch</Button>
-                    </Col>
+
+                    <Button className='characterButton' onClick={() => setKorraAction('idle')}>Chillin</Button>
+
+
+                    <Button className='characterButton' onClick={() => setKorraAction('burpee')}>Burpee</Button>
+
+
+                    <Button className='characterButton' onClick={() => setKorraAction('coolDown')}>Cool
+                        Down</Button>
+
+
+                    <Button className='characterButton' onClick={() => setKorraAction('crossJumps')}>Cross
+                        Jumps</Button>
+
+
+                    <Button className='characterButton' onClick={() => setKorraAction('crossRotation')}>Cross
+                        Rotations</Button>
+
+
+                    <Button className='characterButton' onClick={() => setKorraAction('pushUp')}>Push Ups</Button>
+
+
+                    <Button className='characterButton' onClick={() => setKorraAction('stretch')}>Stretch</Button>
+
                 </>
             )
         }
