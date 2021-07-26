@@ -328,7 +328,7 @@ export const Home = () => {
                         <ReactPlayer url={youTubePlaylists}
                                      controls={false}
                                      width={'100%'}
-                                     height={'400px'}
+                                     height={'500px'}
                                      playing={videoPlay}
                                      onEnded={handleShow}
                                      muted={true}

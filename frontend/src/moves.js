@@ -6,6 +6,8 @@ export const moves = {
     coolDown: 'coolDown',
     touchToes: 'touchToes',
     pushUp: 'pushUp',
+    sitUps: 'sitUps',
+    bicepCurl: 'bicepCurl',
 
     //Kakashi
     kick: 'kick',
@@ -21,7 +23,7 @@ export const moves = {
     bikeCrunch: 'bikeCrunch',
     footwork: 'footwork',
     freeze: 'freeze',
-    upRock: 'uprock',
+    upRock: 'upRock',
 
     //Goku
     hook: 'hook',
