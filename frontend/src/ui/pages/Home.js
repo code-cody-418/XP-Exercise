@@ -210,7 +210,10 @@ export const Home = () => {
     //sets up modal for when
     const [show, setShow] = useState(false);
 
-    const handleClose = () => setShow(false);
+    const handleClose = () => {
+        setShow(false);
+        setKakashiAction(moves.celebration)
+    }
     const handleShow = () => setShow(true);
 
     //set an auto workout vs a manuel workout
@@ -263,7 +266,7 @@ export const Home = () => {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
-                        Close
+                        COLLECT REWARDS
                     </Button>
                 </Modal.Footer>
             </Modal>
@@ -332,7 +335,7 @@ export const Home = () => {
                                      onEnded={handleShow}
                                      onPlay={() => setVideoPlay(true)}
                                      onPause={() => setVideoPlay(false)}
-                            // controls={false}
+                            // controls={true}
                             // muted={true}
 
 

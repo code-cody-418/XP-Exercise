@@ -8,6 +8,7 @@ export const moves = {
     pushUp: 'pushUp',
     sitUps: 'sitUps',
     bicepCurl: 'bicepCurl',
+    celebration: 'celebration',
 
     //Kakashi
     kick: 'kick',
