@@ -204,12 +204,15 @@ export const Home = () => {
         )
     }
 
+
     //set state of selected character Component
     const [name, setName] = useState(names.kakashi)
+
 
     //adds hover cursor to character select
     const [hovered, setHovered] = useState(false)
     useEffect(() => void (document.body.style.cursor = hovered ? "pointer" : "auto"), [hovered])
+
 
     //set state of playing video
     const [videoPlay, setVideoPlay] = useState(false)
@@ -224,33 +227,20 @@ export const Home = () => {
     }
     const handleShow = () => setShow(true);
 
+
     //set an auto workout vs a manuel workout
     const [autoWorkout, setAutoWorkout] = useState(true)
+
 
     //array of youtube videos
     const youTubePlaylists = [
         'https://www.youtube.com/watch?v=3ZHwkpyvDqE',
-        'https://www.youtube.com/watch?v=DXclt1CaRK4',
+        'https://www.youtube.com/watch?v=4zHK8pRl78o',
         'https://www.youtube.com/watch?v=dY09rc_8-Rc'
     ]
 
+
     //Functionality to time events
-
-    //counting seconds to level up
-    // let i = 0
-    // let addSecondsCoinUp = 0
-    // let interval = null
-
-
-    // const [coinUp, setCoinUp] = useState({addSecondsCoinUp})
-
-    // useEffect(() => {
-    //         addSecondsCoinUp = seconds + coinUp.addSecondsCoinUp
-    //         setCoinUp({addSecondsCoinUp})
-    //         console.log('seconds have changed', seconds)
-    //     }, [seconds]
-    // )
-
     const [seconds, setSeconds] = useState(null)
 
     useEffect(() => {
@@ -263,6 +253,7 @@ export const Home = () => {
         }
     }, [videoPlay])
 
+//_____________________________________________________________________________________________________________________
     return (
         <>
             {/*<Navigation/>*/}
@@ -357,24 +348,44 @@ export const Home = () => {
                                      onProgress={(played) => {
                                          if (autoWorkout === true && videoPlay === true) {
                                              //determines an action of each character based on elapsed seconds
-                                             if (played.playedSeconds === 0) {
+                                             if (seconds === 0) {
                                                  if (name === names.kakashi) {
                                                      return setKakashiAction(moves.idle)
                                                  } else if (name === names.korra) {
                                                      return setKorraAction('idle')
                                                  }
-                                             } else if (played.playedSeconds < 30) {
+                                             }
+                                             //stretching
+                                             else if (seconds < 30) {
                                                  return setKakashiAction(moves.armStretch)
-                                             } else if (played.playedSeconds < 60) {
-                                                 return setKakashiAction('neckStretch')
-                                             } else if (played.playedSeconds < 90) {
-                                                 return setKakashiAction("touchToes")
-                                             } else if (played.playedSeconds < 120) {
-                                                 return setKakashiAction("jumpingJack")
-                                             } else if (played.playedSeconds < 150) {
-                                                 return setKakashiAction("kick")
-                                             } else if (played.playedSeconds < 180) {
-                                                 return setKakashiAction("squat")
+                                             } else if (seconds < 60) {
+                                                 return setKakashiAction(moves.neckStretch)
+                                             } else if (seconds < 90) {
+                                                 return setKakashiAction(moves.touchToes)
+                                             }
+                                             //first set
+                                             else if (seconds < 120) {
+                                                 return setKakashiAction(moves.sitUps)
+                                             } else if (seconds < 150) {
+                                                 return setKakashiAction(moves.pushUp)
+                                             } else if (seconds < 180) {
+                                                 return setKakashiAction(moves.jumpingJack)
+                                             } else if (seconds < 210) {
+                                                 return setKakashiAction(moves.coolDown)
+                                             } else if (seconds < 240) {
+                                                 return setKakashiAction(moves.kick)
+                                             } else if (seconds < 270) {
+                                                 return setKakashiAction(moves.bicepCurl)
+                                             } else if (seconds < 300) {
+                                                 return setKakashiAction(moves.squat)
+                                             } else if (seconds < 330) {
+                                                 return setKakashiAction(moves.coolDown)
+                                             }
+                                             //second set
+
+                                             //end
+                                             else if (seconds < 910) {
+                                                 return setKakashiAction(moves.idle)
                                              }
                                              //when video stops character turns idle
                                          } else if (autoWorkout === true && videoPlay === false) {
@@ -386,29 +397,6 @@ export const Home = () => {
                         />
                     </Col>
                 </Row>
-                {/*<Button onClick={() => {*/}
-                {/*    if (i < 1) {*/}
-                {/*        interval = setInterval(increment, 1000)*/}
-
-                {/*        function increment() {*/}
-                {/*            i = i + 1*/}
-                {/*            console.log('timeinterval', i)*/}
-                {/*        }*/}
-                {/*    } else if (i > 1) {*/}
-                {/*        clearInterval(interval);*/}
-                {/*        setSeconds({i})*/}
-                {/*    }*/}
-                {/*}}>Start/End</Button>*/}
-                {/*<Button onClick={() => {*/}
-                {/*    clearInterval(interval);*/}
-                {/*    setSeconds({i})*/}
-                {/*}}>end</Button>*/}
-                {/*/!*<Button onClick={ () => setSeconds({i})}>setSeconds</Button>*!/*/}
-                {/*<Button onClick={() => console.log('seconds', seconds)}>seconds</Button>*/}
-                {/*<Button onClick={() => console.log('interval', interval)}>Interval</Button>*/}
-                {/*<Button onClick={() => console.log('coinUp', coinUp)}>coinUp</Button>*/}
-                {/*<Button onClick={() => console.log('videoPLay', videoPlay)}>VideoPlay</Button>*/}
-                {/*<h3>{i}</h3>*/}
             </Container>
             {/*<Footer/>*/}
         </>
