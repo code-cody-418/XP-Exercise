@@ -222,31 +222,34 @@ export const Home = () => {
         'https://www.youtube.com/watch?v=7HNlGR9sSVI'
     ]
 
-    //idea of counting seconds to level up
+    //Functionality to time events
 
-    let i = 0
-    let addSecondsCoinUp = 0
-    let interval
+    //counting seconds to level up
+    // let i = 0
+    // let addSecondsCoinUp = 0
+    // let interval = null
 
-    const [seconds, setSeconds] = useState({i})
-    const [coinUp, setCoinUp] = useState({addSecondsCoinUp})
+
+    // const [coinUp, setCoinUp] = useState({addSecondsCoinUp})
+
+    // useEffect(() => {
+    //         addSecondsCoinUp = seconds + coinUp.addSecondsCoinUp
+    //         setCoinUp({addSecondsCoinUp})
+    //         console.log('seconds have changed', seconds)
+    //     }, [seconds]
+    // )
+
+    const [seconds, setSeconds] = useState(null)
 
     useEffect(() => {
-        addSecondsCoinUp = seconds.i + coinUp.addSecondsCoinUp
-        setCoinUp({addSecondsCoinUp})
-            console.log('seconds have changed', seconds)
-        }, [seconds]
-    )
-
-    // function timeInterval() {
-    //     if (videoPlay === true) {
-    //         increment()
-    //
-    //     } else if (videoPlay === false) {
-    //         clearInterval(interval)
-    //     }
-    // }
-
+        if (videoPlay === true) {
+            const intervalId = setInterval(() => {
+                setSeconds(seconds => seconds + 1)
+                console.log('seconds', seconds)
+            }, 1000)
+            return () => clearInterval(intervalId)
+        }
+    }, [videoPlay])
 
     return (
         <>
@@ -323,39 +326,35 @@ export const Home = () => {
                     <Col lg={5} className='ms-0 ps-0'>
                         {/*npm module for runnning videos, see docs for more functionality*/}
                         <ReactPlayer url={youTubePlaylists}
-                            // USING CONTORLS CAUSES onPause to not work controls={true}
+                                     controls={false}
                                      width={'100%'}
                                      height={'400px'}
                                      playing={videoPlay}
                                      onEnded={handleShow}
                                      muted={true}
-                            ///onPlay and onPause set up timer on video
-                            //          onPlay={() => {
-                            //              interval = setInterval(increment, 1000)
-                            //
-                            //              function increment() {
-                            //                  i = i % 300 + 1
-                            //                  console.log('timeinterval', i)
-                            //              }
-                            //          }}
-                                     onPause={() => {
-                                         clearInterval(interval);
-                                         setSeconds({i})
-                                     }}
-                            // onStart={}
+                                     onPlay={() => setVideoPlay(true)}
+                                     onPause={() => setVideoPlay(false)}
+
+
+                            // onProgress={ () => {
+                            //     if (seconds === 10) {
+                            //     handleShow()
+                            // }
+                            // }}
 
 
                             //this is logic that determines auto-workouts
                                      onProgress={(played) => {
                                          if (autoWorkout === true) {
+                                             //determines an action of each character based on elapsed seconds
                                              if (played.playedSeconds === 0) {
                                                  if (name === 'kakashi') {
-                                                     return setKakashiAction('idle')
+                                                     return setKakashiAction(moves.idle)
                                                  } else if (name === 'korra') {
                                                      return setKorraAction('idle')
                                                  }
                                              } else if (played.playedSeconds < 30) {
-                                                 return setKakashiAction('armStretch')
+                                                 return setKakashiAction(moves.armStretch)
                                              } else if (played.playedSeconds < 60) {
                                                  return setKakashiAction('neckStretch')
                                              } else if (played.playedSeconds < 90) {
@@ -372,21 +371,28 @@ export const Home = () => {
                         />
                     </Col>
                 </Row>
-                <Button onClick={() => {
-                    if (i < 1) {
-                        interval = setInterval(increment, 1000)
-                        function increment() {
-                            i = i + 1
-                            console.log('timeinterval', i)
-                        }
-                    } else if (i > 1) {
-                        clearInterval(interval); setSeconds({i})
-                    }
-                }}>Start/End</Button>
-                {/*<Button onClick={() => {clearInterval(interval); setSeconds({i})}}>end</Button>*/}
-                {/*<Button onClick={ () => setSeconds({i})}>setSeconds</Button>*/}
-                <Button onClick={() => console.log('seconds', seconds)}>seconds</Button>
-                <Button onClick={() => console.log('coinUp', coinUp)}>coinUp</Button>
+                {/*<Button onClick={() => {*/}
+                {/*    if (i < 1) {*/}
+                {/*        interval = setInterval(increment, 1000)*/}
+
+                {/*        function increment() {*/}
+                {/*            i = i + 1*/}
+                {/*            console.log('timeinterval', i)*/}
+                {/*        }*/}
+                {/*    } else if (i > 1) {*/}
+                {/*        clearInterval(interval);*/}
+                {/*        setSeconds({i})*/}
+                {/*    }*/}
+                {/*}}>Start/End</Button>*/}
+                {/*<Button onClick={() => {*/}
+                {/*    clearInterval(interval);*/}
+                {/*    setSeconds({i})*/}
+                {/*}}>end</Button>*/}
+                {/*/!*<Button onClick={ () => setSeconds({i})}>setSeconds</Button>*!/*/}
+                {/*<Button onClick={() => console.log('seconds', seconds)}>seconds</Button>*/}
+                {/*<Button onClick={() => console.log('interval', interval)}>Interval</Button>*/}
+                {/*<Button onClick={() => console.log('coinUp', coinUp)}>coinUp</Button>*/}
+                {/*<Button onClick={() => console.log('videoPLay', videoPlay)}>VideoPlay</Button>*/}
                 {/*<h3>{i}</h3>*/}
             </Container>
             {/*<Footer/>*/}
