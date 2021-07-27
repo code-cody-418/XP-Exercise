@@ -378,161 +378,428 @@ export const Home = () => {
                             //this is logic that determines auto-workouts
                                      onProgress={(played) => {
                                          if (autoWorkout === true && videoPlay === true) {
-                                             //determines an action of each character based on elapsed seconds
-                                             // if (seconds === 0) {
-                                             //     if (name === names.kakashi) {
-                                             //         return setKakashiAction(moves.idle)
-                                             //     } else if (name === names.korra) {
-                                             //         return setKorraAction('idle')
-                                             //     }
-                                             // }
-                                             //stretching
+                                             //determines an action of each character based on elapsed seconds and resets 30 seconds timer
                                              if (seconds <= 30) {
-                                                 return setKakashiAction(moves.armStretch)
+                                                 if (name === names.kakashi) {
+                                                     setKakashiAction(moves.armStretch)
+                                                 } else if (name === names.goku) {
+                                                     setGokuAction(moves.touchToes)
+                                                 } else if (name === names.korra) {
+                                                     setKorraAction(moves.armStretch)
+                                                 } else if (name === names.naruto) {
+                                                     setNarutoAction(moves.armStretch)
+                                                 }
                                              } else if (seconds === 31) {
                                                  return setThirtySeconds(30)
                                              } else if (seconds <= 60) {
-                                                 return setKakashiAction(moves.neckStretch)
+                                                 if (name === names.kakashi) {
+                                                     setKakashiAction(moves.neckStretch)
+                                                 } else if (name === names.goku) {
+                                                     setGokuAction(moves.armStretch)
+                                                 } else if (name === names.korra) {
+                                                     setKorraAction(moves.touchToes)
+                                                 } else if (name === names.naruto) {
+                                                     setNarutoAction(moves.touchToes)
+                                                 }
                                              } else if (seconds === 61) {
                                                  return setThirtySeconds(30)
                                              } else if (seconds <= 90) {
-                                                 return setKakashiAction(moves.touchToes)
+                                                 if (name === names.kakashi) {
+                                                     setKakashiAction(moves.touchToes)
+                                                 } else if (name === names.goku) {
+                                                     setGokuAction(moves.jumpingJack)
+                                                 } else if (name === names.korra) {
+                                                     setKorraAction(moves.burpee)
+                                                 } else if (name === names.naruto) {
+                                                     setNarutoAction(moves.jumpingJack)
+                                                 }
                                              } else if (seconds === 91) {
                                                  return setThirtySeconds(30)
-                                             }
-                                             //first set
-                                             else if (seconds <= 120) {
-                                                 return setKakashiAction(moves.sitUps)
+                                             } else if (seconds <= 120) {
+                                                 if (name === names.kakashi) {
+                                                     setKakashiAction(moves.sitUps)
+                                                 } else if (name === names.goku) {
+                                                     setGokuAction(moves.jab)
+                                                 } else if (name === names.korra) {
+                                                     setKorraAction(moves.crossJumps)
+                                                 } else if (name === names.naruto) {
+                                                     setNarutoAction(moves.upRock)
+                                                 }
                                              } else if (seconds === 121) {
                                                  return setThirtySeconds(30)
                                              } else if (seconds <= 150) {
-                                                 return setKakashiAction(moves.pushUp)
+                                                 if (name === names.kakashi) {
+                                                     setKakashiAction(moves.pushUp)
+                                                 } else if (name === names.goku) {
+                                                     setGokuAction(moves.hook)
+                                                 } else if (name === names.korra) {
+                                                     setKorraAction(moves.crossRotation)
+                                                 } else if (name === names.naruto) {
+                                                     setNarutoAction(moves.footwork)
+                                                 }
                                              } else if (seconds === 151) {
                                                  return setThirtySeconds(30)
                                              } else if (seconds <= 180) {
-                                                 return setKakashiAction(moves.jumpingJack)
+                                                 if (name === names.kakashi) {
+                                                     setKakashiAction(moves.jumpingJack)
+                                                 } else if (name === names.goku) {
+                                                     setGokuAction(moves.punchCombo)
+                                                 } else if (name === names.korra) {
+                                                     setKorraAction(moves.coolDown)
+                                                 } else if (name === names.naruto) {
+                                                     setNarutoAction(moves.freeze)
+                                                 }
                                              } else if (seconds === 181) {
                                                  return setThirtySeconds(30)
                                              } else if (seconds <= 210) {
-                                                 return setKakashiAction(moves.coolDown)
+                                                 if (name === names.kakashi) {
+                                                     setKakashiAction(moves.coolDown)
+                                                 } else if (name === names.goku) {
+                                                     setGokuAction(moves.coolDown)
+                                                 } else if (name === names.korra) {
+                                                     setKorraAction(moves.pushUp)
+                                                 } else if (name === names.naruto) {
+                                                     setNarutoAction(moves.coolDown)
+                                                 }
                                              } else if (seconds === 211) {
                                                  return setThirtySeconds(30)
                                              } else if (seconds <= 240) {
-                                                 return setKakashiAction(moves.kick)
+                                                 if (name === names.kakashi) {
+                                                     setKakashiAction(moves.kick)
+                                                 } else if (name === names.goku) {
+                                                     setGokuAction(moves.bicepCurl)
+                                                 } else if (name === names.korra) {
+                                                     setKorraAction(moves.sitUps)
+                                                 } else if (name === names.naruto) {
+                                                     setNarutoAction(moves.bikeCrunch)
+                                                 }
                                              } else if (seconds === 241) {
                                                  return setThirtySeconds(30)
                                              } else if (seconds <= 270) {
-                                                 return setKakashiAction(moves.bicepCurl)
+                                                 if (name === names.kakashi) {
+                                                     setKakashiAction(moves.bicepCurl)
+                                                 } else if (name === names.goku) {
+                                                     setGokuAction(moves.plank)
+                                                 } else if (name === names.korra) {
+                                                     setKorraAction(moves.bicepCurl)
+                                                 } else if (name === names.naruto) {
+                                                     setNarutoAction(moves.sitUps)
+                                                 }
                                              } else if (seconds === 271) {
                                                  return setThirtySeconds(30)
                                              } else if (seconds <= 300) {
-                                                 return setKakashiAction(moves.squat)
+                                                 if (name === names.kakashi) {
+                                                     setKakashiAction(moves.squat)
+                                                 } else if (name === names.goku) {
+                                                     setGokuAction(moves.sitUps)
+                                                 } else if (name === names.korra) {
+                                                     setKorraAction(moves.coolDown)
+                                                 } else if (name === names.naruto) {
+                                                     setNarutoAction(moves.pushUp)
+                                                 }
                                              } else if (seconds === 301) {
                                                  return setThirtySeconds(30)
                                              } else if (seconds <= 330) {
-                                                 return setKakashiAction(moves.coolDown)
+                                                 if (name === names.kakashi) {
+                                                     setKakashiAction(moves.coolDown)
+                                                 } else if (name === names.goku) {
+                                                     setGokuAction(moves.pushUp)
+                                                 } else if (name === names.korra) {
+                                                     setKorraAction(moves.burpee)
+                                                 } else if (name === names.naruto) {
+                                                     setNarutoAction(moves.bicepCurl)
+                                                 }
                                              } else if (seconds === 331) {
                                                  return setThirtySeconds(30)
                                              }
-                                             //second set
                                              else if (seconds <= 360) {
-                                                 return setKakashiAction(moves.sitUps)
+                                                 if (name === names.kakashi) {
+                                                     setKakashiAction(moves.sitUps)
+                                                 } else if (name === names.goku) {
+                                                     setGokuAction(moves.coolDown)
+                                                 } else if (name === names.korra) {
+                                                     setKorraAction(moves.crossJumps)
+                                                 } else if (name === names.naruto) {
+                                                     setNarutoAction(moves.coolDown)
+                                                 }
                                              } else if (seconds === 361) {
                                                  return setThirtySeconds(30)
                                              } else if (seconds <= 390) {
-                                                 return setKakashiAction(moves.pushUp)
+                                                 if (name === names.kakashi) {
+                                                     setKakashiAction(moves.pushUp)
+                                                 } else if (name === names.goku) {
+                                                     setGokuAction(moves.jumpingJack)
+                                                 } else if (name === names.korra) {
+                                                     setKorraAction(moves.crossRotation)
+                                                 } else if (name === names.naruto) {
+                                                     setNarutoAction(moves.jumpingJack)
+                                                 }
                                              } else if (seconds === 391) {
                                                  return setThirtySeconds(30)
                                              } else if (seconds <= 420) {
-                                                 return setKakashiAction(moves.jumpingJack)
+                                                 if (name === names.kakashi) {
+                                                     setKakashiAction(moves.jumpingJack)
+                                                 } else if (name === names.goku) {
+                                                     setGokuAction(moves.jab)
+                                                 } else if (name === names.korra) {
+                                                     setKorraAction(moves.coolDown)
+                                                 } else if (name === names.naruto) {
+                                                     setNarutoAction(moves.upRock)
+                                                 }
                                              } else if (seconds === 421) {
                                                  return setThirtySeconds(30)
                                              } else if (seconds <= 450) {
-                                                 return setKakashiAction(moves.coolDown)
+                                                 if (name === names.kakashi) {
+                                                     setKakashiAction(moves.coolDown)
+                                                 } else if (name === names.goku) {
+                                                     setGokuAction(moves.hook)
+                                                 } else if (name === names.korra) {
+                                                     setKorraAction(moves.pushUp)
+                                                 } else if (name === names.naruto) {
+                                                     setNarutoAction(moves.footwork)
+                                                 }
                                              } else if (seconds === 451) {
                                                  return setThirtySeconds(30)
                                              } else if (seconds <= 480) {
-                                                 return setKakashiAction(moves.kick)
+                                                 if (name === names.kakashi) {
+                                                     setKakashiAction(moves.kick)
+                                                 } else if (name === names.goku) {
+                                                     setGokuAction(moves.punchCombo)
+                                                 } else if (name === names.korra) {
+                                                     setKorraAction(moves.sitUps)
+                                                 } else if (name === names.naruto) {
+                                                     setNarutoAction(moves.freeze)
+                                                 }
                                              } else if (seconds === 481) {
                                                  return setThirtySeconds(30)
                                              } else if (seconds <= 510) {
-                                                 return setKakashiAction(moves.bicepCurl)
+                                                 if (name === names.kakashi) {
+                                                     setKakashiAction(moves.bicepCurl)
+                                                 } else if (name === names.goku) {
+                                                     setGokuAction(moves.coolDown)
+                                                 } else if (name === names.korra) {
+                                                     setKorraAction(moves.bicepCurl)
+                                                 } else if (name === names.naruto) {
+                                                     setNarutoAction(moves.coolDown)
+                                                 }
                                              } else if (seconds === 511) {
                                                  return setThirtySeconds(30)
                                              } else if (seconds <= 540) {
-                                                 return setKakashiAction(moves.squat)
+                                                 if (name === names.kakashi) {
+                                                     setKakashiAction(moves.squat)
+                                                 } else if (name === names.goku) {
+                                                     setGokuAction(moves.bicepCurl)
+                                                 } else if (name === names.korra) {
+                                                     setKorraAction(moves.coolDown)
+                                                 } else if (name === names.naruto) {
+                                                     setNarutoAction(moves.bikeCrunch)
+                                                 }
                                              } else if (seconds === 541) {
                                                  return setThirtySeconds(30)
                                              } else if (seconds <= 570) {
-                                                 return setKakashiAction(moves.coolDown)
+                                                 if (name === names.kakashi) {
+                                                     setKakashiAction(moves.coolDown)
+                                                 } else if (name === names.goku) {
+                                                     setGokuAction(moves.plank)
+                                                 } else if (name === names.korra) {
+                                                     setKorraAction(moves.burpee)
+                                                 } else if (name === names.naruto) {
+                                                     setNarutoAction(moves.sitUps)
+                                                 }
                                              } else if (seconds === 571) {
                                                  return setThirtySeconds(30)
                                              }
-                                             //third set
                                              else if (seconds <= 600) {
-                                                 return setKakashiAction(moves.sitUps)
+                                                 if (name === names.kakashi) {
+                                                     setKakashiAction(moves.sitUps)
+                                                 } else if (name === names.goku) {
+                                                     setGokuAction(moves.sitUps)
+                                                 } else if (name === names.korra) {
+                                                     setKorraAction(moves.crossJumps)
+                                                 } else if (name === names.naruto) {
+                                                     setNarutoAction(moves.pushUp)
+                                                 }
                                              } else if (seconds === 601) {
                                                  return setThirtySeconds(30)
                                              } else if (seconds <= 630) {
-                                                 return setKakashiAction(moves.pushUp)
+                                                 if (name === names.kakashi) {
+                                                     setKakashiAction(moves.pushUp)
+                                                 } else if (name === names.goku) {
+                                                     setGokuAction(moves.pushUp)
+                                                 } else if (name === names.korra) {
+                                                     setKorraAction(moves.crossRotation)
+                                                 } else if (name === names.naruto) {
+                                                     setNarutoAction(moves.bicepCurl)
+                                                 }
                                              } else if (seconds === 631) {
                                                  return setThirtySeconds(30)
                                              } else if (seconds <= 660) {
-                                                 return setKakashiAction(moves.jumpingJack)
+                                                 if (name === names.kakashi) {
+                                                     setKakashiAction(moves.jumpingJack)
+                                                 } else if (name === names.goku) {
+                                                     setGokuAction(moves.coolDown)
+                                                 } else if (name === names.korra) {
+                                                     setKorraAction(moves.coolDown)
+                                                 } else if (name === names.naruto) {
+                                                     setNarutoAction(moves.coolDown)
+                                                 }
                                              } else if (seconds === 661) {
                                                  return setThirtySeconds(30)
                                              } else if (seconds <= 690) {
-                                                 return setKakashiAction(moves.coolDown)
+                                                 if (name === names.kakashi) {
+                                                     setKakashiAction(moves.coolDown)
+                                                 } else if (name === names.goku) {
+                                                     setGokuAction(moves.jumpingJack)
+                                                 } else if (name === names.korra) {
+                                                     setKorraAction(moves.pushUp)
+                                                 } else if (name === names.naruto) {
+                                                     setNarutoAction(moves.jumpingJack)
+                                                 }
                                              } else if (seconds === 691) {
                                                  return setThirtySeconds(30)
                                              } else if (seconds <= 720) {
-                                                 return setKakashiAction(moves.kick)
+                                                 if (name === names.kakashi) {
+                                                     setKakashiAction(moves.kick)
+                                                 } else if (name === names.goku) {
+                                                     setGokuAction(moves.jab)
+                                                 } else if (name === names.korra) {
+                                                     setKorraAction(moves.sitUps)
+                                                 } else if (name === names.naruto) {
+                                                     setNarutoAction(moves.upRock)
+                                                 }
                                              } else if (seconds === 721) {
                                                  return setThirtySeconds(30)
                                              } else if (seconds <= 750) {
-                                                 return setKakashiAction(moves.bicepCurl)
+                                                 if (name === names.kakashi) {
+                                                     setKakashiAction(moves.bicepCurl)
+                                                 } else if (name === names.goku) {
+                                                     setGokuAction(moves.hook)
+                                                 } else if (name === names.korra) {
+                                                     setKorraAction(moves.bicepCurl)
+                                                 } else if (name === names.naruto) {
+                                                     setNarutoAction(moves.footwork)
+                                                 }
                                              } else if (seconds === 751) {
                                                  return setThirtySeconds(30)
                                              } else if (seconds <= 780) {
-                                                 return setKakashiAction(moves.squat)
+                                                 if (name === names.kakashi) {
+                                                     setKakashiAction(moves.squat)
+                                                 } else if (name === names.goku) {
+                                                     setGokuAction(moves.punchCombo)
+                                                 } else if (name === names.korra) {
+                                                     setKorraAction(moves.coolDown)
+                                                 } else if (name === names.naruto) {
+                                                     setNarutoAction(moves.freeze)
+                                                 }
                                              } else if (seconds === 781) {
                                                  return setThirtySeconds(30)
                                              } else if (seconds <= 810) {
-                                                 return setKakashiAction(moves.coolDown)
+                                                 if (name === names.kakashi) {
+                                                     setKakashiAction(moves.coolDown)
+                                                 } else if (name === names.goku) {
+                                                     setGokuAction(moves.coolDown)
+                                                 } else if (name === names.korra) {
+                                                     setKorraAction(moves.burpee)
+                                                 } else if (name === names.naruto) {
+                                                     setNarutoAction(moves.coolDown)
+                                                 }
                                              } else if (seconds === 811) {
                                                  return setThirtySeconds(30)
                                              }
-                                             //forth set
                                              else if (seconds <= 840) {
-                                                 return setKakashiAction(moves.sitUps)
+                                                 if (name === names.kakashi) {
+                                                     setKakashiAction(moves.sitUps)
+                                                 } else if (name === names.goku) {
+                                                     setGokuAction(moves.bicepCurl)
+                                                 } else if (name === names.korra) {
+                                                     setKorraAction(moves.crossJumps)
+                                                 } else if (name === names.naruto) {
+                                                     setNarutoAction(moves.bikeCrunch)
+                                                 }
                                              } else if (seconds === 841) {
                                                  return setThirtySeconds(30)
                                              } else if (seconds <= 870) {
-                                                 return setKakashiAction(moves.pushUp)
+                                                 if (name === names.kakashi) {
+                                                     setKakashiAction(moves.pushUp)
+                                                 } else if (name === names.goku) {
+                                                     setGokuAction(moves.plank)
+                                                 } else if (name === names.korra) {
+                                                     setKorraAction(moves.crossRotation)
+                                                 } else if (name === names.naruto) {
+                                                     setNarutoAction(moves.sitUps)
+                                                 }
                                              } else if (seconds === 871) {
                                                  return setThirtySeconds(30)
                                              } else if (seconds <= 900) {
-                                                 return setKakashiAction(moves.jumpingJack)
+                                                 if (name === names.kakashi) {
+                                                     setKakashiAction(moves.jumpingJack)
+                                                 } else if (name === names.goku) {
+                                                     setGokuAction(moves.sitUps)
+                                                 } else if (name === names.korra) {
+                                                     setKorraAction(moves.coolDown)
+                                                 } else if (name === names.naruto) {
+                                                     setNarutoAction(moves.pushUp)
+                                                 }
                                              } else if (seconds === 901) {
                                                  return setThirtySeconds(30)
                                              } else if (seconds <= 930) {
-                                                 return setKakashiAction(moves.coolDown)
+                                                 if (name === names.kakashi) {
+                                                     setKakashiAction(moves.coolDown)
+                                                 } else if (name === names.goku) {
+                                                     setGokuAction(moves.pushUp)
+                                                 } else if (name === names.korra) {
+                                                     setKorraAction(moves.pushUp)
+                                                 } else if (name === names.naruto) {
+                                                     setNarutoAction(moves.bicepCurl)
+                                                 }
                                              } else if (seconds === 931) {
                                                  return setThirtySeconds(30)
                                              } else if (seconds <= 960) {
-                                                 return setKakashiAction(moves.kick)
+                                                 if (name === names.kakashi) {
+                                                     setKakashiAction(moves.kick)
+                                                 } else if (name === names.goku) {
+                                                     setGokuAction(moves.coolDown)
+                                                 } else if (name === names.korra) {
+                                                     setKorraAction(moves.sitUps)
+                                                 } else if (name === names.naruto) {
+                                                     setNarutoAction(moves.coolDown)
+                                                 }
                                              } else if (seconds === 961) {
                                                  return setThirtySeconds(30)
                                              } else if (seconds <= 990) {
-                                                 return setKakashiAction(moves.bicepCurl)
+                                                 if (name === names.kakashi) {
+                                                     setKakashiAction(moves.bicepCurl)
+                                                 } else if (name === names.goku) {
+                                                     setGokuAction(moves.jumpingJack)
+                                                 } else if (name === names.korra) {
+                                                     setKorraAction(moves.bicepCurl)
+                                                 } else if (name === names.naruto) {
+                                                     setNarutoAction(moves.jumpingJack)
+                                                 }
                                              } else if (seconds === 991) {
                                                  return setThirtySeconds(30)
                                              } else if (seconds <= 1010) {
-                                                 return setKakashiAction(moves.squat)
+                                                 if (name === names.kakashi) {
+                                                     setKakashiAction(moves.squat)
+                                                 } else if (name === names.goku) {
+                                                     setGokuAction(moves.jab)
+                                                 } else if (name === names.korra) {
+                                                     setKorraAction(moves.coolDown)
+                                                 } else if (name === names.naruto) {
+                                                     setNarutoAction(moves.upRock)
+                                                 }
                                              } else if (seconds === 1011) {
                                                  return setThirtySeconds(30)
                                              } else if (seconds <= 1030) {
-                                                 return setKakashiAction(moves.coolDown)
+                                                 if (name === names.kakashi) {
+                                                     setKakashiAction(moves.coolDown)
+                                                 } else if (name === names.goku) {
+                                                     setGokuAction(moves.coolDown)
+                                                 } else if (name === names.korra) {
+                                                     setKorraAction(moves.coolDown)
+                                                 } else if (name === names.naruto) {
+                                                     setNarutoAction(moves.footwork)
+                                                 }
                                              } else if (seconds === 1031) {
                                                  return setThirtySeconds(30)
                                              }
