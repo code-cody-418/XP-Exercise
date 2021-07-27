@@ -12,6 +12,7 @@ import "../styles.css"
 import AnimationScene from "../AnimationScene";
 import {moves} from "../../moves";
 import {names} from "../names";
+import {DisplayAction} from "../DisplayAction";
 
 
 export const Home = () => {
@@ -359,9 +360,9 @@ export const Home = () => {
                             className='startWorkoutButton mt-0'
                             onClick={() => setThirtySeconds(30)}
                         >{thirtySeconds}</Button>
-                        <Button
-                            className={'startWorkoutButton mt-0'}
-                        >{kakashiAction}</Button>
+                        <DisplayAction gokuAction={gokuAction} narutoAction={narutoAction}
+                                       kakashiAction={kakashiAction} korraAction={korraAction}
+                                       name={name} />
                     </Col>
                     <Col lg={4} className='ms-0 ps-0'>
                         <ReactPlayer url={youTubePlaylists}
@@ -511,8 +512,7 @@ export const Home = () => {
                                                  }
                                              } else if (seconds === 331) {
                                                  return setThirtySeconds(30)
-                                             }
-                                             else if (seconds <= 360) {
+                                             } else if (seconds <= 360) {
                                                  if (name === names.kakashi) {
                                                      setKakashiAction(moves.sitUps)
                                                  } else if (name === names.goku) {
@@ -608,8 +608,7 @@ export const Home = () => {
                                                  }
                                              } else if (seconds === 571) {
                                                  return setThirtySeconds(30)
-                                             }
-                                             else if (seconds <= 600) {
+                                             } else if (seconds <= 600) {
                                                  if (name === names.kakashi) {
                                                      setKakashiAction(moves.sitUps)
                                                  } else if (name === names.goku) {
@@ -705,8 +704,7 @@ export const Home = () => {
                                                  }
                                              } else if (seconds === 811) {
                                                  return setThirtySeconds(30)
-                                             }
-                                             else if (seconds <= 840) {
+                                             } else if (seconds <= 840) {
                                                  if (name === names.kakashi) {
                                                      setKakashiAction(moves.sitUps)
                                                  } else if (name === names.goku) {
