@@ -260,9 +260,7 @@ export const Home = () => {
     const [thirtySeconds, setThirtySeconds] = useState(30)
 
     useEffect(() => {
-        if (thirtySeconds <= 0) {
-            setThirtySeconds(30)
-        } else if (videoPlay === true) {
+        if (videoPlay === true) {
             const intervalId = setInterval(() => {
                 setThirtySeconds(thirtySeconds => thirtySeconds - 1)
                 console.log('seconds countdown', thirtySeconds)
@@ -376,19 +374,35 @@ export const Home = () => {
                                              //stretching
                                              if (seconds <= 30) {
                                                  return setKakashiAction(moves.armStretch)
+                                             } else if (seconds === 31) {
+                                                 return setThirtySeconds(29)
                                              } else if (seconds <= 60) {
                                                  return setKakashiAction(moves.neckStretch)
+                                             } else if (seconds === 61) {
+                                                 return setThirtySeconds(29)
                                              } else if (seconds <= 90) {
                                                  return setKakashiAction(moves.touchToes)
+                                             }
+                                             else if (seconds === 91) {
+                                                 return setThirtySeconds(29)
                                              }
                                              //first set
                                              else if (seconds <= 120) {
                                                  return setKakashiAction(moves.sitUps)
-                                             } else if (seconds <= 150) {
+                                             } else if (seconds === 121) {
+                                                 return setThirtySeconds(29)
+                                             }
+                                             else if (seconds <= 150) {
                                                  return setKakashiAction(moves.pushUp)
-                                             } else if (seconds <= 180) {
+                                             } else if (seconds === 151) {
+                                                 return setThirtySeconds(29)
+                                             }
+                                             else if (seconds <= 180) {
                                                  return setKakashiAction(moves.jumpingJack)
-                                             } else if (seconds <= 210) {
+                                             } else if (seconds === 181) {
+                                                 return setThirtySeconds(29)
+                                             }
+                                             else if (seconds <= 210) {
                                                  return setKakashiAction(moves.coolDown)
                                              } else if (seconds <= 240) {
                                                  return setKakashiAction(moves.kick)
