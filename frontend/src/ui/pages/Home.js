@@ -44,9 +44,9 @@ export const Home = () => {
                                 setAutoWorkout(false)
                             }}
                         >Customize Workout</Button>
-                        <Button
-                            className='startWorkoutButton'
-                        >{thirtySeconds}</Button>
+                        {/*<Button*/}
+                        {/*    className='startWorkoutButton'*/}
+                        {/*>{thirtySeconds}</Button>*/}
                     </Col>
                 </>
             )
@@ -63,47 +63,38 @@ export const Home = () => {
                                 )
                             }}
                         >Auto</Button>
-
                         <Button className='characterButton'
                                 onClick={() => setKakashiAction(moves.idle)}>Chillin</Button>
-
                         <Button className='characterButton'
-                                onClick={() => setKakashiAction(moves.armStretch)}>Arm
-                            Stretch</Button>
+                                onClick={() => {
+                                    setKakashiAction(moves.armStretch)
+                                    setThirtySeconds(29)
+                                }
+                                }
+                        >Arm Stretch</Button>
                     </Col>
                     <Col md={2} lg={1} className='mx-0 px-0'>
                         <Button className='characterButton'
-                                onClick={() => setKakashiAction(moves.coolDown)}>Cool
-                            Down</Button>
-
+                                onClick={() => setKakashiAction(moves.neckStretch)}>Neck Stretch</Button>
                         <Button className='characterButton'
-                                onClick={() => setKakashiAction(moves.jumpingJack)}>Jumping
-                            Jacks</Button>
-
-                        <Button className='characterButton'
-                                onClick={() => setKakashiAction(moves.kick)}>Kick</Button>
-                    </Col>
-                    <Col md={2} lg={1} className='mx-0 px-0'>
-                        <Button className='characterButton'
-                                onClick={() => setKakashiAction(moves.neckStretch)}>Neck
-                            Stretch</Button>
-
-                        <Button className='characterButton'
-                                onClick={() => setKakashiAction(moves.squat)}>Squat</Button>
-
-                        <Button className='characterButton'
-                                onClick={() => setKakashiAction(moves.touchToes)}>Toe
-                            Touch</Button>
-                    </Col>
-                    <Col md={2} lg={1} className='mx-0 px-0'>
-                        <Button className='characterButton'
-                                onClick={() => setKakashiAction(moves.bicepCurl)}>Bicep Curl</Button>
-
+                                onClick={() => setKakashiAction(moves.touchToes)}>Toe Touch</Button>
                         <Button className='characterButton'
                                 onClick={() => setKakashiAction(moves.pushUp)}>Push Ups</Button>
-
+                    </Col>
+                    <Col md={2} lg={1} className='mx-0 px-0'>
                         <Button className='characterButton'
                                 onClick={() => setKakashiAction(moves.sitUps)}>Sit-ups</Button>
+                        <Button className='characterButton'
+                                onClick={() => setKakashiAction(moves.jumpingJack)}>Jumping Jacks</Button>
+                        <Button className='characterButton' onClick={() => setKakashiAction(moves.kick)}>Kick</Button>
+                    </Col>
+                    <Col md={2} lg={1} className='mx-0 px-0'>
+                        <Button className='characterButton'
+                                onClick={() => setKakashiAction(moves.squat)}>Squat</Button>
+                        <Button className='characterButton'
+                                onClick={() => setKakashiAction(moves.bicepCurl)}>Bicep Curl</Button>
+                        <Button className='characterButton'
+                                onClick={() => setKakashiAction(moves.coolDown)}>Cool Down</Button>
                     </Col>
                 </>
             )
@@ -260,7 +251,9 @@ export const Home = () => {
     const [thirtySeconds, setThirtySeconds] = useState(30)
 
     useEffect(() => {
-        if (videoPlay === true) {
+        if (thirtySeconds === -1) {
+            setThirtySeconds(30)
+        } else if (videoPlay === true) {
             const intervalId = setInterval(() => {
                 setThirtySeconds(thirtySeconds => thirtySeconds - 1)
                 console.log('seconds countdown', thirtySeconds)
@@ -339,9 +332,15 @@ export const Home = () => {
                         <AnimationScene gokuAction={gokuAction} narutoAction={narutoAction}
                                         kakashiAction={kakashiAction} korraAction={korraAction}
                                         name={name}/>
+                        <Button
+                            className='startWorkoutButton mt-0'
+                            onClick={() => setThirtySeconds(30)}
+                        >{thirtySeconds}</Button>
+                        <Button
+                            className={'startWorkoutButton mt-0'}
+                        >{kakashiAction}</Button>
                     </Col>
                     <Col lg={4} className='ms-0 ps-0'>
-                        {/*npm module for runnning videos, see docs for more functionality*/}
                         <ReactPlayer url={youTubePlaylists}
                                      width={'100%'}
                                      height={'400px'}
@@ -349,16 +348,9 @@ export const Home = () => {
                                      onEnded={handleShow}
                                      onPlay={() => setVideoPlay(true)}
                                      onPause={() => setVideoPlay(false)}
-                            // controls={true}
+                            //extra callbacks for videoplayer
+                                     controls={true}
                             // muted={true}
-
-
-                            // onProgress={ () => {
-                            //     if (seconds === 10) {
-                            //     handleShow()
-                            // }
-                            // }}
-
 
                             //this is logic that determines auto-workouts
                                      onProgress={(played) => {
@@ -375,97 +367,151 @@ export const Home = () => {
                                              if (seconds <= 30) {
                                                  return setKakashiAction(moves.armStretch)
                                              } else if (seconds === 31) {
-                                                 return setThirtySeconds(29)
+                                                 return setThirtySeconds(30)
                                              } else if (seconds <= 60) {
                                                  return setKakashiAction(moves.neckStretch)
                                              } else if (seconds === 61) {
-                                                 return setThirtySeconds(29)
+                                                 return setThirtySeconds(30)
                                              } else if (seconds <= 90) {
                                                  return setKakashiAction(moves.touchToes)
-                                             }
-                                             else if (seconds === 91) {
-                                                 return setThirtySeconds(29)
+                                             } else if (seconds === 91) {
+                                                 return setThirtySeconds(30)
                                              }
                                              //first set
                                              else if (seconds <= 120) {
                                                  return setKakashiAction(moves.sitUps)
                                              } else if (seconds === 121) {
-                                                 return setThirtySeconds(29)
-                                             }
-                                             else if (seconds <= 150) {
+                                                 return setThirtySeconds(30)
+                                             } else if (seconds <= 150) {
                                                  return setKakashiAction(moves.pushUp)
                                              } else if (seconds === 151) {
-                                                 return setThirtySeconds(29)
-                                             }
-                                             else if (seconds <= 180) {
+                                                 return setThirtySeconds(30)
+                                             } else if (seconds <= 180) {
                                                  return setKakashiAction(moves.jumpingJack)
                                              } else if (seconds === 181) {
-                                                 return setThirtySeconds(29)
-                                             }
-                                             else if (seconds <= 210) {
+                                                 return setThirtySeconds(30)
+                                             } else if (seconds <= 210) {
                                                  return setKakashiAction(moves.coolDown)
+                                             } else if (seconds === 211) {
+                                                 return setThirtySeconds(30)
                                              } else if (seconds <= 240) {
                                                  return setKakashiAction(moves.kick)
+                                             } else if (seconds === 241) {
+                                                 return setThirtySeconds(30)
                                              } else if (seconds <= 270) {
                                                  return setKakashiAction(moves.bicepCurl)
+                                             } else if (seconds === 271) {
+                                                 return setThirtySeconds(30)
                                              } else if (seconds <= 300) {
                                                  return setKakashiAction(moves.squat)
+                                             } else if (seconds === 301) {
+                                                 return setThirtySeconds(30)
                                              } else if (seconds <= 330) {
                                                  return setKakashiAction(moves.coolDown)
+                                             } else if (seconds === 331) {
+                                                 return setThirtySeconds(30)
                                              }
                                              //second set
                                              else if (seconds <= 360) {
                                                  return setKakashiAction(moves.sitUps)
+                                             } else if (seconds === 361) {
+                                                 return setThirtySeconds(30)
                                              } else if (seconds <= 390) {
                                                  return setKakashiAction(moves.pushUp)
+                                             } else if (seconds === 391) {
+                                                 return setThirtySeconds(30)
                                              } else if (seconds <= 420) {
                                                  return setKakashiAction(moves.jumpingJack)
+                                             } else if (seconds === 421) {
+                                                 return setThirtySeconds(30)
                                              } else if (seconds <= 450) {
                                                  return setKakashiAction(moves.coolDown)
+                                             } else if (seconds === 451) {
+                                                 return setThirtySeconds(30)
                                              } else if (seconds <= 480) {
                                                  return setKakashiAction(moves.kick)
+                                             } else if (seconds === 481) {
+                                                 return setThirtySeconds(30)
                                              } else if (seconds <= 510) {
                                                  return setKakashiAction(moves.bicepCurl)
+                                             } else if (seconds === 511) {
+                                                 return setThirtySeconds(30)
                                              } else if (seconds <= 540) {
                                                  return setKakashiAction(moves.squat)
+                                             } else if (seconds === 541) {
+                                                 return setThirtySeconds(30)
                                              } else if (seconds <= 570) {
                                                  return setKakashiAction(moves.coolDown)
+                                             } else if (seconds === 571) {
+                                                 return setThirtySeconds(30)
                                              }
                                              //third set
                                              else if (seconds <= 600) {
                                                  return setKakashiAction(moves.sitUps)
+                                             } else if (seconds === 601) {
+                                                 return setThirtySeconds(30)
                                              } else if (seconds <= 630) {
                                                  return setKakashiAction(moves.pushUp)
+                                             } else if (seconds === 631) {
+                                                 return setThirtySeconds(30)
                                              } else if (seconds <= 660) {
                                                  return setKakashiAction(moves.jumpingJack)
+                                             } else if (seconds === 661) {
+                                                 return setThirtySeconds(30)
                                              } else if (seconds <= 690) {
                                                  return setKakashiAction(moves.coolDown)
+                                             } else if (seconds === 691) {
+                                                 return setThirtySeconds(30)
                                              } else if (seconds <= 720) {
                                                  return setKakashiAction(moves.kick)
+                                             } else if (seconds === 721) {
+                                                 return setThirtySeconds(30)
                                              } else if (seconds <= 750) {
                                                  return setKakashiAction(moves.bicepCurl)
+                                             } else if (seconds === 751) {
+                                                 return setThirtySeconds(30)
                                              } else if (seconds <= 780) {
                                                  return setKakashiAction(moves.squat)
+                                             } else if (seconds === 781) {
+                                                 return setThirtySeconds(30)
                                              } else if (seconds <= 810) {
                                                  return setKakashiAction(moves.coolDown)
+                                             } else if (seconds === 811) {
+                                                 return setThirtySeconds(30)
                                              }
                                              //foruth set
                                              else if (seconds <= 840) {
                                                  return setKakashiAction(moves.sitUps)
+                                             } else if (seconds === 841) {
+                                                 return setThirtySeconds(30)
                                              } else if (seconds <= 870) {
                                                  return setKakashiAction(moves.pushUp)
+                                             } else if (seconds === 871) {
+                                                 return setThirtySeconds(30)
                                              } else if (seconds <= 900) {
                                                  return setKakashiAction(moves.jumpingJack)
+                                             } else if (seconds === 901) {
+                                                 return setThirtySeconds(30)
                                              } else if (seconds <= 930) {
                                                  return setKakashiAction(moves.coolDown)
+                                             } else if (seconds === 931) {
+                                                 return setThirtySeconds(30)
                                              } else if (seconds <= 960) {
                                                  return setKakashiAction(moves.kick)
+                                             } else if (seconds === 961) {
+                                                 return setThirtySeconds(30)
                                              } else if (seconds <= 990) {
                                                  return setKakashiAction(moves.bicepCurl)
+                                             } else if (seconds === 991) {
+                                                 return setThirtySeconds(30)
                                              } else if (seconds <= 1010) {
                                                  return setKakashiAction(moves.squat)
+                                             } else if (seconds === 1011) {
+                                                 return setThirtySeconds(30)
                                              } else if (seconds <= 1030) {
                                                  return setKakashiAction(moves.coolDown)
+                                             } else if (seconds === 1031) {
+                                                 return setThirtySeconds(30)
                                              }
                                              //when video stops character turns idle
                                          } else if (autoWorkout === true && videoPlay === false) {
