@@ -71,36 +71,32 @@ body {
 /*    0 0 12px 8px #add4e3;*/
 /*}*/
 
+.underCanvas {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
 .actionText {
     color: white;
     font-size: 2em;
     opacity: .8;
     margin-left: 1em;
-    /*white-space: nowrap;*/
-    /*display: flow !important;*/
-}
-
-.underCanvas {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-
 }
 
 .thirtySecondTimerButton {
     color: black !important;
     font-family: roboto-slab, serif;
+    font-size: 3em !important;
     font-weight: 700;
     font-style: normal;
-    background-color: #add4e3 !important;
-    width: 7em;
-    height: 4em;
+    background-color: #ffffff !important;
+    width: 3em;
+    height: 1.5em;
     border: none !important;
     margin-left: 1em;
     margin-top: 1em;
     opacity: 85%;
-    /*white-space: nowrap;*/
-    /*display: flow !important;*/
 }
 
 /*.textActionAnimation {*/
