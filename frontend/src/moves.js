@@ -3,6 +3,7 @@ export const moves = {
     idle: 'idle',
     capitalIdle: 'Chillin',
     jumpingJack: 'jumpingJack',
+    capitalJumpingJack: 'Jumping Jacks',
     armStretch: 'armStretch',
     coolDown: 'coolDown',
     touchToes: 'touchToes',

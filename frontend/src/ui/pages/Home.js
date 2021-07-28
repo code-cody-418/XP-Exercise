@@ -356,13 +356,15 @@ export const Home = () => {
                         <AnimationScene gokuAction={gokuAction} narutoAction={narutoAction}
                                         kakashiAction={kakashiAction} korraAction={korraAction}
                                         name={name}/>
+                        <div className='underCanvas'>
                         <Button
-                            className='startWorkoutButton mt-0'
+                            className='thirtySecondTimerButton mt-0'
                             onClick={() => setThirtySeconds(30)}
                         >{thirtySeconds}</Button>
                         <DisplayAction gokuAction={gokuAction} narutoAction={narutoAction}
                                        kakashiAction={kakashiAction} korraAction={korraAction}
                                        name={name} />
+                        </div>
                     </Col>
                     <Col lg={4} className='ms-0 ps-0'>
                         <ReactPlayer url={youTubePlaylists}

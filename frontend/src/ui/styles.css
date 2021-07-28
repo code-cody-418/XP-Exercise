@@ -71,29 +71,61 @@ body {
 /*    0 0 12px 8px #add4e3;*/
 /*}*/
 
-.textActionAnimation {
-    animation-duration: 15s;
-    animation-name: slidein;
-    animation-iteration-count: infinite;
+.actionText {
     color: white;
-    font-size: 3em;
-    opacity: 1;
+    font-size: 2em;
+    opacity: .8;
+    margin-left: 1em;
+    /*white-space: nowrap;*/
+    /*display: flow !important;*/
 }
 
-@keyframes slidein {
-    from {
-        margin-left: 100%;
-        opacity: .8;
-    }
+.underCanvas {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
 
-    50% {
-    margin-left: 50%;
-        opacity: 1;
 }
 
-    to {
-        margin-left: 0%;
-        opacity: .8;
-
-    }
+.thirtySecondTimerButton {
+    color: black !important;
+    font-family: roboto-slab, serif;
+    font-weight: 700;
+    font-style: normal;
+    background-color: #add4e3 !important;
+    width: 7em;
+    height: 4em;
+    border: none !important;
+    margin-left: 1em;
+    margin-top: 1em;
+    opacity: 85%;
+    /*white-space: nowrap;*/
+    /*display: flow !important;*/
 }
+
+/*.textActionAnimation {*/
+/*    animation-duration: 15s;*/
+/*    animation-name: slidein;*/
+/*    animation-iteration-count: infinite;*/
+/*    color: white;*/
+/*    font-size: 3em;*/
+/*    opacity: 1;*/
+/*}*/
+
+/*@keyframes slidein {*/
+/*    from {*/
+/*        margin-left: 100%;*/
+/*        opacity: .8;*/
+/*    }*/
+
+/*    50% {*/
+/*    margin-left: 50%;*/
+/*        opacity: 1;*/
+/*}*/
+
+/*    to {*/
+/*        margin-left: 0%;*/
+/*        opacity: .8;*/
+
+/*    }*/
+/*}*/
