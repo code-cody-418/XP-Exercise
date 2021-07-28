@@ -63,10 +63,37 @@ body {
 /*    color: black !important;*/
 /*    font-weight: bold !important;*/
 /*    background-color: #add4e3 !important;*/
-/*    width: 6em;*/
-/*    height: 3em;*/
+/*    width: 5.5em;*/
+/*    height: 4em;*/
 /*    border: none !important;*/
 /*    box-shadow: 0 0 5px 3px #FFF,*/
 /*    0 0 9px 5px #add4e3,*/
 /*    0 0 12px 8px #add4e3;*/
 /*}*/
+
+.textActionAnimation {
+    animation-duration: 15s;
+    animation-name: slidein;
+    animation-iteration-count: infinite;
+    color: white;
+    font-size: 3em;
+    opacity: 1;
+}
+
+@keyframes slidein {
+    from {
+        margin-left: 100%;
+        opacity: .8;
+    }
+
+    50% {
+    margin-left: 50%;
+        opacity: 1;
+}
+
+    to {
+        margin-left: 0%;
+        opacity: .8;
+
+    }
+}

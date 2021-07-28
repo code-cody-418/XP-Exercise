@@ -1,6 +1,7 @@
 export const moves = {
     //shared
     idle: 'idle',
+    capitalIdle: 'Chillin',
     jumpingJack: 'jumpingJack',
     armStretch: 'armStretch',
     coolDown: 'coolDown',
