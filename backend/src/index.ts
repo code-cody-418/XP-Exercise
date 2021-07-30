@@ -1,4 +1,14 @@
+// @ts-ignore
+
 import { App } from './App'
+
+declare module 'express-session' {
+    export interface SessionData {
+        profile: Profile|undefined;
+        signature: string|undefined;
+        jwt: string|undefined
+    }
+}
 
 // instantiate new app and pass it a port as an argument to start with (4200)
 async function main () {
@@ -10,4 +20,4 @@ async function main () {
     }
 }
 
-main()
+main().catch(error => console.error(error) );
