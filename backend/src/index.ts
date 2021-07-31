@@ -1,6 +1,9 @@
 // @ts-ignore
 
 import { App } from './App'
+import session from "express-session";
+import {Profile} from "./utils/interfaces/Profile";
+
 
 declare module 'express-session' {
     export interface SessionData {

@@ -7,12 +7,12 @@ DROP TABLE IF EXISTS profile;
 
 create TABLE profile
 (
-    ProfileId BINARY(16) NOT NULL,
+    profileId BINARY(16) NOT NULL,
     profileActivationToken CHAR(32),
     profileAvatarUrl VARCHAR(255),
     profileCoins INT,
     profileEmail VARCHAR(128) NOT NULL,
-    ProfileExp INT,
+    profileExp INT,
     profileHash CHAR(97) NOT NULL,
     profileLevel INT,
     profileUserName VARCHAR(32),

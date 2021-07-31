@@ -6,6 +6,8 @@
 
 **node_modules
 
+*./sql/statements.sql
+
 */src/dist
 */node_modules
 .idea
@@ -28,6 +30,7 @@
 */.env.local
 */.env.development.local
 */.env.test.local
+*/statements.sql
 
 
 */npm-debug.log*
