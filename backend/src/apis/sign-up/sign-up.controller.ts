@@ -21,9 +21,9 @@ export const signupProfileController = async (request: Request, response: Respon
         const profileHash = await setHash(profilePassword);
         const profileActivationToken = setActivationToken();
         const profileAvatarUrl = "https://i.picsum.photos/id/68/50/50.jpg?hmac=9UQUeKEsIt9cgKiEaOkzQkbjWjc5Y73T7PIDiWqt8K4"
-        const profileCoins = 0;
-        const profileExp = 0;
-        const profileLevel = 1;
+        // const profileCoins = 0;
+        // const profileExp = 0;
+        // const profileLevel = 1;
         const basePath = `${request.protocol}://${request.get('host')}${request.originalUrl}activation/${profileActivationToken}`
         console.log(profileActivationToken)
 
@@ -42,11 +42,11 @@ export const signupProfileController = async (request: Request, response: Respon
             profileId : null,
             profileActivationToken,
             profileAvatarUrl,
-            profileCoins,
+            profileCoins : null,
             profileEmail,
-            profileExp,
+            profileExp : null,
             profileHash,
-            profileLevel,
+            profileLevel : null,
             profileUserName
         };
 
