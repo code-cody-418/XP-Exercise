@@ -1,11 +1,18 @@
 import express, { Application } from 'express'
 import morgan from 'morgan'
+
 // Routes
 import { indexRoute } from './apis/index.route'
 import {profileRoute} from "./apis/profile/profile.route";
+import {signinRoute} from "./apis/sign-in/signin.route";
+import {signupRoute} from "./apis/sign-up/signupRoute";
+
 const session = require('express-session')
 const MemoryStore = require('memorystore')(session);
-import passport from "passport";
+import passport = require('passport');
+import {passportStrategy} from "./apis/sign-in/sign-in.controller";
+
+
 
 // The following class creates the app and instantiates the server
 export class App {
@@ -52,6 +59,8 @@ export class App {
     private routes () {
         // TODO add "/apis"
         this.app.use('/apis', indexRoute)
+        this.app.use('/apis/sign-in', signinRoute)
+        this.app.use('/apis/sign-up', signupRoute)
         this.app.use('/apis/profile', profileRoute)
     }
 

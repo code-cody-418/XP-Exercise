@@ -10,12 +10,12 @@ export interface PartialProfile {
 export interface Profile {
     profileId: string|null,
     profileActivationToken: string|null,
-    profileAvatarUrl: string,
-    profileCoins: number,
+    profileAvatarUrl: string|null,
+    profileCoins: number|null,
     profileEmail: string,
-    profileExp: number,
+    profileExp: number|null,
     profileHash: string,
-    profileLevel: number,
+    profileLevel: number|null,
     profileUserName: string,
 }
 
