@@ -1,7 +1,9 @@
 import {Router} from "express";
 import {asyncValidatorController} from "../../utils/controllers/asyncValidator.controller";
-import {getProfileByProfileId} from "./profile.controller";
-import {check} from "express-validator";
+import {getProfileByProfileId, putCoinsController} from "./profile.controller";
+import {check, checkSchema} from "express-validator";
+import {isLoggedIn} from "../../utils/controllers/isLoggedIn.controller";
+import {profileValidator} from "./profile.validator";
 
 
 export const profileRoute = Router();
@@ -13,3 +15,4 @@ profileRoute.route("/:profileId")
     ])
     , getProfileByProfileId
 )
+    .put(isLoggedIn, asyncValidatorController(checkSchema(profileValidator)), putCoinsController)
