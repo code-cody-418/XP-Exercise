@@ -6,7 +6,9 @@
 
 **node_modules
 
-*./sql/statements.sql
+./sql/statements.sql
+
+*/statements.sql
 
 */src/dist
 */node_modules
