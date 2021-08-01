@@ -4,6 +4,8 @@ import {Status} from "../../utils/interfaces/Status";
 import {PartialProfile, Profile} from "../../utils/interfaces/Profile";
 import {selectWholeProfileByProfileId} from "../../utils/profile/selectWholeProfileByProfileId";
 import {updateProfileCoinsByProfileId} from "../../utils/profile/updateProfileCoinsByProfileId";
+import {updateProfileExpByProfileId} from "../../utils/profile/updateProfileExpByProfileId";
+import {updateProfileLevelByProfileId} from "../../utils/profile/updateProfileLevelByProfileId";
 
 
 export async function getProfileByProfileId(request: Request, response: Response) : Promise<Response> {
@@ -30,6 +32,61 @@ export async function putCoinsController(request: Request, response: Response) :
             const previousProfile: Profile = await selectWholeProfileByProfileId(<string>partialProfile.profileId)
             const newProfile: Profile = {...previousProfile, ...partialProfile}
             await updateProfileCoinsByProfileId(newProfile)
+            return response.json({status: 200, data: null, message: "Profile successfully updated"})
+        }
+
+        const updateFailed = (message: string) : Response => {
+            return response.json({status: 400, data: null, message})
+        }
+
+        return profileId === profileIdFromSession
+            ? preformUpdate({profileId, profileCoins, profileLevel, profileUserName, profileExp, profileAvatarUrl})
+            : updateFailed("you are not allowed to preform this action")
+    } catch (error) {
+        return response.json( {status:400, data: null, message: error.message})
+    }
+}
+
+export async function putExpController(request: Request, response: Response) : Promise<Response>{
+    try {
+        const {profileId} = request.params
+        const {profileCoins, profileLevel, profileUserName, profileExp, profileAvatarUrl} = request.body
+        const profile = <Profile>request.session.profile
+        const profileIdFromSession = <string>profile.profileId
+
+
+        const preformUpdate = async (partialProfile: PartialProfile) : Promise<Response> => {
+            const previousProfile: Profile = await selectWholeProfileByProfileId(<string>partialProfile.profileId)
+            const newProfile: Profile = {...previousProfile, ...partialProfile}
+            await updateProfileExpByProfileId(newProfile)
+            return response.json({status: 200, data: null, message: "Profile successfully updated"})
+        }
+
+        const updateFailed = (message: string) : Response => {
+            return response.json({status: 400, data: null, message})
+        }
+
+        return profileId === profileIdFromSession
+            ? preformUpdate({profileId, profileCoins, profileLevel, profileUserName, profileExp, profileAvatarUrl})
+            : updateFailed("you are not allowed to preform this action")
+    } catch (error) {
+        return response.json( {status:400, data: null, message: error.message})
+    }
+}
+
+
+export async function putLevelController(request: Request, response: Response) : Promise<Response>{
+    try {
+        const {profileId} = request.params
+        const {profileCoins, profileLevel, profileUserName, profileExp, profileAvatarUrl} = request.body
+        const profile = <Profile>request.session.profile
+        const profileIdFromSession = <string>profile.profileId
+
+
+        const preformUpdate = async (partialProfile: PartialProfile) : Promise<Response> => {
+            const previousProfile: Profile = await selectWholeProfileByProfileId(<string>partialProfile.profileId)
+            const newProfile: Profile = {...previousProfile, ...partialProfile}
+            await updateProfileLevelByProfileId(newProfile)
             return response.json({status: 200, data: null, message: "Profile successfully updated"})
         }
 

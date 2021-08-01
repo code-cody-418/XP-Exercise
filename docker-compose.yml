@@ -18,6 +18,12 @@ services:
   sql:
     build: ./sql
     # Make sure to update this to match your project.
+#    deploy:
+#      resources:
+#        limits:
+#          memory: 4096M
+#        reservations:
+#          memory: 128M
     env_file:
       - .env
     command: --default-authentication-plugin=mysql_native_password
