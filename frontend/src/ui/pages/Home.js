@@ -13,6 +13,9 @@ import AnimationScene from "../AnimationScene";
 import {moves} from "../../moves";
 import {names} from "../names";
 import {DisplayAction} from "../DisplayAction";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchProfileByProfileId} from "../../store/profileSlice";
+import {useJwtToken} from "../shared/useJwtToken";
 
 
 export const Home = () => {
@@ -286,10 +289,48 @@ export const Home = () => {
         }
     }, [videoPlay, thirtySeconds, kakashiAction, narutoAction, korraAction, gokuAction])
 
+    //redux functionality to get profile data
+    const dispatch = useDispatch();
+
+    const {authenticatedUser, isLoading} = useJwtToken();
+
+    const sideEffects = () => {
+        if (authenticatedUser?.profileId) {
+            dispatch(fetchProfileByProfileId(authenticatedUser.profileId));
+        }
+    }
+
+    useEffect(sideEffects,  [authenticatedUser, dispatch]);
+
+    const profile = useSelector(state => (
+        state.profile
+            ? state.profile
+            : null
+    ));
+
+    //shows profile information on state change
+    // console.log("profile", profile.profileUserName)
+    const ProfileInfo = ({profile}) => {
+        if (profile === null) {
+            return <></>
+        } else if (profile != null) {
+            return (
+            <>
+                <p className='text-white'>Username: {profile.profileUserName}</p>
+                <p className='text-white'>Coins: {profile.profileCoins}</p>
+                <p className='text-white'>Exp: {profile.profileExp}</p>
+                <p className='text-white'>Coins: {profile.profileLevel}</p>
+            </>
+            )
+        }
+    }
+
+
 //_____________________________________________________________________________________________________________________
     return (
         <>
-            {/*<Navigation/>*/}
+            <Navigation />
+            <ProfileInfo profile={profile}/>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header>
                     <Modal.Title>Great Job Training!!!</Modal.Title>
