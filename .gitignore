@@ -10,6 +10,8 @@
 
 */statements.sql
 
+*/setupProxy.js
+
 */src/dist
 */node_modules
 .idea
