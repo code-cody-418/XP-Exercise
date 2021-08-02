@@ -5,6 +5,7 @@ export interface PartialProfile {
     profileExp: number,
     profileLevel: number,
     profileUserName: string,
+    profileEmail: string,
 }
 
 export interface Profile {

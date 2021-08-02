@@ -23,7 +23,7 @@ export async function getProfileByProfileId(request: Request, response: Response
 export async function putCoinsController(request: Request, response: Response) : Promise<Response>{
     try {
         const {profileId} = request.params
-        const {profileCoins, profileLevel, profileUserName, profileExp, profileAvatarUrl} = request.body
+        const {profileCoins, profileLevel, profileUserName, profileExp, profileAvatarUrl, profileEmail} = request.body
         const profile = <Profile>request.session.profile
         const profileIdFromSession = <string>profile.profileId
 
@@ -40,7 +40,7 @@ export async function putCoinsController(request: Request, response: Response) :
         }
 
         return profileId === profileIdFromSession
-            ? preformUpdate({profileId, profileCoins, profileLevel, profileUserName, profileExp, profileAvatarUrl})
+            ? preformUpdate({profileId, profileCoins, profileLevel, profileUserName, profileExp, profileAvatarUrl, profileEmail})
             : updateFailed("you are not allowed to preform this action")
     } catch (error) {
         return response.json( {status:400, data: null, message: error.message})
@@ -50,7 +50,7 @@ export async function putCoinsController(request: Request, response: Response) :
 export async function putExpController(request: Request, response: Response) : Promise<Response>{
     try {
         const {profileId} = request.params
-        const {profileCoins, profileLevel, profileUserName, profileExp, profileAvatarUrl} = request.body
+        const {profileCoins, profileLevel, profileUserName, profileExp, profileAvatarUrl, profileEmail} = request.body
         const profile = <Profile>request.session.profile
         const profileIdFromSession = <string>profile.profileId
 
@@ -67,7 +67,7 @@ export async function putExpController(request: Request, response: Response) : P
         }
 
         return profileId === profileIdFromSession
-            ? preformUpdate({profileId, profileCoins, profileLevel, profileUserName, profileExp, profileAvatarUrl})
+            ? preformUpdate({profileId, profileCoins, profileLevel, profileUserName, profileExp, profileAvatarUrl, profileEmail})
             : updateFailed("you are not allowed to preform this action")
     } catch (error) {
         return response.json( {status:400, data: null, message: error.message})
@@ -78,7 +78,7 @@ export async function putExpController(request: Request, response: Response) : P
 export async function putLevelController(request: Request, response: Response) : Promise<Response>{
     try {
         const {profileId} = request.params
-        const {profileCoins, profileLevel, profileUserName, profileExp, profileAvatarUrl} = request.body
+        const {profileCoins, profileLevel, profileUserName, profileExp, profileAvatarUrl, profileEmail} = request.body
         const profile = <Profile>request.session.profile
         const profileIdFromSession = <string>profile.profileId
 
@@ -95,7 +95,7 @@ export async function putLevelController(request: Request, response: Response) :
         }
 
         return profileId === profileIdFromSession
-            ? preformUpdate({profileId, profileCoins, profileLevel, profileUserName, profileExp, profileAvatarUrl})
+            ? preformUpdate({profileId, profileCoins, profileLevel, profileUserName, profileExp, profileAvatarUrl, profileEmail})
             : updateFailed("you are not allowed to preform this action")
     } catch (error) {
         return response.json( {status:400, data: null, message: error.message})

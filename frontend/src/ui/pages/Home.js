@@ -16,6 +16,7 @@ import {DisplayAction} from "../DisplayAction";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchProfileByProfileId} from "../../store/profileSlice";
 import {useJwtToken} from "../shared/useJwtToken";
+import {httpConfig} from "../shared/utils/http-config";
 
 
 export const Home = () => {
@@ -319,18 +320,62 @@ export const Home = () => {
                 <p className='text-white'>Username: {profile.profileUserName}</p>
                 <p className='text-white'>Coins: {profile.profileCoins}</p>
                 <p className='text-white'>Exp: {profile.profileExp}</p>
-                <p className='text-white'>Coins: {profile.profileLevel}</p>
+                <p className='text-white'>Level: {profile.profileLevel}</p>
             </>
             )
         }
     }
 
+    //function to call api that adds a coin to profile
+    const coinUp = () => {
+        httpConfig.put(`/apis/profile/coinUp/${profile.profileId}`, profile)
+            .then(reply => {
+                    if (reply.status === 200) {
+                        console.log(reply);
+                        dispatch(fetchProfileByProfileId(profile.profileId));
+                    }
+                    console.log(reply);
+                }
+            );
+    }
+
+    //function to call api that adds a Exp to profile
+    const expUp = () => {
+        httpConfig.put(`/apis/profile/expUp/${profile.profileId}`, profile)
+            .then(reply => {
+                    if (reply.status === 200) {
+                        console.log(reply);
+                        dispatch(fetchProfileByProfileId(profile.profileId));
+                    }
+                    console.log(reply);
+                }
+            );
+    }
+
+    //function to call api that adds a Exp to profile
+    const levelUp = () => {
+        httpConfig.put(`/apis/profile/levelUp/${profile.profileId}`, profile)
+            .then(reply => {
+                    if (reply.status === 200) {
+                        console.log(reply);
+                        dispatch(fetchProfileByProfileId(profile.profileId));
+                    }
+                    console.log(reply);
+                }
+            );
+    }
 
 //_____________________________________________________________________________________________________________________
     return (
         <>
             <Navigation />
             <ProfileInfo profile={profile}/>
+            <Button onClick={ () => coinUp()
+            }>COinUp</Button>
+            <Button onClick={ () => expUp()
+            }>expUp</Button>
+            <Button onClick={ () => levelUp()
+            }>levelUp</Button>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header>
                     <Modal.Title>Great Job Training!!!</Modal.Title>
