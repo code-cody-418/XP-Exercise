@@ -17,6 +17,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {fetchProfileByProfileId} from "../../store/profileSlice";
 import {useJwtToken} from "../shared/useJwtToken";
 import {httpConfig} from "../shared/utils/http-config";
+import {ProfileInfo} from "../shared/ProfileInfo";
 
 
 export const Home = () => {
@@ -301,7 +302,7 @@ export const Home = () => {
         }
     }
 
-    useEffect(sideEffects,  [authenticatedUser, dispatch]);
+    useEffect(sideEffects, [authenticatedUser, dispatch]);
 
     const profile = useSelector(state => (
         state.profile
@@ -309,22 +310,22 @@ export const Home = () => {
             : null
     ));
 
-    //shows profile information on state change
-    // console.log("profile", profile.profileUserName)
-    const ProfileInfo = ({profile}) => {
-        if (profile === null) {
-            return <></>
-        } else if (profile != null) {
-            return (
-            <>
-                <p className='text-white'>Username: {profile.profileUserName}</p>
-                <p className='text-white'>Coins: {profile.profileCoins}</p>
-                <p className='text-white'>Exp: {profile.profileExp}</p>
-                <p className='text-white'>Level: {profile.profileLevel}</p>
-            </>
-            )
-        }
-    }
+    // //shows profile information on state change
+    // // console.log("profile", profile.profileUserName)
+    // const ProfileInfo = ({profile}) => {
+    //     if (profile === null) {
+    //         return <></>
+    //     } else if (profile != null) {
+    //         return (
+    //         <>
+    //             <p className='text-white'>Username: {profile.profileUserName}</p>
+    //             <p className='text-white'>Coins: {profile.profileCoins}</p>
+    //             <p className='text-white'>Exp: {profile.profileExp}</p>
+    //             <p className='text-white'>Level: {profile.profileLevel}</p>
+    //         </>
+    //         )
+    //     }
+    // }
 
     //function to call api that adds a coin to profile
     const coinUp = () => {
@@ -354,28 +355,26 @@ export const Home = () => {
 
     //function to call api that adds a Exp to profile
     const levelUp = () => {
-        httpConfig.put(`/apis/profile/levelUp/${profile.profileId}`, profile)
-            .then(reply => {
-                    if (reply.status === 200) {
-                        console.log(reply);
-                        dispatch(fetchProfileByProfileId(profile.profileId));
-                    }
-                    console.log(reply);
-                }
-            );
+        if (profile === null) {
+        } else if (profile != null) {
+            if (profile.profileExp === 250) {
+                httpConfig.put(`/apis/profile/levelUp/${profile.profileId}`, profile)
+                    .then(reply => {
+                            if (reply.status === 200) {
+                                console.log(reply);
+                                dispatch(fetchProfileByProfileId(profile.profileId));
+                            }
+                            console.log(reply);
+                        }
+                    );
+            }
+        }
     }
 
 //_____________________________________________________________________________________________________________________
     return (
         <>
-            <Navigation />
-            <ProfileInfo profile={profile}/>
-            <Button onClick={ () => coinUp()
-            }>COinUp</Button>
-            <Button onClick={ () => expUp()
-            }>expUp</Button>
-            <Button onClick={ () => levelUp()
-            }>levelUp</Button>
+            <Navigation/>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header>
                     <Modal.Title>Great Job Training!!!</Modal.Title>
@@ -384,7 +383,10 @@ export const Home = () => {
                     <img src={trainInsaiyan} alt="training "/>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick = { () => {coinUp(); handleClose()}}>
+                    <Button variant="secondary" onClick={() => {
+                        coinUp();
+                        handleClose()
+                    }}>
                         COLLECT REWARDS
                     </Button>
                 </Modal.Footer>
@@ -443,13 +445,13 @@ export const Home = () => {
                                         kakashiAction={kakashiAction} korraAction={korraAction}
                                         name={name}/>
                         <div className='underCanvas'>
-                        <Button
-                            className='thirtySecondTimerButton mt-0'
-                            onClick={() => setThirtySeconds(30)}
-                        >{thirtySeconds}</Button>
-                        <DisplayAction gokuAction={gokuAction} narutoAction={narutoAction}
-                                       kakashiAction={kakashiAction} korraAction={korraAction}
-                                       name={name} />
+                            <Button
+                                className='thirtySecondTimerButton mt-0'
+                                onClick={() => setThirtySeconds(30)}
+                            >{thirtySeconds}</Button>
+                            <DisplayAction gokuAction={gokuAction} narutoAction={narutoAction}
+                                           kakashiAction={kakashiAction} korraAction={korraAction}
+                                           name={name}/>
                         </div>
                     </Col>
                     <Col lg={4} className='ms-0 ps-0'>
@@ -481,6 +483,7 @@ export const Home = () => {
                                              } else if (seconds === 31) {
                                                  setThirtySeconds(30)
                                                  expUp()
+                                                 levelUp()
                                              } else if (seconds <= 60) {
                                                  if (name === names.kakashi) {
                                                      setKakashiAction(moves.neckStretch)
@@ -492,8 +495,9 @@ export const Home = () => {
                                                      setNarutoAction(moves.touchToes)
                                                  }
                                              } else if (seconds === 61) {
-                                                 return setThirtySeconds(30)
+                                                 setThirtySeconds(30)
                                                  expUp()
+                                                 levelUp()
                                              } else if (seconds <= 90) {
                                                  if (name === names.kakashi) {
                                                      setKakashiAction(moves.touchToes)
@@ -505,7 +509,9 @@ export const Home = () => {
                                                      setNarutoAction(moves.jumpingJack)
                                                  }
                                              } else if (seconds === 91) {
-                                                 return setThirtySeconds(30)
+                                                 setThirtySeconds(30)
+                                                 expUp()
+                                                 levelUp()
                                              } else if (seconds <= 120) {
                                                  if (name === names.kakashi) {
                                                      setKakashiAction(moves.sitUps)
@@ -517,7 +523,9 @@ export const Home = () => {
                                                      setNarutoAction(moves.upRock)
                                                  }
                                              } else if (seconds === 121) {
-                                                 return setThirtySeconds(30)
+                                                 setThirtySeconds(30)
+                                                 expUp()
+                                                 levelUp()
                                              } else if (seconds <= 150) {
                                                  if (name === names.kakashi) {
                                                      setKakashiAction(moves.pushUp)
@@ -529,7 +537,9 @@ export const Home = () => {
                                                      setNarutoAction(moves.footwork)
                                                  }
                                              } else if (seconds === 151) {
-                                                 return setThirtySeconds(30)
+                                                 setThirtySeconds(30)
+                                                 expUp()
+                                                 levelUp()
                                              } else if (seconds <= 180) {
                                                  if (name === names.kakashi) {
                                                      setKakashiAction(moves.jumpingJack)
@@ -541,7 +551,9 @@ export const Home = () => {
                                                      setNarutoAction(moves.freeze)
                                                  }
                                              } else if (seconds === 181) {
-                                                 return setThirtySeconds(30)
+                                                 setThirtySeconds(30)
+                                                 expUp()
+                                                 levelUp()
                                              } else if (seconds <= 210) {
                                                  if (name === names.kakashi) {
                                                      setKakashiAction(moves.coolDown)
@@ -553,7 +565,9 @@ export const Home = () => {
                                                      setNarutoAction(moves.coolDown)
                                                  }
                                              } else if (seconds === 211) {
-                                                 return setThirtySeconds(30)
+                                                 setThirtySeconds(30)
+                                                 expUp()
+                                                 levelUp()
                                              } else if (seconds <= 240) {
                                                  if (name === names.kakashi) {
                                                      setKakashiAction(moves.kick)
@@ -565,7 +579,9 @@ export const Home = () => {
                                                      setNarutoAction(moves.bikeCrunch)
                                                  }
                                              } else if (seconds === 241) {
-                                                 return setThirtySeconds(30)
+                                                 setThirtySeconds(30)
+                                                 expUp()
+                                                 levelUp()
                                              } else if (seconds <= 270) {
                                                  if (name === names.kakashi) {
                                                      setKakashiAction(moves.bicepCurl)
@@ -577,7 +593,9 @@ export const Home = () => {
                                                      setNarutoAction(moves.sitUps)
                                                  }
                                              } else if (seconds === 271) {
-                                                 return setThirtySeconds(30)
+                                                 setThirtySeconds(30)
+                                                 expUp()
+                                                 levelUp()
                                              } else if (seconds <= 300) {
                                                  if (name === names.kakashi) {
                                                      setKakashiAction(moves.squat)
@@ -589,7 +607,7 @@ export const Home = () => {
                                                      setNarutoAction(moves.pushUp)
                                                  }
                                              } else if (seconds === 301) {
-                                                 return setThirtySeconds(30)
+                                                 setThirtySeconds(30)
                                              } else if (seconds <= 330) {
                                                  if (name === names.kakashi) {
                                                      setKakashiAction(moves.coolDown)
@@ -601,7 +619,7 @@ export const Home = () => {
                                                      setNarutoAction(moves.bicepCurl)
                                                  }
                                              } else if (seconds === 331) {
-                                                 return setThirtySeconds(30)
+                                                 setThirtySeconds(30)
                                              } else if (seconds <= 360) {
                                                  if (name === names.kakashi) {
                                                      setKakashiAction(moves.sitUps)
@@ -899,6 +917,21 @@ export const Home = () => {
                                          }
                                      }}
                         />
+                        <div className='underCanvas'>
+                            {/*<div>{profile.profileAvatarUrl}</div>*/}
+                            {/*<Button*/}
+                            {/*    className='thirtySecondTimerButton mt-0'*/}
+                            {/*    onClick={() => setThirtySeconds(30)}*/}
+                            {/*>{thirtySeconds}</Button>*/}
+                            <ProfileInfo profile={profile} videoPlay={videoPlay} thirtySeconds={thirtySeconds}/>
+                            {/*<Button onClick={ () => coinUp()*/}
+                            {/*}>COinUp</Button>*/}
+                            {/*<Button onClick={ () => expUp()*/}
+                            {/*}>expUp</Button>*/}
+                            {/*<Button onClick={ () => levelUp()*/}
+                            {/*}>levelUp</Button>*/}
+
+                        </div>
                     </Col>
                 </Row>
             </Container>

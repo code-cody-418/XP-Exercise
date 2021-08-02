@@ -99,6 +99,17 @@ body {
     opacity: 85%;
 }
 
+.profileText {
+    color: white;
+    font-size: 2em;
+    opacity: .8;
+    margin-left: 1em;
+}
+
+.progressLevel {
+    width: 15em;
+}
+
 /*.textActionAnimation {*/
 /*    animation-duration: 15s;*/
 /*    animation-name: slidein;*/
