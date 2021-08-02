@@ -384,7 +384,7 @@ export const Home = () => {
                     <img src={trainInsaiyan} alt="training "/>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+                    <Button variant="secondary" onClick = { () => {coinUp(); handleClose()}}>
                         COLLECT REWARDS
                     </Button>
                 </Modal.Footer>
@@ -479,7 +479,8 @@ export const Home = () => {
                                                      setNarutoAction(moves.armStretch)
                                                  }
                                              } else if (seconds === 31) {
-                                                 return setThirtySeconds(30)
+                                                 setThirtySeconds(30)
+                                                 expUp()
                                              } else if (seconds <= 60) {
                                                  if (name === names.kakashi) {
                                                      setKakashiAction(moves.neckStretch)
@@ -492,6 +493,7 @@ export const Home = () => {
                                                  }
                                              } else if (seconds === 61) {
                                                  return setThirtySeconds(30)
+                                                 expUp()
                                              } else if (seconds <= 90) {
                                                  if (name === names.kakashi) {
                                                      setKakashiAction(moves.touchToes)

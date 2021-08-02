@@ -1,0 +1,1 @@
+INSERT INTO profile(profileId, profileActivationToken, profileAvatarUrl, profileCoins, profileEmail, profileExp, profileHash, profileLevel, profileUserName) VALUES (UUID_TO_BIN("258476bf-88d4-45d2-9128-a7b9a7c9c948"), null, "https://i.picsum.photos/id/68/50/50.jpg?hmac=9UQUeKEsIt9cgKiEaOkzQkbjWjc5Y73T7PIDiWqt8K4", 5, "legend@gmail.com", 100, "legend505", 4, "legend");
