@@ -18,6 +18,7 @@ import {fetchProfileByProfileId} from "../../store/profileSlice";
 import {useJwtToken} from "../shared/useJwtToken";
 import {httpConfig} from "../shared/utils/http-config";
 import {ProfileInfo} from "../shared/ProfileInfo";
+import {fetchAuth} from "../../store/authSlice";
 
 
 export const Home = () => {
@@ -302,10 +303,12 @@ export const Home = () => {
         if (authenticatedUser?.profileId) {
             dispatch(fetchProfileByProfileId(authenticatedUser.profileId));
         }
+        // dispatch(fetchAuth());
     }
 
     useEffect(sideEffects, [authenticatedUser, dispatch]);
 
+    const auth = useSelector(state => state.auth);
     const profile = useSelector(state => (
         state.profile
             ? state.profile
@@ -361,7 +364,6 @@ export const Home = () => {
 //_____________________________________________________________________________________________________________________
     return (
         <>
-            <Menu profile={profile} videoPlay={videoPlay} thirtySeconds={thirtySeconds}/>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header>
                     <Modal.Title>Great Job Training!!!</Modal.Title>
@@ -370,15 +372,27 @@ export const Home = () => {
                     <img src={trainInsaiyan} alt="training "/>
                 </Modal.Body>
                 <Modal.Footer>
+                    {auth ? (
                     <Button variant="secondary" onClick={() => {
                         coinUp();
                         handleClose()
                     }}>
                         COLLECT REWARDS
                     </Button>
+                    ) : (
+                        <Button variant="secondary" onClick={() => {
+                            handleClose()
+                        }}>
+                            Great Job!!!
+                        </Button>
+                    )
+                    }
                 </Modal.Footer>
             </Modal>
             <Container fluid={true}>
+                <Row>
+                    <Menu profile={profile} videoPlay={videoPlay} thirtySeconds={thirtySeconds}/>
+                </Row>
                 <Row>
                     <h1 className="trainerTitle text-center">Trainers</h1>
                 </Row>

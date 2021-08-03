@@ -110,29 +110,10 @@ body {
     width: 15em;
 }
 
-/*.textActionAnimation {*/
-/*    animation-duration: 15s;*/
-/*    animation-name: slidein;*/
-/*    animation-iteration-count: infinite;*/
-/*    color: white;*/
-/*    font-size: 3em;*/
-/*    opacity: 1;*/
-/*}*/
-
-/*@keyframes slidein {*/
-/*    from {*/
-/*        margin-left: 100%;*/
-/*        opacity: .8;*/
-/*    }*/
-
-/*    50% {*/
-/*    margin-left: 50%;*/
-/*        opacity: 1;*/
-/*}*/
-
-/*    to {*/
-/*        margin-left: 0%;*/
-/*        opacity: .8;*/
-
-/*    }*/
-/*}*/
+/*profileInfo styling*/
+.profileUserNameText {
+    font-family: roboto-slab, serif;
+    font-size: 1em !important;
+    font-weight: 700;
+    font-style: normal;
+}

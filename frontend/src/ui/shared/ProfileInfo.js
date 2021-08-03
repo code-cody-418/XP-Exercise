@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import twoCoins from "../../images/two-coins.png"
+import "../styles.css"
 
 
 // shows profile information on state change
@@ -43,7 +44,7 @@ export const ProfileInfo = ({profile, videoPlay, thirtySeconds}) => {
         return (
             <>
 
-                <button type="button" className="btn btn-dark position-relative">
+                <button type="button" className="btn btn-dark position-relative profileUserNameText">
                 <span>
                     <img src={profile.profileAvatarUrl} alt={"Profile Avatar"}/>
                 </span>
