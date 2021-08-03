@@ -283,6 +283,8 @@ export const Home = () => {
     useEffect(() => {
         if (thirtySeconds === -1) {
             setThirtySeconds(30)
+            expUp()
+            levelUp()
         } else if (videoPlay === true) {
             const intervalId = setInterval(() => {
                 setThirtySeconds(thirtySeconds => thirtySeconds - 1)
@@ -309,23 +311,6 @@ export const Home = () => {
             ? state.profile
             : null
     ));
-
-    // //shows profile information on state change
-    // // console.log("profile", profile.profileUserName)
-    // const ProfileInfo = ({profile}) => {
-    //     if (profile === null) {
-    //         return <></>
-    //     } else if (profile != null) {
-    //         return (
-    //         <>
-    //             <p className='text-white'>Username: {profile.profileUserName}</p>
-    //             <p className='text-white'>Coins: {profile.profileCoins}</p>
-    //             <p className='text-white'>Exp: {profile.profileExp}</p>
-    //             <p className='text-white'>Level: {profile.profileLevel}</p>
-    //         </>
-    //         )
-    //     }
-    // }
 
     //function to call api that adds a coin to profile
     const coinUp = () => {
@@ -357,7 +342,7 @@ export const Home = () => {
     const levelUp = () => {
         if (profile === null) {
         } else if (profile != null) {
-            if (profile.profileExp === 250) {
+            if ((profile.profileExp + '').indexOf('00') > -1 === true) {
                 httpConfig.put(`/apis/profile/levelUp/${profile.profileId}`, profile)
                     .then(reply => {
                             if (reply.status === 200) {
@@ -459,7 +444,11 @@ export const Home = () => {
                                      width={'100%'}
                                      height={'400px'}
                                      playing={videoPlay}
-                                     onEnded={handleShow}
+                                     onEnded={() => {
+                                         handleShow()
+                                         setVideoPlay(false)
+                                         setSeconds(0)
+                                     }}
                                      onPlay={() => setVideoPlay(true)}
                                      onPause={() => setVideoPlay(false)}
                             //extra callbacks for videoplayer
@@ -608,6 +597,8 @@ export const Home = () => {
                                                  }
                                              } else if (seconds === 301) {
                                                  setThirtySeconds(30)
+                                                 expUp()
+                                                 levelUp()
                                              } else if (seconds <= 330) {
                                                  if (name === names.kakashi) {
                                                      setKakashiAction(moves.coolDown)
@@ -620,6 +611,8 @@ export const Home = () => {
                                                  }
                                              } else if (seconds === 331) {
                                                  setThirtySeconds(30)
+                                                 expUp()
+                                                 levelUp()
                                              } else if (seconds <= 360) {
                                                  if (name === names.kakashi) {
                                                      setKakashiAction(moves.sitUps)
@@ -631,7 +624,9 @@ export const Home = () => {
                                                      setNarutoAction(moves.coolDown)
                                                  }
                                              } else if (seconds === 361) {
-                                                 return setThirtySeconds(30)
+                                                 setThirtySeconds(30)
+                                                 expUp()
+                                                 levelUp()
                                              } else if (seconds <= 390) {
                                                  if (name === names.kakashi) {
                                                      setKakashiAction(moves.pushUp)
@@ -643,7 +638,9 @@ export const Home = () => {
                                                      setNarutoAction(moves.jumpingJack)
                                                  }
                                              } else if (seconds === 391) {
-                                                 return setThirtySeconds(30)
+                                                 setThirtySeconds(30)
+                                                 expUp()
+                                                 levelUp()
                                              } else if (seconds <= 420) {
                                                  if (name === names.kakashi) {
                                                      setKakashiAction(moves.jumpingJack)
@@ -655,7 +652,9 @@ export const Home = () => {
                                                      setNarutoAction(moves.upRock)
                                                  }
                                              } else if (seconds === 421) {
-                                                 return setThirtySeconds(30)
+                                                 setThirtySeconds(30)
+                                                 expUp()
+                                                 levelUp()
                                              } else if (seconds <= 450) {
                                                  if (name === names.kakashi) {
                                                      setKakashiAction(moves.coolDown)
@@ -667,7 +666,9 @@ export const Home = () => {
                                                      setNarutoAction(moves.footwork)
                                                  }
                                              } else if (seconds === 451) {
-                                                 return setThirtySeconds(30)
+                                                 setThirtySeconds(30)
+                                                 expUp()
+                                                 levelUp()
                                              } else if (seconds <= 480) {
                                                  if (name === names.kakashi) {
                                                      setKakashiAction(moves.kick)
@@ -679,7 +680,9 @@ export const Home = () => {
                                                      setNarutoAction(moves.freeze)
                                                  }
                                              } else if (seconds === 481) {
-                                                 return setThirtySeconds(30)
+                                                 setThirtySeconds(30)
+                                                 expUp()
+                                                 levelUp()
                                              } else if (seconds <= 510) {
                                                  if (name === names.kakashi) {
                                                      setKakashiAction(moves.bicepCurl)
@@ -691,7 +694,9 @@ export const Home = () => {
                                                      setNarutoAction(moves.coolDown)
                                                  }
                                              } else if (seconds === 511) {
-                                                 return setThirtySeconds(30)
+                                                 setThirtySeconds(30)
+                                                 expUp()
+                                                 levelUp()
                                              } else if (seconds <= 540) {
                                                  if (name === names.kakashi) {
                                                      setKakashiAction(moves.squat)
@@ -703,7 +708,9 @@ export const Home = () => {
                                                      setNarutoAction(moves.bikeCrunch)
                                                  }
                                              } else if (seconds === 541) {
-                                                 return setThirtySeconds(30)
+                                                 setThirtySeconds(30)
+                                                 expUp()
+                                                 levelUp()
                                              } else if (seconds <= 570) {
                                                  if (name === names.kakashi) {
                                                      setKakashiAction(moves.coolDown)
@@ -715,7 +722,9 @@ export const Home = () => {
                                                      setNarutoAction(moves.sitUps)
                                                  }
                                              } else if (seconds === 571) {
-                                                 return setThirtySeconds(30)
+                                                 setThirtySeconds(30)
+                                                 expUp()
+                                                 levelUp()
                                              } else if (seconds <= 600) {
                                                  if (name === names.kakashi) {
                                                      setKakashiAction(moves.sitUps)
@@ -727,7 +736,9 @@ export const Home = () => {
                                                      setNarutoAction(moves.pushUp)
                                                  }
                                              } else if (seconds === 601) {
-                                                 return setThirtySeconds(30)
+                                                 setThirtySeconds(30)
+                                                 expUp()
+                                                 levelUp()
                                              } else if (seconds <= 630) {
                                                  if (name === names.kakashi) {
                                                      setKakashiAction(moves.pushUp)
@@ -739,7 +750,9 @@ export const Home = () => {
                                                      setNarutoAction(moves.bicepCurl)
                                                  }
                                              } else if (seconds === 631) {
-                                                 return setThirtySeconds(30)
+                                                 setThirtySeconds(30)
+                                                 expUp()
+                                                 levelUp()
                                              } else if (seconds <= 660) {
                                                  if (name === names.kakashi) {
                                                      setKakashiAction(moves.jumpingJack)
@@ -751,7 +764,9 @@ export const Home = () => {
                                                      setNarutoAction(moves.coolDown)
                                                  }
                                              } else if (seconds === 661) {
-                                                 return setThirtySeconds(30)
+                                                 setThirtySeconds(30)
+                                                 expUp()
+                                                 levelUp()
                                              } else if (seconds <= 690) {
                                                  if (name === names.kakashi) {
                                                      setKakashiAction(moves.coolDown)
@@ -763,7 +778,9 @@ export const Home = () => {
                                                      setNarutoAction(moves.jumpingJack)
                                                  }
                                              } else if (seconds === 691) {
-                                                 return setThirtySeconds(30)
+                                                 setThirtySeconds(30)
+                                                 expUp()
+                                                 levelUp()
                                              } else if (seconds <= 720) {
                                                  if (name === names.kakashi) {
                                                      setKakashiAction(moves.kick)
@@ -775,7 +792,9 @@ export const Home = () => {
                                                      setNarutoAction(moves.upRock)
                                                  }
                                              } else if (seconds === 721) {
-                                                 return setThirtySeconds(30)
+                                                 setThirtySeconds(30)
+                                                 expUp()
+                                                 levelUp()
                                              } else if (seconds <= 750) {
                                                  if (name === names.kakashi) {
                                                      setKakashiAction(moves.bicepCurl)
@@ -787,7 +806,9 @@ export const Home = () => {
                                                      setNarutoAction(moves.footwork)
                                                  }
                                              } else if (seconds === 751) {
-                                                 return setThirtySeconds(30)
+                                                 setThirtySeconds(30)
+                                                 expUp()
+                                                 levelUp()
                                              } else if (seconds <= 780) {
                                                  if (name === names.kakashi) {
                                                      setKakashiAction(moves.squat)
@@ -799,7 +820,9 @@ export const Home = () => {
                                                      setNarutoAction(moves.freeze)
                                                  }
                                              } else if (seconds === 781) {
-                                                 return setThirtySeconds(30)
+                                                 setThirtySeconds(30)
+                                                 expUp()
+                                                 levelUp()
                                              } else if (seconds <= 810) {
                                                  if (name === names.kakashi) {
                                                      setKakashiAction(moves.coolDown)
@@ -811,7 +834,9 @@ export const Home = () => {
                                                      setNarutoAction(moves.coolDown)
                                                  }
                                              } else if (seconds === 811) {
-                                                 return setThirtySeconds(30)
+                                                 setThirtySeconds(30)
+                                                 expUp()
+                                                 levelUp()
                                              } else if (seconds <= 840) {
                                                  if (name === names.kakashi) {
                                                      setKakashiAction(moves.sitUps)
@@ -823,7 +848,9 @@ export const Home = () => {
                                                      setNarutoAction(moves.bikeCrunch)
                                                  }
                                              } else if (seconds === 841) {
-                                                 return setThirtySeconds(30)
+                                                 setThirtySeconds(30)
+                                                 expUp()
+                                                 levelUp()
                                              } else if (seconds <= 870) {
                                                  if (name === names.kakashi) {
                                                      setKakashiAction(moves.pushUp)
@@ -835,7 +862,9 @@ export const Home = () => {
                                                      setNarutoAction(moves.sitUps)
                                                  }
                                              } else if (seconds === 871) {
-                                                 return setThirtySeconds(30)
+                                                 setThirtySeconds(30)
+                                                 expUp()
+                                                 levelUp()
                                              } else if (seconds <= 900) {
                                                  if (name === names.kakashi) {
                                                      setKakashiAction(moves.jumpingJack)
@@ -847,7 +876,9 @@ export const Home = () => {
                                                      setNarutoAction(moves.pushUp)
                                                  }
                                              } else if (seconds === 901) {
-                                                 return setThirtySeconds(30)
+                                                 setThirtySeconds(30)
+                                                 expUp()
+                                                 levelUp()
                                              } else if (seconds <= 930) {
                                                  if (name === names.kakashi) {
                                                      setKakashiAction(moves.coolDown)
@@ -859,7 +890,9 @@ export const Home = () => {
                                                      setNarutoAction(moves.bicepCurl)
                                                  }
                                              } else if (seconds === 931) {
-                                                 return setThirtySeconds(30)
+                                                 setThirtySeconds(30)
+                                                 expUp()
+                                                 levelUp()
                                              } else if (seconds <= 960) {
                                                  if (name === names.kakashi) {
                                                      setKakashiAction(moves.kick)
@@ -871,7 +904,9 @@ export const Home = () => {
                                                      setNarutoAction(moves.coolDown)
                                                  }
                                              } else if (seconds === 961) {
-                                                 return setThirtySeconds(30)
+                                                 setThirtySeconds(30)
+                                                 expUp()
+                                                 levelUp()
                                              } else if (seconds <= 990) {
                                                  if (name === names.kakashi) {
                                                      setKakashiAction(moves.bicepCurl)
@@ -883,7 +918,9 @@ export const Home = () => {
                                                      setNarutoAction(moves.jumpingJack)
                                                  }
                                              } else if (seconds === 991) {
-                                                 return setThirtySeconds(30)
+                                                 setThirtySeconds(30)
+                                                 expUp()
+                                                 levelUp()
                                              } else if (seconds <= 1010) {
                                                  if (name === names.kakashi) {
                                                      setKakashiAction(moves.squat)
@@ -895,7 +932,9 @@ export const Home = () => {
                                                      setNarutoAction(moves.upRock)
                                                  }
                                              } else if (seconds === 1011) {
-                                                 return setThirtySeconds(30)
+                                                 setThirtySeconds(30)
+                                                 expUp()
+                                                 levelUp()
                                              } else if (seconds <= 1030) {
                                                  if (name === names.kakashi) {
                                                      setKakashiAction(moves.coolDown)
@@ -907,7 +946,9 @@ export const Home = () => {
                                                      setNarutoAction(moves.footwork)
                                                  }
                                              } else if (seconds === 1031) {
-                                                 return setThirtySeconds(30)
+                                                 setThirtySeconds(30)
+                                                 expUp()
+                                                 levelUp()
                                              }
                                              //when video stops character turns idle
                                          } else if (autoWorkout === true && videoPlay === false) {
