@@ -1,12 +1,12 @@
 import React from "react";
-import {Navigation} from "../shared/Navigation";
+import {Menu} from "../shared/Menu";
 import {Footer} from "../shared/Footer";
 
 
 export const Profile = () => {
     return (
         <>
-            <Navigation />
+            <Menu />
             <h1>Player Profile</h1>
             <Footer />
         </>
