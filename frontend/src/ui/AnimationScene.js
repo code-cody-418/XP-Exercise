@@ -50,7 +50,7 @@ export default function AnimationScene({ name, kakashiAction, gokuAction, naruto
                         >
                         <planeBufferGeometry attach='geometry' args={[20, 90]}/>
                         {/*<shadowMaterial attach='material' opacity={0.3} />*/}
-                        <meshStandardMaterial attach='material' color={"blue"} />
+                        <meshStandardMaterial attach='material' color={"#add4e3"} />
                     </mesh>
                 </group>
             </Suspense>

@@ -1,7 +1,7 @@
 import React, {useEffect, useMemo, useState} from "react"
 import {Navigation} from "../shared/Navigation";
 import {Footer} from "../shared/Footer";
-import {Button, Col, Container, Row, Modal} from "react-bootstrap";
+import {Button, Col, Container, Row, Modal,} from "react-bootstrap";
 import goku from "../../images/goku-trainer.png"
 import naruto from "../../images/naruto.png"
 import kakashi from '../../images/kakashi-01.png'
@@ -18,6 +18,8 @@ import {fetchProfileByProfileId} from "../../store/profileSlice";
 import {useJwtToken} from "../shared/useJwtToken";
 import {httpConfig} from "../shared/utils/http-config";
 import {ProfileInfo} from "../shared/ProfileInfo";
+import {Menu} from "../shared/menu/Menu";
+
 
 
 export const Home = () => {
@@ -356,10 +358,29 @@ export const Home = () => {
         }
     }
 
+    //handles showing the menu
+    const [showMenu, setShowMenu] = useState(false);
+
+    const handleCloseMenu = () => setShowMenu(false);
+    const handleShowMenu = () => setShowMenu(true);
+
 //_____________________________________________________________________________________________________________________
     return (
         <>
             <Navigation/>
+            {/*<Button variant="primary" onClick={handleShowMenu}>*/}
+            {/*    Launch*/}
+            {/*</Button>*/}
+
+            {/*<Offcanvas show={showMenu} onHide={handleCloseMenu}>*/}
+            {/*    <Offcanvas.Header closeButton>*/}
+            {/*        <Offcanvas.Title>Offcanvas</Offcanvas.Title>*/}
+            {/*    </Offcanvas.Header>*/}
+            {/*    <Offcanvas.Body>*/}
+            {/*        Some text as placeholder. In real life you can have the elements you*/}
+            {/*        have chosen. Like, text, images, lists, etc.*/}
+            {/*    </Offcanvas.Body>*/}
+            {/*</Offcanvas>*/}
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header>
                     <Modal.Title>Great Job Training!!!</Modal.Title>
