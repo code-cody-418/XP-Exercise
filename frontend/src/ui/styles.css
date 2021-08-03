@@ -45,6 +45,20 @@ body {
     opacity: 85%;
 }
 
+.startWorkoutButton:hover {
+    color: black !important;
+    font-family: roboto-slab, serif;
+    font-weight: 700;
+    font-style: normal;
+    background-color: #add4e3 !important;
+    width: 7em;
+    height: 4em;
+    border: none !important;
+    box-shadow: 0 0 5px 3px #FFF,
+    0 0 9px 5px #add4e3,
+    0 0 12px 8px #add4e3;
+}
+
 .characterButton {
     color: black !important;
     font-family: roboto-slab, serif;
@@ -59,27 +73,10 @@ body {
     opacity: 85%;
 }
 
-.removeTop {
-    margin-top: -200px
-}
-
-/*.characterButton:hover {*/
-/*    color: black !important;*/
-/*    font-weight: bold !important;*/
-/*    background-color: #add4e3 !important;*/
-/*    width: 5.5em;*/
-/*    height: 4em;*/
-/*    border: none !important;*/
-/*    box-shadow: 0 0 5px 3px #FFF,*/
-/*    0 0 9px 5px #add4e3,*/
-/*    0 0 12px 8px #add4e3;*/
-/*}*/
-
 .underCanvas {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
-
 }
 
 .actionText {

@@ -1,6 +1,5 @@
-import React, {useEffect, useMemo, useState} from "react"
+import React, {useEffect, useState} from "react"
 import {Menu} from "../shared/Menu";
-import {Footer} from "../shared/Footer";
 import {Button, Col, Container, Row, Modal} from "react-bootstrap";
 import goku from "../../images/goku-trainer.png"
 import naruto from "../../images/naruto.png"
@@ -18,7 +17,6 @@ import {fetchProfileByProfileId} from "../../store/profileSlice";
 import {useJwtToken} from "../shared/useJwtToken";
 import {httpConfig} from "../shared/utils/http-config";
 import {ProfileInfo} from "../shared/ProfileInfo";
-import {fetchAuth} from "../../store/authSlice";
 
 
 export const Home = () => {
