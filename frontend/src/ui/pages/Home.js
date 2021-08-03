@@ -361,7 +361,7 @@ export const Home = () => {
 //_____________________________________________________________________________________________________________________
     return (
         <>
-            <Menu/>
+            <Menu profile={profile} videoPlay={videoPlay} thirtySeconds={thirtySeconds}/>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header>
                     <Modal.Title>Great Job Training!!!</Modal.Title>
@@ -961,19 +961,7 @@ export const Home = () => {
                                      }}
                         />
                         <div className='underCanvas'>
-                            {/*<div>{profile.profileAvatarUrl}</div>*/}
-                            {/*<Button*/}
-                            {/*    className='thirtySecondTimerButton mt-0'*/}
-                            {/*    onClick={() => setThirtySeconds(30)}*/}
-                            {/*>{thirtySeconds}</Button>*/}
                             <ProfileInfo profile={profile} videoPlay={videoPlay} thirtySeconds={thirtySeconds}/>
-                            {/*<Button onClick={ () => coinUp()*/}
-                            {/*}>COinUp</Button>*/}
-                            {/*<Button onClick={ () => expUp()*/}
-                            {/*}>expUp</Button>*/}
-                            {/*<Button onClick={ () => levelUp()*/}
-                            {/*}>levelUp</Button>*/}
-
                         </div>
                     </Col>
                 </Row>

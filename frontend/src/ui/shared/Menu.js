@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from "react"
 import {Container, Nav, Navbar} from "react-bootstrap";
 import biceps from "../../images/biceps.svg"
-import {SignInModal} from "./main-nav/sign-in/SigninModal";
+import {MenuModal} from "./main-nav/sign-in/MenuModal";
 import {fetchAuth} from "../../store/authSlice";
 import {useDispatch, useSelector} from "react-redux";
 
-export const Menu = () => {
+export const Menu = ({profile, videoPlay, thirtySeconds}) => {
     const auth = useSelector(state => state.auth);
     const dispatch = useDispatch();
     const effects = () => {
@@ -31,32 +31,7 @@ export const Menu = () => {
     };
     return (
         <>
-            {/*<Navbar bg="light" expand="lg">*/}
-            {/*    <Container>*/}
-
-            {/*        <Navbar.Brand href="">*/}
-            {/*            <img*/}
-            {/*                alt="biceps"*/}
-            {/*                src={biceps}*/}
-            {/*                width="30"*/}
-            {/*                height="30"*/}
-            {/*                className="d-inline-block align-top"*/}
-            {/*            />{' '}*/}
-            {/*            XP_Exercise*/}
-            {/*        </Navbar.Brand>*/}
-
-            {/*        <Navbar.Toggle aria-controls="basic-navbar-nav" />*/}
-            {/*        <Navbar.Collapse id="basic-navbar-nav">*/}
-            {/*            <Nav className="me-auto">*/}
-            {/*                /!*<Nav.Link href="">Sign-up</Nav.Link>*!/*/}
-            {/*                /!*<Nav.Link href="">Sign-in</Nav.Link>*!/*/}
-            {/*                <SignInModal show = {show} handleClose = {handleClose} handleShow = {handleShow}/>*/}
-            {/*            </Nav>*/}
-            {/*        </Navbar.Collapse>*/}
-            {/*    </Container>*/}
-            {/*</Navbar>*/}
-
-            <SignInModal show = {show} handleClose = {handleClose} handleShow = {handleShow}/>
+            <MenuModal show = {show} handleClose = {handleClose} handleShow = {handleShow} auth={auth} profile={profile} videoPlay={videoPlay} thirtySeconds={thirtySeconds}/>
 
         </>
     )
