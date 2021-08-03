@@ -12,20 +12,21 @@
     opacity: 1;
 }
 
+.menuBackground {
+    background-color: dimgrey;
+    /*background-image: url('../../../../images/backgroundMenu.png');*/
+
+}
+
 @keyframes slidein {
     from {
         margin-left: 80%;
-        opacity: .8;
+        /*opacity: .8;*/
     }
-
-    /*50% {*/
-    /*    margin-left: 50%;*/
-    /*    opacity: 1;*/
-    /*}*/
 
     to {
         margin-left: 0%;
-        opacity: .8;
+        /*opacity: .8;*/
 
     }
 }

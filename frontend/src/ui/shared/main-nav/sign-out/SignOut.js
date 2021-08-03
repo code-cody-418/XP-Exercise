@@ -21,7 +21,7 @@ export const SignOut = () => {
 	return(
 		<>
 			{/*<div className="sign-out-dropdown">*/}
-				<Button variant="outline-primary" onClick={signOut} size='sm' className='mx-2 star-button'>
+				<Button variant="outline-primary" onClick={signOut} size="lg" className='mx-2 star-button'>
 					Sign Out&nbsp;&nbsp;
 				</Button>
 			{/*</div>*/}

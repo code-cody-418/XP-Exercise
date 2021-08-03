@@ -35,6 +35,7 @@ export const Home = () => {
             return (
                 <>
                     <Col xl={2} className='ps-sm-5 ml-auto'>
+                        { videoPlay === false ? (
                         <Button
                             className='startWorkoutButton'
                             onClick={() => {
@@ -44,6 +45,18 @@ export const Home = () => {
                                 )
                             }}
                         >Start Workout</Button>
+                            ) : (
+                            <Button
+                                className='startWorkoutButton'
+                                onClick={() => {
+                                    setAutoWorkout(true)
+                                    return (
+                                        setVideoPlay(false)
+                                    )
+                                }}
+                            >Pause Workout</Button>
+                        )
+                        }
                         <Button
                             className='startWorkoutButton'
                             onClick={() => {
@@ -442,6 +455,7 @@ export const Home = () => {
                     <SelectCharacterButtons name={name} gokuAction={gokuAction} narutoAction={narutoAction}
                                             kakashiAction={kakashiAction} korraAction={korraAction}/>
                     <Col md={6} lg={4} className='canvasSize me-0 pe-0'>
+
                         <AnimationScene gokuAction={gokuAction} narutoAction={narutoAction}
                                         kakashiAction={kakashiAction} korraAction={korraAction}
                                         name={name}/>

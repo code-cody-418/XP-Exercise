@@ -75,13 +75,14 @@ body {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
+
 }
 
 .actionText {
     color: white;
     font-size: 2em;
-    opacity: .8;
-    margin-left: 1em;
+    opacity: 95%;
+    /*margin-left: 1em;*/
 }
 
 .thirtySecondTimerButton {
@@ -94,9 +95,9 @@ body {
     width: 3em;
     height: 1.5em;
     border: none !important;
-    margin-left: 1em;
+    /*margin-left: 1em;*/
     margin-top: 1em;
-    opacity: 85%;
+    opacity: 95%;
 }
 
 .profileText {

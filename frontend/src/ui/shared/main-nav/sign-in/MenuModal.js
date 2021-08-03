@@ -12,9 +12,7 @@ export const MenuModal = (props) => {
 
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
-                Menu
-            </Button>
+
 
             <Modal
                 show={show}
@@ -22,38 +20,54 @@ export const MenuModal = (props) => {
                 dialogClassName="menu-modal"
                 aria-labelledby="example-custom-modal-styling-title"
             >
-                <Modal.Header closeButton>
-                    <Modal.Title id="example-custom-modal-styling-title" className="menuTitleAnimation">
-                        Exp Ninja
-                    </Modal.Title>
-                </Modal.Header>
-                <Modal.Body className="show-grid">
+                {/*<Modal.Header className="menuBackground">*/}
+                {/*    <Modal.Title id="example-custom-modal-styling-title" className="menuTitleAnimation">*/}
+                {/*        Exp Ninja*/}
+                {/*    </Modal.Title>*/}
+                {/*</Modal.Header>*/}
+                <Modal.Body className="show-grid menuBackground border border-5 border-white rounded">
                     <Container>
-                        <Row>
-                            <Col md={4}>
-                                {auth ? (
-                                    <>
+                        <Row className="menuTitleAnimation text-white">
+                            <h2>Exp Ninja</h2>
+                        </Row>
+                        <Row className="align-items-center">
+
+                            {auth ? (
+                                <>
+                                    <Col >
                                         <ProfileInfo profile={profile} videoPlay={videoPlay}
                                                      thirtySeconds={thirtySeconds}/>
+                                    </Col>
+                                    <Col md={2}>
                                         <SignOut/>
-                                    </>
-                                ) : (
-                                    <SignInForm/>
-                                )
-                                }
-                            </Col>
+                                    </Col>
+                                    <Col md={2}>
+                                        <Button variant="secondary" size="lg" onClick={handleClose}>
+                                            Close Menu
+                                        </Button>
+                                    </Col>
+                                </>
+                            ) : (
+                                <>
+                                    <Col md={4}>
+                                        <SignInForm/>
+                                    </Col>
+                                    <Col md={2}>
+                                        <Button variant="secondary" size="lg" onClick={handleClose}>
+                                            Close Menu
+                                        </Button>
+                                    </Col>
+                                </>
+                            )
+                            }
                         </Row>
                     </Container>
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Close
-                    </Button>
-                    <Button variant="primary" onClick={handleClose}>
-                        Save Changes
-                    </Button>
-                </Modal.Footer>
+                {/*<Modal.Footer className="menuBackground">*/}
+                {/*    */}
+                {/*</Modal.Footer>*/}
             </Modal>
         </>
-    );
+    )
+        ;
 }
