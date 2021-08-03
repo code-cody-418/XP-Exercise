@@ -3,20 +3,9 @@ import twoCoins from "../../images/two-coins.png"
 
 
 // shows profile information on state change
-// console.log("profile", profile.profileUserName)
 export const ProfileInfo = ({profile, videoPlay, thirtySeconds}) => {
     const [progressBarExp, setProgressBarExp] = useState("75%")
 
-    const [oldExp, setOldExp] = useState(null)
-
-    // useEffect(() => {
-    //     if (profile === null) {
-    //     } else if (profile != null) {
-    //         setOldExp(profile.profileExp)
-    //     }
-    // }, [progressBarExp])
-
-    console.log("progressBarExp", progressBarExp)
 
     useEffect(() => {
         if (profile === null) {
@@ -65,13 +54,11 @@ export const ProfileInfo = ({profile, videoPlay, thirtySeconds}) => {
                 <p className='profileText'>
                     <img src={twoCoins} width={50} height={50}/>
                     {profile.profileCoins}</p>
-                {/*<p className='profileText'></p>*/}
                 <div className="progress progressLevel">
                     <div className="progress-bar progress-bar-striped progress-bar-animated"
                          style={{width: progressBarExp}}>{profile.profileExp} Exp Points
                     </div>
                 </div>
-                {/*<p className='profileText'>Level: </p>*/}
             </>
         )
     }
