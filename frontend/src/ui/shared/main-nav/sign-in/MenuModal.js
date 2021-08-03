@@ -12,26 +12,18 @@ export const MenuModal = (props) => {
 
     return (
         <>
-
-
             <Modal
                 show={show}
                 onHide={handleClose}
                 dialogClassName="menu-modal"
                 aria-labelledby="example-custom-modal-styling-title"
             >
-                {/*<Modal.Header className="menuBackground">*/}
-                {/*    <Modal.Title id="example-custom-modal-styling-title" className="menuTitleAnimation">*/}
-                {/*        Exp Ninja*/}
-                {/*    </Modal.Title>*/}
-                {/*</Modal.Header>*/}
                 <Modal.Body className="show-grid menuBackground border border-5 border-white rounded">
                     <Container>
-                        <Row className="menuTitleAnimation text-white">
-                            <h2>Exp Ninja</h2>
+                        <Row className="menuTitleAnimation text-white websiteName">
+                            <h2>EXP NINJA</h2>
                         </Row>
                         <Row className="align-items-center">
-
                             {auth ? (
                                 <>
                                     <Col >

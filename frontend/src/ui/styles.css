@@ -59,6 +59,10 @@ body {
     opacity: 85%;
 }
 
+.removeTop {
+    margin-top: -200px
+}
+
 /*.characterButton:hover {*/
 /*    color: black !important;*/
 /*    font-weight: bold !important;*/

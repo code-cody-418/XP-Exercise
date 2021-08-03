@@ -3,6 +3,7 @@ import {Button, Container, Nav, Navbar} from "react-bootstrap";
 import {MenuModal} from "./main-nav/sign-in/MenuModal";
 import {fetchAuth} from "../../store/authSlice";
 import {useDispatch, useSelector} from "react-redux";
+import "./main-nav/sign-in/menuStyle.css"
 
 export const Menu = ({profile, videoPlay, thirtySeconds}) => {
     const auth = useSelector(state => state.auth);
@@ -30,7 +31,7 @@ export const Menu = ({profile, videoPlay, thirtySeconds}) => {
     };
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
+            <Button className="menuButtonAnimation menuButton border-0" onClick={handleShow}>
                 Menu
             </Button>
             <MenuModal show = {show} handleClose = {handleClose} handleShow = {handleShow} auth={auth} profile={profile} videoPlay={videoPlay} thirtySeconds={thirtySeconds}/>

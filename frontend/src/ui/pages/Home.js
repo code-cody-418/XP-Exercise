@@ -7,7 +7,7 @@ import naruto from "../../images/naruto.png"
 import kakashi from '../../images/kakashi-01.png'
 import korra from '../../images/korra-trainer.png'
 import trainInsaiyan from '../../images/train-insaiyan.jpg'
-import ReactPlayer from "react-player";
+import ReactPlayer from "react-player/youtube";
 import "../styles.css"
 import AnimationScene from "../AnimationScene";
 import {moves} from "../../moves";
@@ -272,9 +272,9 @@ export const Home = () => {
 
     //array of youtube videos
     const youTubePlaylists = [
-        'https://www.youtube.com/watch?v=3ZHwkpyvDqE',
-        'https://www.youtube.com/watch?v=4zHK8pRl78o',
-        'https://www.youtube.com/watch?v=dY09rc_8-Rc'
+        'https://www.youtube.com/embed/3ZHwkpyvDqE',
+        'https://www.youtube.com/embed/4zHK8pRl78o',
+        'https://www.youtube.com/embed/dY09rc_8-Rc'
     ]
 
 
@@ -469,8 +469,9 @@ export const Home = () => {
                                            name={name}/>
                         </div>
                     </Col>
-                    <Col lg={4} className='ms-0 ps-0'>
+                    <Col lg={4} className='ms-0 ps-0 removeTop'>
                         <ReactPlayer url={youTubePlaylists}
+
                                      width={'100%'}
                                      height={'400px'}
                                      playing={videoPlay}
@@ -482,7 +483,7 @@ export const Home = () => {
                                      onPlay={() => setVideoPlay(true)}
                                      onPause={() => setVideoPlay(false)}
                             //extra callbacks for videoplayer
-                                     controls={true}
+                            //          controls={true}
                             // muted={true}
 
                             //this is logic that determines auto-workouts

@@ -12,12 +12,6 @@
     opacity: 1;
 }
 
-.menuBackground {
-    background-color: dimgrey;
-    /*background-image: url('../../../../images/backgroundMenu.png');*/
-
-}
-
 @keyframes slidein {
     from {
         margin-left: 80%;
@@ -29,4 +23,42 @@
         /*opacity: .8;*/
 
     }
+}
+
+.menuButtonAnimation {
+    animation-name: menuButtonAnimationColors;
+    animation-duration: 30s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes menuButtonAnimationColors {
+    0% {
+        background-color: #add4e3;
+        color: white;
+    }
+    50% {
+        background-color: white;
+        color: #add4e3;
+    }
+    100% {
+        background-color: #add4e3;
+        color: white;
+    }
+}
+
+.menuButton {
+    font-family: roboto-slab, serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.menuBackground {
+    background-color: dimgrey;
+}
+
+.websiteName {
+    font-family: roboto-slab, serif;
+    font-weight: 700;
+    font-style: normal;
 }
