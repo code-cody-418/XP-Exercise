@@ -4,6 +4,7 @@ import {Modal} from "react-bootstrap";
 import {SignInForm} from "./SignInForm";
 import "./menuStyle.css"
 import {ProfileInfo} from "../../ProfileInfo";
+import {SignOut} from "../sign-out/SignOut";
 
 
 export const MenuModal = (props) => {
@@ -31,7 +32,11 @@ export const MenuModal = (props) => {
                         <Row>
                             <Col md={4}>
                                 {auth ? (
-                                    <ProfileInfo profile={profile} videoPlay={videoPlay} thirtySeconds={thirtySeconds}/>
+                                    <>
+                                        <ProfileInfo profile={profile} videoPlay={videoPlay}
+                                                     thirtySeconds={thirtySeconds}/>
+                                        <SignOut/>
+                                    </>
                                 ) : (
                                     <SignInForm/>
                                 )

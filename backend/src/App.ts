@@ -11,6 +11,7 @@ const session = require('express-session')
 const MemoryStore = require('memorystore')(session);
 import passport = require('passport');
 import {passportStrategy} from "./apis/sign-in/sign-in.controller";
+import {signOutRoute} from "./apis/sign-out/sign-out.route";
 
 
 
@@ -61,6 +62,7 @@ export class App {
         this.app.use('/apis', indexRoute)
         this.app.use('/apis/sign-in', signinRoute)
         this.app.use('/apis/sign-up', signupRoute)
+        this.app.use('/apis/sign-out', signOutRoute)
         this.app.use('/apis/profile', profileRoute)
     }
 
