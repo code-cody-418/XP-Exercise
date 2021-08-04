@@ -15,15 +15,15 @@ services:
     volumes:
       - ./backend/src:/home/node/app/src
       - ./backend/tsconfig.json:/home/node/app/tsconfig.json
+  app:
+    build: frontend
+    depends_on:
+      - node
+    #    For deploying to server use ports: - 80:80
+    ports:
+      - 80:80
   sql:
     build: ./sql
-    # Make sure to update this to match your project.
-#    deploy:
-#      resources:
-#        limits:
-#          memory: 4096M
-#        reservations:
-#          memory: 128M
     env_file:
       - .env
     command: --default-authentication-plugin=mysql_native_password

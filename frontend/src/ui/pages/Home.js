@@ -492,6 +492,14 @@ export const Home = () => {
                                      }}
                                      onPlay={() => setVideoPlay(true)}
                                      onPause={() => setVideoPlay(false)}
+                                     config={{
+                                         youtube: {
+                                             playerVars: { showinfo: 1,
+                                                 origin: "http://143.244.183.237/",
+                                                 enablejsapi: 1
+                                             }
+                                         }
+                                     }}
                             //extra callbacks for videoplayer
                             //          controls={true}
                             // muted={true}

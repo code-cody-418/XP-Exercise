@@ -7,6 +7,7 @@ import Goku01 from "../Goku01";
 import Naruto from "../Naruto";
 import Kakashi from "../Kakashi";
 import Korra from "../Korra";
+import backgroundHDR from "./black-hdri.HDR"
 
 
 
@@ -36,7 +37,7 @@ export default function AnimationScene({ name, kakashiAction, gokuAction, naruto
             <pointLight position={[-10, 0, -20]} intensity={0.5}/>
             <pointLight position={[0, 0, 0]} intensity={1.5}/>
             <Suspense fallback={null}>
-                <Environment files={'black-hdri.hdr'} background={true}/>
+                <Environment files={backgroundHDR} background={true}/>
                 <group>
                     <Goku01 gokuAction={gokuAction} name={name} />
                     <Naruto narutoAction={narutoAction} name={name} />
