@@ -1,25 +1,27 @@
 .menu-modal {
     width: 90vw !important;
-    max-width: 90vw !important
+    max-width: 90vw !important;
+    /*height: 50vh !important;*/
+    /*max-height: 50vh;*/
 }
 
 .menuTitleAnimation {
     animation-duration: 15s;
     animation-name: slidein;
     /*animation-iteration-count: infinite;*/
-    color: black;
-    font-size: 3em;
+    color: white;
+    font-size: 5em;
     opacity: 1;
 }
 
 @keyframes slidein {
     from {
-        margin-left: 80%;
+        margin-left: 70%;
         /*opacity: .8;*/
     }
 
     to {
-        margin-left: 0%;
+        margin-right: 50%;
         /*opacity: .8;*/
 
     }
@@ -54,7 +56,12 @@
 }
 
 .menuBackground {
-    background-color: dimgrey;
+    /*background-color: dimgrey;*/
+    background: url("../../../../images/menuBackground.jpg") no-repeat;
+    /*-webkit-background-size: cover;*/
+    /*-moz-background-size: cover;*/
+    /*-o-background-size: cover;*/
+    background-size: 100vw 100vh;
 }
 
 .websiteName {

@@ -20,8 +20,8 @@ export const MenuModal = (props) => {
             >
                 <Modal.Body className="show-grid menuBackground border border-5 border-white rounded">
                     <Container>
-                        <Row className="menuTitleAnimation text-white websiteName">
-                            <h2>EXP NINJA</h2>
+                        <Row className="websiteName">
+                            <h2 className="menuTitleAnimation" >EXP NINJA</h2>
                         </Row>
                         <Row className="align-items-center">
                             {auth ? (
