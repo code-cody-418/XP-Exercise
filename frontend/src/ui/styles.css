@@ -112,6 +112,17 @@ body {
     width: 15em;
 }
 
+.progressText {
+    color: black !important;
+    font-weight: bold;
+}
+
+.coinText {
+    color: white;
+    font-weight: bold;
+    font-size: 2em;
+}
+
 /*profileInfo styling*/
 .profileUserNameText {
     font-family: roboto-slab, serif;

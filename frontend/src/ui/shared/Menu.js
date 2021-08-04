@@ -31,7 +31,7 @@ export const Menu = ({profile, videoPlay, thirtySeconds}) => {
     };
     return (
         <>
-            <Button className="menuButtonAnimation menuButton border-0" onClick={handleShow}>
+            <Button className="menuButtonAnimation menuButton border-0 text-lg-start" onClick={handleShow}>
                 Menu
             </Button>
             <MenuModal show = {show} handleClose = {handleClose} handleShow = {handleShow} auth={auth} profile={profile} videoPlay={videoPlay} thirtySeconds={thirtySeconds}/>

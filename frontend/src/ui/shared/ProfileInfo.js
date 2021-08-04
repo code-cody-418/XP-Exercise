@@ -4,8 +4,8 @@ import "../styles.css"
 
 
 // shows profile information on state change
-export const ProfileInfo = ({profile, videoPlay, thirtySeconds}) => {
-    const [progressBarExp, setProgressBarExp] = useState("75%")
+export const ProfileInfo = ({profile, videoPlay, thirtySeconds, auth}) => {
+    const [progressBarExp, setProgressBarExp] = useState("0%")
 
 
     useEffect(() => {
@@ -36,7 +36,7 @@ export const ProfileInfo = ({profile, videoPlay, thirtySeconds}) => {
             }
 
         }
-    }, [videoPlay, thirtySeconds])
+    }, [videoPlay, thirtySeconds, auth])
 
     if (profile === null) {
         return <></>
@@ -52,14 +52,15 @@ export const ProfileInfo = ({profile, videoPlay, thirtySeconds}) => {
                     <span className='position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark'>
                   {profile.profileLevel}
                 </span></button>
-                <p className='profileText'>
-                    <img src={twoCoins} width={50} height={50}/>
-                    {profile.profileCoins}</p>
-                <div className="progress progressLevel">
-                    <div className="progress-bar progress-bar-striped progress-bar-animated"
+                <div className="progress progressLevel ms-1">
+                    <div className="progress-bar progress-bar-striped progress-bar-animated  progressText"
                          style={{width: progressBarExp}}>{profile.profileExp} Exp Points
                     </div>
                 </div>
+                <p className='coinText'>
+                    <img src={twoCoins} width={50} height={50}/>
+                    {profile.profileCoins}</p>
+
             </>
         )
     }

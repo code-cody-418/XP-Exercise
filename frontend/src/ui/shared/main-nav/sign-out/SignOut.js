@@ -3,6 +3,7 @@ import {useDispatch} from 'react-redux'
 import {Button} from "react-bootstrap"
 import {httpConfig} from "../../utils/http-config";
 import {getAuth} from "../../../../store/authSlice";
+import "../sign-in/menuStyle.css"
 
 export const SignOut = () => {
 	const dispatch = useDispatch()
@@ -20,11 +21,9 @@ export const SignOut = () => {
 
 	return(
 		<>
-			{/*<div className="sign-out-dropdown">*/}
-				<Button variant="outline-primary" onClick={signOut} size="lg" className='mx-2 star-button'>
-					Sign Out&nbsp;&nbsp;
+				<Button onClick={signOut} size="lg" className='star-button signInOutButton border-0'>
+					Sign Out Profile&nbsp;&nbsp;
 				</Button>
-			{/*</div>*/}
 		</>
 	)
 }

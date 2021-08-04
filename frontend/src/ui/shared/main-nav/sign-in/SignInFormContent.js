@@ -1,6 +1,8 @@
 // import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {FormDebugger} from "../../FormDebugger";
 import React from "react";
+import "./menuStyle.css"
+import {Button} from "react-bootstrap";
 
 export const SignInFormContent = (props) => {
 	const {
@@ -20,7 +22,7 @@ export const SignInFormContent = (props) => {
 			<form onSubmit={handleSubmit}>
 				{/*controlId must match what is passed to the initialValues prop*/}
 				<div className="form-group">
-					<label htmlFor="profileEmail">Email Address</label>
+					<label htmlFor="profileEmail" className="text-white font-weight-bold">Email Address</label>
 					<div className="input-group">
 						{/*<div className="input-group-prepend">*/}
 						{/*	<div className="input-group-text">*/}
@@ -49,7 +51,7 @@ export const SignInFormContent = (props) => {
 				</div>
 				{/*controlId must match what is defined by the initialValues object*/}
 				<div className="form-group">
-					<label htmlFor="profilePassword">Password</label>
+					<label htmlFor="profilePassword" className="text-white font-weight-bold">Password</label>
 					<div className="input-group">
 						{/*<div className="input-group-prepend">*/}
 						{/*	<div className="input-group-text">*/}
@@ -72,13 +74,14 @@ export const SignInFormContent = (props) => {
 				</div>
 
 				<div className="form-group">
-					<button className="btn btn-primary mb-2" type="submit">Submit</button>
-					<button
-						className="btn btn-danger mb-2"
+					<Button size="lg" className="signInOutButton border-0 me-3" type="submit">Sign-In Profile</Button>
+					<Button
+						size="lg"
+						className="resetFormButton border-0"
 						onClick={handleReset}
 						disabled={!dirty || isSubmitting}
 					>Reset
-					</button>
+					</Button>
 				</div>
 				{/*<FormDebugger {...props} />*/}
 			</form>

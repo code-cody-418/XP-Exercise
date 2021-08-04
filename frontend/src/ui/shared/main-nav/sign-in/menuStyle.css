@@ -10,18 +10,20 @@
     animation-name: slidein;
     /*animation-iteration-count: infinite;*/
     color: white;
-    font-size: 5em;
+    font-size: 3rem !important;
     opacity: 1;
 }
 
+
+
 @keyframes slidein {
     from {
-        margin-left: 70%;
+        margin-left: 30%;
         /*opacity: .8;*/
     }
 
     to {
-        margin-right: 50%;
+        margin-right: 0%;
         /*opacity: .8;*/
 
     }
@@ -36,15 +38,15 @@
 
 @keyframes menuButtonAnimationColors {
     0% {
-        background-color: #add4e3;
+        background-color: black;
         color: white;
     }
     50% {
         background-color: white;
-        color: #add4e3;
+        color: black;
     }
     100% {
-        background-color: #add4e3;
+        background-color: black;
         color: white;
     }
 }
@@ -53,7 +55,34 @@
     font-family: roboto-slab, serif;
     font-weight: 700;
     font-style: normal;
+    /*align-items: flex-start;*/
 }
+
+.inMenuButton {
+    font-family: roboto-slab, serif;
+    font-weight: 700;
+    font-style: normal;
+    background-color: darkslategrey !important;
+    color: white !important;
+}
+
+.signInOutButton {
+    font-family: roboto-slab, serif;
+    font-weight: 700;
+    font-style: normal;
+    background-color: #add4e3 !important;
+    color: black !important;
+}
+
+.resetFormButton {
+    font-family: roboto-slab, serif;
+    font-weight: 700;
+    font-style: normal;
+    background-color: teal !important;
+    color: black !important;
+}
+
+
 
 .menuBackground {
     /*background-color: dimgrey;*/

@@ -20,21 +20,21 @@ export const MenuModal = (props) => {
             >
                 <Modal.Body className="show-grid menuBackground border border-5 border-white rounded">
                     <Container>
-                        <Row className="websiteName">
-                            <h2 className="menuTitleAnimation" >EXP NINJA</h2>
+                        <Row className="websiteName align-items-center text-xl-center">
+                            <h2 className="menuTitleAnimation " >EXP NINJA</h2>
                         </Row>
-                        <Row className="align-items-center">
+                        <Row className="justify-content-between">
                             {auth ? (
                                 <>
-                                    <Col >
+                                    <Col>
                                         <ProfileInfo profile={profile} videoPlay={videoPlay}
                                                      thirtySeconds={thirtySeconds}/>
-                                    </Col>
-                                    <Col md={2}>
+
+
                                         <SignOut/>
                                     </Col>
-                                    <Col md={2}>
-                                        <Button variant="secondary" size="lg" onClick={handleClose}>
+                                    <Col md={2} className="align-self-end">
+                                        <Button className="inMenuButton border-0" size="lg" onClick={handleClose}>
                                             Close Menu
                                         </Button>
                                     </Col>
@@ -44,8 +44,9 @@ export const MenuModal = (props) => {
                                     <Col md={4}>
                                         <SignInForm/>
                                     </Col>
-                                    <Col md={2}>
-                                        <Button variant="secondary" size="lg" onClick={handleClose}>
+                                    {/*<Col md={6}></Col>*/}
+                                    <Col md={2} className='align-self-end'>
+                                        <Button className="inMenuButton border-0" size="lg" onClick={handleClose}>
                                             Close Menu
                                         </Button>
                                     </Col>

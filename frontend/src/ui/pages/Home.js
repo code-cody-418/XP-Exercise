@@ -988,7 +988,7 @@ export const Home = () => {
                                      }}
                         />
                         <div className='underCanvas'>
-                            <ProfileInfo profile={profile} videoPlay={videoPlay} thirtySeconds={thirtySeconds}/>
+                            <ProfileInfo profile={profile} videoPlay={videoPlay} thirtySeconds={thirtySeconds} auth={auth}/>
                         </div>
                     </Col>
                 </Row>
