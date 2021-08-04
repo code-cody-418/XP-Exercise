@@ -48,6 +48,10 @@ export const Home = () => {
                                 className='startWorkoutButton'
                                 onClick={() => {
                                     setAutoWorkout(true)
+                                    setKakashiAction(moves.idle)
+                                    setNarutoAction(moves.idle)
+                                    setKorraAction(moves.idle)
+                                    setGokuAction(moves.idle)
                                     return (
                                         setVideoPlay(false)
                                     )
