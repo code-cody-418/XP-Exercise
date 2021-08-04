@@ -31,6 +31,8 @@ export const DisplayAction = ({name, narutoAction, korraAction, gokuAction, kaka
                 return setTextAnimation(moves.capitalBicepCurl)
             } else if (kakashiAction === moves.coolDown) {
                 return setTextAnimation(moves.capitalCoolDown)
+            } else if (kakashiAction === moves.celebration) {
+                return setTextAnimation("Finished!!!")
             }
         } else if (name === names.korra) {
             if (korraAction === moves.idle) {
@@ -53,6 +55,8 @@ export const DisplayAction = ({name, narutoAction, korraAction, gokuAction, kaka
                 return setTextAnimation(moves.capitalBicepCurl)
             }  else if (korraAction === moves.coolDown) {
                 return setTextAnimation(moves.capitalCoolDown)
+            }  else if (korraAction === moves.celebration) {
+                return setTextAnimation("Finished!!!")
             }
         } else if (name === names.goku) {
             if (gokuAction === moves.idle) {
@@ -79,6 +83,8 @@ export const DisplayAction = ({name, narutoAction, korraAction, gokuAction, kaka
                 setTextAnimation(moves.capitalPushUp)
             }  else if (gokuAction === moves.coolDown) {
                 setTextAnimation(moves.capitalCoolDown)
+            } else if (gokuAction === moves.celebration) {
+                setTextAnimation("Finished!!!")
             }
         } else if (name === names.naruto) {
             if (narutoAction === moves.idle) {
@@ -105,6 +111,8 @@ export const DisplayAction = ({name, narutoAction, korraAction, gokuAction, kaka
                 return setTextAnimation(moves.capitalBicepCurl)
             } else if (narutoAction === moves.coolDown) {
                 return setTextAnimation(moves.capitalCoolDown)
+            } else if (narutoAction === moves.celebration) {
+                return setTextAnimation("Finished!!!")
             }
         }
     }, [kakashiAction, korraAction, narutoAction, gokuAction])

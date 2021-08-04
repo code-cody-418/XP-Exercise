@@ -33,17 +33,17 @@ export const Home = () => {
             return (
                 <>
                     <Col xl={2} className='ps-sm-5 ml-auto'>
-                        { videoPlay === false ? (
-                        <Button
-                            className='startWorkoutButton'
-                            onClick={() => {
-                                setAutoWorkout(true)
-                                return (
-                                    setVideoPlay(true)
-                                )
-                            }}
-                        >Start Workout</Button>
-                            ) : (
+                        {videoPlay === false ? (
+                            <Button
+                                className='startWorkoutButton'
+                                onClick={() => {
+                                    setAutoWorkout(true)
+                                    return (
+                                        setVideoPlay(true)
+                                    )
+                                }}
+                            >Start Workout</Button>
+                        ) : (
                             <Button
                                 className='startWorkoutButton'
                                 onClick={() => {
@@ -264,6 +264,9 @@ export const Home = () => {
     const handleClose = () => {
         setShow(false);
         setKakashiAction(moves.celebration)
+        setNarutoAction(moves.celebration)
+        setKorraAction(moves.celebration)
+        setGokuAction(moves.celebration)
     }
     const handleShow = () => setShow(true);
 
@@ -332,28 +335,34 @@ export const Home = () => {
 
     //function to call api that adds a coin to profile
     const coinUp = () => {
-        httpConfig.put(`/apis/profile/coinUp/${profile.profileId}`, profile)
-            .then(reply => {
-                    if (reply.status === 200) {
+        if (profile === null) {
+        } else if (profile != null) {
+            httpConfig.put(`/apis/profile/coinUp/${profile.profileId}`, profile)
+                .then(reply => {
+                        if (reply.status === 200) {
+                            console.log(reply);
+                            dispatch(fetchProfileByProfileId(profile.profileId));
+                        }
                         console.log(reply);
-                        dispatch(fetchProfileByProfileId(profile.profileId));
                     }
-                    console.log(reply);
-                }
-            );
+                );
+        }
     }
 
     //function to call api that adds a Exp to profile
     const expUp = () => {
-        httpConfig.put(`/apis/profile/expUp/${profile.profileId}`, profile)
-            .then(reply => {
-                    if (reply.status === 200) {
+        if (profile === null) {
+        } else if (profile != null) {
+            httpConfig.put(`/apis/profile/expUp/${profile.profileId}`, profile)
+                .then(reply => {
+                        if (reply.status === 200) {
+                            console.log(reply);
+                            dispatch(fetchProfileByProfileId(profile.profileId));
+                        }
                         console.log(reply);
-                        dispatch(fetchProfileByProfileId(profile.profileId));
                     }
-                    console.log(reply);
-                }
-            );
+                );
+        }
     }
 
     //function to call api that adds a Exp to profile
@@ -375,7 +384,6 @@ export const Home = () => {
     }
 
 
-
 //_____________________________________________________________________________________________________________________
     return (
         <>
@@ -388,12 +396,12 @@ export const Home = () => {
                 </Modal.Body>
                 <Modal.Footer>
                     {auth ? (
-                    <Button variant="secondary" onClick={() => {
-                        coinUp();
-                        handleClose()
-                    }}>
-                        COLLECT REWARDS
-                    </Button>
+                        <Button variant="secondary" onClick={() => {
+                            coinUp();
+                            handleClose()
+                        }}>
+                            COLLECT REWARDS
+                        </Button>
                     ) : (
                         <Button variant="secondary" onClick={() => {
                             handleClose()
@@ -992,7 +1000,8 @@ export const Home = () => {
                                      }}
                         />
                         <div className='underCanvas'>
-                            <ProfileInfo profile={profile} videoPlay={videoPlay} thirtySeconds={thirtySeconds} auth={auth}/>
+                            <ProfileInfo profile={profile} videoPlay={videoPlay} thirtySeconds={thirtySeconds}
+                                         auth={auth}/>
                         </div>
                     </Col>
                 </Row>
