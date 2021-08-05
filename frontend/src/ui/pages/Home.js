@@ -6,7 +6,7 @@ import naruto from "../../images/naruto.png"
 import kakashi from '../../images/kakashi-01.png'
 import korra from '../../images/korra-trainer.png'
 import trainInsaiyan from '../../images/train-insaiyan.jpg'
-import ReactPlayer from "react-player/youtube";
+import ReactPlayer from "react-player";
 import "../styles.css"
 import AnimationScene from "../AnimationScene";
 import {moves} from "../../moves";
@@ -17,6 +17,7 @@ import {fetchProfileByProfileId} from "../../store/profileSlice";
 import {useJwtToken} from "../shared/useJwtToken";
 import {httpConfig} from "../shared/utils/http-config";
 import {ProfileInfo} from "../shared/ProfileInfo";
+import animeMontage from "./Anime Training Montage AMV.mp4"
 
 
 export const Home = () => {
@@ -275,7 +276,7 @@ export const Home = () => {
     const [autoWorkout, setAutoWorkout] = useState(true)
 
 
-    //array of youtube videos
+    // array of youtube videos
     const youTubePlaylists = [
         'https://www.youtube.com/embed/3ZHwkpyvDqE',
         'https://www.youtube.com/embed/4zHK8pRl78o',
@@ -480,7 +481,7 @@ export const Home = () => {
                         </div>
                     </Col>
                     <Col lg={4} className='ms-0 ps-0 removeTop'>
-                        <ReactPlayer url={youTubePlaylists}
+                        <ReactPlayer url={animeMontage}
 
                                      width={'100%'}
                                      height={'400px'}
@@ -492,14 +493,15 @@ export const Home = () => {
                                      }}
                                      onPlay={() => setVideoPlay(true)}
                                      onPause={() => setVideoPlay(false)}
-                                     config={{
-                                         youtube: {
-                                             playerVars: { showinfo: 1,
-                                                 origin: "http://143.244.183.237/",
-                                                 enablejsapi: 1
-                                             }
-                                         }
-                                     }}
+                                     // config={{
+                                     //     youtube: {
+                                     //         playerVars: { showinfo: 1,
+                                     //             origin: 'http://143.244.183.237/',
+                                     //             // origin: 'http://localhost:3000/',
+                                     //             enablejsapi: 1
+                                     //         }
+                                     //     }
+                                     // }}
                             //extra callbacks for videoplayer
                             //          controls={true}
                             // muted={true}

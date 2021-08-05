@@ -114,4 +114,4 @@ export default function Kakashi(props) {
   )
 }
 
-useGLTF.preload('/kakashi.glb')
+useGLTF.preload(kakashiGLB)

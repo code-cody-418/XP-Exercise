@@ -9,7 +9,7 @@ create TABLE profile
 (
     profileId BINARY(16) NOT NULL,
     profileActivationToken CHAR(32),
-    profileAvatarUrl VARCHAR(255),
+    profileAvatarUrl VARCHAR(1000),
     profileCoins INT,
     profileEmail VARCHAR(128) NOT NULL,
     profileExp INT,
