@@ -503,7 +503,7 @@ export const Home = () => {
                                      //     }
                                      // }}
                             //extra callbacks for videoplayer
-                            //          controls={true}
+                                     controls={true}
                             // muted={true}
 
                             //this is logic that determines auto-workouts
