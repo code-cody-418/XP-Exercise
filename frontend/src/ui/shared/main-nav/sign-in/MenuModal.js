@@ -21,7 +21,14 @@ export const MenuModal = (props) => {
                 <Modal.Body className="show-grid menuBackground border border-5 border-white rounded">
                     <Container>
                         <Row className="websiteName align-items-center text-xl-center">
-                            <h2 className="menuTitleAnimation " >EXP NINJA</h2>
+                            <Col>
+                                <h2 className="menuTitleAnimation ">EXP NINJA</h2>
+                            </Col>
+                            <Col md={2} className="align-self-end">
+                                <Button className="inMenuButton border-0" size="lg" onClick={handleClose}>
+                                    Close Menu
+                                </Button>
+                            </Col>
                         </Row>
                         <Row className="justify-content-between">
                             {auth ? (
@@ -29,14 +36,7 @@ export const MenuModal = (props) => {
                                     <Col>
                                         <ProfileInfo profile={profile} videoPlay={videoPlay}
                                                      thirtySeconds={thirtySeconds}/>
-
-
                                         <SignOut/>
-                                    </Col>
-                                    <Col md={2} className="align-self-end">
-                                        <Button className="inMenuButton border-0" size="lg" onClick={handleClose}>
-                                            Close Menu
-                                        </Button>
                                     </Col>
                                 </>
                             ) : (
@@ -44,21 +44,24 @@ export const MenuModal = (props) => {
                                     <Col md={4}>
                                         <SignInForm/>
                                     </Col>
-                                    {/*<Col md={6}></Col>*/}
-                                    <Col md={2} className='align-self-end'>
-                                        <Button className="inMenuButton border-0" size="lg" onClick={handleClose}>
-                                            Close Menu
-                                        </Button>
-                                    </Col>
                                 </>
                             )
                             }
                         </Row>
+                        <Row className="justify-content-end">
+                            <Col md={2} className="align-self-start">
+                                <Button className="inMenuButton border-0" size="lg" href='/' >
+                                    Home
+                                </Button>
+                            </Col>
+                            <Col md={2} className="align-self-end">
+                                <Button className="inMenuButton border-0" size="lg" href='/credit' >
+                                    Credits
+                                </Button>
+                            </Col>
+                        </Row>
                     </Container>
                 </Modal.Body>
-                {/*<Modal.Footer className="menuBackground">*/}
-                {/*    */}
-                {/*</Modal.Footer>*/}
             </Modal>
         </>
     )
