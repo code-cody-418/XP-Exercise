@@ -26,7 +26,7 @@ export const Credit = () => {
                         <div className="card-body">
                             <h2 className="card-title">Kakashi 3-d model</h2>
                             <p className="card-text"> By gabrieel22 on
-                            <a href="https://sketchfab.com/3d-models/hatake-kakashi-d6958798fee34e68a57a1d0c05ba0ef3" target="_blank"> Sketchfab</a>
+                            <a rel="noreferrer" href="https://sketchfab.com/3d-models/hatake-kakashi-d6958798fee34e68a57a1d0c05ba0ef3" target="_blank"> Sketchfab</a>
                             </p>
                         </div>
                     </div>
@@ -42,7 +42,7 @@ export const Credit = () => {
                         <div className="card-body">
                             <h2 className="card-title">Naruto 3-d model</h2>
                             <p className="card-text"> By gabrieel22 on
-                                <a href="https://sketchfab.com/3d-models/naruto-modo-sabio-de-los-6-caminos-d3691cfc7b76472496e5e03386659963" target="_blank"> Sketchfab</a>
+                                <a rel="noreferrer" href="https://sketchfab.com/3d-models/naruto-modo-sabio-de-los-6-caminos-d3691cfc7b76472496e5e03386659963" target="_blank"> Sketchfab</a>
                             </p>
                         </div>
                     </div>
@@ -58,7 +58,7 @@ export const Credit = () => {
                         <div className="card-body">
                             <h2 className="card-title">Korra 3-d model</h2>
                             <p className="card-text"> By asifaj on
-                                <a href="https://sketchfab.com/3d-models/korra-085e432a2c254176b1d0d770adc8a637" target="_blank"> Sketchfab</a>
+                                <a rel="noreferrer" href="https://sketchfab.com/3d-models/korra-085e432a2c254176b1d0d770adc8a637" target="_blank"> Sketchfab</a>
                             </p>
                         </div>
                     </div>
@@ -74,7 +74,7 @@ export const Credit = () => {
                         <div className="card-body">
                             <h2 className="card-title">Goku 3-d model</h2>
                             <p className="card-text"> By lechitachan on
-                                <a href="https://sketchfab.com/3d-models/goku-76acf6680f024dc4ac08811914fc9520" target="_blank"> Sketchfab</a>
+                                <a rel="noreferrer" href="https://sketchfab.com/3d-models/goku-76acf6680f024dc4ac08811914fc9520" target="_blank"> Sketchfab</a>
                             </p>
                         </div>
                     </div>
@@ -90,7 +90,7 @@ export const Credit = () => {
                         <div className="card-body">
                             <h2 className="card-title">Coin icon</h2>
                             <p className="card-text"> By Delapouite on
-                                <a href="https://game-icons.net/1x1/delapouite/two-coins.html#download" target="_blank"> Game-icons.net</a>
+                                <a rel="noreferrer" href="https://game-icons.net/1x1/delapouite/two-coins.html#download" target="_blank"> Game-icons.net</a>
                             </p>
                         </div>
                     </div>
@@ -106,7 +106,7 @@ export const Credit = () => {
                         <div className="card-body">
                             <h2 className="card-title">Trainer Korra</h2>
                             <p className="card-text"> By steeven7620 on
-                                <a href="https://www.deviantart.com/steeven7620/art/korra-season-2-582716041" target="_blank"> Deviant Art</a>
+                                <a rel="noreferrer" href="https://www.deviantart.com/steeven7620/art/korra-season-2-582716041" target="_blank"> Deviant Art</a>
                             </p>
                         </div>
                     </div>
@@ -122,7 +122,7 @@ export const Credit = () => {
                         <div className="card-body">
                             <h2 className="card-title">Blue Wavy Background</h2>
                             <p className="card-text">
-                                <a href="https://www.freepik.com/free-vector/blue-wavy-line-with-light-effect-background_14446119.htm#page=13&query=line&position=46" target="_blank"> freepik</a>
+                                <a rel="noreferrer" href="https://www.freepik.com/free-vector/blue-wavy-line-with-light-effect-background_14446119.htm#page=13&query=line&position=46" target="_blank"> freepik</a>
                             </p>
                         </div>
                     </div>
@@ -138,7 +138,7 @@ export const Credit = () => {
                         <div className="card-body">
                             <h2 className="card-title">Neon Wave Background</h2>
                             <p className="card-text">
-                                <a href="https://www.freepik.com/free-vector/neon-synthwave-border-squared-dark-blue-template_14549276.htm?query=geometric%20pattern%20blue%20background" target="_blank"> freepik</a>
+                                <a rel="noreferrer" href="https://www.freepik.com/free-vector/neon-synthwave-border-squared-dark-blue-template_14549276.htm?query=geometric%20pattern%20blue%20background" target="_blank"> freepik</a>
                             </p>
                         </div>
                     </div>
