@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react"
-import {Button, Container, Nav, Navbar} from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import {MenuModal} from "./main-nav/sign-in/MenuModal";
 import {fetchAuth} from "../../store/authSlice";
 import {useDispatch, useSelector} from "react-redux";
@@ -21,14 +21,14 @@ export const Menu = ({profile, videoPlay, thirtySeconds}) => {
 
     // isModalOpen prevents the sign in modal being removed from the dom before the
     // sign-in modal is closed by the user
-    const isModalOpen = () => {
-        if (!auth) {
-            return !auth;
-        }
-        else if (show === true && auth) {
-            return true;
-        }
-    };
+    // const isModalOpen = () => {
+    //     if (!auth) {
+    //         return !auth;
+    //     }
+    //     else if (show === true && auth) {
+    //         return true;
+    //     }
+    // };
     return (
         <>
             <Button className="menuButtonAnimation menuButton border-0 text-lg-start" onClick={handleShow}>

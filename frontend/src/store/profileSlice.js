@@ -25,7 +25,7 @@ export default profileSlice.reducer
 export const fetchProfileByProfileId = (profileId) => async dispatch => {
 
     const {data} = await httpConfig(`/apis/profile/${profileId}`);
-    console.log("data", data)
+    // console.log("data", data)
     dispatch(getProfileByProfileId(data))
 }
 

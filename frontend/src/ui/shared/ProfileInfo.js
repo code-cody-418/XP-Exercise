@@ -7,7 +7,6 @@ import "../styles.css"
 export const ProfileInfo = ({profile, videoPlay, thirtySeconds, auth}) => {
     const [progressBarExp, setProgressBarExp] = useState("0%")
 
-
     useEffect(() => {
         if (profile === null) {
         } else if (profile != null) {
@@ -36,7 +35,7 @@ export const ProfileInfo = ({profile, videoPlay, thirtySeconds, auth}) => {
             }
 
         }
-    }, [videoPlay, thirtySeconds, auth])
+    }, [videoPlay, thirtySeconds, auth, profile, progressBarExp])
 
     if (profile === null) {
         return <></>
@@ -58,9 +57,8 @@ export const ProfileInfo = ({profile, videoPlay, thirtySeconds, auth}) => {
                     </div>
                 </div>
                 <p className='coinText'>
-                    <img src={twoCoins} width={50} height={50}/>
+                    <img src={twoCoins} width={50} height={50} alt="Coins"/>
                     {profile.profileCoins}</p>
-
             </>
         )
     }

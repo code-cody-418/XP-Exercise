@@ -248,7 +248,7 @@ export const Home = () => {
     //redux functionality to get profile data
     const dispatch = useDispatch();
 
-    const {authenticatedUser, isLoading} = useJwtToken();
+    const {authenticatedUser} = useJwtToken();
 
     const sideEffects = () => {
         if (authenticatedUser?.profileId) {
@@ -303,15 +303,12 @@ export const Home = () => {
     //set state of selected character Component
     const [name, setName] = useState(names.kakashi)
 
-
     //adds hover cursor to character select
     const [hovered, setHovered] = useState(false)
     useEffect(() => void (document.body.style.cursor = hovered ? "pointer" : "auto"), [hovered])
 
-
     //set state of playing video
     const [videoPlay, setVideoPlay] = useState(false)
-
 
     //sets up modal for when
     const [show, setShow] = useState(false);
@@ -382,7 +379,6 @@ export const Home = () => {
                 );
         }
     }
-
 
 //_____________________________________________________________________________________________________________________
     return (
