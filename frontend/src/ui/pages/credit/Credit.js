@@ -8,6 +8,7 @@ import coinCredit from "./coin-credit.png"
 import trainerKorra from "./korra-trainer-credit.png"
 import blueWavyBackground from "./blue-wavy-background-credit.png"
 import neonWaveBackground from "./neon-synthwave-credit.png"
+import favIcon from "./favicon.ico"
 import './credit-style.css'
 
 
@@ -139,6 +140,22 @@ export const Credit = () => {
                             <h2 className="card-title">Neon Wave Background</h2>
                             <p className="card-text">
                                 <a rel="noreferrer" href="https://www.freepik.com/free-vector/neon-synthwave-border-squared-dark-blue-template_14549276.htm?query=geometric%20pattern%20blue%20background" target="_blank"> freepik</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="card mb-3 bg-dark border-white ms-3" style={{maxWidth: "540px"}}>
+                <div className="row no-gutters">
+                    <div className="col-md-4">
+                        <img src={favIcon} className="card-img" alt="favicon Credit" />
+                    </div>
+                    <div className="col-md-8">
+                        <div className="card-body">
+                            <h2 className="card-title">Fav icon</h2>
+                            <p className="card-text"> By Lorc on
+                                <a rel="noreferrer" href="https://game-icons.net/1x1/lorc/fire-dash.html#download" target="_blank"> Game-icons.net</a>
                             </p>
                         </div>
                     </div>
