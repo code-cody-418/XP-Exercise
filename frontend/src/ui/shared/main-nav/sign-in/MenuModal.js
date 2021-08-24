@@ -8,7 +8,7 @@ import {SignOut} from "../sign-out/SignOut";
 
 
 export const MenuModal = (props) => {
-    const {handleShow, handleClose, show, auth, profile, thirtySeconds, videoPlay} = props
+    const {handleClose, show, auth, profile, thirtySeconds, videoPlay} = props
 
     return (
         <>

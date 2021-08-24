@@ -245,74 +245,6 @@ export const Home = () => {
         )
     }
 
-
-    //set state of selected character Component
-    const [name, setName] = useState(names.kakashi)
-
-
-    //adds hover cursor to character select
-    const [hovered, setHovered] = useState(false)
-    useEffect(() => void (document.body.style.cursor = hovered ? "pointer" : "auto"), [hovered])
-
-
-    //set state of playing video
-    const [videoPlay, setVideoPlay] = useState(false)
-
-
-    //sets up modal for when
-    const [show, setShow] = useState(false);
-
-    const handleClose = () => {
-        setShow(false);
-        setKakashiAction(moves.celebration)
-        setNarutoAction(moves.celebration)
-        setKorraAction(moves.celebration)
-        setGokuAction(moves.celebration)
-    }
-    const handleShow = () => setShow(true);
-
-
-    //set an auto workout vs a manuel workout
-    const [autoWorkout, setAutoWorkout] = useState(true)
-
-
-    // array of youtube videos
-    const youTubePlaylists = [
-        'https://www.youtube.com/embed/3ZHwkpyvDqE',
-        'https://www.youtube.com/embed/4zHK8pRl78o',
-        'https://www.youtube.com/embed/dY09rc_8-Rc'
-    ]
-
-
-    //Functionality to time events of video play
-    const [seconds, setSeconds] = useState(null)
-
-    useEffect(() => {
-        if (videoPlay === true) {
-            const intervalId = setInterval(() => {
-                setSeconds(seconds => seconds + 1)
-                // console.log('seconds', seconds)
-            }, 1000)
-            return () => clearInterval(intervalId)
-        }
-    }, [videoPlay])
-
-    //Functionality to 30 second workout timer
-    const [thirtySeconds, setThirtySeconds] = useState(30)
-
-    useEffect(() => {
-        if (thirtySeconds === -1) {
-            setThirtySeconds(30)
-            expUp()
-            levelUp()
-        } else if (videoPlay === true) {
-            const intervalId = setInterval(() => {
-                setThirtySeconds(thirtySeconds => thirtySeconds - 1)
-            }, 1000)
-            return () => clearInterval(intervalId)
-        }
-    }, [videoPlay, thirtySeconds, kakashiAction, narutoAction, korraAction, gokuAction])
-
     //redux functionality to get profile data
     const dispatch = useDispatch();
 
@@ -333,22 +265,6 @@ export const Home = () => {
             ? state.profile
             : null
     ));
-
-    //function to call api that adds a coin to profile
-    const coinUp = () => {
-        if (profile === null) {
-        } else if (profile != null) {
-            httpConfig.put(`/apis/profile/coinUp/${profile.profileId}`, profile)
-                .then(reply => {
-                        if (reply.status === 200) {
-                            console.log(reply);
-                            dispatch(fetchProfileByProfileId(profile.profileId));
-                        }
-                        console.log(reply);
-                    }
-                );
-        }
-    }
 
     //function to call api that adds a Exp to profile
     const expUp = () => {
@@ -381,6 +297,89 @@ export const Home = () => {
                         }
                     );
             }
+        }
+    }
+
+    //set state of selected character Component
+    const [name, setName] = useState(names.kakashi)
+
+
+    //adds hover cursor to character select
+    const [hovered, setHovered] = useState(false)
+    useEffect(() => void (document.body.style.cursor = hovered ? "pointer" : "auto"), [hovered])
+
+
+    //set state of playing video
+    const [videoPlay, setVideoPlay] = useState(false)
+
+
+    //sets up modal for when
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => {
+        setShow(false);
+        setKakashiAction(moves.celebration)
+        setNarutoAction(moves.celebration)
+        setKorraAction(moves.celebration)
+        setGokuAction(moves.celebration)
+    }
+    const handleShow = () => setShow(true);
+
+
+    //set an auto workout vs a manuel workout
+    const [autoWorkout, setAutoWorkout] = useState(true)
+
+
+    // array of youtube videos
+    // const youTubePlaylists = [
+    //     'https://www.youtube.com/embed/3ZHwkpyvDqE',
+    //     'https://www.youtube.com/embed/4zHK8pRl78o',
+    //     'https://www.youtube.com/embed/dY09rc_8-Rc'
+    // ]
+
+
+    //Functionality to time events of video play
+    const [seconds, setSeconds] = useState(null)
+
+    useEffect(() => {
+        if (videoPlay === true) {
+            const intervalId = setInterval(() => {
+                setSeconds(seconds => seconds + 1)
+                // console.log('seconds', seconds)
+            }, 1000)
+            return () => clearInterval(intervalId)
+        }
+    }, [videoPlay])
+
+    //Functionality to 30 second workout timer
+    const [thirtySeconds, setThirtySeconds] = useState(30)
+
+    useEffect(() => {
+        if (thirtySeconds === -1) {
+            setThirtySeconds(30)
+            expUp()
+            levelUp()
+        } else if (videoPlay === true) {
+            const intervalId = setInterval(() => {
+                setThirtySeconds(thirtySeconds => thirtySeconds - 1)
+            }, 1000)
+            return () => clearInterval(intervalId)
+        }
+    }, [videoPlay, thirtySeconds, kakashiAction, narutoAction, korraAction, gokuAction])
+
+    //function to call api that adds a coin to profile
+    const coinUp = () => {
+        if (profile === null) {
+        } else if (profile != null) {
+            httpConfig.put(`/apis/profile/coinUp/${profile.profileId}`, profile)
+                .then(reply => {
+                        if (reply.status === 200) {
+                            console.log(reply);
+                            dispatch(fetchProfileByProfileId(profile.profileId));
+                        }
+                        console.log(reply);
+                    }
+                );
         }
     }
 

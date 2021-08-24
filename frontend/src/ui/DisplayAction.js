@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import {Button} from "react-bootstrap";
 import {moves} from "../moves";
 import {names} from "./names";
 
@@ -115,7 +114,7 @@ export const DisplayAction = ({name, narutoAction, korraAction, gokuAction, kaka
                 return setTextAnimation("Finished!!!")
             }
         }
-    }, [kakashiAction, korraAction, narutoAction, gokuAction])
+    }, [kakashiAction, korraAction, narutoAction, gokuAction, name])
 
     return (
         <>
