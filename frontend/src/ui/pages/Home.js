@@ -353,7 +353,7 @@ export const Home = () => {
 
     useEffect(() => {
         if (thirtySeconds === -1) {
-            setThirtySeconds(31)
+            setThirtySeconds(30)
             expUp()
             levelUp()
         } else if (videoPlay === true) {
@@ -516,7 +516,7 @@ export const Home = () => {
                                                      setNarutoAction(moves.armStretch)
                                                  }
                                              } else if (seconds === 31) {
-                                                 setThirtySeconds(30)
+                                                 setThirtySeconds(28)
                                                  expUp()
                                                  levelUp()
                                              } else if (seconds <= 60) {
@@ -530,7 +530,7 @@ export const Home = () => {
                                                      setNarutoAction(moves.touchToes)
                                                  }
                                              } else if (seconds === 61) {
-                                                 setThirtySeconds(30)
+                                                 setThirtySeconds(28)
                                                  expUp()
                                                  levelUp()
                                              } else if (seconds <= 90) {
@@ -544,7 +544,7 @@ export const Home = () => {
                                                      setNarutoAction(moves.jumpingJack)
                                                  }
                                              } else if (seconds === 91) {
-                                                 setThirtySeconds(30)
+                                                 setThirtySeconds(28)
                                                  expUp()
                                                  levelUp()
                                              } else if (seconds <= 120) {
@@ -558,7 +558,7 @@ export const Home = () => {
                                                      setNarutoAction(moves.upRock)
                                                  }
                                              } else if (seconds === 121) {
-                                                 setThirtySeconds(30)
+                                                 setThirtySeconds(28)
                                                  expUp()
                                                  levelUp()
                                              } else if (seconds <= 150) {
@@ -572,7 +572,7 @@ export const Home = () => {
                                                      setNarutoAction(moves.footwork)
                                                  }
                                              } else if (seconds === 151) {
-                                                 setThirtySeconds(30)
+                                                 setThirtySeconds(28)
                                                  expUp()
                                                  levelUp()
                                              } else if (seconds <= 180) {
@@ -586,7 +586,7 @@ export const Home = () => {
                                                      setNarutoAction(moves.freeze)
                                                  }
                                              } else if (seconds === 181) {
-                                                 setThirtySeconds(30)
+                                                 setThirtySeconds(28)
                                                  expUp()
                                                  levelUp()
                                              } else if (seconds <= 210) {
@@ -600,7 +600,7 @@ export const Home = () => {
                                                      setNarutoAction(moves.coolDown)
                                                  }
                                              } else if (seconds === 211) {
-                                                 setThirtySeconds(30)
+                                                 setThirtySeconds(28)
                                                  expUp()
                                                  levelUp()
                                              } else if (seconds <= 240) {
@@ -614,7 +614,7 @@ export const Home = () => {
                                                      setNarutoAction(moves.bikeCrunch)
                                                  }
                                              } else if (seconds === 241) {
-                                                 setThirtySeconds(30)
+                                                 setThirtySeconds(28)
                                                  expUp()
                                                  levelUp()
                                              } else if (seconds <= 270) {
@@ -628,7 +628,7 @@ export const Home = () => {
                                                      setNarutoAction(moves.sitUps)
                                                  }
                                              } else if (seconds === 271) {
-                                                 setThirtySeconds(30)
+                                                 setThirtySeconds(28)
                                                  expUp()
                                                  levelUp()
                                              } else if (seconds <= 300) {
@@ -642,7 +642,7 @@ export const Home = () => {
                                                      setNarutoAction(moves.pushUp)
                                                  }
                                              } else if (seconds === 301) {
-                                                 setThirtySeconds(30)
+                                                 setThirtySeconds(28)
                                                  expUp()
                                                  levelUp()
                                              } else if (seconds <= 330) {
@@ -656,7 +656,7 @@ export const Home = () => {
                                                      setNarutoAction(moves.bicepCurl)
                                                  }
                                              } else if (seconds === 331) {
-                                                 setThirtySeconds(30)
+                                                 setThirtySeconds(28)
                                                  expUp()
                                                  levelUp()
                                              } else if (seconds <= 360) {
@@ -670,7 +670,7 @@ export const Home = () => {
                                                      setNarutoAction(moves.coolDown)
                                                  }
                                              } else if (seconds === 361) {
-                                                 setThirtySeconds(30)
+                                                 setThirtySeconds(28)
                                                  expUp()
                                                  levelUp()
                                              } else if (seconds <= 390) {
@@ -684,7 +684,7 @@ export const Home = () => {
                                                      setNarutoAction(moves.jumpingJack)
                                                  }
                                              } else if (seconds === 391) {
-                                                 setThirtySeconds(30)
+                                                 setThirtySeconds(28)
                                                  expUp()
                                                  levelUp()
                                              } else if (seconds <= 420) {
@@ -698,7 +698,7 @@ export const Home = () => {
                                                      setNarutoAction(moves.upRock)
                                                  }
                                              } else if (seconds === 421) {
-                                                 setThirtySeconds(30)
+                                                 setThirtySeconds(28)
                                                  expUp()
                                                  levelUp()
                                              } else if (seconds <= 450) {
@@ -712,7 +712,7 @@ export const Home = () => {
                                                      setNarutoAction(moves.footwork)
                                                  }
                                              } else if (seconds === 451) {
-                                                 setThirtySeconds(30)
+                                                 setThirtySeconds(28)
                                                  expUp()
                                                  levelUp()
                                              } else if (seconds <= 480) {
@@ -726,7 +726,7 @@ export const Home = () => {
                                                      setNarutoAction(moves.freeze)
                                                  }
                                              } else if (seconds === 481) {
-                                                 setThirtySeconds(30)
+                                                 setThirtySeconds(28)
                                                  expUp()
                                                  levelUp()
                                              } else if (seconds <= 510) {
@@ -740,7 +740,7 @@ export const Home = () => {
                                                      setNarutoAction(moves.coolDown)
                                                  }
                                              } else if (seconds === 511) {
-                                                 setThirtySeconds(30)
+                                                 setThirtySeconds(28)
                                                  expUp()
                                                  levelUp()
                                              } else if (seconds <= 540) {
@@ -754,7 +754,7 @@ export const Home = () => {
                                                      setNarutoAction(moves.bikeCrunch)
                                                  }
                                              } else if (seconds === 541) {
-                                                 setThirtySeconds(30)
+                                                 setThirtySeconds(28)
                                                  expUp()
                                                  levelUp()
                                              } else if (seconds <= 570) {
@@ -768,7 +768,7 @@ export const Home = () => {
                                                      setNarutoAction(moves.sitUps)
                                                  }
                                              } else if (seconds === 571) {
-                                                 setThirtySeconds(30)
+                                                 setThirtySeconds(28)
                                                  expUp()
                                                  levelUp()
                                              } else if (seconds <= 600) {
@@ -782,7 +782,7 @@ export const Home = () => {
                                                      setNarutoAction(moves.pushUp)
                                                  }
                                              } else if (seconds === 601) {
-                                                 setThirtySeconds(30)
+                                                 setThirtySeconds(28)
                                                  expUp()
                                                  levelUp()
                                              } else if (seconds <= 630) {
@@ -796,7 +796,7 @@ export const Home = () => {
                                                      setNarutoAction(moves.bicepCurl)
                                                  }
                                              } else if (seconds === 631) {
-                                                 setThirtySeconds(30)
+                                                 setThirtySeconds(28)
                                                  expUp()
                                                  levelUp()
                                              } else if (seconds <= 660) {
@@ -810,7 +810,7 @@ export const Home = () => {
                                                      setNarutoAction(moves.coolDown)
                                                  }
                                              } else if (seconds === 661) {
-                                                 setThirtySeconds(30)
+                                                 setThirtySeconds(28)
                                                  expUp()
                                                  levelUp()
                                              } else if (seconds <= 690) {
@@ -824,7 +824,7 @@ export const Home = () => {
                                                      setNarutoAction(moves.jumpingJack)
                                                  }
                                              } else if (seconds === 691) {
-                                                 setThirtySeconds(30)
+                                                 setThirtySeconds(28)
                                                  expUp()
                                                  levelUp()
                                              } else if (seconds <= 720) {
@@ -838,7 +838,7 @@ export const Home = () => {
                                                      setNarutoAction(moves.upRock)
                                                  }
                                              } else if (seconds === 721) {
-                                                 setThirtySeconds(30)
+                                                 setThirtySeconds(28)
                                                  expUp()
                                                  levelUp()
                                              } else if (seconds <= 750) {
@@ -852,7 +852,7 @@ export const Home = () => {
                                                      setNarutoAction(moves.footwork)
                                                  }
                                              } else if (seconds === 751) {
-                                                 setThirtySeconds(30)
+                                                 setThirtySeconds(28)
                                                  expUp()
                                                  levelUp()
                                              } else if (seconds <= 780) {
@@ -866,7 +866,7 @@ export const Home = () => {
                                                      setNarutoAction(moves.freeze)
                                                  }
                                              } else if (seconds === 781) {
-                                                 setThirtySeconds(30)
+                                                 setThirtySeconds(28)
                                                  expUp()
                                                  levelUp()
                                              } else if (seconds <= 810) {
@@ -880,7 +880,7 @@ export const Home = () => {
                                                      setNarutoAction(moves.coolDown)
                                                  }
                                              } else if (seconds === 811) {
-                                                 setThirtySeconds(30)
+                                                 setThirtySeconds(28)
                                                  expUp()
                                                  levelUp()
                                              } else if (seconds <= 840) {
@@ -894,7 +894,7 @@ export const Home = () => {
                                                      setNarutoAction(moves.bikeCrunch)
                                                  }
                                              } else if (seconds === 841) {
-                                                 setThirtySeconds(30)
+                                                 setThirtySeconds(28)
                                                  expUp()
                                                  levelUp()
                                              } else if (seconds <= 870) {
@@ -908,7 +908,7 @@ export const Home = () => {
                                                      setNarutoAction(moves.sitUps)
                                                  }
                                              } else if (seconds === 871) {
-                                                 setThirtySeconds(30)
+                                                 setThirtySeconds(28)
                                                  expUp()
                                                  levelUp()
                                              } else if (seconds <= 900) {
@@ -922,7 +922,7 @@ export const Home = () => {
                                                      setNarutoAction(moves.pushUp)
                                                  }
                                              } else if (seconds === 901) {
-                                                 setThirtySeconds(30)
+                                                 setThirtySeconds(28)
                                                  expUp()
                                                  levelUp()
                                              } else if (seconds <= 930) {
@@ -936,7 +936,7 @@ export const Home = () => {
                                                      setNarutoAction(moves.bicepCurl)
                                                  }
                                              } else if (seconds === 931) {
-                                                 setThirtySeconds(30)
+                                                 setThirtySeconds(28)
                                                  expUp()
                                                  levelUp()
                                              } else if (seconds <= 960) {
@@ -950,7 +950,7 @@ export const Home = () => {
                                                      setNarutoAction(moves.coolDown)
                                                  }
                                              } else if (seconds === 961) {
-                                                 setThirtySeconds(30)
+                                                 setThirtySeconds(28)
                                                  expUp()
                                                  levelUp()
                                              } else if (seconds <= 990) {
@@ -964,7 +964,7 @@ export const Home = () => {
                                                      setNarutoAction(moves.jumpingJack)
                                                  }
                                              } else if (seconds === 991) {
-                                                 setThirtySeconds(30)
+                                                 setThirtySeconds(28)
                                                  expUp()
                                                  levelUp()
                                              } else if (seconds <= 1010) {
@@ -978,7 +978,7 @@ export const Home = () => {
                                                      setNarutoAction(moves.upRock)
                                                  }
                                              } else if (seconds === 1011) {
-                                                 setThirtySeconds(30)
+                                                 setThirtySeconds(28)
                                                  expUp()
                                                  levelUp()
                                              } else if (seconds <= 1030) {
@@ -992,7 +992,7 @@ export const Home = () => {
                                                      setNarutoAction(moves.footwork)
                                                  }
                                              } else if (seconds === 1031) {
-                                                 setThirtySeconds(30)
+                                                 setThirtySeconds(28)
                                                  expUp()
                                                  levelUp()
                                              }
