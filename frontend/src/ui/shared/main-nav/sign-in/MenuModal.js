@@ -5,10 +5,9 @@ import {SignInForm} from "./SignInForm";
 import "./menuStyle.css"
 import {ProfileInfo} from "../../ProfileInfo";
 import {SignOut} from "../sign-out/SignOut";
-import testImage from "../../../../images/train-insaiyan.jpg"
+import testImage from "../../../../images/Exp-Ninja-Coming-soon-01.png"
 import testImageTwo from "../../../../images/goku-trainer.png"
 import {SignUpModal} from "../sign-up/SignUpModal";
-
 
 
 export const MenuModal = ({handleClose, show, auth, profile}) => {
@@ -75,17 +74,13 @@ export const MenuModal = ({handleClose, show, auth, profile}) => {
                                 </>
                             ) : (
                                 <>
-                                    <Col md={4}>
+                                    <Col md={4} className="mb-2">
                                         <SignInForm/>
+                                        <SignUpModal />
                                     </Col>
                                 </>
                             )
                             }
-                        </Row>
-                        <Row>
-                            <Col>
-                            <SignUpModal />
-                            </Col>
                         </Row>
 
                         <Row className="justify-content-end">

@@ -13,19 +13,19 @@ export const SignUpModal = () => {
 
 	return (
 		<>
-			<Button onClick={handleShow} size='lg' className='inMenuButton mt-2' >
+			<Button onClick={handleShow} size='lg' className='signUpButton mt-2' >
 				Sign-Up
 			</Button>
 
-			<Modal show={show} onHide={handleClose}>
-				<Modal.Header className='backgroundColor'>
+			<Modal show={show} onHide={handleClose} className="menuBackground">
+				<Modal.Header className="signUpBackground">
 					<Modal.Title>Sign-Up</Modal.Title>
 				</Modal.Header>
-				<Modal.Body className='backgroundColor'>
+				<Modal.Body className="signUpBackground">
 					<SignUpForm/>
 				</Modal.Body>
-				<Modal.Footer className='backgroundColor'>
-					<Button variant="secondary" onClick={handleClose}>
+				<Modal.Footer className="signUpBackground">
+					<Button size="lg" className="inMenuButton border-0" onClick={handleClose}>
 						Close
 					</Button>
 				</Modal.Footer>

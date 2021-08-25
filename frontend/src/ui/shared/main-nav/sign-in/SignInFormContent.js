@@ -74,10 +74,10 @@ export const SignInFormContent = (props) => {
 				</div>
 
 				<div className="form-group">
-					<Button size="lg" className="signInOutButton border-0 me-3" type="submit">Sign-In Profile</Button>
+					<Button size="lg" className="signInOutButton border-0 me-3 mt-2" type="submit">Sign-In Profile</Button>
 					<Button
 						size="lg"
-						className="resetFormButton border-0"
+						className="resetFormButton border-0 mt-2"
 						onClick={handleReset}
 						disabled={!dirty || isSubmitting}
 					>Reset

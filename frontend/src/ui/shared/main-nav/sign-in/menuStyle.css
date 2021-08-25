@@ -9,7 +9,7 @@
     animation-duration: 15s;
     animation-name: slidein;
     /*animation-iteration-count: infinite;*/
-    color: white;
+    color: #f9990d;
     font-size: 3rem !important;
     opacity: 1;
 }
@@ -82,6 +82,14 @@
     color: black !important;
 }
 
+.signUpButton {
+    font-family: roboto-slab, serif;
+    font-weight: 700;
+    font-style: normal;
+    background-color: #f9990d !important;
+    color: black !important;
+}
+
 
 
 .menuBackground {
@@ -97,4 +105,9 @@
     font-family: roboto-slab, serif;
     font-weight: 700;
     font-style: normal;
+}
+
+.signUpBackground {
+    background-color: black;
+    color: white;
 }

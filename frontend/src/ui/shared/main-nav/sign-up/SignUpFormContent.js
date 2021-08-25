@@ -1,6 +1,7 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {FormDebugger} from "../../FormDebugger";
 import React from "react";
+import {Button} from "react-bootstrap";
 
 export const SignUpFormContent = (props) => {
 	const {
@@ -22,10 +23,10 @@ export const SignUpFormContent = (props) => {
 				<div className="form-group">
 					<label htmlFor="profileEmail">Email Address</label>
 					<div className="input-group">
-						<div className="input-group-prepend">
-							<div className="input-group-text">
-							</div>
-						</div>
+						{/*<div className="input-group-prepend">*/}
+						{/*	<div className="input-group-text">*/}
+						{/*	</div>*/}
+						{/*</div>*/}
 						<input
 							className="form-control"
 							name="profileEmail"
@@ -50,10 +51,10 @@ export const SignUpFormContent = (props) => {
 				<div className="form-group">
 					<label htmlFor="profilePassword">Password</label>
 					<div className="input-group">
-						<div className="input-group-prepend">
-							<div className="input-group-text">
-							</div>
-						</div>
+						{/*<div className="input-group-prepend">*/}
+						{/*	<div className="input-group-text">*/}
+						{/*	</div>*/}
+						{/*</div>*/}
 						<input
 							name="profilePassword"
 							className="form-control"
@@ -71,10 +72,10 @@ export const SignUpFormContent = (props) => {
 				<div className="form-group">
 					<label htmlFor="profilePasswordConfirm">Confirm Your Password</label>
 					<div className="input-group">
-						<div className="input-group-prepend">
-							<div className="input-group-text">
-							</div>
-						</div>
+						{/*<div className="input-group-prepend">*/}
+						{/*	<div className="input-group-text">*/}
+						{/*	</div>*/}
+						{/*</div>*/}
 						<input
 
 							className="form-control"
@@ -95,10 +96,10 @@ export const SignUpFormContent = (props) => {
 				<div className="form-group">
 					<label htmlFor="profileUserName">Username</label>
 					<div className="input-group">
-						<div className="input-group-prepend">
-							<div className="input-group-text">
-							</div>
-						</div>
+						{/*<div className="input-group-prepend">*/}
+						{/*	<div className="input-group-text">*/}
+						{/*	</div>*/}
+						{/*</div>*/}
 						<input
 							className="form-control"
 							name="profileUserName"
@@ -120,17 +121,18 @@ export const SignUpFormContent = (props) => {
 				</div>
 
 				<div className="form-group">
-					<button className="btn btn-primary mb-2" type="submit">Submit</button>
-					<button
-						className="btn btn-danger mb-2"
+					<Button size="lg" className="signInOutButton border-0 me-3 mt-2" type="submit">Sign-Up Submit</Button>
+					<Button
+						size="lg"
+						className="resetFormButton border-0 mt-2"
 						onClick={handleReset}
 						disabled={!dirty || isSubmitting}
 					>Reset
-					</button>
+					</Button>
 				</div>
 
 
-				<FormDebugger {...props} />
+				{/*<FormDebugger {...props} />*/}
 			</form>
 			{
 				status && (<div className={status.type}>{status.message}</div>)
