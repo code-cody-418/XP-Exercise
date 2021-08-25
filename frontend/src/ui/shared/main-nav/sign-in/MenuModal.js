@@ -7,6 +7,7 @@ import {ProfileInfo} from "../../ProfileInfo";
 import {SignOut} from "../sign-out/SignOut";
 import testImage from "../../../../images/train-insaiyan.jpg"
 import testImageTwo from "../../../../images/goku-trainer.png"
+import {SignUpModal} from "../sign-up/SignUpModal";
 
 
 
@@ -80,6 +81,11 @@ export const MenuModal = ({handleClose, show, auth, profile}) => {
                                 </>
                             )
                             }
+                        </Row>
+                        <Row>
+                            <Col>
+                            <SignUpModal />
+                            </Col>
                         </Row>
 
                         <Row className="justify-content-end">
