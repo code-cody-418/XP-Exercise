@@ -93,7 +93,7 @@ export const SignUpFormContent = (props) => {
 
 
 				<div className="form-group">
-					<label htmlFor="profileUsername">Username</label>
+					<label htmlFor="profileUserName">Username</label>
 					<div className="input-group">
 						<div className="input-group-prepend">
 							<div className="input-group-text">
@@ -101,9 +101,9 @@ export const SignUpFormContent = (props) => {
 						</div>
 						<input
 							className="form-control"
-							name="profileUsername"
+							name="profileUserName"
 							type="text"
-							value={values.profileUsername}
+							value={values.profileUserName}
 							placeholder="Username"
 							onChange={handleChange}
 							onBlur={handleBlur}
@@ -111,64 +111,9 @@ export const SignUpFormContent = (props) => {
 						/>
 					</div>
 					{
-						errors.profileUsername && touched.profileUsername && (
+						errors.profileUserName && touched.profileUserName && (
 							<div className="alert alert-danger">
-								{errors.profileUsername}
-							</div>
-						)
-					}
-				</div>
-
-
-				<div className="form-group">
-					<label htmlFor="profileFirstName">FirstName</label>
-					<div className="input-group">
-						<div className="input-group-prepend">
-							<div className="input-group-text">
-							</div>
-						</div>
-						<input
-							className="form-control"
-							name="profileFirstName"
-							type="text"
-							value={values.profileFirstName}
-							placeholder="First Name"
-							onChange={handleChange}
-							onBlur={handleBlur}
-
-						/>
-					</div>
-					{
-						errors.profileFirstName && touched.profileFirstName && (
-							<div className="alert alert-danger">
-								{errors.profileFirstName}
-							</div>
-						)
-					}
-				</div>
-
-				<div className="form-group">
-					<label htmlFor="profileLastName">LastName</label>
-					<div className="input-group">
-						<div className="input-group-prepend">
-							<div className="input-group-text">
-							</div>
-						</div>
-						<input
-							className="form-control"
-							name="profileLastName"
-							type="text"
-							value={values.profileLastName}
-							placeholder="Last Name"
-							onChange={handleChange}
-							onBlur={handleBlur}
-
-						/>
-					</div>
-					{
-						errors.profileLastName && touched.profileLastName && (
-							<div className="alert alert-danger">
-								{errors.profileLastName}
+								{errors.profileUserName}
 							</div>
 						)
 					}
@@ -185,7 +130,7 @@ export const SignUpFormContent = (props) => {
 				</div>
 
 
-				{/*<FormDebugger {...props} />*/}
+				<FormDebugger {...props} />
 			</form>
 			{
 				status && (<div className={status.type}>{status.message}</div>)

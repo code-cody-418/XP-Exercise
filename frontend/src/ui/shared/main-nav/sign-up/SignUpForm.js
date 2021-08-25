@@ -7,21 +7,15 @@ import {httpConfig} from "../../utils/http-config";
 
 export const SignUpForm = () => {
 	const signUp = {
-		profileUsername: "",
-		profileFirstName: "",
-		profileLastName: "",
+		profileUserName: "",
 		profileEmail: "",
 		profilePassword: "",
 		profilePasswordConfirm: "",
 	};
 
 	const validator = Yup.object().shape({
-		profileUsername: Yup.string()
+		profileUserName: Yup.string()
 			.required("Profile Username is required"),
-		profileFirstName: Yup.string()
-			.required("profile firstname is required"),
-		profileLastName: Yup.string()
-			.required("profile firstname is required"),
 		profileEmail: Yup.string()
 			.email("email must be a valid email")
 			.required('email is required'),
