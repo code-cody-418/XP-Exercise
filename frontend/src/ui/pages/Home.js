@@ -353,7 +353,7 @@ export const Home = () => {
 
     useEffect(() => {
         if (thirtySeconds === -1) {
-            setThirtySeconds(30)
+            setThirtySeconds(31)
             expUp()
             levelUp()
         } else if (videoPlay === true) {

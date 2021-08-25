@@ -10,9 +10,10 @@ export const ProfileInfo = ({profile, videoPlay, thirtySeconds, auth}) => {
     useEffect(() => {
         if (profile === null) {
         } else if (profile != null) {
-            if (progressBarExp === "100%") {
-                setProgressBarExp("0%")
-            } else if ((profile.profileExp + '').indexOf('00') > -1 === true) {
+            // if (progressBarExp === "100%") {
+            //     setProgressBarExp("0%")
+            // }
+            if ((profile.profileExp + '').indexOf('00') > -1 === true) {
                 setProgressBarExp("100%")
             } else if ((profile.profileExp + '').indexOf('90') > -1 === true) {
                 setProgressBarExp("90%")
