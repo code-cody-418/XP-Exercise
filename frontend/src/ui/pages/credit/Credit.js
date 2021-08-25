@@ -10,12 +10,18 @@ import blueWavyBackground from "./blue-wavy-background-credit.png"
 import neonWaveBackground from "./neon-synthwave-credit.png"
 import favIcon from "./favicon.ico"
 import './credit-style.css'
+import {Button, Row} from "react-bootstrap";
+import "../../shared/main-nav/sign-in/menuStyle.css"
 
 
 export const Credit = () => {
     return (
         <>
-            <Menu/>
+            <Row>
+                <Button className="menuButtonAnimation border-0" size="lg" href='/' >
+                    Return Home
+                </Button>
+            </Row>
             <h1>Credit/Attribution</h1>
 
             <div className="card mb-3 bg-dark border-white ms-3" style={{maxWidth: "540px"}}>

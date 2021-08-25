@@ -1,10 +1,13 @@
 import React from "react";
-import {Button, Col, Container, Row} from "react-bootstrap";
+import {Button, Col, Container, Row, Carousel} from "react-bootstrap";
 import {Modal} from "react-bootstrap";
 import {SignInForm} from "./SignInForm";
 import "./menuStyle.css"
 import {ProfileInfo} from "../../ProfileInfo";
 import {SignOut} from "../sign-out/SignOut";
+import testImage from "../../../../images/train-insaiyan.jpg"
+import testImageTwo from "../../../../images/goku-trainer.png"
+
 
 
 export const MenuModal = (props) => {
@@ -33,10 +36,42 @@ export const MenuModal = (props) => {
                         <Row className="justify-content-between">
                             {auth ? (
                                 <>
-                                    <Col>
+                                    <Col sm={4}>
                                         <ProfileInfo profile={profile} videoPlay={videoPlay}
                                                      thirtySeconds={thirtySeconds}/>
                                         <SignOut/>
+                                    </Col>
+                                    <Col sm={6}>
+                                        <Carousel fade nextLabel="" prevLabel="">
+                                            <Carousel.Item>
+                                                <img
+                                                    className="d-block w-100"
+                                                    src={testImage}
+                                                    alt="First slide"
+                                                    width="350"
+                                                    height="250"
+                                                />
+                                            </Carousel.Item>
+                                            <Carousel.Item>
+                                                <img
+                                                    className="d-block w-100"
+                                                    src={testImageTwo}
+                                                    alt="Second slide"
+                                                    width="350"
+                                                    height="250"
+                                                />
+                                            </Carousel.Item>
+                                            <Carousel.Item>
+                                                <img
+                                                    className="d-block w-100"
+                                                    src={testImage}
+                                                    alt="Third slide"
+                                                    width="350"
+                                                    height="250"
+
+                                                />
+                                            </Carousel.Item>
+                                        </Carousel>
                                     </Col>
                                 </>
                             ) : (
@@ -48,13 +83,14 @@ export const MenuModal = (props) => {
                             )
                             }
                         </Row>
+
                         <Row className="justify-content-end">
-                            <Col md={2} className="align-self-start">
+                            <Col sm={2} className="align-self-start">
                                 <Button className="inMenuButton border-0" size="lg" href='/' >
                                     Home
                                 </Button>
                             </Col>
-                            <Col md={2} className="align-self-end">
+                            <Col sm={2} className="align-self-end">
                                 <Button className="inMenuButton border-0" size="lg" href='/credit' >
                                     Credits
                                 </Button>
