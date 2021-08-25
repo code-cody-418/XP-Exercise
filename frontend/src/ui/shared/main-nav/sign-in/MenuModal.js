@@ -10,8 +10,7 @@ import testImageTwo from "../../../../images/goku-trainer.png"
 
 
 
-export const MenuModal = (props) => {
-    const {handleClose, show, auth, profile, thirtySeconds, videoPlay} = props
+export const MenuModal = ({handleClose, show, auth, profile}) => {
 
     return (
         <>
@@ -37,8 +36,7 @@ export const MenuModal = (props) => {
                             {auth ? (
                                 <>
                                     <Col sm={4}>
-                                        <ProfileInfo profile={profile} videoPlay={videoPlay}
-                                                     thirtySeconds={thirtySeconds}/>
+                                        <ProfileInfo profile={profile} />
                                         <SignOut/>
                                     </Col>
                                     <Col sm={6}>

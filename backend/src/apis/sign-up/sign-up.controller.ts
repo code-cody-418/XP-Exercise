@@ -20,7 +20,7 @@ export const signupProfileController = async (request: Request, response: Respon
         const {profileEmail, profilePassword, profileUserName} = request.body;
         const profileHash = await setHash(profilePassword);
         const profileActivationToken = setActivationToken();
-        const profileAvatarUrl = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/453a0a7f-bdb5-4f8e-8c33-65eadea41b0b/d91sboj-434e4030-c944-45c9-9fbb-8a51048d0e9e.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzQ1M2EwYTdmLWJkYjUtNGY4ZS04YzMzLTY1ZWFkZWE0MWIwYlwvZDkxc2Jvai00MzRlNDAzMC1jOTQ0LTQ1YzktOWZiYi04YTUxMDQ4ZDBlOWUucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.b8ttf0lOii_BYBu-5S-w6enl_WB1eX_5AtCB98vqEzE"
+        const profileAvatarUrl = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/453a0a7f-bdb5-4f8e-8c33-65eadea41b0b/dbhkko7-01ce5f4a-1231-4ea4-a2b4-1bcfb77c84ac.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzQ1M2EwYTdmLWJkYjUtNGY4ZS04YzMzLTY1ZWFkZWE0MWIwYlwvZGJoa2tvNy0wMWNlNWY0YS0xMjMxLTRlYTQtYTJiNC0xYmNmYjc3Yzg0YWMuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.wMIeRXadVbAi58m0I7PZICD2L9F2K04NF0dd3my57uU"
         const profileCoins = 0;
         const profileExp = 0;
         const profileLevel = 1;
@@ -33,7 +33,7 @@ export const signupProfileController = async (request: Request, response: Respon
         const mailgunMessage = {
             from: `Mailgun Sandbox <postmaster@${process.env.MAILGUN_DOMAIN}>`,
             to: profileEmail,
-            subject: "One step closer to AlienGram",
+            subject: "Your about to Train with Legends",
             text: 'Click this link to activate',
             html: message
         }
@@ -65,7 +65,8 @@ export const signupProfileController = async (request: Request, response: Respon
 
             const status: Status = {
                 status: 200,
-                message: "Profile successfully created please check your email.",
+                // message: "Profile successfully created please check your email.",
+                message: "Profile successfully created.",
                 data: null
             };
             mg.messages().sendMime(compiledEmail, (sendError: any, body: any) => {
