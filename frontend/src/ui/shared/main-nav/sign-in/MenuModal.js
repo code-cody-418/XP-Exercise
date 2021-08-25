@@ -5,8 +5,8 @@ import {SignInForm} from "./SignInForm";
 import "./menuStyle.css"
 import {ProfileInfo} from "../../ProfileInfo";
 import {SignOut} from "../sign-out/SignOut";
-import testImage from "../../../../images/Exp-Ninja-Coming-soon-01.png"
-import testImageTwo from "../../../../images/goku-trainer.png"
+import comingSoon from "../../../../images/Exp-Ninja-Coming-soon-01.png"
+import comingSoonTwo from "../../../../images/vegeta-shadow.jpg"
 import {SignUpModal} from "../sign-up/SignUpModal";
 
 
@@ -44,7 +44,7 @@ export const MenuModal = ({handleClose, show, auth, profile}) => {
                                             <Carousel.Item>
                                                 <img
                                                     className="d-block w-100"
-                                                    src={testImage}
+                                                    src={comingSoon}
                                                     alt="First slide"
                                                     width="350"
                                                     height="250"
@@ -53,22 +53,22 @@ export const MenuModal = ({handleClose, show, auth, profile}) => {
                                             <Carousel.Item>
                                                 <img
                                                     className="d-block w-100"
-                                                    src={testImageTwo}
+                                                    src={comingSoonTwo}
                                                     alt="Second slide"
                                                     width="350"
                                                     height="250"
                                                 />
                                             </Carousel.Item>
-                                            <Carousel.Item>
-                                                <img
-                                                    className="d-block w-100"
-                                                    src={testImage}
-                                                    alt="Third slide"
-                                                    width="350"
-                                                    height="250"
+                                            {/*<Carousel.Item>*/}
+                                            {/*    <img*/}
+                                            {/*        className="d-block w-100"*/}
+                                            {/*        src={comingSoon}*/}
+                                            {/*        alt="Third slide"*/}
+                                            {/*        width="350"*/}
+                                            {/*        height="250"*/}
 
-                                                />
-                                            </Carousel.Item>
+                                            {/*    />*/}
+                                            {/*</Carousel.Item>*/}
                                         </Carousel>
                                     </Col>
                                 </>
