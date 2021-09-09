@@ -6,9 +6,6 @@
 
 **node_modules
 
-./sql/statements.sql
-
-*/statements.sql
 
 */setupProxy.js
 
