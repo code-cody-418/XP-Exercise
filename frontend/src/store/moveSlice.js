@@ -7,18 +7,18 @@ export const moveSlice = createSlice({
         setMoves: moves.idle
     },
     reducers: {
-        idle: (state) => {
-            state.setMoves = moves.idle
-        },
-        stretch: (state) => {
-          state.setMoves = moves.neckStretch
-        },
-        // settingMove: (state, action) => {
-        //     state.setMoves = action.payload
-        // }
+        // idle: (state) => {
+        //     state.setMoves = moves.idle
+        // },
+        // stretch: (state) => {
+        //   state.setMoves = moves.neckStretch
+        // },
+        settingMove: (state, action) => {
+            state.setMoves = action.payload
+        }
     }
 })
 
-export const { idle, stretch } = moveSlice.actions
+export const { settingMove } = moveSlice.actions
 
 export default moveSlice.reducer

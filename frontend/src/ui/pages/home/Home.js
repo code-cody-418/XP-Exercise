@@ -18,9 +18,13 @@ import {useJwtToken} from "../../shared/utils/useJwtToken";
 import {httpConfig} from "../../shared/utils/http-config";
 import {ProfileInfo} from "../../shared/profile/ProfileInfo";
 import animeMontage from "../../../videos/Anime Training Montage AMV.mp4"
+import {settingMove} from "../../../store/moveSlice";
 
 
 export const Home = () => {
+
+    //state of the current exercise move
+    const currentMove = useSelector((state) => state.move.setMoves)
 
     //sets state of buttons for each character
     const [gokuAction, setGokuAction] = useState(moves.idle)
@@ -84,9 +88,9 @@ export const Home = () => {
                             }}
                         >Auto</Button>
                         <Button className='characterButton'
-                                onClick={() => setKakashiAction(moves.idle)}>Chillin</Button>
+                                onClick={() => dispatch(settingMove(moves.idle))}>Chillin</Button>
                         <Button className='characterButton'
-                                onClick={() => setKakashiAction(moves.armStretch)}>Arm Stretch</Button>
+                                onClick={() => dispatch(settingMove(moves.armStretch))}>Arm Stretch</Button>
                     </Col>
                     <Col md={2} lg={1} className='mx-0 px-0'>
                         <Button className='characterButton'

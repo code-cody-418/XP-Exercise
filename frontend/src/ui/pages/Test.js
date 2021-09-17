@@ -1,10 +1,11 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {idle, stretch} from "../../store/moveSlice";
+import {settingMove} from "../../store/moveSlice";
+import { moves } from "../shared/interfaces/moves";
 
 export const Test = () => {
 
-    const moveSetting = useSelector((state) => state.moves.setMoves)
+    const currentMove = useSelector((state) => state.move.setMoves)
 
     const dispatch = useDispatch()
 
@@ -14,13 +15,13 @@ export const Test = () => {
 
 
             <button
-            onClick={() => dispatch(idle())}
+            onClick={() => dispatch(settingMove(moves.kick))}
             >
-                Idle
+                Set Move
             </button>
-            <h2>{moveSetting}</h2>
+            <h2>{currentMove}</h2>
             <button
-            onClick={() => dispatch(stretch())}
+            // onClick={() => dispatch(stretch())}
             >
                 Stretch
             </button>

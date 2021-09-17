@@ -8,10 +8,13 @@ import Naruto from "../../../3D-Models/Naruto";
 import Kakashi from "../../../3D-Models/Kakashi";
 import Korra from "../../../3D-Models/Korra";
 import backgroundHDR from "../../../images/black-hdri.HDR"
+import {useSelector} from "react-redux";
 
 
 
 export default function AnimationScene({ name, kakashiAction, gokuAction, narutoAction, korraAction }) {
+
+
     return (
         <>
         <Canvas  shadows
