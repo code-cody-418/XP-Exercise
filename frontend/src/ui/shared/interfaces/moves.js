@@ -1,3 +1,5 @@
+
+//these are the exercise moves available in the 3d models
 export const moves = {
     //shared
     idle: 'idle',

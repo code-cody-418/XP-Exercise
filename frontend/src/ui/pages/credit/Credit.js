@@ -1,5 +1,5 @@
 import React from "react";
-import {Menu} from "../../shared/Menu";
+import {Menu} from "../../shared/menu/Menu";
 import kakashiCredit from "./kakashi-3d-credit.png"
 import korraCredit from "./korra-3d-credit.png"
 import gokuCredit from "./goku-3d-credit.png"

@@ -1,5 +1,5 @@
 import React from "react";
-import {Menu} from "../shared/Menu";
+import {Menu} from "../shared/menu/Menu";
 
 
 

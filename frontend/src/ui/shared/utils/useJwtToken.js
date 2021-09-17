@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchAuth } from '../../store/authSlice'
+import { fetchAuth } from '../../../store/authSlice'
 
 /**
  * A custom hook to handle grabbing pertinent information from the jwt token stored in redux

@@ -1,13 +1,13 @@
 import React, {Suspense} from "react";
-import "./styles.css";
+import "../../styles.css";
 import {Canvas} from "@react-three/fiber";
 import {OrbitControls, Environment} from "@react-three/drei";
 
-import Goku01 from "../Goku01";
-import Naruto from "../Naruto";
-import Kakashi from "../Kakashi";
-import Korra from "../Korra";
-import backgroundHDR from "./black-hdri.HDR"
+import Goku01 from "../../../3D-Models/Goku01";
+import Naruto from "../../../3D-Models/Naruto";
+import Kakashi from "../../../3D-Models/Kakashi";
+import Korra from "../../../3D-Models/Korra";
+import backgroundHDR from "../../../images/black-hdri.HDR"
 
 
 

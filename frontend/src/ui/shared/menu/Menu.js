@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react"
 import {Button} from "react-bootstrap";
-import {MenuModal} from "./main-nav/sign-in/MenuModal";
-import {fetchAuth} from "../../store/authSlice";
+import {MenuModal} from "../main-nav/sign-in/MenuModal";
+import {fetchAuth} from "../../../store/authSlice";
 import {useDispatch, useSelector} from "react-redux";
-import "./main-nav/sign-in/menuStyle.css"
+import "../main-nav/sign-in/menuStyle.css"
 
 export const Menu = ({profile}) => {
     const auth = useSelector(state => state.auth);

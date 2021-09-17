@@ -3,7 +3,7 @@ import {Button, Col, Container, Row, Carousel} from "react-bootstrap";
 import {Modal} from "react-bootstrap";
 import {SignInForm} from "./SignInForm";
 import "./menuStyle.css"
-import {ProfileInfo} from "../../ProfileInfo";
+import {ProfileInfo} from "../../profile/ProfileInfo";
 import {SignOut} from "../sign-out/SignOut";
 import comingSoon from "../../../../images/Exp-Ninja-Coming-soon-01.png"
 import comingSoonTwo from "../../../../images/vegeta-shadow.jpg"

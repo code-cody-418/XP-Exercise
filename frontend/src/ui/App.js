@@ -1,6 +1,6 @@
 import { BrowserRouter } from 'react-router-dom'
 import { Route, Switch } from 'react-router'
-import { Home } from './pages/Home'
+import { Home } from './pages/home/Home'
 
 import React from 'react'
 import {Profile} from "./pages/Profile";

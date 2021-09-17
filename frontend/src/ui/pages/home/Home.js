@@ -1,23 +1,23 @@
 import React, {useEffect, useState} from "react"
-import {Menu} from "../shared/Menu";
+import {Menu} from "../../shared/menu/Menu";
 import {Button, Col, Container, Row, Modal} from "react-bootstrap";
-import goku from "../../images/goku-trainer.png"
-import naruto from "../../images/naruto.png"
-import kakashi from '../../images/kakashi-01.png'
-import korra from '../../images/korra-trainer.png'
-import trainInsaiyan from '../../images/train-insaiyan.jpg'
+import goku from "../../../images/goku-trainer.png"
+import naruto from "../../../images/naruto.png"
+import kakashi from '../../../images/kakashi-01.png'
+import korra from '../../../images/korra-trainer.png'
+import trainInsaiyan from '../../../images/train-insaiyan.jpg'
 import ReactPlayer from "react-player";
-import "../styles.css"
-import AnimationScene from "../AnimationScene";
-import {moves} from "../../moves";
-import {names} from "../names";
-import {DisplayAction} from "../DisplayAction";
+import "../../styles.css"
+import AnimationScene from "./AnimationScene";
+import {moves} from "../../shared/interfaces/moves";
+import {names} from "../../shared/interfaces/names";
+import {DisplayAction} from "./DisplayAction";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchProfileByProfileId} from "../../store/profileSlice";
-import {useJwtToken} from "../shared/useJwtToken";
-import {httpConfig} from "../shared/utils/http-config";
-import {ProfileInfo} from "../shared/ProfileInfo";
-import animeMontage from "./Anime Training Montage AMV.mp4"
+import {fetchProfileByProfileId} from "../../../store/profileSlice";
+import {useJwtToken} from "../../shared/utils/useJwtToken";
+import {httpConfig} from "../../shared/utils/http-config";
+import {ProfileInfo} from "../../shared/profile/ProfileInfo";
+import animeMontage from "../../../videos/Anime Training Montage AMV.mp4"
 
 
 export const Home = () => {

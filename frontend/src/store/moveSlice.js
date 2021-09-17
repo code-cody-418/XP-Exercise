@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { moves } from "../moves"
+import { moves } from "../ui/shared/interfaces/moves"
 
 export const moveSlice = createSlice({
     name: 'move',
@@ -13,9 +13,9 @@ export const moveSlice = createSlice({
         stretch: (state) => {
           state.setMoves = moves.neckStretch
         },
-        settingMove: (state, action) => {
-            state.setMoves = action.payload
-        }
+        // settingMove: (state, action) => {
+        //     state.setMoves = action.payload
+        // }
     }
 })
 

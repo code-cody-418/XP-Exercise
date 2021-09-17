@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
-import twoCoins from "../../images/two-coins.png"
-import "../styles.css"
+import twoCoins from "../../../images/two-coins.png"
+import "../../styles.css"
 
 
 // shows profile information on state change

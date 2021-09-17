@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
-import {moves} from "../moves";
-import {names} from "./names";
+import {moves} from "../../shared/interfaces/moves";
+import {names} from "../../shared/interfaces/names";
 
 export const DisplayAction = ({name, narutoAction, korraAction, gokuAction, kakashiAction}) => {
 
