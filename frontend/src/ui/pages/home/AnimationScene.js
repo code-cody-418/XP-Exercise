@@ -42,10 +42,11 @@ export default function AnimationScene({ name, kakashiAction, gokuAction, naruto
             <Suspense fallback={null}>
                 <Environment files={backgroundHDR} background={true}/>
                 <group>
-                    <Goku01 gokuAction={gokuAction} name={name} />
-                    <Naruto narutoAction={narutoAction} name={name} />
-                    <Kakashi kakashiAction={kakashiAction} name={name} />
-                    <Korra korraAction={korraAction} name={name} />
+
+                        <Goku01 gokuAction={gokuAction} name={name}/>
+                        <Naruto narutoAction={narutoAction} name={name} />
+                        <Kakashi kakashiAction={kakashiAction} name={name} />
+                        <Korra korraAction={korraAction} name={name} />
 
                         <mesh
                         rotation={[-Math.PI / 2, 0, 0]}

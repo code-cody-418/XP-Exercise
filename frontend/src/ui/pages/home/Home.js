@@ -19,12 +19,21 @@ import {httpConfig} from "../../shared/utils/http-config";
 import {ProfileInfo} from "../../shared/profile/ProfileInfo";
 import animeMontage from "../../../videos/Anime Training Montage AMV.mp4"
 import {settingMove} from "../../../store/moveSlice";
+import {settingAutoWorkout} from "../../../store/autoWorkoutSlice";
+import {settingVideoPlay} from "../../../store/videoPlaySlice";
+import {settingName} from "../../../store/nameSlice";
 
 
 export const Home = () => {
 
     //state of the current exercise move
     const currentMove = useSelector((state) => state.move.setMoves)
+
+    const name = useSelector((state) => state.name.setName)
+
+    const videoPlay = useSelector((state) => state.videoPlay.setVideoPlay)
+
+    const autoWorkout = useSelector((state) =>  state.autoWorkout.setAutoWorkout)
 
     //sets state of buttons for each character
     const [gokuAction, setGokuAction] = useState(moves.idle)
@@ -42,24 +51,28 @@ export const Home = () => {
                             <Button
                                 className='startWorkoutButton'
                                 onClick={() => {
-                                    setAutoWorkout(true)
-                                    return (
-                                        setVideoPlay(true)
-                                    )
+                                    dispatch(settingAutoWorkout(true))
+                                    dispatch(settingVideoPlay(true))
+                                    // setAutoWorkout(true)
+                                    // return (
+                                    //     setVideoPlay(true)
+                                    // )
                                 }}
                             >Start Workout</Button>
                         ) : (
                             <Button
                                 className='startWorkoutButton'
                                 onClick={() => {
-                                    setAutoWorkout(true)
+                                    // setAutoWorkout(true)
+                                    dispatch(settingAutoWorkout(true))
+                                    dispatch(settingVideoPlay(false))
                                     setKakashiAction(moves.idle)
                                     setNarutoAction(moves.idle)
                                     setKorraAction(moves.idle)
                                     setGokuAction(moves.idle)
-                                    return (
-                                        setVideoPlay(false)
-                                    )
+                                    // return (
+                                    //     setVideoPlay(false)
+                                    // )
                                 }}
                             >Pause Workout</Button>
                         )
@@ -67,8 +80,10 @@ export const Home = () => {
                         <Button
                             className='startWorkoutButton'
                             onClick={() => {
-                                setVideoPlay(true)
-                                setAutoWorkout(false)
+                                // setVideoPlay(true)
+                                // setAutoWorkout(false)
+                                dispatch(settingVideoPlay(true))
+                                dispatch(settingAutoWorkout(false))
                             }}
                         >Customize Workout</Button>
                     </Col>
@@ -81,10 +96,12 @@ export const Home = () => {
                         <Button
                             className='characterButton'
                             onClick={() => {
-                                setAutoWorkout(true)
-                                return (
-                                    setVideoPlay(true)
-                                )
+                                dispatch(settingAutoWorkout(true))
+                                dispatch(settingVideoPlay(true))
+                                // setAutoWorkout(true)
+                                // return (
+                                //     setVideoPlay(true)
+                                // )
                             }}
                         >Auto</Button>
                         <Button className='characterButton'
@@ -124,10 +141,12 @@ export const Home = () => {
                         <Button
                             className='characterButton'
                             onClick={() => {
-                                setAutoWorkout(true)
-                                return (
-                                    setVideoPlay(true)
-                                )
+                                dispatch(settingAutoWorkout(true))
+                                dispatch(settingVideoPlay(true))
+                                // setAutoWorkout(true)
+                                // return (
+                                //     setVideoPlay(true)
+                                // )
                             }}
                         >Auto</Button>
                         <Button className='characterButton' onClick={() => setNarutoAction(moves.armStretch)}>Arm
@@ -168,10 +187,12 @@ export const Home = () => {
                         <Button
                             className='characterButton'
                             onClick={() => {
-                                setAutoWorkout(true)
-                                return (
-                                    setVideoPlay(true)
-                                )
+                                dispatch(settingAutoWorkout(true))
+                                dispatch(settingVideoPlay(true))
+                                // setAutoWorkout(true)
+                                // return (
+                                //     setVideoPlay(true)
+                                // )
                             }}
                         >Auto</Button>
                         <Button className='characterButton' onClick={() => setGokuAction(moves.touchToes)}>Touch
@@ -208,10 +229,12 @@ export const Home = () => {
                         <Button
                             className='characterButton'
                             onClick={() => {
-                                setAutoWorkout(true)
-                                return (
-                                    setVideoPlay(true)
-                                )
+                                dispatch(settingAutoWorkout(true))
+                                dispatch(settingVideoPlay(true))
+                                // setAutoWorkout(true)
+                                // return (
+                                //     setVideoPlay(true)
+                                // )
                             }}>Auto</Button>
                         <Button className='characterButton' onClick={() => setKorraAction(moves.idle)}>Chillin</Button>
                         <Button className='characterButton' onClick={() => setKorraAction(moves.armStretch)}>Arm
@@ -305,14 +328,14 @@ export const Home = () => {
     }
 
     //set state of selected character Component
-    const [name, setName] = useState(names.kakashi)
+    // const [name, setName] = useState(names.kakashi)
 
     //adds hover cursor to character select
     const [hovered, setHovered] = useState(false)
     useEffect(() => void (document.body.style.cursor = hovered ? "pointer" : "auto"), [hovered])
 
     //set state of playing video
-    const [videoPlay, setVideoPlay] = useState(false)
+    // const [videoPlay, setVideoPlay] = useState(false)
 
     //sets up modal for when
     const [show, setShow] = useState(false);
@@ -328,7 +351,7 @@ export const Home = () => {
 
 
     //set an auto workout vs a manuel workout
-    const [autoWorkout, setAutoWorkout] = useState(true)
+    // const [autoWorkout, setAutoWorkout] = useState(true)
 
 
     // array of youtube videos
@@ -425,7 +448,11 @@ export const Home = () => {
                              alt="Goku training"
                              onPointerOver={() => setHovered(true)}
                              onPointerOut={() => setHovered(false)}
-                             onClick={() => setName('goku')}
+                             onClick={() => {
+                                 dispatch(settingName(names.goku))
+                                 dispatch(settingMove(moves.idle))
+                                 // setName('goku')
+                             }}
                              className="rounded-circle border border-dark mx-auto d-block"
                              width="125"
                              height="125"/>
@@ -435,7 +462,11 @@ export const Home = () => {
                              alt="Naruto training"
                              onPointerOver={() => setHovered(true)}
                              onPointerOut={() => setHovered(false)}
-                             onClick={() => setName('naruto')}
+                             onClick={() => {
+                                 dispatch(settingName(names.naruto))
+                                 dispatch(settingMove(moves.idle))
+                                 // setName('naruto')
+                             }}
                              className="rounded-circle border border-dark mx-auto d-block"
                              width="125"
                              height="125"/>
@@ -445,7 +476,11 @@ export const Home = () => {
                              alt="Kakashi training"
                              onPointerOver={() => setHovered(true)}
                              onPointerOut={() => setHovered(false)}
-                             onClick={() => setName('kakashi')}
+                             onClick={() => {
+                                 dispatch(settingName(names.kakashi))
+                                 dispatch(settingMove(moves.idle))
+                                 // setName('kakashi')
+                             }}
                              className="rounded-circle border border-dark mx-auto d-block"
                              width="125"
                              height="125"/>
@@ -455,7 +490,11 @@ export const Home = () => {
                              alt="Korra training"
                              onPointerOver={() => setHovered(true)}
                              onPointerOut={() => setHovered(false)}
-                             onClick={() => setName('korra')}
+                             onClick={() => {
+                                 dispatch(settingName(names.korra))
+                                 dispatch(settingMove(moves.idle))
+                                 // setName('korra')
+                             }}
                              className="rounded-circle border border-dark mx-auto d-block"
                              width="125"
                              height="125"/>
@@ -487,11 +526,18 @@ export const Home = () => {
                                      playing={videoPlay}
                                      onEnded={() => {
                                          handleShow()
-                                         setVideoPlay(false)
+                                         dispatch(settingVideoPlay(false))
+                                         // setVideoPlay(false)
                                          setSeconds(0)
                                      }}
-                                     onPlay={() => setVideoPlay(true)}
-                                     onPause={() => setVideoPlay(false)}
+                                     onPlay={() => {
+                                         dispatch(settingVideoPlay(true))
+                                         // setVideoPlay(true)
+                                     }}
+                                     onPause={() => {
+                                         dispatch(settingVideoPlay(false))
+                                         // setVideoPlay(false)
+                                     }}
                                      // config={{
                                      //     youtube: {
                                      //         playerVars: { showinfo: 1,
