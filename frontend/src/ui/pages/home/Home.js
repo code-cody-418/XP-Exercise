@@ -35,11 +35,19 @@ export const Home = () => {
 
     const autoWorkout = useSelector((state) =>  state.autoWorkout.setAutoWorkout)
 
+    const kakashiAction = useSelector((state) => state.kakashiMove.setMove)
+
+    const korraAction = useSelector((state) => state.korraMove.setMove)
+
+    const gokuAction = useSelector((state) => state.gokuMove.setMove)
+
+    const narutoAction = useSelector((state) => state.narutoMove.setMove)
+
     //sets state of buttons for each character
-    const [gokuAction, setGokuAction] = useState(moves.idle)
-    const [narutoAction, setNarutoAction] = useState(moves.idle)
-    const [kakashiAction, setKakashiAction] = useState(moves.idle)
-    const [korraAction, setKorraAction] = useState(moves.idle)
+    // const [gokuAction, setGokuAction] = useState(moves.idle)
+    // const [narutoAction, setNarutoAction] = useState(moves.idle)
+    // const [kakashiAction, setKakashiAction] = useState(moves.idle)
+    // const [korraAction, setKorraAction] = useState(moves.idle)
 
     //logic for character button selection
     function SelectCharacterButtons({name}) {

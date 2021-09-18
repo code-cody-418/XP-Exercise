@@ -5,8 +5,23 @@ import move from './moveSlice'
 import name from './nameSlice'
 import autoWorkout from './autoWorkoutSlice'
 import videoPlay from './videoPlaySlice'
+import kakashiMove from "./trainer-Slices/kakashiSlice";
+import korraMove from "./trainer-Slices/korraSlice";
+import gokuMove from "./trainer-Slices/gokuSlice"
+import narutoMove from "./trainer-Slices/narutoSlice"
 
-
-const reducer = combineReducers({profile, auth, move, name, autoWorkout, videoPlay})
+//bring in reducers here
+const reducer = combineReducers({
+    profile,
+    auth,
+    move,
+    name,
+    autoWorkout,
+    videoPlay,
+    kakashiMove,
+    korraMove,
+    gokuMove,
+    narutoMove
+})
 
 export const store = configureStore({reducer})

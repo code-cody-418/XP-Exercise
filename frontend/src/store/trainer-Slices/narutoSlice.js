@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { moves } from "../ui/shared/interfaces/moves"
+import { moves } from "../../ui/shared/interfaces/moves"
 
-export const moveSlice = createSlice({
-    name: 'move',
+export const narutoSlice = createSlice({
+    name: 'narutoMove',
     initialState: {
-        setMoves: moves.idle
+        setMove: moves.idle
     },
     reducers: {
         // idle: (state) => {
@@ -13,12 +13,12 @@ export const moveSlice = createSlice({
         // stretch: (state) => {
         //   state.setMoves = moves.neckStretch
         // },
-        settingMove: (state, action) => {
-            state.setMoves = action.payload
+        settingNarutoMove: (state, action) => {
+            state.setMove = action.payload
         }
     }
 })
 
-export const { settingMove } = moveSlice.actions
+export const { settingMove } = narutoSlice.actions
 
-export default moveSlice.reducer
+export default narutoSlice.reducer
