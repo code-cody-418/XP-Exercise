@@ -37,7 +37,7 @@ export const Home = () => {
 
     const videoPlay = useSelector((state) => state.videoPlay.setVideoPlay)
 
-    const autoWorkout = useSelector((state) =>  state.autoWorkout.setAutoWorkout)
+    const autoWorkout = useSelector((state) => state.autoWorkout.setAutoWorkout)
 
     const kakashiAction = useSelector((state) => state.kakashiMove.setMove)
 
@@ -138,7 +138,8 @@ export const Home = () => {
                                 onClick={() => dispatch(settingKakashiMove(moves.sitUps))}>Sit-ups</Button>
                         <Button className='characterButton'
                                 onClick={() => dispatch(settingKakashiMove(moves.jumpingJack))}>Jumping Jacks</Button>
-                        <Button className='characterButton' onClick={() => dispatch(settingKakashiMove(moves.kick))}>Kick</Button>
+                        <Button className='characterButton'
+                                onClick={() => dispatch(settingKakashiMove(moves.kick))}>Kick</Button>
                     </Col>
                     <Col md={2} lg={1} className='mx-0 px-0'>
                         <Button className='characterButton'
@@ -165,9 +166,11 @@ export const Home = () => {
                                 // )
                             }}
                         >Auto</Button>
-                        <Button className='characterButton' onClick={() => dispatch(settingNarutoMove(moves.armStretch))}>Arm
+                        <Button className='characterButton'
+                                onClick={() => dispatch(settingNarutoMove(moves.armStretch))}>Arm
                             Stretch</Button>
-                        <Button className='characterButton' onClick={() => dispatch(settingNarutoMove(moves.touchToes))}>Touch
+                        <Button className='characterButton'
+                                onClick={() => dispatch(settingNarutoMove(moves.touchToes))}>Touch
                             Toes</Button>
                     </Col>
                     <Col md={2} lg={1} className='mx-0 px-0'>
@@ -179,7 +182,8 @@ export const Home = () => {
                                 onClick={() => dispatch(settingNarutoMove(moves.freeze))}>Freeze</Button>
                     </Col>
                     <Col md={2} lg={1} className='mx-0 px-0'>
-                        <Button className='characterButton' onClick={() => dispatch(settingNarutoMove(moves.jumpingJack))}>Jumping
+                        <Button className='characterButton'
+                                onClick={() => dispatch(settingNarutoMove(moves.jumpingJack))}>Jumping
                             Jacks</Button>
                         <Button className='characterButton'
                                 onClick={() => dispatch(settingNarutoMove(moves.bikeCrunch))}>Crunch's</Button>
@@ -189,7 +193,8 @@ export const Home = () => {
                     <Col md={2} lg={1} className='mx-0 px-0'>
                         <Button className='characterButton' onClick={() => dispatch(settingNarutoMove(moves.pushUp))}>Push
                             Up</Button>
-                        <Button className='characterButton' onClick={() => dispatch(settingNarutoMove(moves.bicepCurl))}>Bicep
+                        <Button className='characterButton'
+                                onClick={() => dispatch(settingNarutoMove(moves.bicepCurl))}>Bicep
                             Curl</Button>
                         <Button className='characterButton' onClick={() => dispatch(settingNarutoMove(moves.coolDown))}>Cool
                             Down</Button>
@@ -217,20 +222,25 @@ export const Home = () => {
                             Stretch</Button>
                     </Col>
                     <Col md={2} lg={1} className='mx-0 px-0'>
-                        <Button className='characterButton' onClick={() => dispatch(settingGokuMove(moves.jumpingJack))}>Jumping
+                        <Button className='characterButton'
+                                onClick={() => dispatch(settingGokuMove(moves.jumpingJack))}>Jumping
                             Jacks</Button>
-                        <Button className='characterButton' onClick={() => dispatch(settingGokuMove(moves.jab))}>Jab</Button>
-                        <Button className='characterButton' onClick={() => dispatch(settingGokuMove(moves.hook))}>Hook</Button>
+                        <Button className='characterButton'
+                                onClick={() => dispatch(settingGokuMove(moves.jab))}>Jab</Button>
+                        <Button className='characterButton'
+                                onClick={() => dispatch(settingGokuMove(moves.hook))}>Hook</Button>
                     </Col>
                     <Col md={2} lg={1} className='mx-0 px-0'>
                         <Button className='characterButton' onClick={() => dispatch(settingGokuMove(moves.punchCombo))}>Punch
                             Combo</Button>
                         <Button className='characterButton' onClick={() => dispatch(settingGokuMove(moves.bicepCurl))}>Bicep
                             Curl</Button>
-                        <Button className='characterButton' onClick={() => dispatch(settingGokuMove(moves.plank))}>Plank</Button>
+                        <Button className='characterButton'
+                                onClick={() => dispatch(settingGokuMove(moves.plank))}>Plank</Button>
                     </Col>
                     <Col md={2} lg={1} className='mx-0 px-0'>
-                        <Button className='characterButton' onClick={() => dispatch(settingGokuMove(moves.sitUps))}>Sit Ups</Button>
+                        <Button className='characterButton' onClick={() => dispatch(settingGokuMove(moves.sitUps))}>Sit
+                            Ups</Button>
                         <Button className='characterButton' onClick={() => dispatch(settingGokuMove(moves.pushUp))}>Push
                             Ups</Button>
                         <Button className='characterButton' onClick={() => dispatch(settingGokuMove(moves.coolDown))}>Cool
@@ -252,21 +262,26 @@ export const Home = () => {
                                 //     setVideoPlay(true)
                                 // )
                             }}>Auto</Button>
-                        <Button className='characterButton' onClick={() => dispatch(settingKorraMove(moves.idle))}>Chillin</Button>
-                        <Button className='characterButton' onClick={() => dispatch(settingKorraMove(moves.armStretch))}>Arm
+                        <Button className='characterButton'
+                                onClick={() => dispatch(settingKorraMove(moves.idle))}>Chillin</Button>
+                        <Button className='characterButton'
+                                onClick={() => dispatch(settingKorraMove(moves.armStretch))}>Arm
                             Stretch</Button>
                     </Col>
                     <Col md={2} lg={1} className='mx-0 px-0'>
                         <Button className='characterButton' onClick={() => dispatch(settingKorraMove(moves.touchToes))}>Touch
                             Toes</Button>
 
-                        <Button className='characterButton' onClick={() => dispatch(settingKorraMove(moves.burpee))}>Burpee</Button>
-                        <Button className='characterButton' onClick={() => dispatch(settingKorraMove(moves.crossJumps))}>Cross
+                        <Button className='characterButton'
+                                onClick={() => dispatch(settingKorraMove(moves.burpee))}>Burpee</Button>
+                        <Button className='characterButton'
+                                onClick={() => dispatch(settingKorraMove(moves.crossJumps))}>Cross
                             Jumps</Button>
 
                     </Col>
                     <Col md={2} lg={1} className='mx-0 px-0'>
-                        <Button className='characterButton' onClick={() => dispatch(settingKorraMove(moves.crossRotation))}>Cross
+                        <Button className='characterButton'
+                                onClick={() => dispatch(settingKorraMove(moves.crossRotation))}>Cross
                             Rotations</Button>
                         <Button className='characterButton' onClick={() => dispatch(settingKorraMove(moves.pushUp))}>Push
                             Ups</Button>
@@ -358,10 +373,10 @@ export const Home = () => {
 
     const handleClose = () => {
         setShow(false);
-        setKakashiAction(moves.celebration)
-        setNarutoAction(moves.celebration)
-        setKorraAction(moves.celebration)
-        setGokuAction(moves.celebration)
+        dispatch(settingKakashiMove(moves.celebration))
+        dispatch(settingNarutoMove(moves.celebration))
+        dispatch(settingKorraMove(moves.celebration))
+        dispatch(settingGokuMove(moves.celebration))
     }
     const handleShow = () => setShow(true);
 
@@ -466,7 +481,7 @@ export const Home = () => {
                              onPointerOut={() => setHovered(false)}
                              onClick={() => {
                                  dispatch(settingName(names.goku))
-                                 dispatch(settingMove(moves.idle))
+                                 dispatch(settingGokuMove(moves.idle))
                                  // setName('goku')
                              }}
                              className="rounded-circle border border-dark mx-auto d-block"
@@ -480,7 +495,7 @@ export const Home = () => {
                              onPointerOut={() => setHovered(false)}
                              onClick={() => {
                                  dispatch(settingName(names.naruto))
-                                 dispatch(settingMove(moves.idle))
+                                 dispatch(settingNarutoMove(moves.idle))
                                  // setName('naruto')
                              }}
                              className="rounded-circle border border-dark mx-auto d-block"
@@ -494,7 +509,7 @@ export const Home = () => {
                              onPointerOut={() => setHovered(false)}
                              onClick={() => {
                                  dispatch(settingName(names.kakashi))
-                                 dispatch(settingMove(moves.idle))
+                                 dispatch(settingKakashiMove(moves.idle))
                                  // setName('kakashi')
                              }}
                              className="rounded-circle border border-dark mx-auto d-block"
@@ -508,7 +523,7 @@ export const Home = () => {
                              onPointerOut={() => setHovered(false)}
                              onClick={() => {
                                  dispatch(settingName(names.korra))
-                                 dispatch(settingMove(moves.idle))
+                                 dispatch(settingKorraMove(moves.idle))
                                  // setName('korra')
                              }}
                              className="rounded-circle border border-dark mx-auto d-block"
@@ -554,15 +569,15 @@ export const Home = () => {
                                          dispatch(settingVideoPlay(false))
                                          // setVideoPlay(false)
                                      }}
-                                     // config={{
-                                     //     youtube: {
-                                     //         playerVars: { showinfo: 1,
-                                     //             origin: 'http://143.244.183.237/',
-                                     //             // origin: 'http://localhost:3000/',
-                                     //             enablejsapi: 1
-                                     //         }
-                                     //     }
-                                     // }}
+                            // config={{
+                            //     youtube: {
+                            //         playerVars: { showinfo: 1,
+                            //             origin: 'http://143.244.183.237/',
+                            //             // origin: 'http://localhost:3000/',
+                            //             enablejsapi: 1
+                            //         }
+                            //     }
+                            // }}
                             //extra callbacks for videoplayer
                                      controls={true}
                             // muted={true}
@@ -573,13 +588,13 @@ export const Home = () => {
                                              //determines an action of each character based on elapsed seconds and resets 30 seconds timer
                                              if (seconds <= 30) {
                                                  if (name === names.kakashi) {
-                                                     setKakashiAction(moves.armStretch)
+                                                     dispatch(settingKakashiMove(moves.armStretch))
                                                  } else if (name === names.goku) {
-                                                     setGokuAction(moves.touchToes)
+                                                     dispatch(settingGokuMove(moves.touchToes))
                                                  } else if (name === names.korra) {
-                                                     setKorraAction(moves.armStretch)
+                                                     dispatch(settingKorraMove(moves.armStretch))
                                                  } else if (name === names.naruto) {
-                                                     setNarutoAction(moves.armStretch)
+                                                     dispatch(settingNarutoMove(moves.armStretch))
                                                  }
                                              } else if (seconds === 31) {
                                                  setThirtySeconds(28)
@@ -587,13 +602,13 @@ export const Home = () => {
                                                  levelUp()
                                              } else if (seconds <= 60) {
                                                  if (name === names.kakashi) {
-                                                     setKakashiAction(moves.neckStretch)
+                                                     dispatch(settingKakashiMove(moves.neckStretch))
                                                  } else if (name === names.goku) {
-                                                     setGokuAction(moves.armStretch)
+                                                     dispatch(settingGokuMove(moves.armStretch))
                                                  } else if (name === names.korra) {
-                                                     setKorraAction(moves.touchToes)
+                                                     dispatch(settingKorraMove(moves.touchToes))
                                                  } else if (name === names.naruto) {
-                                                     setNarutoAction(moves.touchToes)
+                                                     dispatch(settingNarutoMove(moves.touchToes))
                                                  }
                                              } else if (seconds === 61) {
                                                  setThirtySeconds(28)
@@ -601,13 +616,13 @@ export const Home = () => {
                                                  levelUp()
                                              } else if (seconds <= 90) {
                                                  if (name === names.kakashi) {
-                                                     setKakashiAction(moves.touchToes)
+                                                     dispatch(settingKakashiMove(moves.touchToes))
                                                  } else if (name === names.goku) {
-                                                     setGokuAction(moves.jumpingJack)
+                                                     dispatch(settingGokuMove(moves.jumpingJack))
                                                  } else if (name === names.korra) {
-                                                     setKorraAction(moves.burpee)
+                                                     dispatch(settingKorraMove(moves.burpee))
                                                  } else if (name === names.naruto) {
-                                                     setNarutoAction(moves.jumpingJack)
+                                                     dispatch(settingNarutoMove(moves.jumpingJack))
                                                  }
                                              } else if (seconds === 91) {
                                                  setThirtySeconds(28)
@@ -615,13 +630,13 @@ export const Home = () => {
                                                  levelUp()
                                              } else if (seconds <= 120) {
                                                  if (name === names.kakashi) {
-                                                     setKakashiAction(moves.sitUps)
+                                                     dispatch(settingKakashiMove(moves.sitUps))
                                                  } else if (name === names.goku) {
-                                                     setGokuAction(moves.jab)
+                                                     dispatch(settingGokuMove(moves.jab))
                                                  } else if (name === names.korra) {
-                                                     setKorraAction(moves.crossJumps)
+                                                     dispatch(settingKorraMove(moves.crossJumps))
                                                  } else if (name === names.naruto) {
-                                                     setNarutoAction(moves.upRock)
+                                                     dispatch(settingNarutoMove(moves.upRock))
                                                  }
                                              } else if (seconds === 121) {
                                                  setThirtySeconds(28)
@@ -629,13 +644,13 @@ export const Home = () => {
                                                  levelUp()
                                              } else if (seconds <= 150) {
                                                  if (name === names.kakashi) {
-                                                     setKakashiAction(moves.pushUp)
+                                                     dispatch(settingKakashiMove(moves.pushUp))
                                                  } else if (name === names.goku) {
-                                                     setGokuAction(moves.hook)
+                                                     dispatch(settingGokuMove(moves.hook))
                                                  } else if (name === names.korra) {
-                                                     setKorraAction(moves.crossRotation)
+                                                     dispatch(settingKorraMove(moves.crossRotation))
                                                  } else if (name === names.naruto) {
-                                                     setNarutoAction(moves.footwork)
+                                                     dispatch(settingNarutoMove(moves.footwork))
                                                  }
                                              } else if (seconds === 151) {
                                                  setThirtySeconds(28)
@@ -643,13 +658,13 @@ export const Home = () => {
                                                  levelUp()
                                              } else if (seconds <= 180) {
                                                  if (name === names.kakashi) {
-                                                     setKakashiAction(moves.jumpingJack)
+                                                     dispatch(settingKakashiMove(moves.jumpingJack))
                                                  } else if (name === names.goku) {
-                                                     setGokuAction(moves.punchCombo)
+                                                     dispatch(settingGokuMove(moves.punchCombo))
                                                  } else if (name === names.korra) {
-                                                     setKorraAction(moves.coolDown)
+                                                     dispatch(settingKorraMove(moves.coolDown))
                                                  } else if (name === names.naruto) {
-                                                     setNarutoAction(moves.freeze)
+                                                     dispatch(settingNarutoMove(moves.freeze))
                                                  }
                                              } else if (seconds === 181) {
                                                  setThirtySeconds(28)
@@ -657,13 +672,13 @@ export const Home = () => {
                                                  levelUp()
                                              } else if (seconds <= 210) {
                                                  if (name === names.kakashi) {
-                                                     setKakashiAction(moves.coolDown)
+                                                     dispatch(settingKakashiMove(moves.coolDown))
                                                  } else if (name === names.goku) {
-                                                     setGokuAction(moves.coolDown)
+                                                     dispatch(settingGokuMove(moves.coolDown))
                                                  } else if (name === names.korra) {
-                                                     setKorraAction(moves.pushUp)
+                                                     dispatch(settingKorraMove(moves.pushUp))
                                                  } else if (name === names.naruto) {
-                                                     setNarutoAction(moves.coolDown)
+                                                     dispatch(settingNarutoMove(moves.coolDown))
                                                  }
                                              } else if (seconds === 211) {
                                                  setThirtySeconds(28)
@@ -671,13 +686,13 @@ export const Home = () => {
                                                  levelUp()
                                              } else if (seconds <= 240) {
                                                  if (name === names.kakashi) {
-                                                     setKakashiAction(moves.kick)
+                                                     dispatch(settingKakashiMove(moves.kick))
                                                  } else if (name === names.goku) {
-                                                     setGokuAction(moves.bicepCurl)
+                                                     dispatch(settingGokuMove(moves.bicepCurl))
                                                  } else if (name === names.korra) {
-                                                     setKorraAction(moves.sitUps)
+                                                     dispatch(settingKorraMove(moves.sitUps))
                                                  } else if (name === names.naruto) {
-                                                     setNarutoAction(moves.bikeCrunch)
+                                                     dispatch(settingNarutoMove(moves.bikeCrunch))
                                                  }
                                              } else if (seconds === 241) {
                                                  setThirtySeconds(28)
@@ -685,13 +700,13 @@ export const Home = () => {
                                                  levelUp()
                                              } else if (seconds <= 270) {
                                                  if (name === names.kakashi) {
-                                                     setKakashiAction(moves.bicepCurl)
+                                                     dispatch(settingKakashiMove(moves.bicepCurl))
                                                  } else if (name === names.goku) {
-                                                     setGokuAction(moves.plank)
+                                                     dispatch(settingGokuMove(moves.plank))
                                                  } else if (name === names.korra) {
-                                                     setKorraAction(moves.bicepCurl)
+                                                     dispatch(settingKorraMove(moves.bicepCurl))
                                                  } else if (name === names.naruto) {
-                                                     setNarutoAction(moves.sitUps)
+                                                     dispatch(settingNarutoMove(moves.sitUps))
                                                  }
                                              } else if (seconds === 271) {
                                                  setThirtySeconds(28)
@@ -699,13 +714,13 @@ export const Home = () => {
                                                  levelUp()
                                              } else if (seconds <= 300) {
                                                  if (name === names.kakashi) {
-                                                     setKakashiAction(moves.squat)
+                                                     dispatch(settingKakashiMove(moves.squat))
                                                  } else if (name === names.goku) {
-                                                     setGokuAction(moves.sitUps)
+                                                     dispatch(settingGokuMove(moves.sitUps))
                                                  } else if (name === names.korra) {
-                                                     setKorraAction(moves.coolDown)
+                                                     dispatch(settingKorraMove(moves.coolDown))
                                                  } else if (name === names.naruto) {
-                                                     setNarutoAction(moves.pushUp)
+                                                     dispatch(settingNarutoMove(moves.pushUp))
                                                  }
                                              } else if (seconds === 301) {
                                                  setThirtySeconds(28)
@@ -713,13 +728,13 @@ export const Home = () => {
                                                  levelUp()
                                              } else if (seconds <= 330) {
                                                  if (name === names.kakashi) {
-                                                     setKakashiAction(moves.coolDown)
+                                                     dispatch(settingKakashiMove(moves.coolDown))
                                                  } else if (name === names.goku) {
-                                                     setGokuAction(moves.pushUp)
+                                                     dispatch(settingGokuMove(moves.pushUp))
                                                  } else if (name === names.korra) {
-                                                     setKorraAction(moves.burpee)
+                                                     dispatch(settingKorraMove(moves.burpee))
                                                  } else if (name === names.naruto) {
-                                                     setNarutoAction(moves.bicepCurl)
+                                                     dispatch(settingNarutoMove(moves.bicepCurl))
                                                  }
                                              } else if (seconds === 331) {
                                                  setThirtySeconds(28)
@@ -727,13 +742,13 @@ export const Home = () => {
                                                  levelUp()
                                              } else if (seconds <= 360) {
                                                  if (name === names.kakashi) {
-                                                     setKakashiAction(moves.sitUps)
+                                                     dispatch(settingKakashiMove(moves.sitUps))
                                                  } else if (name === names.goku) {
-                                                     setGokuAction(moves.coolDown)
+                                                     dispatch(settingGokuMove(moves.coolDown))
                                                  } else if (name === names.korra) {
-                                                     setKorraAction(moves.crossJumps)
+                                                     dispatch(settingKorraMove(moves.crossJumps))
                                                  } else if (name === names.naruto) {
-                                                     setNarutoAction(moves.coolDown)
+                                                     dispatch(settingNarutoMove(moves.coolDown))
                                                  }
                                              } else if (seconds === 361) {
                                                  setThirtySeconds(28)
@@ -741,13 +756,13 @@ export const Home = () => {
                                                  levelUp()
                                              } else if (seconds <= 390) {
                                                  if (name === names.kakashi) {
-                                                     setKakashiAction(moves.pushUp)
+                                                     dispatch(settingKakashiMove(moves.pushUp))
                                                  } else if (name === names.goku) {
-                                                     setGokuAction(moves.jumpingJack)
+                                                     dispatch(settingGokuMove(moves.jumpingJack))
                                                  } else if (name === names.korra) {
-                                                     setKorraAction(moves.crossRotation)
+                                                     dispatch(settingKorraMove(moves.crossRotation))
                                                  } else if (name === names.naruto) {
-                                                     setNarutoAction(moves.jumpingJack)
+                                                     dispatch(settingNarutoMove(moves.jumpingJack))
                                                  }
                                              } else if (seconds === 391) {
                                                  setThirtySeconds(28)
@@ -755,13 +770,13 @@ export const Home = () => {
                                                  levelUp()
                                              } else if (seconds <= 420) {
                                                  if (name === names.kakashi) {
-                                                     setKakashiAction(moves.jumpingJack)
+                                                     dispatch(settingKakashiMove(moves.jumpingJack))
                                                  } else if (name === names.goku) {
-                                                     setGokuAction(moves.jab)
+                                                     dispatch(settingGokuMove(moves.jab))
                                                  } else if (name === names.korra) {
-                                                     setKorraAction(moves.coolDown)
+                                                     dispatch(settingKorraMove(moves.coolDown))
                                                  } else if (name === names.naruto) {
-                                                     setNarutoAction(moves.upRock)
+                                                     dispatch(settingNarutoMove(moves.upRock))
                                                  }
                                              } else if (seconds === 421) {
                                                  setThirtySeconds(28)
@@ -769,13 +784,13 @@ export const Home = () => {
                                                  levelUp()
                                              } else if (seconds <= 450) {
                                                  if (name === names.kakashi) {
-                                                     setKakashiAction(moves.coolDown)
+                                                     dispatch(settingKakashiMove(moves.coolDown))
                                                  } else if (name === names.goku) {
-                                                     setGokuAction(moves.hook)
+                                                     dispatch(settingGokuMove(moves.hook))
                                                  } else if (name === names.korra) {
-                                                     setKorraAction(moves.pushUp)
+                                                     dispatch(settingKorraMove(moves.pushUp))
                                                  } else if (name === names.naruto) {
-                                                     setNarutoAction(moves.footwork)
+                                                     dispatch(settingNarutoMove(moves.footwork))
                                                  }
                                              } else if (seconds === 451) {
                                                  setThirtySeconds(28)
@@ -783,13 +798,13 @@ export const Home = () => {
                                                  levelUp()
                                              } else if (seconds <= 480) {
                                                  if (name === names.kakashi) {
-                                                     setKakashiAction(moves.kick)
+                                                     dispatch(settingKakashiMove(moves.kick))
                                                  } else if (name === names.goku) {
-                                                     setGokuAction(moves.punchCombo)
+                                                     dispatch(settingGokuMove(moves.punchCombo))
                                                  } else if (name === names.korra) {
-                                                     setKorraAction(moves.sitUps)
+                                                     dispatch(settingKorraMove(moves.sitUps))
                                                  } else if (name === names.naruto) {
-                                                     setNarutoAction(moves.freeze)
+                                                     dispatch(settingNarutoMove(moves.freeze))
                                                  }
                                              } else if (seconds === 481) {
                                                  setThirtySeconds(28)
@@ -797,13 +812,13 @@ export const Home = () => {
                                                  levelUp()
                                              } else if (seconds <= 510) {
                                                  if (name === names.kakashi) {
-                                                     setKakashiAction(moves.bicepCurl)
+                                                     dispatch(settingKakashiMove(moves.bicepCurl))
                                                  } else if (name === names.goku) {
-                                                     setGokuAction(moves.coolDown)
+                                                     dispatch(settingGokuMove(moves.coolDown))
                                                  } else if (name === names.korra) {
-                                                     setKorraAction(moves.bicepCurl)
+                                                     dispatch(settingKorraMove(moves.bicepCurl))
                                                  } else if (name === names.naruto) {
-                                                     setNarutoAction(moves.coolDown)
+                                                     dispatch(settingNarutoMove(moves.coolDown))
                                                  }
                                              } else if (seconds === 511) {
                                                  setThirtySeconds(28)
@@ -811,13 +826,13 @@ export const Home = () => {
                                                  levelUp()
                                              } else if (seconds <= 540) {
                                                  if (name === names.kakashi) {
-                                                     setKakashiAction(moves.squat)
+                                                     dispatch(settingKakashiMove(moves.squat))
                                                  } else if (name === names.goku) {
-                                                     setGokuAction(moves.bicepCurl)
+                                                     dispatch(settingGokuMove(moves.bicepCurl))
                                                  } else if (name === names.korra) {
-                                                     setKorraAction(moves.coolDown)
+                                                     dispatch(settingKorraMove(moves.coolDown))
                                                  } else if (name === names.naruto) {
-                                                     setNarutoAction(moves.bikeCrunch)
+                                                     dispatch(settingNarutoMove(moves.bikeCrunch))
                                                  }
                                              } else if (seconds === 541) {
                                                  setThirtySeconds(28)
@@ -825,13 +840,13 @@ export const Home = () => {
                                                  levelUp()
                                              } else if (seconds <= 570) {
                                                  if (name === names.kakashi) {
-                                                     setKakashiAction(moves.coolDown)
+                                                     dispatch(settingKakashiMove(moves.coolDown))
                                                  } else if (name === names.goku) {
-                                                     setGokuAction(moves.plank)
+                                                     dispatch(settingGokuMove(moves.plank))
                                                  } else if (name === names.korra) {
-                                                     setKorraAction(moves.burpee)
+                                                     dispatch(settingKorraMove(moves.burpee))
                                                  } else if (name === names.naruto) {
-                                                     setNarutoAction(moves.sitUps)
+                                                     dispatch(settingNarutoMove(moves.sitUps))
                                                  }
                                              } else if (seconds === 571) {
                                                  setThirtySeconds(28)
@@ -839,13 +854,13 @@ export const Home = () => {
                                                  levelUp()
                                              } else if (seconds <= 600) {
                                                  if (name === names.kakashi) {
-                                                     setKakashiAction(moves.sitUps)
+                                                     dispatch(settingKakashiMove(moves.sitUps))
                                                  } else if (name === names.goku) {
-                                                     setGokuAction(moves.sitUps)
+                                                     dispatch(settingGokuMove(moves.sitUps))
                                                  } else if (name === names.korra) {
-                                                     setKorraAction(moves.crossJumps)
+                                                     dispatch(settingKorraMove(moves.crossJumps))
                                                  } else if (name === names.naruto) {
-                                                     setNarutoAction(moves.pushUp)
+                                                     dispatch(settingNarutoMove(moves.pushUp))
                                                  }
                                              } else if (seconds === 601) {
                                                  setThirtySeconds(28)
@@ -853,13 +868,13 @@ export const Home = () => {
                                                  levelUp()
                                              } else if (seconds <= 630) {
                                                  if (name === names.kakashi) {
-                                                     setKakashiAction(moves.pushUp)
+                                                     dispatch(settingKakashiMove(moves.pushUp))
                                                  } else if (name === names.goku) {
-                                                     setGokuAction(moves.pushUp)
+                                                     dispatch(settingGokuMove(moves.pushUp))
                                                  } else if (name === names.korra) {
-                                                     setKorraAction(moves.crossRotation)
+                                                     dispatch(settingKorraMove(moves.crossRotation))
                                                  } else if (name === names.naruto) {
-                                                     setNarutoAction(moves.bicepCurl)
+                                                     dispatch(settingNarutoMove(moves.bicepCurl))
                                                  }
                                              } else if (seconds === 631) {
                                                  setThirtySeconds(28)
@@ -867,13 +882,13 @@ export const Home = () => {
                                                  levelUp()
                                              } else if (seconds <= 660) {
                                                  if (name === names.kakashi) {
-                                                     setKakashiAction(moves.jumpingJack)
+                                                     dispatch(settingKakashiMove(moves.jumpingJack))
                                                  } else if (name === names.goku) {
-                                                     setGokuAction(moves.coolDown)
+                                                     dispatch(settingGokuMove(moves.coolDown))
                                                  } else if (name === names.korra) {
-                                                     setKorraAction(moves.coolDown)
+                                                     dispatch(settingKorraMove(moves.coolDown))
                                                  } else if (name === names.naruto) {
-                                                     setNarutoAction(moves.coolDown)
+                                                     dispatch(settingNarutoMove(moves.coolDown))
                                                  }
                                              } else if (seconds === 661) {
                                                  setThirtySeconds(28)
@@ -881,13 +896,13 @@ export const Home = () => {
                                                  levelUp()
                                              } else if (seconds <= 690) {
                                                  if (name === names.kakashi) {
-                                                     setKakashiAction(moves.coolDown)
+                                                     dispatch(settingKakashiMove(moves.coolDown))
                                                  } else if (name === names.goku) {
-                                                     setGokuAction(moves.jumpingJack)
+                                                     dispatch(settingGokuMove(moves.jumpingJack))
                                                  } else if (name === names.korra) {
-                                                     setKorraAction(moves.pushUp)
+                                                     dispatch(settingKorraMove(moves.pushUp))
                                                  } else if (name === names.naruto) {
-                                                     setNarutoAction(moves.jumpingJack)
+                                                     dispatch(settingNarutoMove(moves.jumpingJack))
                                                  }
                                              } else if (seconds === 691) {
                                                  setThirtySeconds(28)
@@ -895,13 +910,13 @@ export const Home = () => {
                                                  levelUp()
                                              } else if (seconds <= 720) {
                                                  if (name === names.kakashi) {
-                                                     setKakashiAction(moves.kick)
+                                                     dispatch(settingKakashiMove(moves.kick))
                                                  } else if (name === names.goku) {
-                                                     setGokuAction(moves.jab)
+                                                     dispatch(settingGokuMove(moves.jab))
                                                  } else if (name === names.korra) {
-                                                     setKorraAction(moves.sitUps)
+                                                     dispatch(settingKorraMove(moves.sitUps))
                                                  } else if (name === names.naruto) {
-                                                     setNarutoAction(moves.upRock)
+                                                     dispatch(settingNarutoMove(moves.upRock))
                                                  }
                                              } else if (seconds === 721) {
                                                  setThirtySeconds(28)
@@ -909,13 +924,13 @@ export const Home = () => {
                                                  levelUp()
                                              } else if (seconds <= 750) {
                                                  if (name === names.kakashi) {
-                                                     setKakashiAction(moves.bicepCurl)
+                                                     dispatch(settingKakashiMove(moves.bicepCurl))
                                                  } else if (name === names.goku) {
-                                                     setGokuAction(moves.hook)
+                                                     dispatch(settingGokuMove(moves.hook))
                                                  } else if (name === names.korra) {
-                                                     setKorraAction(moves.bicepCurl)
+                                                     dispatch(settingKorraMove(moves.bicepCurl))
                                                  } else if (name === names.naruto) {
-                                                     setNarutoAction(moves.footwork)
+                                                     dispatch(settingNarutoMove(moves.footwork))
                                                  }
                                              } else if (seconds === 751) {
                                                  setThirtySeconds(28)
@@ -923,13 +938,13 @@ export const Home = () => {
                                                  levelUp()
                                              } else if (seconds <= 780) {
                                                  if (name === names.kakashi) {
-                                                     setKakashiAction(moves.squat)
+                                                     dispatch(settingKakashiMove(moves.squat))
                                                  } else if (name === names.goku) {
-                                                     setGokuAction(moves.punchCombo)
+                                                     dispatch(settingGokuMove(moves.punchCombo))
                                                  } else if (name === names.korra) {
-                                                     setKorraAction(moves.coolDown)
+                                                     dispatch(settingKorraMove(moves.coolDown))
                                                  } else if (name === names.naruto) {
-                                                     setNarutoAction(moves.freeze)
+                                                     dispatch(settingNarutoMove(moves.freeze))
                                                  }
                                              } else if (seconds === 781) {
                                                  setThirtySeconds(28)
@@ -937,13 +952,13 @@ export const Home = () => {
                                                  levelUp()
                                              } else if (seconds <= 810) {
                                                  if (name === names.kakashi) {
-                                                     setKakashiAction(moves.coolDown)
+                                                     dispatch(settingKakashiMove(moves.coolDown))
                                                  } else if (name === names.goku) {
-                                                     setGokuAction(moves.coolDown)
+                                                     dispatch(settingGokuMove(moves.coolDown))
                                                  } else if (name === names.korra) {
-                                                     setKorraAction(moves.burpee)
+                                                     dispatch(settingKorraMove(moves.burpee))
                                                  } else if (name === names.naruto) {
-                                                     setNarutoAction(moves.coolDown)
+                                                     dispatch(settingNarutoMove(moves.coolDown))
                                                  }
                                              } else if (seconds === 811) {
                                                  setThirtySeconds(28)
@@ -951,13 +966,13 @@ export const Home = () => {
                                                  levelUp()
                                              } else if (seconds <= 840) {
                                                  if (name === names.kakashi) {
-                                                     setKakashiAction(moves.sitUps)
+                                                     dispatch(settingKakashiMove(moves.sitUps))
                                                  } else if (name === names.goku) {
-                                                     setGokuAction(moves.bicepCurl)
+                                                     dispatch(settingGokuMove(moves.bicepCurl))
                                                  } else if (name === names.korra) {
-                                                     setKorraAction(moves.crossJumps)
+                                                     dispatch(settingKorraMove(moves.crossJumps))
                                                  } else if (name === names.naruto) {
-                                                     setNarutoAction(moves.bikeCrunch)
+                                                     dispatch(settingNarutoMove(moves.bikeCrunch))
                                                  }
                                              } else if (seconds === 841) {
                                                  setThirtySeconds(28)
@@ -965,13 +980,13 @@ export const Home = () => {
                                                  levelUp()
                                              } else if (seconds <= 870) {
                                                  if (name === names.kakashi) {
-                                                     setKakashiAction(moves.pushUp)
+                                                     dispatch(settingKakashiMove(moves.pushUp))
                                                  } else if (name === names.goku) {
-                                                     setGokuAction(moves.plank)
+                                                     dispatch(settingGokuMove(moves.plank))
                                                  } else if (name === names.korra) {
-                                                     setKorraAction(moves.crossRotation)
+                                                     dispatch(settingKorraMove(moves.crossRotation))
                                                  } else if (name === names.naruto) {
-                                                     setNarutoAction(moves.sitUps)
+                                                     dispatch(settingNarutoMove(moves.sitUps))
                                                  }
                                              } else if (seconds === 871) {
                                                  setThirtySeconds(28)
@@ -979,13 +994,13 @@ export const Home = () => {
                                                  levelUp()
                                              } else if (seconds <= 900) {
                                                  if (name === names.kakashi) {
-                                                     setKakashiAction(moves.jumpingJack)
+                                                     dispatch(settingKakashiMove(moves.jumpingJack))
                                                  } else if (name === names.goku) {
-                                                     setGokuAction(moves.sitUps)
+                                                     dispatch(settingGokuMove(moves.sitUps))
                                                  } else if (name === names.korra) {
-                                                     setKorraAction(moves.coolDown)
+                                                     dispatch(settingKorraMove(moves.coolDown))
                                                  } else if (name === names.naruto) {
-                                                     setNarutoAction(moves.pushUp)
+                                                     dispatch(settingNarutoMove(moves.pushUp))
                                                  }
                                              } else if (seconds === 901) {
                                                  setThirtySeconds(28)
@@ -993,13 +1008,13 @@ export const Home = () => {
                                                  levelUp()
                                              } else if (seconds <= 930) {
                                                  if (name === names.kakashi) {
-                                                     setKakashiAction(moves.coolDown)
+                                                     dispatch(settingKakashiMove(moves.coolDown))
                                                  } else if (name === names.goku) {
-                                                     setGokuAction(moves.pushUp)
+                                                     dispatch(settingGokuMove(moves.pushUp))
                                                  } else if (name === names.korra) {
-                                                     setKorraAction(moves.pushUp)
+                                                     dispatch(settingKorraMove(moves.pushUp))
                                                  } else if (name === names.naruto) {
-                                                     setNarutoAction(moves.bicepCurl)
+                                                     dispatch(settingNarutoMove(moves.bicepCurl))
                                                  }
                                              } else if (seconds === 931) {
                                                  setThirtySeconds(28)
@@ -1007,13 +1022,13 @@ export const Home = () => {
                                                  levelUp()
                                              } else if (seconds <= 960) {
                                                  if (name === names.kakashi) {
-                                                     setKakashiAction(moves.kick)
+                                                     dispatch(settingKakashiMove(moves.kick))
                                                  } else if (name === names.goku) {
-                                                     setGokuAction(moves.coolDown)
+                                                     dispatch(settingGokuMove(moves.coolDown))
                                                  } else if (name === names.korra) {
-                                                     setKorraAction(moves.sitUps)
+                                                     dispatch(settingKorraMove(moves.sitUps))
                                                  } else if (name === names.naruto) {
-                                                     setNarutoAction(moves.coolDown)
+                                                     dispatch(settingNarutoMove(moves.coolDown))
                                                  }
                                              } else if (seconds === 961) {
                                                  setThirtySeconds(28)
@@ -1021,13 +1036,13 @@ export const Home = () => {
                                                  levelUp()
                                              } else if (seconds <= 990) {
                                                  if (name === names.kakashi) {
-                                                     setKakashiAction(moves.bicepCurl)
+                                                     dispatch(settingKakashiMove(moves.bicepCurl))
                                                  } else if (name === names.goku) {
-                                                     setGokuAction(moves.jumpingJack)
+                                                     dispatch(settingGokuMove(moves.jumpingJack))
                                                  } else if (name === names.korra) {
-                                                     setKorraAction(moves.bicepCurl)
+                                                     dispatch(settingKorraMove(moves.bicepCurl))
                                                  } else if (name === names.naruto) {
-                                                     setNarutoAction(moves.jumpingJack)
+                                                     dispatch(settingNarutoMove(moves.jumpingJack))
                                                  }
                                              } else if (seconds === 991) {
                                                  setThirtySeconds(28)
@@ -1035,13 +1050,13 @@ export const Home = () => {
                                                  levelUp()
                                              } else if (seconds <= 1010) {
                                                  if (name === names.kakashi) {
-                                                     setKakashiAction(moves.squat)
+                                                     dispatch(settingKakashiMove(moves.squat))
                                                  } else if (name === names.goku) {
-                                                     setGokuAction(moves.jab)
+                                                     dispatch(settingGokuMove(moves.jab))
                                                  } else if (name === names.korra) {
-                                                     setKorraAction(moves.coolDown)
+                                                     dispatch(settingKorraMove(moves.coolDown))
                                                  } else if (name === names.naruto) {
-                                                     setNarutoAction(moves.upRock)
+                                                     dispatch(settingNarutoMove(moves.upRock))
                                                  }
                                              } else if (seconds === 1011) {
                                                  setThirtySeconds(28)
@@ -1049,13 +1064,13 @@ export const Home = () => {
                                                  levelUp()
                                              } else if (seconds <= 1030) {
                                                  if (name === names.kakashi) {
-                                                     setKakashiAction(moves.coolDown)
+                                                     dispatch(settingKakashiMove(moves.coolDown))
                                                  } else if (name === names.goku) {
-                                                     setGokuAction(moves.coolDown)
+                                                     dispatch(settingGokuMove(moves.coolDown))
                                                  } else if (name === names.korra) {
-                                                     setKorraAction(moves.coolDown)
+                                                     dispatch(settingKorraMove(moves.coolDown))
                                                  } else if (name === names.naruto) {
-                                                     setNarutoAction(moves.footwork)
+                                                     dispatch(settingNarutoMove(moves.footwork))
                                                  }
                                              } else if (seconds === 1031) {
                                                  setThirtySeconds(28)
@@ -1065,7 +1080,7 @@ export const Home = () => {
                                              //when video stops character turns idle
                                          } else if (autoWorkout === true && videoPlay === false) {
                                              if (name === names.kakashi) {
-                                                 return setKakashiAction(moves.idle)
+                                                 return dispatch(settingKakashiMove(moves.idle))
                                              }
                                          }
                                      }}
