@@ -10,12 +10,11 @@ import {settingNarutoMove} from "../../../store/trainer-Slices/narutoSlice";
 import ReactPlayer from "react-player";
 import {useDispatch, useSelector} from "react-redux";
 import {settingThirtySecondTimer} from "../../../store/timer-Slices/thirtySecondTimer";
+import {settingVideoSecondsTimer} from "../../../store/timer-Slices/vdeoSecondsTimer";
 import {expUp, levelUp, coinUp} from "../../shared/profile-functions/profileFunctions";
-import {settingVideoFinishedModal} from "../../../store/videoFinishedModalSlice";
 
 export const VideoPlayer = ({seconds}) => {
 
-    //redux state management
     const dispatch = useDispatch();
 
     const name = useSelector((state) => state.name.setName)
@@ -25,14 +24,18 @@ export const VideoPlayer = ({seconds}) => {
     const korraAction = useSelector((state) => state.korraMove.setMove)
     const gokuAction = useSelector((state) => state.gokuMove.setMove)
     const narutoAction = useSelector((state) => state.narutoMove.setMove)
-
+    // const thirtySeconds = useSelector(state => state.thirtySecondTimer.setThirtySecondsTimer)
+    // const seconds = useSelector(state => state.videoSecondsTimer.setVideoSecondsTimer)
 
 //Functionality for 30 second workout timer
     const [thirtySeconds, setThirtySeconds] = useState(30)
 
+    // const thirtySeconds = useSelector(state => state.thirtySecondTimer.setThirtySecondsTimer)
+
     useEffect(() => {
         if (thirtySeconds === -1) {
             setThirtySeconds(30)
+            // dispatch(settingThirtySecondTimer(thirtySeconds))
             expUp()
             levelUp()
         } else if (videoPlay === true) {
@@ -45,9 +48,6 @@ export const VideoPlayer = ({seconds}) => {
     }, [videoPlay, thirtySeconds, kakashiAction, narutoAction, korraAction, gokuAction])
 
 
-//sets the state of the videoFinshedModal to show for when the video ends
-    const handleShow = () => dispatch(settingVideoFinishedModal(true));
-
     return (
         <>
             <ReactPlayer url={animeMontage}
@@ -56,7 +56,8 @@ export const VideoPlayer = ({seconds}) => {
                          height={'400px'}
                          playing={videoPlay}
                          onEnded={() => {
-                             handleShow()
+                             //TODO add back in
+                             // handleShow()
                              dispatch(settingVideoPlay(false))
                          }}
                          onPlay={() => {

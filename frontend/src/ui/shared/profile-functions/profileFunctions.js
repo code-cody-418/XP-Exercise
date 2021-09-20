@@ -1,4 +1,5 @@
 import {httpConfig} from "../utils/http-config";
+import {fetchProfileByProfileId} from "../../../store/profileSlice";
 
 
 export const expUp = (profile) => {
@@ -8,6 +9,7 @@ export const expUp = (profile) => {
             .then(reply => {
                     if (reply.status === 200) {
                         console.log(reply);
+                        // dispatch(fetchProfileByProfileId(profile.profileId));
                     }
                     console.log(reply);
                 }
@@ -24,6 +26,7 @@ export const levelUp = (profile) => {
                 .then(reply => {
                         if (reply.status === 200) {
                             console.log(reply);
+                            // dispatch(fetchProfileByProfileId(profile.profileId));
                         }
                         console.log(reply);
                     }
@@ -40,6 +43,7 @@ export const coinUp = (profile) => {
             .then(reply => {
                     if (reply.status === 200) {
                         console.log(reply);
+                        // dispatch(fetchProfileByProfileId(profile.profileId));
                     }
                     console.log(reply);
                 }

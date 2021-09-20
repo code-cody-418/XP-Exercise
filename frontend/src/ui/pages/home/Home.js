@@ -23,7 +23,6 @@ import {settingKorraMove} from "../../../store/trainer-Slices/korraSlice";
 import {SelectCharacterButtons} from "./SelectCharacterButtons";
 import {VideoPlayer} from "./VideoPlayer";
 import {coinUp} from "../../shared/profile-functions/profileFunctions";
-import {settingVideoFinishedModal} from "../../../store/videoFinishedModalSlice";
 
 
 export const Home = () => {
@@ -38,7 +37,6 @@ export const Home = () => {
     const gokuAction = useSelector((state) => state.gokuMove.setMove)
     const narutoAction = useSelector((state) => state.narutoMove.setMove)
     const thirtySeconds = useSelector(state => state.thirtySecondTimer.setThirtySecondsTimer)
-    const videoFinished = useSelector(state => state.videoFinishedModal.setVideoFinishedModal)
 
     //redux functionality to get profile data
     const {authenticatedUser} = useJwtToken();
@@ -65,14 +63,17 @@ export const Home = () => {
 
 
     //sets up modal for when video is completed
+    const [show, setShow] = useState(false);
+
     const handleClose = () => {
-        dispatch(settingVideoFinishedModal(false))
+        setShow(false);
         dispatch(settingKakashiMove(moves.celebration))
         dispatch(settingNarutoMove(moves.celebration))
         dispatch(settingKorraMove(moves.celebration))
         dispatch(settingGokuMove(moves.celebration))
         setSeconds(0)
     }
+    const handleShow = () => setShow(true);
 
 
     // array of youtube videos
@@ -99,7 +100,7 @@ export const Home = () => {
 //_____________________________________________________________________________________________________________________
     return (
         <>
-            <Modal show={videoFinished} onHide={handleClose}>
+            <Modal show={show} onHide={handleClose}>
                 <Modal.Header>
                     <Modal.Title>Great Job Training!!!</Modal.Title>
                 </Modal.Header>
