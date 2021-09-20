@@ -8,7 +8,7 @@ import {Shop} from "./pages/Shop";
 import {Credit} from "./pages/credit/Credit";
 
 import {Provider} from "react-redux";
-// import {Test} from "./pages/Test";
+
 
 
 
@@ -22,7 +22,6 @@ export const App = (store) => (
                 <Route exact path='/profile' component={Profile} />
                 <Route exact path='/shop' component={Shop} />
                 <Route exact path='/credit' component={Credit} />
-                {/*<Route exact path='/test' component={Test} />*/}
             </Switch>
         </BrowserRouter>
         </Provider>
