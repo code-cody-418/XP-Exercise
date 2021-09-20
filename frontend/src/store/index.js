@@ -10,6 +10,7 @@ import gokuMove from "./trainer-Slices/gokuSlice"
 import narutoMove from "./trainer-Slices/narutoSlice"
 import thirtySecondTimer from "./timer-Slices/thirtySecondTimer"
 import videoSecondsTimer from "./timer-Slices/vdeoSecondsTimer"
+import videoFinishedModal from "./VideoFinishedModalSlice";
 
 //bring in reducers here
 const reducer = combineReducers({
@@ -23,7 +24,8 @@ const reducer = combineReducers({
     gokuMove,
     narutoMove,
     thirtySecondTimer,
-    videoSecondsTimer
+    videoSecondsTimer,
+    videoFinishedModal
 })
 
 export const store = configureStore({reducer})

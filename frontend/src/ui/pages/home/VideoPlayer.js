@@ -12,6 +12,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {settingThirtySecondTimer} from "../../../store/timer-Slices/thirtySecondTimer";
 import {settingVideoSecondsTimer} from "../../../store/timer-Slices/vdeoSecondsTimer";
 import {expUp, levelUp, coinUp} from "../../shared/profile-functions/profileFunctions";
+import {settingVideoFinishedModal} from "../../../store/VideoFinishedModalSlice";
+// import {settingVideoFinishedModal} from "../../../store/videoFinishedModalSlice";
 
 export const VideoPlayer = ({seconds}) => {
 
@@ -47,7 +49,8 @@ export const VideoPlayer = ({seconds}) => {
         }
     }, [videoPlay, thirtySeconds, kakashiAction, narutoAction, korraAction, gokuAction])
 
-
+//sets the state of the videoFinshedModal to show for when the video ends
+    const handleShow = () => dispatch(settingVideoFinishedModal(true));
     return (
         <>
             <ReactPlayer url={animeMontage}
@@ -56,8 +59,7 @@ export const VideoPlayer = ({seconds}) => {
                          height={'400px'}
                          playing={videoPlay}
                          onEnded={() => {
-                             //TODO add back in
-                             // handleShow()
+                             handleShow()
                              dispatch(settingVideoPlay(false))
                          }}
                          onPlay={() => {
