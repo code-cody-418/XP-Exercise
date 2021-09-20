@@ -18,7 +18,7 @@ import {useJwtToken} from "../../shared/utils/useJwtToken";
 import {httpConfig} from "../../shared/utils/http-config";
 import {ProfileInfo} from "../../shared/profile/ProfileInfo";
 import animeMontage from "../../../videos/Anime Training Montage AMV.mp4"
-import {settingMove} from "../../../store/moveSlice";
+// import {settingMove} from "../../../store/moveSlice";
 import {settingAutoWorkout} from "../../../store/autoWorkoutSlice";
 import {settingVideoPlay} from "../../../store/videoPlaySlice";
 import {settingName} from "../../../store/nameSlice";
@@ -31,7 +31,7 @@ import {settingKorraMove} from "../../../store/trainer-Slices/korraSlice";
 export const Home = () => {
 
     //state of the current exercise move
-    const currentMove = useSelector((state) => state.move.setMoves)
+    // const currentMove = useSelector((state) => state.move.setMoves)
 
     const name = useSelector((state) => state.name.setName)
 
@@ -121,32 +121,32 @@ export const Home = () => {
                             }}
                         >Auto</Button>
                         <Button className='characterButton'
-                                onClick={() => dispatch(settingMove(moves.idle))}>Chillin</Button>
+                                onClick={() => dispatch(settingKakashiMove(moves.idle))}>Chillin</Button>
                         <Button className='characterButton'
-                                onClick={() => dispatch(settingMove(moves.armStretch))}>Arm Stretch</Button>
+                                onClick={() => dispatch(settingKakashiMove(moves.armStretch))}>Arm Stretch</Button>
                     </Col>
                     <Col md={2} lg={1} className='mx-0 px-0'>
                         <Button className='characterButton'
-                                onClick={() => setKakashiAction(moves.neckStretch)}>Neck Stretch</Button>
+                                onClick={() => dispatch(settingKakashiMove(moves.neckStretch))}>Neck Stretch</Button>
                         <Button className='characterButton'
-                                onClick={() => setKakashiAction(moves.touchToes)}>Toe Touch</Button>
+                                onClick={() => dispatch(settingKakashiMove(moves.touchToes))}>Toe Touch</Button>
                         <Button className='characterButton'
-                                onClick={() => setKakashiAction(moves.pushUp)}>Push Ups</Button>
+                                onClick={() => dispatch(settingKakashiMove(moves.pushUp))}>Push Ups</Button>
                     </Col>
                     <Col md={2} lg={1} className='mx-0 px-0'>
                         <Button className='characterButton'
-                                onClick={() => setKakashiAction(moves.sitUps)}>Sit-ups</Button>
+                                onClick={() => dispatch(settingKakashiMove(moves.sitUps))}>Sit-ups</Button>
                         <Button className='characterButton'
-                                onClick={() => setKakashiAction(moves.jumpingJack)}>Jumping Jacks</Button>
-                        <Button className='characterButton' onClick={() => setKakashiAction(moves.kick)}>Kick</Button>
+                                onClick={() => dispatch(settingKakashiMove(moves.jumpingJack))}>Jumping Jacks</Button>
+                        <Button className='characterButton' onClick={() => dispatch(settingKakashiMove(moves.kick))}>Kick</Button>
                     </Col>
                     <Col md={2} lg={1} className='mx-0 px-0'>
                         <Button className='characterButton'
-                                onClick={() => setKakashiAction(moves.squat)}>Squat</Button>
+                                onClick={() => dispatch(settingKakashiMove(moves.squat))}>Squat</Button>
                         <Button className='characterButton'
-                                onClick={() => setKakashiAction(moves.bicepCurl)}>Bicep Curl</Button>
+                                onClick={() => dispatch(settingKakashiMove(moves.bicepCurl))}>Bicep Curl</Button>
                         <Button className='characterButton'
-                                onClick={() => setKakashiAction(moves.coolDown)}>Cool Down</Button>
+                                onClick={() => dispatch(settingKakashiMove(moves.coolDown))}>Cool Down</Button>
                     </Col>
                 </>
             )
@@ -165,33 +165,33 @@ export const Home = () => {
                                 // )
                             }}
                         >Auto</Button>
-                        <Button className='characterButton' onClick={() => setNarutoAction(moves.armStretch)}>Arm
+                        <Button className='characterButton' onClick={() => dispatch(settingNarutoMove(moves.armStretch))}>Arm
                             Stretch</Button>
-                        <Button className='characterButton' onClick={() => setNarutoAction(moves.touchToes)}>Touch
+                        <Button className='characterButton' onClick={() => dispatch(settingNarutoMove(moves.touchToes))}>Touch
                             Toes</Button>
                     </Col>
                     <Col md={2} lg={1} className='mx-0 px-0'>
                         <Button className='characterButton'
-                                onClick={() => setNarutoAction(moves.upRock)}>Uprock</Button>
+                                onClick={() => dispatch(settingNarutoMove(moves.upRock))}>Uprock</Button>
                         <Button className='characterButton'
-                                onClick={() => setNarutoAction(moves.footwork)}>Footwork</Button>
+                                onClick={() => dispatch(settingNarutoMove(moves.footwork))}>Footwork</Button>
                         <Button className='characterButton'
-                                onClick={() => setNarutoAction(moves.freeze)}>Freeze</Button>
+                                onClick={() => dispatch(settingNarutoMove(moves.freeze))}>Freeze</Button>
                     </Col>
                     <Col md={2} lg={1} className='mx-0 px-0'>
-                        <Button className='characterButton' onClick={() => setNarutoAction(moves.jumpingJack)}>Jumping
+                        <Button className='characterButton' onClick={() => dispatch(settingNarutoMove(moves.jumpingJack))}>Jumping
                             Jacks</Button>
                         <Button className='characterButton'
-                                onClick={() => setNarutoAction(moves.bikeCrunch)}>Crunch's</Button>
-                        <Button className='characterButton' onClick={() => setNarutoAction(moves.sitUps)}>Sit
+                                onClick={() => dispatch(settingNarutoMove(moves.bikeCrunch))}>Crunch's</Button>
+                        <Button className='characterButton' onClick={() => dispatch(settingNarutoMove(moves.sitUps))}>Sit
                             Ups</Button>
                     </Col>
                     <Col md={2} lg={1} className='mx-0 px-0'>
-                        <Button className='characterButton' onClick={() => setNarutoAction(moves.pushUp)}>Push
+                        <Button className='characterButton' onClick={() => dispatch(settingNarutoMove(moves.pushUp))}>Push
                             Up</Button>
-                        <Button className='characterButton' onClick={() => setNarutoAction(moves.bicepCurl)}>Bicep
+                        <Button className='characterButton' onClick={() => dispatch(settingNarutoMove(moves.bicepCurl))}>Bicep
                             Curl</Button>
-                        <Button className='characterButton' onClick={() => setNarutoAction(moves.coolDown)}>Cool
+                        <Button className='characterButton' onClick={() => dispatch(settingNarutoMove(moves.coolDown))}>Cool
                             Down</Button>
                     </Col>
                 </>
@@ -211,29 +211,29 @@ export const Home = () => {
                                 // )
                             }}
                         >Auto</Button>
-                        <Button className='characterButton' onClick={() => setGokuAction(moves.touchToes)}>Touch
+                        <Button className='characterButton' onClick={() => dispatch(settingGokuMove(moves.touchToes))}>Touch
                             Toes</Button>
-                        <Button className='characterButton' onClick={() => setGokuAction(moves.armStretch)}>Arm
+                        <Button className='characterButton' onClick={() => dispatch(settingGokuMove(moves.armStretch))}>Arm
                             Stretch</Button>
                     </Col>
                     <Col md={2} lg={1} className='mx-0 px-0'>
-                        <Button className='characterButton' onClick={() => setGokuAction(moves.jumpingJack)}>Jumping
+                        <Button className='characterButton' onClick={() => dispatch(settingGokuMove(moves.jumpingJack))}>Jumping
                             Jacks</Button>
-                        <Button className='characterButton' onClick={() => setGokuAction(moves.jab)}>Jab</Button>
-                        <Button className='characterButton' onClick={() => setGokuAction(moves.hook)}>Hook</Button>
+                        <Button className='characterButton' onClick={() => dispatch(settingGokuMove(moves.jab))}>Jab</Button>
+                        <Button className='characterButton' onClick={() => dispatch(settingGokuMove(moves.hook))}>Hook</Button>
                     </Col>
                     <Col md={2} lg={1} className='mx-0 px-0'>
-                        <Button className='characterButton' onClick={() => setGokuAction(moves.punchCombo)}>Punch
+                        <Button className='characterButton' onClick={() => dispatch(settingGokuMove(moves.punchCombo))}>Punch
                             Combo</Button>
-                        <Button className='characterButton' onClick={() => setGokuAction(moves.bicepCurl)}>Bicep
+                        <Button className='characterButton' onClick={() => dispatch(settingGokuMove(moves.bicepCurl))}>Bicep
                             Curl</Button>
-                        <Button className='characterButton' onClick={() => setGokuAction(moves.plank)}>Plank</Button>
+                        <Button className='characterButton' onClick={() => dispatch(settingGokuMove(moves.plank))}>Plank</Button>
                     </Col>
                     <Col md={2} lg={1} className='mx-0 px-0'>
-                        <Button className='characterButton' onClick={() => setGokuAction(moves.sitUps)}>Sit Ups</Button>
-                        <Button className='characterButton' onClick={() => setGokuAction(moves.pushUp)}>Push
+                        <Button className='characterButton' onClick={() => dispatch(settingGokuMove(moves.sitUps))}>Sit Ups</Button>
+                        <Button className='characterButton' onClick={() => dispatch(settingGokuMove(moves.pushUp))}>Push
                             Ups</Button>
-                        <Button className='characterButton' onClick={() => setGokuAction(moves.coolDown)}>Cool
+                        <Button className='characterButton' onClick={() => dispatch(settingGokuMove(moves.coolDown))}>Cool
                             Down</Button>
                     </Col>
                 </>
@@ -252,31 +252,31 @@ export const Home = () => {
                                 //     setVideoPlay(true)
                                 // )
                             }}>Auto</Button>
-                        <Button className='characterButton' onClick={() => setKorraAction(moves.idle)}>Chillin</Button>
-                        <Button className='characterButton' onClick={() => setKorraAction(moves.armStretch)}>Arm
+                        <Button className='characterButton' onClick={() => dispatch(settingKorraMove(moves.idle))}>Chillin</Button>
+                        <Button className='characterButton' onClick={() => dispatch(settingKorraMove(moves.armStretch))}>Arm
                             Stretch</Button>
                     </Col>
                     <Col md={2} lg={1} className='mx-0 px-0'>
-                        <Button className='characterButton' onClick={() => setKorraAction(moves.touchToes)}>Touch
+                        <Button className='characterButton' onClick={() => dispatch(settingKorraMove(moves.touchToes))}>Touch
                             Toes</Button>
 
-                        <Button className='characterButton' onClick={() => setKorraAction(moves.burpee)}>Burpee</Button>
-                        <Button className='characterButton' onClick={() => setKorraAction(moves.crossJumps)}>Cross
+                        <Button className='characterButton' onClick={() => dispatch(settingKorraMove(moves.burpee))}>Burpee</Button>
+                        <Button className='characterButton' onClick={() => dispatch(settingKorraMove(moves.crossJumps))}>Cross
                             Jumps</Button>
 
                     </Col>
                     <Col md={2} lg={1} className='mx-0 px-0'>
-                        <Button className='characterButton' onClick={() => setKorraAction(moves.crossRotation)}>Cross
+                        <Button className='characterButton' onClick={() => dispatch(settingKorraMove(moves.crossRotation))}>Cross
                             Rotations</Button>
-                        <Button className='characterButton' onClick={() => setKorraAction(moves.pushUp)}>Push
+                        <Button className='characterButton' onClick={() => dispatch(settingKorraMove(moves.pushUp))}>Push
                             Ups</Button>
-                        <Button className='characterButton' onClick={() => setKorraAction(moves.sitUps)}>Sit
+                        <Button className='characterButton' onClick={() => dispatch(settingKorraMove(moves.sitUps))}>Sit
                             Ups</Button>
                     </Col>
                     <Col md={2} lg={1} className='mx-0 px-0'>
-                        <Button className='characterButton' onClick={() => setKorraAction(moves.bicepCurl)}>Bicep
+                        <Button className='characterButton' onClick={() => dispatch(settingKorraMove(moves.bicepCurl))}>Bicep
                             Curl</Button>
-                        <Button className='characterButton' onClick={() => setKorraAction(moves.coolDown)}>Cool
+                        <Button className='characterButton' onClick={() => dispatch(settingKorraMove(moves.coolDown))}>Cool
                             Down</Button>
                     </Col>
                 </>
