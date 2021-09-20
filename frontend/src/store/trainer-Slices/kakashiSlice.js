@@ -19,6 +19,6 @@ export const kakashiSlice = createSlice({
     }
 })
 
-export const { settingMove } = kakashiSlice.actions
+export const { settingKakashiMove } = kakashiSlice.actions
 
 export default kakashiSlice.reducer

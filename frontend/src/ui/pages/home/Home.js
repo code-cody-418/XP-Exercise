@@ -22,6 +22,10 @@ import {settingMove} from "../../../store/moveSlice";
 import {settingAutoWorkout} from "../../../store/autoWorkoutSlice";
 import {settingVideoPlay} from "../../../store/videoPlaySlice";
 import {settingName} from "../../../store/nameSlice";
+import {settingKakashiMove} from "../../../store/trainer-Slices/kakashiSlice"
+import {settingGokuMove} from "../../../store/trainer-Slices/gokuSlice";
+import {settingNarutoMove} from "../../../store/trainer-Slices/narutoSlice";
+import {settingKorraMove} from "../../../store/trainer-Slices/korraSlice";
 
 
 export const Home = () => {
@@ -74,10 +78,14 @@ export const Home = () => {
                                     // setAutoWorkout(true)
                                     dispatch(settingAutoWorkout(true))
                                     dispatch(settingVideoPlay(false))
-                                    setKakashiAction(moves.idle)
-                                    setNarutoAction(moves.idle)
-                                    setKorraAction(moves.idle)
-                                    setGokuAction(moves.idle)
+                                    dispatch(settingKakashiMove(moves.idle))
+                                    dispatch(settingGokuMove(moves.idle))
+                                    dispatch(settingNarutoMove(moves.idle))
+                                    dispatch(settingKorraMove(moves.idle))
+                                    // setKakashiAction(moves.idle)
+                                    // setNarutoAction(moves.idle)
+                                    // setKorraAction(moves.idle)
+                                    // setGokuAction(moves.idle)
                                     // return (
                                     //     setVideoPlay(false)
                                     // )

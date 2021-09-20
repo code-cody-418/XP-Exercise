@@ -19,6 +19,6 @@ export const narutoSlice = createSlice({
     }
 })
 
-export const { settingMove } = narutoSlice.actions
+export const { settingNarutoMove } = narutoSlice.actions
 
 export default narutoSlice.reducer

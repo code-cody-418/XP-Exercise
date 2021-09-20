@@ -19,6 +19,6 @@ export const korraSlice = createSlice({
     }
 })
 
-export const { settingMove } = korraSlice.actions
+export const { settingKorraMove } = korraSlice.actions
 
 export default korraSlice.reducer

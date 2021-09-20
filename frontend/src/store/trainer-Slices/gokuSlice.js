@@ -19,6 +19,6 @@ export const gokuSlice = createSlice({
     }
 })
 
-export const { settingMove } = gokuSlice.actions
+export const { settingGokuMove } = gokuSlice.actions
 
 export default gokuSlice.reducer
