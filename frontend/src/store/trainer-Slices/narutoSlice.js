@@ -7,12 +7,6 @@ export const narutoSlice = createSlice({
         setMove: moves.idle
     },
     reducers: {
-        // idle: (state) => {
-        //     state.setMoves = moves.idle
-        // },
-        // stretch: (state) => {
-        //   state.setMoves = moves.neckStretch
-        // },
         settingNarutoMove: (state, action) => {
             state.setMove = action.payload
         }

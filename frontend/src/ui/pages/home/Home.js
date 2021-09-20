@@ -6,7 +6,6 @@ import naruto from "../../../images/naruto.png"
 import kakashi from '../../../images/kakashi-01.png'
 import korra from '../../../images/korra-trainer.png'
 import trainInsaiyan from '../../../images/train-insaiyan.jpg'
-import ReactPlayer from "react-player";
 import "../../styles.css"
 import AnimationScene from "./AnimationScene";
 import {moves} from "../../shared/interfaces/moves";
@@ -15,17 +14,15 @@ import {DisplayAction} from "./DisplayAction";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchProfileByProfileId} from "../../../store/profileSlice";
 import {useJwtToken} from "../../shared/utils/useJwtToken";
-import {httpConfig} from "../../shared/utils/http-config";
 import {ProfileInfo} from "../../shared/profile/ProfileInfo";
-import animeMontage from "../../../videos/Anime Training Montage AMV.mp4"
-import {settingAutoWorkout} from "../../../store/autoWorkoutSlice";
-import {settingVideoPlay} from "../../../store/videoPlaySlice";
 import {settingName} from "../../../store/nameSlice";
 import {settingKakashiMove} from "../../../store/trainer-Slices/kakashiSlice"
 import {settingGokuMove} from "../../../store/trainer-Slices/gokuSlice";
 import {settingNarutoMove} from "../../../store/trainer-Slices/narutoSlice";
 import {settingKorraMove} from "../../../store/trainer-Slices/korraSlice";
 import {SelectCharacterButtons} from "./SelectCharacterButtons";
+import {VideoPlayer} from "./VideoPlayer";
+import {coinUp} from "../../shared/profile-functions/profileFunctions";
 
 
 export const Home = () => {
@@ -35,11 +32,11 @@ export const Home = () => {
 
     const name = useSelector((state) => state.name.setName)
     const videoPlay = useSelector((state) => state.videoPlay.setVideoPlay)
-    const autoWorkout = useSelector((state) => state.autoWorkout.setAutoWorkout)
     const kakashiAction = useSelector((state) => state.kakashiMove.setMove)
     const korraAction = useSelector((state) => state.korraMove.setMove)
     const gokuAction = useSelector((state) => state.gokuMove.setMove)
     const narutoAction = useSelector((state) => state.narutoMove.setMove)
+    const thirtySeconds = useSelector(state => state.thirtySecondTimer.setThirtySecondsTimer)
 
     //redux functionality to get profile data
     const {authenticatedUser} = useJwtToken();
@@ -60,48 +57,12 @@ export const Home = () => {
             : null
     ));
 
-    //function to call api that adds a Exp to profile
-    const expUp = () => {
-        if (profile === null) {
-        } else if (profile != null) {
-            httpConfig.put(`/apis/profile/expUp/${profile.profileId}`, profile)
-                .then(reply => {
-                        if (reply.status === 200) {
-                            console.log(reply);
-                            dispatch(fetchProfileByProfileId(profile.profileId));
-                        }
-                        console.log(reply);
-                    }
-                );
-        }
-    }
-
-    //function to call api that adds a Exp to profile
-    const levelUp = () => {
-        if (profile === null) {
-        } else if (profile != null) {
-            if ((profile.profileExp + '').indexOf('00') > -1 === true) {
-                httpConfig.put(`/apis/profile/levelUp/${profile.profileId}`, profile)
-                    .then(reply => {
-                            if (reply.status === 200) {
-                                console.log(reply);
-                                dispatch(fetchProfileByProfileId(profile.profileId));
-                            }
-                            console.log(reply);
-                        }
-                    );
-            }
-        }
-    }
-
     //adds hover cursor to character select
     const [hovered, setHovered] = useState(false)
     useEffect(() => void (document.body.style.cursor = hovered ? "pointer" : "auto"), [hovered])
 
-    //set state of playing video
-    // const [videoPlay, setVideoPlay] = useState(false)
 
-    //sets up modal for when
+    //sets up modal for when video is completed
     const [show, setShow] = useState(false);
 
     const handleClose = () => {
@@ -110,12 +71,9 @@ export const Home = () => {
         dispatch(settingNarutoMove(moves.celebration))
         dispatch(settingKorraMove(moves.celebration))
         dispatch(settingGokuMove(moves.celebration))
+        setSeconds(0)
     }
     const handleShow = () => setShow(true);
-
-
-    //set an auto workout vs a manuel workout
-    // const [autoWorkout, setAutoWorkout] = useState(true)
 
 
     // array of youtube videos
@@ -138,38 +96,6 @@ export const Home = () => {
             return () => clearInterval(intervalId)
         }
     }, [videoPlay])
-
-    //Functionality to 30 second workout timer
-    const [thirtySeconds, setThirtySeconds] = useState(30)
-
-    useEffect(() => {
-        if (thirtySeconds === -1) {
-            setThirtySeconds(30)
-            expUp()
-            levelUp()
-        } else if (videoPlay === true) {
-            const intervalId = setInterval(() => {
-                setThirtySeconds(thirtySeconds => thirtySeconds - 1)
-            }, 1000)
-            return () => clearInterval(intervalId)
-        }
-    }, [videoPlay, thirtySeconds, kakashiAction, narutoAction, korraAction, gokuAction])
-
-    //function to call api that adds a coin to profile
-    const coinUp = () => {
-        if (profile === null) {
-        } else if (profile != null) {
-            httpConfig.put(`/apis/profile/coinUp/${profile.profileId}`, profile)
-                .then(reply => {
-                        if (reply.status === 200) {
-                            console.log(reply);
-                            dispatch(fetchProfileByProfileId(profile.profileId));
-                        }
-                        console.log(reply);
-                    }
-                );
-        }
-    }
 
 //_____________________________________________________________________________________________________________________
     return (
@@ -201,7 +127,7 @@ export const Home = () => {
             </Modal>
             <Container fluid={true}>
                 <Row>
-                    <Menu profile={profile} videoPlay={videoPlay} thirtySeconds={thirtySeconds}/>
+                    <Menu profile={profile} />
                 </Row>
                 <Row>
                     <h1 className="trainerTitle text-center">Trainers</h1>
@@ -215,7 +141,6 @@ export const Home = () => {
                              onClick={() => {
                                  dispatch(settingName(names.goku))
                                  dispatch(settingGokuMove(moves.idle))
-                                 // setName('goku')
                              }}
                              className="rounded-circle border border-dark mx-auto d-block"
                              width="125"
@@ -229,7 +154,6 @@ export const Home = () => {
                              onClick={() => {
                                  dispatch(settingName(names.naruto))
                                  dispatch(settingNarutoMove(moves.idle))
-                                 // setName('naruto')
                              }}
                              className="rounded-circle border border-dark mx-auto d-block"
                              width="125"
@@ -243,7 +167,6 @@ export const Home = () => {
                              onClick={() => {
                                  dispatch(settingName(names.kakashi))
                                  dispatch(settingKakashiMove(moves.idle))
-                                 // setName('kakashi')
                              }}
                              className="rounded-circle border border-dark mx-auto d-block"
                              width="125"
@@ -257,7 +180,6 @@ export const Home = () => {
                              onClick={() => {
                                  dispatch(settingName(names.korra))
                                  dispatch(settingKorraMove(moves.idle))
-                                 // setName('korra')
                              }}
                              className="rounded-circle border border-dark mx-auto d-block"
                              width="125"
@@ -274,7 +196,7 @@ export const Home = () => {
                         <div className='underCanvas'>
                             <Button
                                 className='thirtySecondTimerButton mt-0'
-                                onClick={() => setThirtySeconds(30)}
+                                // onClick={() => dispatch(settingThirtySecondTimer(30))}
                             >{thirtySeconds}</Button>
                             <DisplayAction gokuAction={gokuAction} narutoAction={narutoAction}
                                            kakashiAction={kakashiAction} korraAction={korraAction}
@@ -282,543 +204,9 @@ export const Home = () => {
                         </div>
                     </Col>
                     <Col lg={4} className='ms-0 ps-0 removeTop'>
-                        <ReactPlayer url={animeMontage}
-
-                                     width={'100%'}
-                                     height={'400px'}
-                                     playing={videoPlay}
-                                     onEnded={() => {
-                                         handleShow()
-                                         dispatch(settingVideoPlay(false))
-                                         // setVideoPlay(false)
-                                         setSeconds(0)
-                                     }}
-                                     onPlay={() => {
-                                         dispatch(settingVideoPlay(true))
-                                         // setVideoPlay(true)
-                                     }}
-                                     onPause={() => {
-                                         dispatch(settingVideoPlay(false))
-                                         // setVideoPlay(false)
-                                     }}
-                            // config={{
-                            //     youtube: {
-                            //         playerVars: { showinfo: 1,
-                            //             origin: 'http://143.244.183.237/',
-                            //             // origin: 'http://localhost:3000/',
-                            //             enablejsapi: 1
-                            //         }
-                            //     }
-                            // }}
-                            //extra callbacks for videoplayer
-                                     controls={true}
-                            // muted={true}
-
-                            //this is logic that determines auto-workouts
-                                     onProgress={(played) => {
-                                         if (autoWorkout === true && videoPlay === true) {
-                                             //determines an action of each character based on elapsed seconds and resets 30 seconds timer
-                                             if (seconds <= 30) {
-                                                 if (name === names.kakashi) {
-                                                     dispatch(settingKakashiMove(moves.armStretch))
-                                                 } else if (name === names.goku) {
-                                                     dispatch(settingGokuMove(moves.touchToes))
-                                                 } else if (name === names.korra) {
-                                                     dispatch(settingKorraMove(moves.armStretch))
-                                                 } else if (name === names.naruto) {
-                                                     dispatch(settingNarutoMove(moves.armStretch))
-                                                 }
-                                             } else if (seconds === 31) {
-                                                 setThirtySeconds(28)
-                                                 expUp()
-                                                 levelUp()
-                                             } else if (seconds <= 60) {
-                                                 if (name === names.kakashi) {
-                                                     dispatch(settingKakashiMove(moves.neckStretch))
-                                                 } else if (name === names.goku) {
-                                                     dispatch(settingGokuMove(moves.armStretch))
-                                                 } else if (name === names.korra) {
-                                                     dispatch(settingKorraMove(moves.touchToes))
-                                                 } else if (name === names.naruto) {
-                                                     dispatch(settingNarutoMove(moves.touchToes))
-                                                 }
-                                             } else if (seconds === 61) {
-                                                 setThirtySeconds(28)
-                                                 expUp()
-                                                 levelUp()
-                                             } else if (seconds <= 90) {
-                                                 if (name === names.kakashi) {
-                                                     dispatch(settingKakashiMove(moves.touchToes))
-                                                 } else if (name === names.goku) {
-                                                     dispatch(settingGokuMove(moves.jumpingJack))
-                                                 } else if (name === names.korra) {
-                                                     dispatch(settingKorraMove(moves.burpee))
-                                                 } else if (name === names.naruto) {
-                                                     dispatch(settingNarutoMove(moves.jumpingJack))
-                                                 }
-                                             } else if (seconds === 91) {
-                                                 setThirtySeconds(28)
-                                                 expUp()
-                                                 levelUp()
-                                             } else if (seconds <= 120) {
-                                                 if (name === names.kakashi) {
-                                                     dispatch(settingKakashiMove(moves.sitUps))
-                                                 } else if (name === names.goku) {
-                                                     dispatch(settingGokuMove(moves.jab))
-                                                 } else if (name === names.korra) {
-                                                     dispatch(settingKorraMove(moves.crossJumps))
-                                                 } else if (name === names.naruto) {
-                                                     dispatch(settingNarutoMove(moves.upRock))
-                                                 }
-                                             } else if (seconds === 121) {
-                                                 setThirtySeconds(28)
-                                                 expUp()
-                                                 levelUp()
-                                             } else if (seconds <= 150) {
-                                                 if (name === names.kakashi) {
-                                                     dispatch(settingKakashiMove(moves.pushUp))
-                                                 } else if (name === names.goku) {
-                                                     dispatch(settingGokuMove(moves.hook))
-                                                 } else if (name === names.korra) {
-                                                     dispatch(settingKorraMove(moves.crossRotation))
-                                                 } else if (name === names.naruto) {
-                                                     dispatch(settingNarutoMove(moves.footwork))
-                                                 }
-                                             } else if (seconds === 151) {
-                                                 setThirtySeconds(28)
-                                                 expUp()
-                                                 levelUp()
-                                             } else if (seconds <= 180) {
-                                                 if (name === names.kakashi) {
-                                                     dispatch(settingKakashiMove(moves.jumpingJack))
-                                                 } else if (name === names.goku) {
-                                                     dispatch(settingGokuMove(moves.punchCombo))
-                                                 } else if (name === names.korra) {
-                                                     dispatch(settingKorraMove(moves.coolDown))
-                                                 } else if (name === names.naruto) {
-                                                     dispatch(settingNarutoMove(moves.freeze))
-                                                 }
-                                             } else if (seconds === 181) {
-                                                 setThirtySeconds(28)
-                                                 expUp()
-                                                 levelUp()
-                                             } else if (seconds <= 210) {
-                                                 if (name === names.kakashi) {
-                                                     dispatch(settingKakashiMove(moves.coolDown))
-                                                 } else if (name === names.goku) {
-                                                     dispatch(settingGokuMove(moves.coolDown))
-                                                 } else if (name === names.korra) {
-                                                     dispatch(settingKorraMove(moves.pushUp))
-                                                 } else if (name === names.naruto) {
-                                                     dispatch(settingNarutoMove(moves.coolDown))
-                                                 }
-                                             } else if (seconds === 211) {
-                                                 setThirtySeconds(28)
-                                                 expUp()
-                                                 levelUp()
-                                             } else if (seconds <= 240) {
-                                                 if (name === names.kakashi) {
-                                                     dispatch(settingKakashiMove(moves.kick))
-                                                 } else if (name === names.goku) {
-                                                     dispatch(settingGokuMove(moves.bicepCurl))
-                                                 } else if (name === names.korra) {
-                                                     dispatch(settingKorraMove(moves.sitUps))
-                                                 } else if (name === names.naruto) {
-                                                     dispatch(settingNarutoMove(moves.bikeCrunch))
-                                                 }
-                                             } else if (seconds === 241) {
-                                                 setThirtySeconds(28)
-                                                 expUp()
-                                                 levelUp()
-                                             } else if (seconds <= 270) {
-                                                 if (name === names.kakashi) {
-                                                     dispatch(settingKakashiMove(moves.bicepCurl))
-                                                 } else if (name === names.goku) {
-                                                     dispatch(settingGokuMove(moves.plank))
-                                                 } else if (name === names.korra) {
-                                                     dispatch(settingKorraMove(moves.bicepCurl))
-                                                 } else if (name === names.naruto) {
-                                                     dispatch(settingNarutoMove(moves.sitUps))
-                                                 }
-                                             } else if (seconds === 271) {
-                                                 setThirtySeconds(28)
-                                                 expUp()
-                                                 levelUp()
-                                             } else if (seconds <= 300) {
-                                                 if (name === names.kakashi) {
-                                                     dispatch(settingKakashiMove(moves.squat))
-                                                 } else if (name === names.goku) {
-                                                     dispatch(settingGokuMove(moves.sitUps))
-                                                 } else if (name === names.korra) {
-                                                     dispatch(settingKorraMove(moves.coolDown))
-                                                 } else if (name === names.naruto) {
-                                                     dispatch(settingNarutoMove(moves.pushUp))
-                                                 }
-                                             } else if (seconds === 301) {
-                                                 setThirtySeconds(28)
-                                                 expUp()
-                                                 levelUp()
-                                             } else if (seconds <= 330) {
-                                                 if (name === names.kakashi) {
-                                                     dispatch(settingKakashiMove(moves.coolDown))
-                                                 } else if (name === names.goku) {
-                                                     dispatch(settingGokuMove(moves.pushUp))
-                                                 } else if (name === names.korra) {
-                                                     dispatch(settingKorraMove(moves.burpee))
-                                                 } else if (name === names.naruto) {
-                                                     dispatch(settingNarutoMove(moves.bicepCurl))
-                                                 }
-                                             } else if (seconds === 331) {
-                                                 setThirtySeconds(28)
-                                                 expUp()
-                                                 levelUp()
-                                             } else if (seconds <= 360) {
-                                                 if (name === names.kakashi) {
-                                                     dispatch(settingKakashiMove(moves.sitUps))
-                                                 } else if (name === names.goku) {
-                                                     dispatch(settingGokuMove(moves.coolDown))
-                                                 } else if (name === names.korra) {
-                                                     dispatch(settingKorraMove(moves.crossJumps))
-                                                 } else if (name === names.naruto) {
-                                                     dispatch(settingNarutoMove(moves.coolDown))
-                                                 }
-                                             } else if (seconds === 361) {
-                                                 setThirtySeconds(28)
-                                                 expUp()
-                                                 levelUp()
-                                             } else if (seconds <= 390) {
-                                                 if (name === names.kakashi) {
-                                                     dispatch(settingKakashiMove(moves.pushUp))
-                                                 } else if (name === names.goku) {
-                                                     dispatch(settingGokuMove(moves.jumpingJack))
-                                                 } else if (name === names.korra) {
-                                                     dispatch(settingKorraMove(moves.crossRotation))
-                                                 } else if (name === names.naruto) {
-                                                     dispatch(settingNarutoMove(moves.jumpingJack))
-                                                 }
-                                             } else if (seconds === 391) {
-                                                 setThirtySeconds(28)
-                                                 expUp()
-                                                 levelUp()
-                                             } else if (seconds <= 420) {
-                                                 if (name === names.kakashi) {
-                                                     dispatch(settingKakashiMove(moves.jumpingJack))
-                                                 } else if (name === names.goku) {
-                                                     dispatch(settingGokuMove(moves.jab))
-                                                 } else if (name === names.korra) {
-                                                     dispatch(settingKorraMove(moves.coolDown))
-                                                 } else if (name === names.naruto) {
-                                                     dispatch(settingNarutoMove(moves.upRock))
-                                                 }
-                                             } else if (seconds === 421) {
-                                                 setThirtySeconds(28)
-                                                 expUp()
-                                                 levelUp()
-                                             } else if (seconds <= 450) {
-                                                 if (name === names.kakashi) {
-                                                     dispatch(settingKakashiMove(moves.coolDown))
-                                                 } else if (name === names.goku) {
-                                                     dispatch(settingGokuMove(moves.hook))
-                                                 } else if (name === names.korra) {
-                                                     dispatch(settingKorraMove(moves.pushUp))
-                                                 } else if (name === names.naruto) {
-                                                     dispatch(settingNarutoMove(moves.footwork))
-                                                 }
-                                             } else if (seconds === 451) {
-                                                 setThirtySeconds(28)
-                                                 expUp()
-                                                 levelUp()
-                                             } else if (seconds <= 480) {
-                                                 if (name === names.kakashi) {
-                                                     dispatch(settingKakashiMove(moves.kick))
-                                                 } else if (name === names.goku) {
-                                                     dispatch(settingGokuMove(moves.punchCombo))
-                                                 } else if (name === names.korra) {
-                                                     dispatch(settingKorraMove(moves.sitUps))
-                                                 } else if (name === names.naruto) {
-                                                     dispatch(settingNarutoMove(moves.freeze))
-                                                 }
-                                             } else if (seconds === 481) {
-                                                 setThirtySeconds(28)
-                                                 expUp()
-                                                 levelUp()
-                                             } else if (seconds <= 510) {
-                                                 if (name === names.kakashi) {
-                                                     dispatch(settingKakashiMove(moves.bicepCurl))
-                                                 } else if (name === names.goku) {
-                                                     dispatch(settingGokuMove(moves.coolDown))
-                                                 } else if (name === names.korra) {
-                                                     dispatch(settingKorraMove(moves.bicepCurl))
-                                                 } else if (name === names.naruto) {
-                                                     dispatch(settingNarutoMove(moves.coolDown))
-                                                 }
-                                             } else if (seconds === 511) {
-                                                 setThirtySeconds(28)
-                                                 expUp()
-                                                 levelUp()
-                                             } else if (seconds <= 540) {
-                                                 if (name === names.kakashi) {
-                                                     dispatch(settingKakashiMove(moves.squat))
-                                                 } else if (name === names.goku) {
-                                                     dispatch(settingGokuMove(moves.bicepCurl))
-                                                 } else if (name === names.korra) {
-                                                     dispatch(settingKorraMove(moves.coolDown))
-                                                 } else if (name === names.naruto) {
-                                                     dispatch(settingNarutoMove(moves.bikeCrunch))
-                                                 }
-                                             } else if (seconds === 541) {
-                                                 setThirtySeconds(28)
-                                                 expUp()
-                                                 levelUp()
-                                             } else if (seconds <= 570) {
-                                                 if (name === names.kakashi) {
-                                                     dispatch(settingKakashiMove(moves.coolDown))
-                                                 } else if (name === names.goku) {
-                                                     dispatch(settingGokuMove(moves.plank))
-                                                 } else if (name === names.korra) {
-                                                     dispatch(settingKorraMove(moves.burpee))
-                                                 } else if (name === names.naruto) {
-                                                     dispatch(settingNarutoMove(moves.sitUps))
-                                                 }
-                                             } else if (seconds === 571) {
-                                                 setThirtySeconds(28)
-                                                 expUp()
-                                                 levelUp()
-                                             } else if (seconds <= 600) {
-                                                 if (name === names.kakashi) {
-                                                     dispatch(settingKakashiMove(moves.sitUps))
-                                                 } else if (name === names.goku) {
-                                                     dispatch(settingGokuMove(moves.sitUps))
-                                                 } else if (name === names.korra) {
-                                                     dispatch(settingKorraMove(moves.crossJumps))
-                                                 } else if (name === names.naruto) {
-                                                     dispatch(settingNarutoMove(moves.pushUp))
-                                                 }
-                                             } else if (seconds === 601) {
-                                                 setThirtySeconds(28)
-                                                 expUp()
-                                                 levelUp()
-                                             } else if (seconds <= 630) {
-                                                 if (name === names.kakashi) {
-                                                     dispatch(settingKakashiMove(moves.pushUp))
-                                                 } else if (name === names.goku) {
-                                                     dispatch(settingGokuMove(moves.pushUp))
-                                                 } else if (name === names.korra) {
-                                                     dispatch(settingKorraMove(moves.crossRotation))
-                                                 } else if (name === names.naruto) {
-                                                     dispatch(settingNarutoMove(moves.bicepCurl))
-                                                 }
-                                             } else if (seconds === 631) {
-                                                 setThirtySeconds(28)
-                                                 expUp()
-                                                 levelUp()
-                                             } else if (seconds <= 660) {
-                                                 if (name === names.kakashi) {
-                                                     dispatch(settingKakashiMove(moves.jumpingJack))
-                                                 } else if (name === names.goku) {
-                                                     dispatch(settingGokuMove(moves.coolDown))
-                                                 } else if (name === names.korra) {
-                                                     dispatch(settingKorraMove(moves.coolDown))
-                                                 } else if (name === names.naruto) {
-                                                     dispatch(settingNarutoMove(moves.coolDown))
-                                                 }
-                                             } else if (seconds === 661) {
-                                                 setThirtySeconds(28)
-                                                 expUp()
-                                                 levelUp()
-                                             } else if (seconds <= 690) {
-                                                 if (name === names.kakashi) {
-                                                     dispatch(settingKakashiMove(moves.coolDown))
-                                                 } else if (name === names.goku) {
-                                                     dispatch(settingGokuMove(moves.jumpingJack))
-                                                 } else if (name === names.korra) {
-                                                     dispatch(settingKorraMove(moves.pushUp))
-                                                 } else if (name === names.naruto) {
-                                                     dispatch(settingNarutoMove(moves.jumpingJack))
-                                                 }
-                                             } else if (seconds === 691) {
-                                                 setThirtySeconds(28)
-                                                 expUp()
-                                                 levelUp()
-                                             } else if (seconds <= 720) {
-                                                 if (name === names.kakashi) {
-                                                     dispatch(settingKakashiMove(moves.kick))
-                                                 } else if (name === names.goku) {
-                                                     dispatch(settingGokuMove(moves.jab))
-                                                 } else if (name === names.korra) {
-                                                     dispatch(settingKorraMove(moves.sitUps))
-                                                 } else if (name === names.naruto) {
-                                                     dispatch(settingNarutoMove(moves.upRock))
-                                                 }
-                                             } else if (seconds === 721) {
-                                                 setThirtySeconds(28)
-                                                 expUp()
-                                                 levelUp()
-                                             } else if (seconds <= 750) {
-                                                 if (name === names.kakashi) {
-                                                     dispatch(settingKakashiMove(moves.bicepCurl))
-                                                 } else if (name === names.goku) {
-                                                     dispatch(settingGokuMove(moves.hook))
-                                                 } else if (name === names.korra) {
-                                                     dispatch(settingKorraMove(moves.bicepCurl))
-                                                 } else if (name === names.naruto) {
-                                                     dispatch(settingNarutoMove(moves.footwork))
-                                                 }
-                                             } else if (seconds === 751) {
-                                                 setThirtySeconds(28)
-                                                 expUp()
-                                                 levelUp()
-                                             } else if (seconds <= 780) {
-                                                 if (name === names.kakashi) {
-                                                     dispatch(settingKakashiMove(moves.squat))
-                                                 } else if (name === names.goku) {
-                                                     dispatch(settingGokuMove(moves.punchCombo))
-                                                 } else if (name === names.korra) {
-                                                     dispatch(settingKorraMove(moves.coolDown))
-                                                 } else if (name === names.naruto) {
-                                                     dispatch(settingNarutoMove(moves.freeze))
-                                                 }
-                                             } else if (seconds === 781) {
-                                                 setThirtySeconds(28)
-                                                 expUp()
-                                                 levelUp()
-                                             } else if (seconds <= 810) {
-                                                 if (name === names.kakashi) {
-                                                     dispatch(settingKakashiMove(moves.coolDown))
-                                                 } else if (name === names.goku) {
-                                                     dispatch(settingGokuMove(moves.coolDown))
-                                                 } else if (name === names.korra) {
-                                                     dispatch(settingKorraMove(moves.burpee))
-                                                 } else if (name === names.naruto) {
-                                                     dispatch(settingNarutoMove(moves.coolDown))
-                                                 }
-                                             } else if (seconds === 811) {
-                                                 setThirtySeconds(28)
-                                                 expUp()
-                                                 levelUp()
-                                             } else if (seconds <= 840) {
-                                                 if (name === names.kakashi) {
-                                                     dispatch(settingKakashiMove(moves.sitUps))
-                                                 } else if (name === names.goku) {
-                                                     dispatch(settingGokuMove(moves.bicepCurl))
-                                                 } else if (name === names.korra) {
-                                                     dispatch(settingKorraMove(moves.crossJumps))
-                                                 } else if (name === names.naruto) {
-                                                     dispatch(settingNarutoMove(moves.bikeCrunch))
-                                                 }
-                                             } else if (seconds === 841) {
-                                                 setThirtySeconds(28)
-                                                 expUp()
-                                                 levelUp()
-                                             } else if (seconds <= 870) {
-                                                 if (name === names.kakashi) {
-                                                     dispatch(settingKakashiMove(moves.pushUp))
-                                                 } else if (name === names.goku) {
-                                                     dispatch(settingGokuMove(moves.plank))
-                                                 } else if (name === names.korra) {
-                                                     dispatch(settingKorraMove(moves.crossRotation))
-                                                 } else if (name === names.naruto) {
-                                                     dispatch(settingNarutoMove(moves.sitUps))
-                                                 }
-                                             } else if (seconds === 871) {
-                                                 setThirtySeconds(28)
-                                                 expUp()
-                                                 levelUp()
-                                             } else if (seconds <= 900) {
-                                                 if (name === names.kakashi) {
-                                                     dispatch(settingKakashiMove(moves.jumpingJack))
-                                                 } else if (name === names.goku) {
-                                                     dispatch(settingGokuMove(moves.sitUps))
-                                                 } else if (name === names.korra) {
-                                                     dispatch(settingKorraMove(moves.coolDown))
-                                                 } else if (name === names.naruto) {
-                                                     dispatch(settingNarutoMove(moves.pushUp))
-                                                 }
-                                             } else if (seconds === 901) {
-                                                 setThirtySeconds(28)
-                                                 expUp()
-                                                 levelUp()
-                                             } else if (seconds <= 930) {
-                                                 if (name === names.kakashi) {
-                                                     dispatch(settingKakashiMove(moves.coolDown))
-                                                 } else if (name === names.goku) {
-                                                     dispatch(settingGokuMove(moves.pushUp))
-                                                 } else if (name === names.korra) {
-                                                     dispatch(settingKorraMove(moves.pushUp))
-                                                 } else if (name === names.naruto) {
-                                                     dispatch(settingNarutoMove(moves.bicepCurl))
-                                                 }
-                                             } else if (seconds === 931) {
-                                                 setThirtySeconds(28)
-                                                 expUp()
-                                                 levelUp()
-                                             } else if (seconds <= 960) {
-                                                 if (name === names.kakashi) {
-                                                     dispatch(settingKakashiMove(moves.kick))
-                                                 } else if (name === names.goku) {
-                                                     dispatch(settingGokuMove(moves.coolDown))
-                                                 } else if (name === names.korra) {
-                                                     dispatch(settingKorraMove(moves.sitUps))
-                                                 } else if (name === names.naruto) {
-                                                     dispatch(settingNarutoMove(moves.coolDown))
-                                                 }
-                                             } else if (seconds === 961) {
-                                                 setThirtySeconds(28)
-                                                 expUp()
-                                                 levelUp()
-                                             } else if (seconds <= 990) {
-                                                 if (name === names.kakashi) {
-                                                     dispatch(settingKakashiMove(moves.bicepCurl))
-                                                 } else if (name === names.goku) {
-                                                     dispatch(settingGokuMove(moves.jumpingJack))
-                                                 } else if (name === names.korra) {
-                                                     dispatch(settingKorraMove(moves.bicepCurl))
-                                                 } else if (name === names.naruto) {
-                                                     dispatch(settingNarutoMove(moves.jumpingJack))
-                                                 }
-                                             } else if (seconds === 991) {
-                                                 setThirtySeconds(28)
-                                                 expUp()
-                                                 levelUp()
-                                             } else if (seconds <= 1010) {
-                                                 if (name === names.kakashi) {
-                                                     dispatch(settingKakashiMove(moves.squat))
-                                                 } else if (name === names.goku) {
-                                                     dispatch(settingGokuMove(moves.jab))
-                                                 } else if (name === names.korra) {
-                                                     dispatch(settingKorraMove(moves.coolDown))
-                                                 } else if (name === names.naruto) {
-                                                     dispatch(settingNarutoMove(moves.upRock))
-                                                 }
-                                             } else if (seconds === 1011) {
-                                                 setThirtySeconds(28)
-                                                 expUp()
-                                                 levelUp()
-                                             } else if (seconds <= 1030) {
-                                                 if (name === names.kakashi) {
-                                                     dispatch(settingKakashiMove(moves.coolDown))
-                                                 } else if (name === names.goku) {
-                                                     dispatch(settingGokuMove(moves.coolDown))
-                                                 } else if (name === names.korra) {
-                                                     dispatch(settingKorraMove(moves.coolDown))
-                                                 } else if (name === names.naruto) {
-                                                     dispatch(settingNarutoMove(moves.footwork))
-                                                 }
-                                             } else if (seconds === 1031) {
-                                                 setThirtySeconds(28)
-                                                 expUp()
-                                                 levelUp()
-                                             }
-                                             //when video stops character turns idle
-                                         } else if (autoWorkout === true && videoPlay === false) {
-                                             if (name === names.kakashi) {
-                                                 return dispatch(settingKakashiMove(moves.idle))
-                                             }
-                                         }
-                                     }}
-                        />
+                        <VideoPlayer seconds={seconds} />
                         <div className='underCanvas'>
-                            <ProfileInfo profile={profile} videoPlay={videoPlay} thirtySeconds={thirtySeconds}
+                            <ProfileInfo profile={profile} videoPlay={videoPlay}
                                          auth={auth}/>
                         </div>
                     </Col>

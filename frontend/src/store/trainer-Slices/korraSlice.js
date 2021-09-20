@@ -7,12 +7,6 @@ export const korraSlice = createSlice({
         setMove: moves.idle
     },
     reducers: {
-        // idle: (state) => {
-        //     state.setMoves = moves.idle
-        // },
-        // stretch: (state) => {
-        //   state.setMoves = moves.neckStretch
-        // },
         settingKorraMove: (state, action) => {
             state.setMove = action.payload
         }
