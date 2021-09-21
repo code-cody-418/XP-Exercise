@@ -3,18 +3,17 @@ import {fetchProfileByProfileId} from "../../../store/profileSlice";
 import {useDispatch} from "react-redux";
 
 
+
 export const expUp = (profile) => {
     console.log("is this expUp firing?")
-
-    const dispatch = useDispatch()
-
+    // const dispatch = useDispatch()
     if (profile === null) {
     } else if (profile != null) {
         httpConfig.put(`/apis/profile/expUp/${profile.profileId}`, profile)
             .then(reply => {
                     if (reply.status === 200) {
                         console.log(reply);
-                        dispatch(fetchProfileByProfileId(profile.profileId));
+                        // dispatch(fetchProfileByProfileId(profile.profileId));
                     }
                     console.log(reply);
                 }
@@ -25,7 +24,7 @@ export const expUp = (profile) => {
 //function to call api that adds a Exp to profile
 export const levelUp = (profile) => {
     console.log("is this levelUp firing?")
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
     if (profile === null) {
     } else if (profile != null) {
         if ((profile.profileExp + '').indexOf('00') > -1 === true) {
@@ -33,7 +32,7 @@ export const levelUp = (profile) => {
                 .then(reply => {
                         if (reply.status === 200) {
                             console.log(reply);
-                            dispatch(fetchProfileByProfileId(profile.profileId));
+                            // dispatch(fetchProfileByProfileId(profile.profileId));
                         }
                         console.log(reply);
                     }
@@ -44,7 +43,7 @@ export const levelUp = (profile) => {
 
 //function to call api that adds a coin to profile
 export const coinUp = (profile) => {
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
     console.log("is this coinUp firing?")
     if (profile === null) {
     } else if (profile != null) {
@@ -52,7 +51,7 @@ export const coinUp = (profile) => {
             .then(reply => {
                     if (reply.status === 200) {
                         console.log(reply);
-                        dispatch(fetchProfileByProfileId(profile.profileId));
+                        // dispatch(fetchProfileByProfileId(profile.profileId));
                     }
                     console.log(reply);
                 }

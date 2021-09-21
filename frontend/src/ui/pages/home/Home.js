@@ -206,10 +206,9 @@ export const Home = () => {
                         </div>
                     </Col>
                     <Col lg={4} className='ms-0 ps-0 removeTop'>
-                        <VideoPlayer seconds={seconds} profile={profile} />
+                        <VideoPlayer profile={profile} />
                         <div className='underCanvas'>
-                            <ProfileInfo profile={profile} videoPlay={videoPlay}
-                                         auth={auth}/>
+                            <ProfileInfo profile={profile} videoPlay={videoPlay} />
                         </div>
                     </Col>
                 </Row>

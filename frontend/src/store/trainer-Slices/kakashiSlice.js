@@ -8,6 +8,7 @@ export const kakashiSlice = createSlice({
     },
     reducers: {
         settingKakashiMove: (state, action) => {
+            // state.setMove = action.payload
             state.setMove = action.payload
         }
     }

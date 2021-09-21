@@ -1,5 +1,11 @@
-
+//
 //these are the exercise moves available in the 3d models
+//
+
+//kakashi's moves to be looped through
+
+
+//used for displaying names of the exercise moves
 export const moves = {
     //shared
     idle: 'idle',
@@ -59,3 +65,13 @@ export const moves = {
     punchCombo: 'punchCombo',
     capitalPunchCombo: 'Punch Combo',
 }
+
+export const kakashiMoves = [
+    moves.armStretch,
+    moves.neckStretch,
+    moves.touchToes,
+    moves.sitUps,
+
+
+
+]
