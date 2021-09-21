@@ -49,8 +49,8 @@ export const VideoPlayer = ({profile}) => {
     useEffect(() => {
         if (thirtySeconds === -1) {
             setThirtySeconds(30)
-            expUp(profile)
-            levelUp(profile)
+            expUp()
+            levelUp()
             if (kakashiIndex === 4) {
                 setKakashiIndex(2)
             } else if (kakashiIndex !== 4) {
@@ -79,10 +79,13 @@ export const VideoPlayer = ({profile}) => {
     // }, [kakashiIndex])
 
 //sets the state of the videoFinshedModal to show for when the video ends
-    const handleShow = () => dispatch(settingVideoFinishedModal(true));
+    const handleShow = () => {
+        coinUp()
+        dispatch(settingVideoFinishedModal(true))
+    };
 
-
-    const expUp = (profile) => {
+//function to call api that adds a Exp to profile
+    const expUp = () => {
         if (profile === null) {
         } else if (profile != null) {
             httpConfig.put(`/apis/profile/expUp/${profile.profileId}`, profile)
@@ -97,11 +100,11 @@ export const VideoPlayer = ({profile}) => {
         }
     }
 
-//function to call api that adds a Exp to profile
-    const levelUp = (profile) => {
+//function to call api that adds a level to profile
+    const levelUp = () => {
         if (profile === null) {
         } else if (profile != null) {
-            if ((profile.profileExp + '').indexOf('00') > -1 === true) {
+            if ((profile.profileExp + '').indexOf('00', 1) > -1 === true) {
                 httpConfig.put(`/apis/profile/levelUp/${profile.profileId}`, profile)
                     .then(reply => {
                             if (reply.status === 200) {
@@ -115,6 +118,20 @@ export const VideoPlayer = ({profile}) => {
         }
     }
 
+    const coinUp = () => {
+        if (profile === null) {
+        } else if (profile != null) {
+            httpConfig.put(`/apis/profile/coinUp/${profile.profileId}`, profile)
+                .then(reply => {
+                        if (reply.status === 200) {
+                            console.log(reply);
+                            dispatch(fetchProfileByProfileId(profile.profileId));
+                        }
+                        console.log(reply);
+                    }
+                );
+        }
+    }
     return (
         <>
             <ReactPlayer url={animeMontage}

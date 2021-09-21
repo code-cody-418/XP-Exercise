@@ -22,8 +22,9 @@ import {settingNarutoMove} from "../../../store/trainer-Slices/narutoSlice";
 import {settingKorraMove} from "../../../store/trainer-Slices/korraSlice";
 import {SelectCharacterButtons} from "./SelectCharacterButtons";
 import {VideoPlayer} from "./VideoPlayer";
-import {coinUp} from "../../shared/profile-functions/profileFunctions";
+// import {coinUp} from "../../shared/profile-functions/profileFunctions";
 import {settingVideoFinishedModal} from "../../../store/VideoFinishedModalSlice";
+import {httpConfig} from "../../shared/utils/http-config";
 
 
 export const Home = () => {
@@ -99,6 +100,9 @@ export const Home = () => {
         }
     }, [videoPlay])
 
+    //function to call api that adds a coin to profile
+
+
 //_____________________________________________________________________________________________________________________
     return (
         <>
@@ -112,7 +116,7 @@ export const Home = () => {
                 <Modal.Footer>
                     {auth ? (
                         <Button variant="secondary" onClick={() => {
-                            coinUp();
+                            // coinUp();
                             handleClose()
                         }}>
                             COLLECT REWARDS
