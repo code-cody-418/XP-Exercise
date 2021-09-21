@@ -9,13 +9,6 @@ export const ProfileInfo = ({profile, videoPlay}) => {
     const [progressBarExp, setProgressBarExp] = useState("0%")
 
     useEffect(() => {
-        if (profile != null) {
-            console.log("profile exp", profile.profileExp)
-            console.log("exp bar", progressBarExp)
-        }
-    }, [profile])
-
-    useEffect(() => {
         if (profile === null) {
         } else if (profile != null) {
             // if (progressBarExp === "100%") {

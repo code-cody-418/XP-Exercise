@@ -11,11 +11,12 @@ import ReactPlayer from "react-player";
 import {useDispatch, useSelector} from "react-redux";
 import {settingThirtySecondTimer} from "../../../store/timer-Slices/thirtySecondTimer";
 import {settingVideoSecondsTimer} from "../../../store/timer-Slices/vdeoSecondsTimer";
-import {levelUp, coinUp, expUp} from "../../shared/profile-functions/profileFunctions";
+// import {levelUp, coinUp, expUp} from "../../shared/profile-functions/profileFunctions";
 import {settingVideoFinishedModal} from "../../../store/VideoFinishedModalSlice";
 // import {settingVideoFinishedModal} from "../../../store/videoFinishedModalSlice";
 import {kakashiMoves} from "../../shared/interfaces/moves";
 import {fetchProfileByProfileId} from "../../../store/profileSlice";
+import {httpConfig} from "../../shared/utils/http-config";
 
 export const VideoPlayer = ({profile}) => {
 
@@ -35,18 +36,30 @@ export const VideoPlayer = ({profile}) => {
 //Functionality for 30 second workout timer
     const [thirtySeconds, setThirtySeconds] = useState(30)
 
-    const [index, setIndex] = useState(0)
+    const [kakashiIndex, setKakashiIndex] = useState(0)
+
+
+    useEffect(() => {
+        if (videoPlay === true) {
+            setKakashiIndex(kakashiIndex + 1)
+            dispatch(settingKakashiMove(kakashiMoves[kakashiIndex]))
+        }
+    }, [videoPlay])
 
     useEffect(() => {
         if (thirtySeconds === -1) {
             setThirtySeconds(30)
             expUp(profile)
             levelUp(profile)
-            if (name === names.kakashi) {
-                setIndex(index + 1)
-                dispatch(settingKakashiMove(kakashiMoves[index]))
-            } else if (name === names.korra) {
+            if (kakashiIndex === 4) {
+                setKakashiIndex(2)
+            } else if (kakashiIndex !== 4) {
+                if (name === names.kakashi) {
+                    setKakashiIndex(kakashiIndex + 1)
+                    dispatch(settingKakashiMove(kakashiMoves[kakashiIndex]))
+                } else if (name === names.korra) {
 
+                }
             }
         } else if (videoPlay === true) {
             const intervalId = setInterval(() => {
@@ -58,16 +71,49 @@ export const VideoPlayer = ({profile}) => {
     }, [videoPlay, thirtySeconds])
 
     //
-    useEffect(() => {
-        if (profile != null) {
-            console.log("profile updated")
-            dispatch(fetchProfileByProfileId(profile.profileId))
-        }
-    }, [index])
+    // useEffect(() => {
+    //     if (profile != null) {
+    //         // console.log("profile updated")
+    //         dispatch(fetchProfileByProfileId(profile.profileId))
+    //     }
+    // }, [kakashiIndex])
 
 //sets the state of the videoFinshedModal to show for when the video ends
     const handleShow = () => dispatch(settingVideoFinishedModal(true));
 
+
+    const expUp = (profile) => {
+        if (profile === null) {
+        } else if (profile != null) {
+            httpConfig.put(`/apis/profile/expUp/${profile.profileId}`, profile)
+                .then(reply => {
+                        if (reply.status === 200) {
+                            console.log(reply);
+                            dispatch(fetchProfileByProfileId(profile.profileId));
+                        }
+                        console.log(reply);
+                    }
+                );
+        }
+    }
+
+//function to call api that adds a Exp to profile
+    const levelUp = (profile) => {
+        if (profile === null) {
+        } else if (profile != null) {
+            if ((profile.profileExp + '').indexOf('00') > -1 === true) {
+                httpConfig.put(`/apis/profile/levelUp/${profile.profileId}`, profile)
+                    .then(reply => {
+                            if (reply.status === 200) {
+                                console.log(reply);
+                                dispatch(fetchProfileByProfileId(profile.profileId));
+                            }
+                            console.log(reply);
+                        }
+                    );
+            }
+        }
+    }
 
     return (
         <>
