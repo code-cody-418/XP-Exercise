@@ -206,7 +206,7 @@ export const Home = () => {
                         </div>
                     </Col>
                     <Col lg={4} className='ms-0 ps-0 removeTop'>
-                        <VideoPlayer seconds={seconds} />
+                        <VideoPlayer seconds={seconds} profile={profile} />
                         <div className='underCanvas'>
                             <ProfileInfo profile={profile} videoPlay={videoPlay}
                                          auth={auth}/>

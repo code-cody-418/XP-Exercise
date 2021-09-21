@@ -15,7 +15,7 @@ import {expUp, levelUp, coinUp} from "../../shared/profile-functions/profileFunc
 import {settingVideoFinishedModal} from "../../../store/VideoFinishedModalSlice";
 // import {settingVideoFinishedModal} from "../../../store/videoFinishedModalSlice";
 
-export const VideoPlayer = ({seconds}) => {
+export const VideoPlayer = ({seconds, profile}) => {
 
     const dispatch = useDispatch();
 
@@ -38,8 +38,8 @@ export const VideoPlayer = ({seconds}) => {
         if (thirtySeconds === -1) {
             setThirtySeconds(30)
             // dispatch(settingThirtySecondTimer(thirtySeconds))
-            expUp()
-            levelUp()
+            expUp(profile)
+            levelUp(profile)
         } else if (videoPlay === true) {
             const intervalId = setInterval(() => {
                 setThirtySeconds(thirtySeconds => thirtySeconds - 1)
@@ -97,8 +97,8 @@ export const VideoPlayer = ({seconds}) => {
                                      }
                                  } else if (seconds === 31) {
                                      setThirtySeconds(28)
-                                     expUp()
-                                     levelUp()
+                                     expUp(profile)
+                                     levelUp(profile)
                                  } else if (seconds <= 60) {
                                      if (name === names.kakashi) {
                                          dispatch(settingKakashiMove(moves.neckStretch))
@@ -111,8 +111,8 @@ export const VideoPlayer = ({seconds}) => {
                                      }
                                  } else if (seconds === 61) {
                                      setThirtySeconds(28)
-                                     expUp()
-                                     levelUp()
+                                     expUp(profile)
+                                     levelUp(profile)
                                  } else if (seconds <= 90) {
                                      if (name === names.kakashi) {
                                          dispatch(settingKakashiMove(moves.touchToes))
