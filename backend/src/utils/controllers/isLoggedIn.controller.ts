@@ -23,7 +23,7 @@ export function isLoggedIn(request: Request, response: Response, next: NextFunct
       ? verify(
             unverifiedJwtToken,
             signature(request),
-            {maxAge: "3hr"},
+            {maxAge: "720hr"},
             (error: any, decoded: any) => error ? false : true
         )
       : false;
