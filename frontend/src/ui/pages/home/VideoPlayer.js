@@ -21,11 +21,13 @@ export const VideoPlayer = ({profile}) => {
 
     const name = useSelector((state) => state.name.setName)
     const videoPlay = useSelector((state) => state.videoPlay.setVideoPlay)
+    const autoWorkout = useSelector(state => state.autoWorkout.setAutoWorkout)
 
 
 //Functionality for 30 second workout timer
     const [thirtySeconds, setThirtySeconds] = useState(30)
 
+    //index's to rotate through trainer moves
     const [kakashiIndex, setKakashiIndex] = useState(0)
     const [gokuIndex, setGokuIndex] = useState(0)
     const [korraIndex, setKorraIndex] = useState(0)
@@ -33,7 +35,7 @@ export const VideoPlayer = ({profile}) => {
 
     //sets the first move of the workout and when video is paused sets move to idle
     useEffect(() => {
-        if (videoPlay === true) {
+        if (videoPlay === true && autoWorkout === true) {
             if (name === names.kakashi) {
                 setKakashiIndex(kakashiIndex + 1)
                 dispatch(settingKakashiMove(kakashiMoves[kakashiIndex]))
@@ -68,33 +70,35 @@ export const VideoPlayer = ({profile}) => {
             setThirtySeconds(30)
             expUp()
             levelUp()
-            if (name === names.kakashi) {
-                if (kakashiIndex === 10) {
-                    setKakashiIndex(3) //this restarts the array after stretches
-                } else if (kakashiIndex !== 10) {
-                    setKakashiIndex(kakashiIndex + 1) //this increments the next move in the array
-                    dispatch(settingKakashiMove(kakashiMoves[kakashiIndex]))
-                }
-            } else if (name === names.goku) {
-                if (gokuIndex === 11) {
-                    setGokuIndex(2)
-                } else if (gokuIndex !== 11) {
-                    setGokuIndex(gokuIndex + 1)
-                    dispatch(settingGokuMove(gokuMoves[gokuIndex]))
-                }
-            } else if (name === names.korra) {
-                if (korraIndex === 9) {
-                    setKorraIndex(2)
-                } else if (korraIndex !== 9) {
-                    setKorraIndex(korraIndex + 1)
-                    dispatch(settingKorraMove(korraMoves[korraIndex]))
-                }
-            } else if (name === names.naruto) {
-                if (narutoIndex === 11) {
-                    setNarutoIndex(2)
-                } else if (narutoIndex !== 11) {
-                    setNarutoIndex(narutoIndex + 1)
-                    dispatch(settingNarutoMove(narutoMoves[narutoIndex]))
+            if (videoPlay === true && autoWorkout === true) {
+                if (name === names.kakashi) {
+                    if (kakashiIndex === 10) {
+                        setKakashiIndex(3) //this restarts the array after stretches
+                    } else if (kakashiIndex !== 10) {
+                        setKakashiIndex(kakashiIndex + 1) //this increments the next move in the array
+                        dispatch(settingKakashiMove(kakashiMoves[kakashiIndex]))
+                    }
+                } else if (name === names.goku) {
+                    if (gokuIndex === 11) {
+                        setGokuIndex(2)
+                    } else if (gokuIndex !== 11) {
+                        setGokuIndex(gokuIndex + 1)
+                        dispatch(settingGokuMove(gokuMoves[gokuIndex]))
+                    }
+                } else if (name === names.korra) {
+                    if (korraIndex === 9) {
+                        setKorraIndex(2)
+                    } else if (korraIndex !== 9) {
+                        setKorraIndex(korraIndex + 1)
+                        dispatch(settingKorraMove(korraMoves[korraIndex]))
+                    }
+                } else if (name === names.naruto) {
+                    if (narutoIndex === 11) {
+                        setNarutoIndex(2)
+                    } else if (narutoIndex !== 11) {
+                        setNarutoIndex(narutoIndex + 1)
+                        dispatch(settingNarutoMove(narutoMoves[narutoIndex]))
+                    }
                 }
             }
         } else if (videoPlay === true) {
@@ -120,10 +124,10 @@ export const VideoPlayer = ({profile}) => {
             httpConfig.put(`/apis/profile/expUp/${profile.profileId}`, profile)
                 .then(reply => {
                         if (reply.status === 200) {
-                            console.log(reply);
+                            // console.log(reply);
                             dispatch(fetchProfileByProfileId(profile.profileId));
                         }
-                        console.log(reply);
+                        // console.log(reply);
                     }
                 );
         }
@@ -137,10 +141,10 @@ export const VideoPlayer = ({profile}) => {
                 httpConfig.put(`/apis/profile/levelUp/${profile.profileId}`, profile)
                     .then(reply => {
                             if (reply.status === 200) {
-                                console.log(reply);
+                                // console.log(reply);
                                 dispatch(fetchProfileByProfileId(profile.profileId));
                             }
-                            console.log(reply);
+                            // console.log(reply);
                         }
                     );
             }
@@ -153,10 +157,10 @@ export const VideoPlayer = ({profile}) => {
             httpConfig.put(`/apis/profile/coinUp/${profile.profileId}`, profile)
                 .then(reply => {
                         if (reply.status === 200) {
-                            console.log(reply);
+                            // console.log(reply);
                             dispatch(fetchProfileByProfileId(profile.profileId));
                         }
-                        console.log(reply);
+                        // console.log(reply);
                     }
                 );
         }
