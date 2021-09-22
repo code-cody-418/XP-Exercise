@@ -14,7 +14,7 @@
 .idea
 */.Ds_Store
 
-
+./statements.sql
 
 /project.env
 */.pnp
