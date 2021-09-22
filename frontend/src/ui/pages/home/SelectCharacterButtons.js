@@ -30,30 +30,18 @@ export const SelectCharacterButtons = () => {
                             onClick={() => {
                                 dispatch(settingAutoWorkout(true))
                                 dispatch(settingVideoPlay(true))
-                                // setAutoWorkout(true)
-                                // return (
-                                //     setVideoPlay(true)
-                                // )
                             }}
                         >Start Workout</Button>
                     ) : (
                         <Button
                             className='startWorkoutButton'
                             onClick={() => {
-                                // setAutoWorkout(true)
                                 dispatch(settingAutoWorkout(true))
                                 dispatch(settingVideoPlay(false))
                                 dispatch(settingKakashiMove(moves.idle))
                                 dispatch(settingGokuMove(moves.idle))
                                 dispatch(settingNarutoMove(moves.idle))
                                 dispatch(settingKorraMove(moves.idle))
-                                // setKakashiAction(moves.idle)
-                                // setNarutoAction(moves.idle)
-                                // setKorraAction(moves.idle)
-                                // setGokuAction(moves.idle)
-                                // return (
-                                //     setVideoPlay(false)
-                                // )
                             }}
                         >Pause Workout</Button>
                     )
@@ -61,8 +49,6 @@ export const SelectCharacterButtons = () => {
                     <Button
                         className='startWorkoutButton'
                         onClick={() => {
-                            // setVideoPlay(true)
-                            // setAutoWorkout(false)
                             dispatch(settingVideoPlay(true))
                             dispatch(settingAutoWorkout(false))
                         }}
@@ -79,10 +65,6 @@ export const SelectCharacterButtons = () => {
                         onClick={() => {
                             dispatch(settingAutoWorkout(true))
                             dispatch(settingVideoPlay(true))
-                            // setAutoWorkout(true)
-                            // return (
-                            //     setVideoPlay(true)
-                            // )
                         }}
                     >Auto</Button>
                     <Button className='characterButton'
@@ -125,10 +107,6 @@ export const SelectCharacterButtons = () => {
                         onClick={() => {
                             dispatch(settingAutoWorkout(true))
                             dispatch(settingVideoPlay(true))
-                            // setAutoWorkout(true)
-                            // return (
-                            //     setVideoPlay(true)
-                            // )
                         }}
                     >Auto</Button>
                     <Button className='characterButton'
@@ -175,10 +153,6 @@ export const SelectCharacterButtons = () => {
                         onClick={() => {
                             dispatch(settingAutoWorkout(true))
                             dispatch(settingVideoPlay(true))
-                            // setAutoWorkout(true)
-                            // return (
-                            //     setVideoPlay(true)
-                            // )
                         }}
                     >Auto</Button>
                     <Button className='characterButton' onClick={() => dispatch(settingGokuMove(moves.touchToes))}>Touch
@@ -222,10 +196,6 @@ export const SelectCharacterButtons = () => {
                         onClick={() => {
                             dispatch(settingAutoWorkout(true))
                             dispatch(settingVideoPlay(true))
-                            // setAutoWorkout(true)
-                            // return (
-                            //     setVideoPlay(true)
-                            // )
                         }}>Auto</Button>
                     <Button className='characterButton'
                             onClick={() => dispatch(settingKorraMove(moves.idle))}>Chillin</Button>
