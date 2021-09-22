@@ -22,9 +22,7 @@ import {settingNarutoMove} from "../../../store/trainer-Slices/narutoSlice";
 import {settingKorraMove} from "../../../store/trainer-Slices/korraSlice";
 import {SelectCharacterButtons} from "./SelectCharacterButtons";
 import {VideoPlayer} from "./VideoPlayer";
-// import {coinUp} from "../../shared/profile-functions/profileFunctions";
 import {settingVideoFinishedModal} from "../../../store/VideoFinishedModalSlice";
-import {httpConfig} from "../../shared/utils/http-config";
 
 
 export const Home = () => {
@@ -66,17 +64,13 @@ export const Home = () => {
 
 
     //sets up modal for when video is completed
-    // const [show, setShow] = useState(false);
-
     const handleClose = () => {
         dispatch(settingVideoFinishedModal(false))
         dispatch(settingKakashiMove(moves.celebration))
         dispatch(settingNarutoMove(moves.celebration))
         dispatch(settingKorraMove(moves.celebration))
         dispatch(settingGokuMove(moves.celebration))
-        setSeconds(0)
     }
-    // const handleShow = () => setShow(true);
 
 
     // array of youtube videos
@@ -85,23 +79,6 @@ export const Home = () => {
     //     'https://www.youtube.com/embed/4zHK8pRl78o',
     //     'https://www.youtube.com/embed/dY09rc_8-Rc'
     // ]
-
-
-    //Functionality to time events of video play
-    const [seconds, setSeconds] = useState(null)
-
-    useEffect(() => {
-        if (videoPlay === true) {
-            const intervalId = setInterval(() => {
-                setSeconds(seconds => seconds + 1)
-                // console.log('seconds', seconds)
-            }, 1000)
-            return () => clearInterval(intervalId)
-        }
-    }, [videoPlay])
-
-    //function to call api that adds a coin to profile
-
 
 //_____________________________________________________________________________________________________________________
     return (
@@ -116,7 +93,6 @@ export const Home = () => {
                 <Modal.Footer>
                     {auth ? (
                         <Button variant="secondary" onClick={() => {
-                            // coinUp();
                             handleClose()
                         }}>
                             COLLECT REWARDS
@@ -202,7 +178,6 @@ export const Home = () => {
                         <div className='underCanvas'>
                             <Button
                                 className='thirtySecondTimerButton mt-0'
-                                // onClick={() => dispatch(settingThirtySecondTimer(30))}
                             >{thirtySeconds}</Button>
                             <DisplayAction gokuAction={gokuAction} narutoAction={narutoAction}
                                            kakashiAction={kakashiAction} korraAction={korraAction}
@@ -217,7 +192,6 @@ export const Home = () => {
                     </Col>
                 </Row>
             </Container>
-            {/*<Footer/>*/}
         </>
     )
 }
