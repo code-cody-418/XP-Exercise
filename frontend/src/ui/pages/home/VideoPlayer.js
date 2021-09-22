@@ -51,9 +51,9 @@ export const VideoPlayer = ({profile}) => {
             setThirtySeconds(30)
             expUp()
             levelUp()
-            if (kakashiIndex === 4) {
-                setKakashiIndex(2)
-            } else if (kakashiIndex !== 4) {
+            if (kakashiIndex === 10) {
+                setKakashiIndex(3)
+            } else if (kakashiIndex !== 10) {
                 if (name === names.kakashi) {
                     setKakashiIndex(kakashiIndex + 1)
                     dispatch(settingKakashiMove(kakashiMoves[kakashiIndex]))

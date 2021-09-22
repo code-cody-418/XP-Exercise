@@ -71,8 +71,11 @@ export const kakashiMoves = [
     moves.neckStretch,
     moves.touchToes,
     moves.sitUps,
-    moves.sitUps
-
-
-
+    moves.pushUp,
+    moves.jumpingJack,
+    moves.coolDown,
+    moves.kick,
+    moves.bicepCurl,
+    moves.squat,
+    moves.coolDown
 ]
