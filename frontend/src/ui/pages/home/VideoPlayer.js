@@ -3,7 +3,7 @@ import animeMontage from "../../../videos/Anime Training Montage AMV.mp4";
 import {settingVideoPlay} from "../../../store/videoPlaySlice";
 import {names} from "../../shared/interfaces/names";
 import {settingKakashiMove} from "../../../store/trainer-Slices/kakashiSlice";
-import {moves} from "../../shared/interfaces/moves";
+import {gokuMoves, korraMoves, moves, narutoMoves} from "../../shared/interfaces/moves";
 import {settingGokuMove} from "../../../store/trainer-Slices/gokuSlice";
 import {settingKorraMove} from "../../../store/trainer-Slices/korraSlice";
 import {settingNarutoMove} from "../../../store/trainer-Slices/narutoSlice";
@@ -37,28 +37,74 @@ export const VideoPlayer = ({profile}) => {
     const [thirtySeconds, setThirtySeconds] = useState(30)
 
     const [kakashiIndex, setKakashiIndex] = useState(0)
+    const [gokuIndex, setGokuIndex] = useState(0)
+    const [korraIndex, setKorraIndex] = useState(0)
+    const [narutoIndex, setNarutoIndex] = useState(0)
 
-
+    //sets the first move of the workout and when video is paused sets move to idle
     useEffect(() => {
         if (videoPlay === true) {
-            setKakashiIndex(kakashiIndex + 1)
-            dispatch(settingKakashiMove(kakashiMoves[kakashiIndex]))
+            if (name === names.kakashi) {
+                setKakashiIndex(kakashiIndex + 1)
+                dispatch(settingKakashiMove(kakashiMoves[kakashiIndex]))
+            } else if (name === names.goku) {
+                setGokuIndex(gokuIndex + 1)
+                dispatch(settingGokuMove(gokuMoves[gokuIndex]))
+            } else if (name === names.korra) {
+                setKorraIndex(korraIndex + 1)
+                dispatch(settingKorraMove(korraMoves[korraIndex]))
+            } else if (name === names.naruto) {
+                setNarutoIndex(narutoIndex + 1)
+                dispatch(settingNarutoMove(narutoMoves[narutoIndex]))
+            }
+        } else if (videoPlay === false) {
+            if (name === names.kakashi) {
+                dispatch(settingKakashiMove(moves.idle))
+            } else if (name === names.goku) {
+                dispatch(settingGokuMove(moves.idle))
+            } else if (name === names.korra) {
+                dispatch(settingKorraMove(moves.idle))
+            } else if (name === names.naruto) {
+                dispatch(settingNarutoMove(moves.idle))
+            }
         }
     }, [videoPlay])
 
+    //This function is very important. It sets a thirty second timer that resets when it reaches -1
+    //When the timer resets it adds exp and levels up the profile. In addition it increments an index
+    //for an array of trainer moves.
     useEffect(() => {
         if (thirtySeconds === -1) {
             setThirtySeconds(30)
             expUp()
             levelUp()
-            if (kakashiIndex === 10) {
-                setKakashiIndex(3)
-            } else if (kakashiIndex !== 10) {
-                if (name === names.kakashi) {
-                    setKakashiIndex(kakashiIndex + 1)
+            if (name === names.kakashi) {
+                if (kakashiIndex === 10) {
+                    setKakashiIndex(3) //this restarts the array after stretches
+                } else if (kakashiIndex !== 10) {
+                    setKakashiIndex(kakashiIndex + 1) //this increments the next move in the array
                     dispatch(settingKakashiMove(kakashiMoves[kakashiIndex]))
-                } else if (name === names.korra) {
-
+                }
+            } else if (name === names.goku) {
+                if (gokuIndex === 11) {
+                    setGokuIndex(2)
+                } else if (gokuIndex !== 11) {
+                    setGokuIndex(gokuIndex + 1)
+                    dispatch(settingGokuMove(gokuMoves[gokuIndex]))
+                }
+            } else if (name === names.korra) {
+                if (korraIndex === 9) {
+                    setKorraIndex(2)
+                } else if (korraIndex !== 9) {
+                    setKorraIndex(korraIndex + 1)
+                    dispatch(settingKorraMove(korraMoves[korraIndex]))
+                }
+            } else if (name === names.naruto) {
+                if (narutoIndex === 11) {
+                    setNarutoIndex(2)
+                } else if (narutoIndex !== 11) {
+                    setNarutoIndex(narutoIndex + 1)
+                    dispatch(settingNarutoMove(narutoMoves[narutoIndex]))
                 }
             }
         } else if (videoPlay === true) {

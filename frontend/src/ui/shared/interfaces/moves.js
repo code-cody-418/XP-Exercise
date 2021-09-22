@@ -6,6 +6,8 @@
 
 
 //used for displaying names of the exercise moves
+import {move} from "formik";
+
 export const moves = {
     //shared
     idle: 'idle',
@@ -77,5 +79,48 @@ export const kakashiMoves = [
     moves.kick,
     moves.bicepCurl,
     moves.squat,
+    moves.coolDown
+]
+
+export const gokuMoves = [
+    moves.touchToes,
+    moves.armStretch,
+    moves.jumpingJack,
+    moves.jab,
+    moves.hook,
+    moves.punchCombo,
+    moves.coolDown,
+    moves.bicepCurl,
+    moves.plank,
+    moves.sitUps,
+    moves.pushUp,
+    moves.coolDown
+]
+
+export const korraMoves = [
+    moves.armStretch,
+    moves.touchToes,
+    moves.burpee,
+    moves.crossJumps,
+    moves.crossRotation,
+    moves.coolDown,
+    moves.pushUp,
+    moves.sitUps,
+    moves.bicepCurl,
+    moves.coolDown
+]
+
+export const narutoMoves = [
+    moves.armStretch,
+    moves.touchToes,
+    moves.jumpingJack,
+    moves.upRock,
+    moves.footwork,
+    moves.freeze,
+    moves.coolDown,
+    moves.bikeCrunch,
+    moves.sitUps,
+    moves.pushUp,
+    moves.bicepCurl,
     moves.coolDown
 ]
