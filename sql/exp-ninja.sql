@@ -22,7 +22,7 @@ create TABLE profile
     PRIMARY KEY (ProfileId)
 );
 
-create TABLE shop
+create TABLE itemShop
 (
     itemShopId BINARY(16) NOT NULL,
     itemShopProfileId BINARY(16) NOT NULL,
