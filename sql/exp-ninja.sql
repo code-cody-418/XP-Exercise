@@ -3,7 +3,7 @@
 -- this is akin to reformatting and reinstalling Windows (OS X never needs a reinstall...) ;)
 -- never ever ever ever ever ever ever ever ever ever ever ever ever ever ever ever ever ever ever ever
 -- do this on live data!!!!
-DROP TABLE IF EXISTS profile;
+# DROP TABLE IF EXISTS profile;
 
 create TABLE profile
 (
@@ -21,7 +21,12 @@ create TABLE profile
     PRIMARY KEY (ProfileId)
 );
 
-
+create TABLE shop
+(
+    itemShopId BINARY(16) NOT NULL,
+    itemShopProfileId BINARY(16) NOT NULL,
+    itemShopTenDollarGiftCard BOOLEAN NOT NULL
+)
 
 
 
