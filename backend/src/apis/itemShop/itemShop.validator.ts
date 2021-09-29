@@ -15,6 +15,16 @@ export const itemShopValidator : Schema = {
         isBoolean: {
             errorMessage: 'please provide boolean value'
         }
+    },
+    itemShopTwentyDollarGiftCard: {
+        isBoolean: {
+            errorMessage: 'please provide boolean value'
+        }
+    },
+    itemShopDemonSlayerGame: {
+        isBoolean: {
+            errorMessage: 'please provide boolean value'
+        }
     }
 
 }
