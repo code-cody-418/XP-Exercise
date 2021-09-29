@@ -4,6 +4,7 @@
 -- never ever ever ever ever ever ever ever ever ever ever ever ever ever ever ever ever ever ever ever
 -- do this on live data!!!!
 # DROP TABLE IF EXISTS profile;
+DROP TABLE IF EXISTS shop;
 
 create TABLE profile
 (
@@ -25,7 +26,9 @@ create TABLE shop
 (
     itemShopId BINARY(16) NOT NULL,
     itemShopProfileId BINARY(16) NOT NULL,
-    itemShopTenDollarGiftCard BOOLEAN NOT NULL
+    itemShopTenDollarGiftCard BOOLEAN NOT NULL,
+    PRIMARY KEY (itemShopId),
+    FOREIGN KEY (itemShopProfileId) REFERENCES profile (profileId)
 )
 
 
