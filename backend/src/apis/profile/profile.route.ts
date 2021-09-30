@@ -3,12 +3,12 @@ import {asyncValidatorController} from "../../utils/controllers/asyncValidator.c
 import {
     getProfileByProfileId,
     putCoinsController,
-    putExpController,
+    putExpController, putItemCost,
     putLevelController
 } from "./profile.controller";
 import {check, checkSchema} from "express-validator";
 import {isLoggedIn} from "../../utils/controllers/isLoggedIn.controller";
-import {profileValidator} from "./profile.validator";
+import {itemCostValidator, profileValidator} from "./profile.validator";
 
 
 export const profileRoute = Router();
@@ -21,6 +21,9 @@ profileRoute.route('/expUp/:profileId')
 
 profileRoute.route('/levelUp/:profileId')
     .put(isLoggedIn, asyncValidatorController(checkSchema(profileValidator)), putLevelController)
+
+profileRoute.route('/itemCost/:profileId')
+    .put(isLoggedIn, asyncValidatorController(checkSchema(itemCostValidator)), putItemCost)
 
 profileRoute.route("/:profileId")
     .get(

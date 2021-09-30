@@ -58,3 +58,11 @@ export const profileValidator : Schema = {
     },
   },
 };
+
+export const itemCostValidator : Schema = {
+  itemCost: {
+    isNumeric: {
+      errorMessage: 'please provide a number'
+    }
+  }
+}
