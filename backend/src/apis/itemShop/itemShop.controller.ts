@@ -6,6 +6,7 @@ import {Profile} from "../../utils/interfaces/Profile";
 import {insertItemShop} from "../../utils/itemShop/insertItemShop";
 import {updateItemShop} from "../../utils/itemShop/updateItemShop";
 
+//this gets the itemShop Data
 export async function getItemShopByItemShopProfileId(request: Request, response: Response): Promise<Response> {
     try {
         const {itemShopProfileId} = request.params;
@@ -18,6 +19,7 @@ export async function getItemShopByItemShopProfileId(request: Request, response:
     }
 }
 
+//this adds itemShop to profile
 export async function addItemShop(request: Request, response: Response): Promise<Response | undefined> {
     try {
         const profile = <Profile>request.session?.profile
@@ -36,6 +38,7 @@ export async function addItemShop(request: Request, response: Response): Promise
     }
 }
 
+//This changes the boolean value of the item to be purchased
 export async function putItemShop(request: Request, response: Response): Promise<Response> {
     try {
         const {itemShopProfileId} = request.params
