@@ -23,6 +23,7 @@ export async function addItemShop(request: Request, response: Response): Promise
         const profile = <Profile>request.session?.profile
         const itemShopProfileId = <string>profile.profileId
 
+
         const result = await insertItemShop(itemShopProfileId)
         const status: Status = {
             status: 200,

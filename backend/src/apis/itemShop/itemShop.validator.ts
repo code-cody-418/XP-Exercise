@@ -4,6 +4,11 @@ export const itemShopValidator : Schema = {
     itemShopProfileId: {
         isUUID: {
             errorMessage: 'please provide a valid itemShopId'
+        },
+        optional: {
+            options: {
+                nullable: true
+            }
         }
     },
     itemShopTenDollarGiftCard: {
