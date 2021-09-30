@@ -11,29 +11,29 @@ export const itemShopValidator : Schema = {
             options: {
                 nullable: true
             }
+        },
+        isBoolean: {
+            errorMessage: 'please provide boolean value'
         }
-        // isBoolean: {
-        //     errorMessage: 'please provide boolean value'
-        // }
     },
     itemShopTwentyDollarGiftCard: {
         optional: {
             options: {
                 nullable: true
             }
+        },
+        isBoolean: {
+            errorMessage: 'please provide boolean value'
         }
-        // isBoolean: {
-        //     errorMessage: 'please provide boolean value'
-        // }
     },
     itemShopDemonSlayerGame: {
         optional: {
             options: {
                 nullable: true
             }
+        },
+        isBoolean: {
+            errorMessage: 'please provide boolean value'
         }
-        // isBoolean: {
-        //     errorMessage: 'please provide boolean value'
-        // }
     }
 }

@@ -4,8 +4,9 @@ import {Status} from "../../utils/interfaces/Status";
 import {ItemShop} from "../../utils/interfaces/ItemShop";
 import {Profile} from "../../utils/interfaces/Profile";
 import {insertItemShop} from "../../utils/itemShop/insertItemShop";
+import {updateItemShop} from "../../utils/itemShop/updateItemShop";
 
-export async function getItemShopByItemShopProfileId(request: Request, response: Response) : Promise<Response> {
+export async function getItemShopByItemShopProfileId(request: Request, response: Response): Promise<Response> {
     try {
         const {itemShopProfileId} = request.params;
         const mySqlResult = await selectItemShopByItemShopProfileId(itemShopProfileId);
@@ -33,3 +34,33 @@ export async function addItemShop(request: Request, response: Response): Promise
         console.log(error)
     }
 }
+
+export async function putItemShop(request: Request, response: Response): Promise<Response> {
+    try {
+        const {itemShopProfileId} = request.params
+        const {itemShopId, itemShopTenDollarGiftCard, itemShopTwentyDollarGiftCard, itemShopDemonSlayerGame} = request.body
+        const profile = <Profile>request.session.profile
+        const profileIdFromSession = <string>profile.profileId
+
+        const preformUpdate = async (itemShop: ItemShop): Promise<Response> => {
+            const previousItemShop: ItemShop = await selectItemShopByItemShopProfileId(<string>itemShopProfileId)
+            const newItemShop: ItemShop = {...previousItemShop, ...itemShop}
+            await updateItemShop(newItemShop)
+            return response.json({status: 200, data: null, message: "Wahoo! itemShop Successfully Updated"})
+        }
+
+        const updateFailed = (message: string): Response => {
+            return response.json({status: 400, data: null, message})
+        }
+
+        return itemShopProfileId === profileIdFromSession
+            ? preformUpdate({
+               itemShopId, itemShopProfileId, itemShopTenDollarGiftCard, itemShopTwentyDollarGiftCard, itemShopDemonSlayerGame
+            })
+            : updateFailed("Not allowed to do this update sucker fool. Please sign in")
+    } catch
+        (error) {
+        return response.json({status: 400, data: null, message: error.message})
+    }
+}
+

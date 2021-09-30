@@ -3,5 +3,5 @@ export interface ItemShop {
     itemShopProfileId: string|null,
     itemShopTenDollarGiftCard: boolean,
     itemShopTwentyDollarGiftCard: boolean,
-    itemShopDemonSlayerVideoGame: boolean
+    itemShopDemonSlayerGame: boolean
 }
