@@ -94,56 +94,35 @@ export const Shop = () => {
     }
 
 
-    //this sets the state of the cost for a selected item
-    const [itemCost, setItemCost] = useState(null)
 
-    //this is the object thats passed to the backend
-    const itemCostObject = {
-        itemCost: itemCost
-    }
-
-    //this subtracts the coins needed to buy an item
-    const coinDeduction = () => {
-        if (profile === null) {
-        } else if (profile != null) {
-            httpConfig.put(`apis/profile/itemCost/${profile.profileId}`, itemCostObject)
-                .then(reply => {
-                    if (reply.status === 200) {
-                        dispatch(fetchProfileByProfileId(profile.profileId))
-                    }
-                })
-        }
-    }
 
     return (
         <>
             <Menu profile={profile}/>
             <h1>Shop</h1>
-            <h2>
-                {(profile === null)
+
+            {
+                (profile === null)
                     ? <></>
-                    : profile.profileCoins
-                }</h2>
-            <Button
-                onClick={createItemShop}
-            >
-                Enter Shop
-            </Button>
-            {/*<Button*/}
-            {/*    onClick={fetchItemShop}*/}
-            {/*>*/}
-            {/*    fetch ItemShop*/}
-            {/*</Button>*/}
+                    : <h2>{profile.profileCoins}</h2>
+            }
+
+            {
+                (itemShop === null)
+                    ? <Button onClick={createItemShop}>Enter Shop</Button>
+                    : <></>
+            }
+
             <Button
                 onClick={purchaseItem}
             >
                 Purchase Item
             </Button>
-            <Button onClick={coinDeduction}>
-                Coin Deduction
-            </Button>
+            {/*<Button onClick={coinDeduction}>*/}
+            {/*    Coin Deduction*/}
+            {/*</Button>*/}
 
-            <ButtonSelectionItemShop itemShop={itemShop}/>
+            <ButtonSelectionItemShop itemShop={itemShop} profile={profile}/>
         </>
     )
 }
