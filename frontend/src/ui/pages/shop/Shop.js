@@ -49,52 +49,12 @@ export const Shop = () => {
     }
 
     //this gets data from redux about the profiles item shop
-    const fetchItemShop = () => {
-        if (profile === null) {
-        } else if (profile != null) {
-            dispatch(fetchItemShopByProfileId(profile.profileId))
-        }
-    }
-
-
-    //This is the functionality to set the state of a purchased item
-    //These states will then be put into an object to be sent to backend
-    const [itemShopProfileId, setItemShopProfileId] = useState(null)
-    const [tenDollarGiftCard, setTenDollarGiftCard] = useState(false)
-    const [twentyDollarGiftCard, setTwentyDollarGiftCard] = useState(false)
-    const [demonSlayerGame, setDemonSlayerGame] = useState(false)
-
-    useEffect(() => {
-        if (profile === null) {
-        } else if (profile != null) {
-            setItemShopProfileId(profile.profileId)
-        }
-    }, [profile])
-
-    const newItemShop =
-        {
-            itemShopId: itemShopProfileId,
-            itemShopTenDollarGiftCard: tenDollarGiftCard,
-            itemShopTwentyDollarGiftCard: twentyDollarGiftCard,
-            itemShopDemonSlayerGame: demonSlayerGame
-        }
-
-    //this changes the boolean value of an item to true meaning it has been purchased
-    const purchaseItem = () => {
-        if (itemShop === null) {
-        } else if (itemShop != null) {
-            httpConfig.put(`/apis/itemShop/updateItemShop/${itemShop.itemShopProfileId}`, newItemShop)
-                .then(reply => {
-                    if (reply.status === 200) {
-                        // console.log("purchaseItem worked")
-                        dispatch(fetchItemShopByProfileId(profile.profileId))
-                    }
-                })
-        }
-    }
-
-
-
+    // const fetchItemShop = () => {
+    //     if (profile === null) {
+    //     } else if (profile != null) {
+    //         dispatch(fetchItemShopByProfileId(profile.profileId))
+    //     }
+    // }
 
     return (
         <>
@@ -112,15 +72,6 @@ export const Shop = () => {
                     ? <Button onClick={createItemShop}>Enter Shop</Button>
                     : <></>
             }
-
-            <Button
-                onClick={purchaseItem}
-            >
-                Purchase Item
-            </Button>
-            {/*<Button onClick={coinDeduction}>*/}
-            {/*    Coin Deduction*/}
-            {/*</Button>*/}
 
             <ButtonSelectionItemShop itemShop={itemShop} profile={profile}/>
         </>
