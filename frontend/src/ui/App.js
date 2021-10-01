@@ -3,7 +3,7 @@ import {Route, Switch} from 'react-router'
 import {Home} from './pages/home/Home'
 import React from 'react'
 import {Profile} from "./pages/Profile";
-import {Shop} from "./pages/Shop";
+import {Shop} from "./pages/shop/Shop";
 import {Credit} from "./pages/credit/Credit";
 import {Provider} from "react-redux";
 
