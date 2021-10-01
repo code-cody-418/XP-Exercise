@@ -50,6 +50,7 @@ export const ButtonSelectionItemShop = ({itemShop, profile}) => {
         }
     }, [profile])
 
+    //this sets the local state to be consistent with the backend
     useEffect(() => {
         if (itemShop === null) {
         } else if (itemShop != null) {
@@ -59,6 +60,7 @@ export const ButtonSelectionItemShop = ({itemShop, profile}) => {
         }
     }, [itemShop])
 
+    //this is object passed to backend to update database
     const newItemShop =
         {
             itemShopId: itemShopProfileId,
@@ -69,6 +71,7 @@ export const ButtonSelectionItemShop = ({itemShop, profile}) => {
 
     //this changes the boolean value of an item to true meaning it has been purchased
     const purchaseItem = () => {
+        console.log("purchase item has ran")
         if (itemShop === null) {
         } else if (itemShop != null) {
             httpConfig.put(`/apis/itemShop/updateItemShop/${itemShop.itemShopProfileId}`, newItemShop)
@@ -81,6 +84,11 @@ export const ButtonSelectionItemShop = ({itemShop, profile}) => {
         }
     }
 
+    const [itemPurchased, setItemPurchased] = useState(false)
+
+    useEffect(purchaseItem, [itemPurchased])
+
+    //this determines which item was clicked in the shop and sets purchased item to 1(true)
     const determineItemForPurchase = () => {
         if (tenDollarGiftCard === true) {
             setTenDollarGiftCardPurchased(1)
@@ -91,7 +99,26 @@ export const ButtonSelectionItemShop = ({itemShop, profile}) => {
         }
     }
 
-    console.log("ten dollar gift card purchased state", tenDollarGiftCardPurchased)
+    //sets state for whether profile has enough coins to buy item
+    const [purchaseStatus, setPurchaseStatus] = useState(false)
+
+    //determines if profile has enough coins to buy item
+    const enoughCoinsToPurchase = () => {
+        if (tenDollarGiftCard === true && profile.profileCoins >= 8) {
+            setPurchaseStatus(true)
+        } else if (twentyDollarGiftCard === true && profile.profileCoins >= 15) {
+            setPurchaseStatus(true)
+        } else if (demonSlayerGame === true && profile.profileCoins >= 40) {
+            setPurchaseStatus(true)
+        } else setPurchaseStatus(false)
+    }
+
+    useEffect(enoughCoinsToPurchase, [tenDollarGiftCard, twentyDollarGiftCard, demonSlayerGame])
+
+    //display not enough coins if purchase cant go through
+    const [errorPurchase, setErrorPurchase] = useState(null)
+
+    // console.log("ten dollar gift card purchased state", tenDollarGiftCardPurchased)
 
     console.log("new item shop", newItemShop)
 
@@ -100,7 +127,11 @@ export const ButtonSelectionItemShop = ({itemShop, profile}) => {
         setTenDollarGiftCard(false)
         setTwentyDollarGiftCard(false)
         setDemonSlayerGame(false)
+        setItemPurchased(false)
+        setPurchaseStatus(false)
+        setErrorPurchase(null)
     }
+
 
     //modal logic for confirming purchase
     const [show, setShow] = useState(false);
@@ -156,17 +187,36 @@ export const ButtonSelectionItemShop = ({itemShop, profile}) => {
                     <Modal.Footer>
                         <Button
                             onClick={() => {
-                                determineItemForPurchase()
-                                purchaseItem()
-                                coinDeduction()
+                                if (purchaseStatus === true) {
+                                    determineItemForPurchase()
+                                    coinDeduction()
+                                    setItemPurchased(true)
+                                } else if (purchaseStatus === false) {
+                                    setErrorPurchase(true)
+                                }
                             }}
+                            variant={
+                                (errorPurchase === true)
+                                    ? "danger"
+                                    : "primary"
+                            }
                         >
-                            Purchase Item
+                            {
+                                (errorPurchase === true)
+                                    ? <p>Not Enough Coins</p>
+                                    : <p>Purchase</p>
+                            }
+                            {/*Purchase*/}
                         </Button>
                         <Button variant="secondary" onClick={handleClose}>
                             Close
                         </Button>
                     </Modal.Footer>
+                    {
+                        (itemPurchased === true)
+                            ? <p style={{color: "green"}}>Purchase Complete</p>
+                            : <></>
+                    }
                 </Modal>
             </>
         )
