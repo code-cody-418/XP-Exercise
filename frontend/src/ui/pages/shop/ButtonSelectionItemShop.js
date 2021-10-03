@@ -1,10 +1,13 @@
 import React, {useEffect, useState} from "react";
-import {Button} from "react-bootstrap";
+import {Button, Col, Container, Image, Row} from "react-bootstrap";
 import {httpConfig} from "../../shared/utils/http-config";
 import {fetchProfileByProfileId} from "../../../store/profileSlice";
 import {useDispatch} from "react-redux";
 import {Modal} from "react-bootstrap";
 import {fetchItemShopByProfileId} from "../../../store/itemShop/itemShopSlice";
+import tenDollarGiftCardImage from "../../../images/shop-images/tenDollarGiftCard.png"
+import twentyDollarGiftCardImage from "../../../images/shop-images/twentyDollarGiftCard.png"
+import demonSlayerVideoGameImage from "../../../images/shop-images/demonSlayerVideoGame.png"
 
 //this determines which buttons to display based on whether an item has been purchased
 export const ButtonSelectionItemShop = ({itemShop, profile}) => {
@@ -151,33 +154,59 @@ export const ButtonSelectionItemShop = ({itemShop, profile}) => {
     } else if (itemShop != null) {
         return (
             <>
-                {
-                    (itemShop.itemShopTenDollarGiftCard === 0)
-                        ? <Button onClick={() => {
-                            setTenDollarGiftCard(true)
-                            setItemCost(8)
-                            handleShow()
-                        }}>$10 Gift Card</Button>
-                        : <></>
-                }
-                {
-                    (itemShop.itemShopTwentyDollarGiftCard === 0)
-                        ? <Button onClick={() => {
-                            setTwentyDollarGiftCard(true)
-                            setItemCost(15)
-                            handleShow()
-                        }}>$20 Gift Card</Button>
-                        : <></>
-                }
-                {
-                    (itemShop.itemShopDemonSlayerGame === 0)
-                        ? <Button onClick={() => {
-                            setDemonSlayerGame(true)
-                            setItemCost(40)
-                            handleShow()
-                        }}>Demon Slayer Game</Button>
-                        : <></>
-                }
+                <Container>
+                    <Row>
+                        <Col>
+                            {
+                                (itemShop.itemShopTenDollarGiftCard === 0)
+                                    ?
+                                    <>
+                                        <Image src={tenDollarGiftCardImage} alt="Ten Dollar Gift Card" fluid rounded/>
+                                        <Button onClick={() => {
+                                            setTenDollarGiftCard(true)
+                                            setItemCost(8)
+                                            handleShow()
+                                        }}>$10 Gift Card</Button>
+                                    </>
+                                    : <></>
+                            }
+                        </Col>
+                        <Col>
+
+                            {
+                                (itemShop.itemShopTwentyDollarGiftCard === 0)
+                                    ?
+                                    <>
+                                        <Image src={twentyDollarGiftCardImage} alt="Twenty Dollar Gift Card" fluid
+                                               rounded/>
+                                        <Button onClick={() => {
+                                            setTwentyDollarGiftCard(true)
+                                            setItemCost(15)
+                                            handleShow()
+                                        }}>$20 Gift Card</Button>
+                                    </>
+                                    : <></>
+                            }
+                        </Col>
+                        <Col>
+
+                            {
+                                (itemShop.itemShopDemonSlayerGame === 0)
+                                    ?
+                                    <>
+                                        <Image src={demonSlayerVideoGameImage} alt="Twenty Dollar Gift Card" fluid
+                                               rounded/>
+                                        <Button onClick={() => {
+                                            setDemonSlayerGame(true)
+                                            setItemCost(40)
+                                            handleShow()
+                                        }}>Demon Slayer Game</Button>
+                                    </>
+                                    : <></>
+                            }
+                        </Col>
+                    </Row>
+                </Container>
 
                 <Modal show={show} onHide={handleClose}>
                     <Modal.Header>
