@@ -49,6 +49,31 @@ export const Shop = () => {
         }
     }
 
+    const [profileLoginError, setProfileLoginError] = useState(false)
+
+    const ProfileNewShop = () => {
+        return (
+            <>
+                {
+                    (itemShop === null)
+                        ? (profile === null)
+                        ?
+                        <>
+                            <Button variant={"danger"} onClick={() => setProfileLoginError(true)}>Please Login</Button>
+                            {
+                                (profileLoginError === true)
+                                    ? <p className="alert-danger">Please Login to EnterShop</p>
+                                    : <></>
+                            }
+                        </>
+                        : <Button onClick={createItemShop}>Enter Shop</Button>
+                        : <></>
+                }
+            </>
+        )
+    }
+
+//only renders shop if a shop has been created and user is signed in
     return (
         <>
             <Container fluid>
@@ -60,32 +85,22 @@ export const Shop = () => {
                 <Row className="text-center mb-2">
                     <h1>The Shop</h1>
                 </Row>
+
                 <Row>
                     <Col>
                         <ProfileInfo profile={profile}/>
                     </Col>
                 </Row>
-                {/*<Row className="me-auto " >*/}
-                {/*<Row>*/}
-                {/*<Col lg={6} />*/}
-                {/*<Col lg={12}  >*/}
-                <h2 className=" text-nowrap instructions">Click Item to Buy</h2>
-                {/*</Col>*/}
-                {/*</Row>*/}
-
-                {/*{*/}
-                {/*    (profile === null)*/}
-                {/*        ? <></>*/}
-                {/*        : <h2>{profile.profileCoins}</h2>*/}
-                {/*}*/}
-
                 {
-                    (itemShop === null)
-                        ? <Button onClick={createItemShop}>Enter Shop</Button>
+                    (profile !== null)
+                        ? <h2 className=" text-nowrap instructions">Click Item to Buy</h2>
                         : <></>
                 }
                 <Row>
                     <ButtonSelectionItemShop itemShop={itemShop} profile={profile}/>
+                </Row>
+                <Row>
+                    <ProfileNewShop/>
                 </Row>
             </Container>
         </>

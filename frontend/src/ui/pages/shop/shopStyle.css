@@ -10,6 +10,23 @@
     0 0 12px 8px #add4e3;
 }
 
+.commonItemShadow{
+    box-shadow: 0 0 5px 3px #0cdc12,
+    0 0 9px 5px #add4e3,
+    0 0 12px 8px #add4e3;
+}
+
+.rareItemShadow {
+    box-shadow: 0 0 5px 3px #0760e5,
+    0 0 9px 5px #add4e3,
+    0 0 12px 8px #add4e3;
+}
+.epicItemShadow {
+    box-shadow: 0 0 5px 3px #8009ea,
+    0 0 9px 5px #add4e3,
+    0 0 12px 8px #add4e3;
+}
+
 .instructions {
     /*font-size: 2.5em;*/
     animation-duration: 30s;

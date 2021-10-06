@@ -172,7 +172,7 @@ export const ButtonSelectionItemShop = ({itemShop, profile}) => {
                                             alt="Ten Dollar Gift Card"
                                             fluid
                                             rounded
-                                            className="itemImage"
+                                            className="itemImage commonItemShadow"
                                             onClick={() => {
                                                 setTenDollarGiftCard(true)
                                                 setItemCost(8)
@@ -198,7 +198,7 @@ export const ButtonSelectionItemShop = ({itemShop, profile}) => {
                                             alt="Twenty Dollar Gift Card"
                                             fluid
                                             rounded
-                                            className="itemImage"
+                                            className="itemImage rareItemShadow"
                                             onClick={() => {
                                                 setTwentyDollarGiftCard(true)
                                                 setItemCost(15)
@@ -223,7 +223,7 @@ export const ButtonSelectionItemShop = ({itemShop, profile}) => {
                                                alt="Twenty Dollar Gift Card"
                                                fluid
                                                rounded
-                                               className="itemImage"
+                                               className="itemImage epicItemShadow"
                                                onClick={() => {
                                                    setDemonSlayerGame(true)
                                                    setItemCost(40)
