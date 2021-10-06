@@ -63,6 +63,8 @@ export const Shop = () => {
                 <Row>
                     <Menu profile={profile}/>
                 </Row>
+            </Container>
+            <Container>
                 <Row className="text-center mb-2">
                     <h1>The Shop</h1>
                 </Row>
@@ -71,26 +73,29 @@ export const Shop = () => {
                         <ProfileInfo profile={profile}/>
                     </Col>
                 </Row>
-                <Row>
+                {/*<Row className="me-auto " >*/}
+                {/*<Row>*/}
                     {/*<Col lg={6} />*/}
-                    {/*<Col>*/}
-                    <p className="instructions">Click Item to Buy</p>
+                    {/*<Col lg={12}  >*/}
+                    <h2 className="instructions">Click Item to Buy</h2>
                     {/*</Col>*/}
+                {/*</Row>*/}
+
+                {/*{*/}
+                {/*    (profile === null)*/}
+                {/*        ? <></>*/}
+                {/*        : <h2>{profile.profileCoins}</h2>*/}
+                {/*}*/}
+
+                {
+                    (itemShop === null)
+                        ? <Button onClick={createItemShop}>Enter Shop</Button>
+                        : <></>
+                }
+                <Row>
+                    <ButtonSelectionItemShop itemShop={itemShop} profile={profile}/>
                 </Row>
             </Container>
-            {/*{*/}
-            {/*    (profile === null)*/}
-            {/*        ? <></>*/}
-            {/*        : <h2>{profile.profileCoins}</h2>*/}
-            {/*}*/}
-
-            {
-                (itemShop === null)
-                    ? <Button onClick={createItemShop}>Enter Shop</Button>
-                    : <></>
-            }
-
-            <ButtonSelectionItemShop itemShop={itemShop} profile={profile}/>
         </>
     )
 }
