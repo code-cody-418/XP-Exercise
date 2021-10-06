@@ -11,7 +11,7 @@
 }
 
 .instructions {
-    font-size: 2.5em;
+    /*font-size: 2.5em;*/
     animation-duration: 30s;
     animation-name: slidein;
     animation-iteration-count: infinite;

@@ -49,14 +49,6 @@ export const Shop = () => {
         }
     }
 
-    //this gets data from redux about the profiles item shop
-    // const fetchItemShop = () => {
-    //     if (profile === null) {
-    //     } else if (profile != null) {
-    //         dispatch(fetchItemShopByProfileId(profile.profileId))
-    //     }
-    // }
-
     return (
         <>
             <Container fluid>
@@ -75,10 +67,10 @@ export const Shop = () => {
                 </Row>
                 {/*<Row className="me-auto " >*/}
                 {/*<Row>*/}
-                    {/*<Col lg={6} />*/}
-                    {/*<Col lg={12}  >*/}
-                    <h2 className="instructions">Click Item to Buy</h2>
-                    {/*</Col>*/}
+                {/*<Col lg={6} />*/}
+                {/*<Col lg={12}  >*/}
+                <h2 className=" text-nowrap instructions">Click Item to Buy</h2>
+                {/*</Col>*/}
                 {/*</Row>*/}
 
                 {/*{*/}

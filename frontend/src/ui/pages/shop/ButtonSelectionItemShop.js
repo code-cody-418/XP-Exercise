@@ -9,6 +9,7 @@ import tenDollarGiftCardImage from "../../../images/shop-images/tenDollarGiftCar
 import twentyDollarGiftCardImage from "../../../images/shop-images/twentyDollarGiftCard.png"
 import demonSlayerVideoGameImage from "../../../images/shop-images/demonSlayerVideoGame.png"
 import "./shopStyle.css"
+import twoCoins from "../../../images/two-coins.png"
 
 //this determines which buttons to display based on whether an item has been purchased
 export const ButtonSelectionItemShop = ({itemShop, profile}) => {
@@ -146,6 +147,10 @@ export const ButtonSelectionItemShop = ({itemShop, profile}) => {
     };
     const handleShow = () => setShow(true);
 
+    //adds hover cursor to character select
+    const [hovered, setHovered] = useState(false)
+    useEffect(() => void (document.body.style.cursor = hovered ? "pointer" : "auto"), [hovered])
+
 
 //this is the logic that determines which buttons show. first it determines whether the profile has an itemShop.
 // Second it determines if an item shop has been purchased by checking true or false(0 is false). Third it sets the
@@ -173,12 +178,12 @@ export const ButtonSelectionItemShop = ({itemShop, profile}) => {
                                                 setItemCost(8)
                                                 handleShow()
                                             }}
+                                            onPointerOver={() => setHovered(true)}
+                                            onPointerOut={() => setHovered(false)}
                                         />
-                                        {/*<Button onClick={() => {*/}
-                                        {/*    setTenDollarGiftCard(true)*/}
-                                        {/*    setItemCost(8)*/}
-                                        {/*    handleShow()*/}
-                                        {/*}}>$10 Gift Card</Button>*/}
+                                        <p className='coinText'>
+                                            <img src={twoCoins} width={50} height={50} alt="Coins"/>
+                                            8</p>
                                     </>
                                     : <></>
                             }
@@ -199,12 +204,12 @@ export const ButtonSelectionItemShop = ({itemShop, profile}) => {
                                                 setItemCost(15)
                                                 handleShow()
                                             }}
+                                            onPointerOver={() => setHovered(true)}
+                                            onPointerOut={() => setHovered(false)}
                                         />
-                                        {/*<Button onClick={() => {*/}
-                                        {/*    setTwentyDollarGiftCard(true)*/}
-                                        {/*    setItemCost(15)*/}
-                                        {/*    handleShow()*/}
-                                        {/*}}>$20 Gift Card</Button>*/}
+                                        <p className='coinText'>
+                                            <img src={twoCoins} width={50} height={50} alt="Coins"/>
+                                            15</p>
                                     </>
                                     : <></>
                             }
@@ -224,12 +229,12 @@ export const ButtonSelectionItemShop = ({itemShop, profile}) => {
                                                    setItemCost(40)
                                                    handleShow()
                                                }}
+                                               onPointerOver={() => setHovered(true)}
+                                               onPointerOut={() => setHovered(false)}
                                         />
-                                        {/*<Button onClick={() => {*/}
-                                        {/*    setDemonSlayerGame(true)*/}
-                                        {/*    setItemCost(40)*/}
-                                        {/*    handleShow()*/}
-                                        {/*}}>Demon Slayer Game</Button>*/}
+                                        <p className='coinText'>
+                                            <img src={twoCoins} width={50} height={50} alt="Coins"/>
+                                            40</p>
                                     </>
                                     : <></>
                             }
