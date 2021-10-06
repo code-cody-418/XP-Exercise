@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from "react";
 import {Menu} from "../../shared/menu/Menu";
-import {Button} from "react-bootstrap";
+import {Button, Col, Container, Row} from "react-bootstrap";
 import {useDispatch, useSelector} from "react-redux";
 import {useJwtToken} from "../../shared/utils/useJwtToken";
 import {fetchProfileByProfileId} from "../../../store/profileSlice";
 import {httpConfig} from "../../shared/utils/http-config";
 import {fetchItemShopByProfileId} from "../../../store/itemShop/itemShopSlice";
 import {ButtonSelectionItemShop} from "./ButtonSelectionItemShop";
+import {ProfileInfo} from "../../shared/profile/ProfileInfo";
 
 
 export const Shop = () => {
@@ -58,14 +59,30 @@ export const Shop = () => {
 
     return (
         <>
-            <Menu profile={profile}/>
-            <h1>Shop</h1>
-
-            {
-                (profile === null)
-                    ? <></>
-                    : <h2>{profile.profileCoins}</h2>
-            }
+            <Container fluid>
+                <Row>
+                    <Menu profile={profile}/>
+                </Row>
+                <Row className="text-center mb-2">
+                    <h1>The Shop</h1>
+                </Row>
+                <Row>
+                    <Col>
+                        <ProfileInfo profile={profile}/>
+                    </Col>
+                </Row>
+                <Row>
+                    {/*<Col lg={6} />*/}
+                    {/*<Col>*/}
+                    <p className="instructions">Click Item to Buy</p>
+                    {/*</Col>*/}
+                </Row>
+            </Container>
+            {/*{*/}
+            {/*    (profile === null)*/}
+            {/*        ? <></>*/}
+            {/*        : <h2>{profile.profileCoins}</h2>*/}
+            {/*}*/}
 
             {
                 (itemShop === null)

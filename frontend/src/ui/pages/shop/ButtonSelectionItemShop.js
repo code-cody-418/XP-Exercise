@@ -8,6 +8,7 @@ import {fetchItemShopByProfileId} from "../../../store/itemShop/itemShopSlice";
 import tenDollarGiftCardImage from "../../../images/shop-images/tenDollarGiftCard.png"
 import twentyDollarGiftCardImage from "../../../images/shop-images/twentyDollarGiftCard.png"
 import demonSlayerVideoGameImage from "../../../images/shop-images/demonSlayerVideoGame.png"
+import "./shopStyle.css"
 
 //this determines which buttons to display based on whether an item has been purchased
 export const ButtonSelectionItemShop = ({itemShop, profile}) => {
@@ -156,51 +157,79 @@ export const ButtonSelectionItemShop = ({itemShop, profile}) => {
             <>
                 <Container>
                     <Row>
-                        <Col>
+                        <Col lg={4} className="mb-2">
                             {
                                 (itemShop.itemShopTenDollarGiftCard === 0)
                                     ?
                                     <>
-                                        <Image src={tenDollarGiftCardImage} alt="Ten Dollar Gift Card" fluid rounded/>
-                                        <Button onClick={() => {
-                                            setTenDollarGiftCard(true)
-                                            setItemCost(8)
-                                            handleShow()
-                                        }}>$10 Gift Card</Button>
+                                        <Image
+                                            src={tenDollarGiftCardImage}
+                                            alt="Ten Dollar Gift Card"
+                                            fluid
+                                            rounded
+                                            className="itemImage"
+                                            onClick={() => {
+                                                setTenDollarGiftCard(true)
+                                                setItemCost(8)
+                                                handleShow()
+                                            }}
+                                        />
+                                        {/*<Button onClick={() => {*/}
+                                        {/*    setTenDollarGiftCard(true)*/}
+                                        {/*    setItemCost(8)*/}
+                                        {/*    handleShow()*/}
+                                        {/*}}>$10 Gift Card</Button>*/}
                                     </>
                                     : <></>
                             }
                         </Col>
-                        <Col>
-
+                        <Col lg={4} className="mb-2">
                             {
                                 (itemShop.itemShopTwentyDollarGiftCard === 0)
                                     ?
                                     <>
-                                        <Image src={twentyDollarGiftCardImage} alt="Twenty Dollar Gift Card" fluid
-                                               rounded/>
-                                        <Button onClick={() => {
-                                            setTwentyDollarGiftCard(true)
-                                            setItemCost(15)
-                                            handleShow()
-                                        }}>$20 Gift Card</Button>
+                                        <Image
+                                            src={twentyDollarGiftCardImage}
+                                            alt="Twenty Dollar Gift Card"
+                                            fluid
+                                            rounded
+                                            className="itemImage"
+                                            onClick={() => {
+                                                setTwentyDollarGiftCard(true)
+                                                setItemCost(15)
+                                                handleShow()
+                                            }}
+                                        />
+                                        {/*<Button onClick={() => {*/}
+                                        {/*    setTwentyDollarGiftCard(true)*/}
+                                        {/*    setItemCost(15)*/}
+                                        {/*    handleShow()*/}
+                                        {/*}}>$20 Gift Card</Button>*/}
                                     </>
                                     : <></>
                             }
                         </Col>
-                        <Col>
-
+                        <Col lg={4} className="mb-2">
                             {
                                 (itemShop.itemShopDemonSlayerGame === 0)
                                     ?
                                     <>
-                                        <Image src={demonSlayerVideoGameImage} alt="Twenty Dollar Gift Card" fluid
-                                               rounded/>
-                                        <Button onClick={() => {
-                                            setDemonSlayerGame(true)
-                                            setItemCost(40)
-                                            handleShow()
-                                        }}>Demon Slayer Game</Button>
+                                        <Image src={demonSlayerVideoGameImage}
+                                               alt="Twenty Dollar Gift Card"
+                                               fluid
+                                               rounded
+                                               className="itemImage"
+                                               onClick={() => {
+                                                   setDemonSlayerGame(true)
+                                                   setItemCost(40)
+                                                   handleShow()
+                                               }}
+                                        />
+                                        {/*<Button onClick={() => {*/}
+                                        {/*    setDemonSlayerGame(true)*/}
+                                        {/*    setItemCost(40)*/}
+                                        {/*    handleShow()*/}
+                                        {/*}}>Demon Slayer Game</Button>*/}
                                     </>
                                     : <></>
                             }
