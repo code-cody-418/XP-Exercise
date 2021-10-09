@@ -14,6 +14,8 @@ import {settingVideoFinishedModal} from "../../../store/VideoFinishedModalSlice"
 import {kakashiMoves} from "../../shared/interfaces/moves";
 import {fetchProfileByProfileId} from "../../../store/profileSlice";
 import {httpConfig} from "../../shared/utils/http-config";
+import levelUpAudio from "../../../sounds/exp-up-sound.wav"
+import thirtySecondAudio from "../../../sounds/thirty-second-sound.wav"
 
 export const VideoPlayer = ({profile}) => {
 
@@ -68,6 +70,7 @@ export const VideoPlayer = ({profile}) => {
     useEffect(() => {
         if (thirtySeconds === -1) {
             setThirtySeconds(30)
+            setPlayingThirtySecondAudio(true)
             expUp()
             levelUp()
             if (videoPlay === true && autoWorkout === true) {
@@ -143,6 +146,7 @@ export const VideoPlayer = ({profile}) => {
                             if (reply.status === 200) {
                                 // console.log(reply);
                                 dispatch(fetchProfileByProfileId(profile.profileId));
+                                setPlayingLevelUpAudio(true)
                             }
                             // console.log(reply);
                         }
@@ -165,6 +169,39 @@ export const VideoPlayer = ({profile}) => {
                 );
         }
     }
+
+    //level up sound
+    const [audioLevelUp] = useState(new Audio(levelUpAudio))
+    const [playingLevelUpAudio, setPlayingLevelUpAudio] = useState(false)
+
+    useEffect(() => {
+        playingLevelUpAudio ? audioLevelUp.play() : audioLevelUp.pause()
+    }, [playingLevelUpAudio])
+
+    console.log("level up audio", playingLevelUpAudio)
+
+    //thirty second sound
+    const [audioThirtySecond] = useState(new Audio(thirtySecondAudio))
+    const [playingThirtySecondAudio, setPlayingThirtySecondAudio] = useState(false)
+
+    useEffect(() => {
+        if (playingThirtySecondAudio === true) {
+            return audioThirtySecond.play()
+        }
+        setResetAudio(true)
+    }, [playingThirtySecondAudio])
+
+    //reset all audio
+    const [resetAudio, setResetAudio] = useState(false)
+
+    useEffect(() => {
+        setPlayingLevelUpAudio(false)
+        setPlayingThirtySecondAudio(false)
+        // setResetAudio(false)
+    }, [resetAudio])
+
+    console.log("reset audio", resetAudio)
+
     return (
         <>
             <ReactPlayer url={animeMontage}
