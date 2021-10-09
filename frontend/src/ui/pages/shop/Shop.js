@@ -86,8 +86,8 @@ export const Shop = () => {
                     <h1>The Shop</h1>
                 </Row>
 
-                <Row>
-                    <Col>
+                <Row className="justify-content-start align-items-center">
+                    <Col sm={4}>
                         <ProfileInfo profile={profile}/>
                     </Col>
                 </Row>

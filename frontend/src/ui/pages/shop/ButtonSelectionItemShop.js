@@ -160,87 +160,84 @@ export const ButtonSelectionItemShop = ({itemShop, profile}) => {
     } else if (itemShop != null) {
         return (
             <>
-                <Container>
-                    <Row>
-                        <Col lg={4} className="mb-2">
-                            {
-                                (itemShop.itemShopTenDollarGiftCard === 0)
-                                    ?
-                                    <>
-                                        <Image
-                                            src={tenDollarGiftCardImage}
-                                            alt="Ten Dollar Gift Card"
-                                            fluid
-                                            rounded
-                                            className="itemImage commonItemShadow"
-                                            onClick={() => {
-                                                setTenDollarGiftCard(true)
-                                                setItemCost(8)
-                                                handleShow()
-                                            }}
-                                            onPointerOver={() => setHovered(true)}
-                                            onPointerOut={() => setHovered(false)}
-                                        />
-                                        <p className='coinText'>
-                                            <img src={twoCoins} width={50} height={50} alt="Coins"/>
-                                            8</p>
-                                    </>
-                                    : <></>
-                            }
-                        </Col>
-                        <Col lg={4} className="mb-2">
-                            {
-                                (itemShop.itemShopTwentyDollarGiftCard === 0)
-                                    ?
-                                    <>
-                                        <Image
-                                            src={twentyDollarGiftCardImage}
-                                            alt="Twenty Dollar Gift Card"
-                                            fluid
-                                            rounded
-                                            className="itemImage rareItemShadow"
-                                            onClick={() => {
-                                                setTwentyDollarGiftCard(true)
-                                                setItemCost(15)
-                                                handleShow()
-                                            }}
-                                            onPointerOver={() => setHovered(true)}
-                                            onPointerOut={() => setHovered(false)}
-                                        />
-                                        <p className='coinText'>
-                                            <img src={twoCoins} width={50} height={50} alt="Coins"/>
-                                            15</p>
-                                    </>
-                                    : <></>
-                            }
-                        </Col>
-                        <Col lg={4} className="mb-2">
-                            {
-                                (itemShop.itemShopDemonSlayerGame === 0)
-                                    ?
-                                    <>
-                                        <Image src={demonSlayerVideoGameImage}
-                                               alt="Twenty Dollar Gift Card"
-                                               fluid
-                                               rounded
-                                               className="itemImage epicItemShadow"
-                                               onClick={() => {
-                                                   setDemonSlayerGame(true)
-                                                   setItemCost(40)
-                                                   handleShow()
-                                               }}
-                                               onPointerOver={() => setHovered(true)}
-                                               onPointerOut={() => setHovered(false)}
-                                        />
-                                        <p className='coinText'>
-                                            <img src={twoCoins} width={50} height={50} alt="Coins"/>
-                                            40</p>
-                                    </>
-                                    : <></>
-                            }
-                        </Col>
-                    </Row>
-                </Container>
+                <Col lg={4} className="mb-2">
+                    {
+                        (itemShop.itemShopTenDollarGiftCard === 0)
+                            ?
+                            <>
+                                <Image
+                                    src={tenDollarGiftCardImage}
+                                    alt="Ten Dollar Gift Card"
+                                    fluid
+                                    rounded
+                                    className="itemImage commonItemShadow"
+                                    onClick={() => {
+                                        setTenDollarGiftCard(true)
+                                        setItemCost(8)
+                                        handleShow()
+                                    }}
+                                    onPointerOver={() => setHovered(true)}
+                                    onPointerOut={() => setHovered(false)}
+                                />
+                                <p className='coinText'>
+                                    <img src={twoCoins} width={50} height={50} alt="Coins"/>
+                                    8</p>
+                            </>
+                            : <></>
+                    }
+                </Col>
+                <Col lg={4} className="mb-2">
+                    {
+                        (itemShop.itemShopTwentyDollarGiftCard === 0)
+                            ?
+                            <>
+                                <Image
+                                    src={twentyDollarGiftCardImage}
+                                    alt="Twenty Dollar Gift Card"
+                                    fluid
+                                    rounded
+                                    className="itemImage rareItemShadow"
+                                    onClick={() => {
+                                        setTwentyDollarGiftCard(true)
+                                        setItemCost(15)
+                                        handleShow()
+                                    }}
+                                    onPointerOver={() => setHovered(true)}
+                                    onPointerOut={() => setHovered(false)}
+                                />
+                                <p className='coinText'>
+                                    <img src={twoCoins} width={50} height={50} alt="Coins"/>
+                                    15</p>
+                            </>
+                            : <></>
+                    }
+                </Col>
+                <Col lg={4} className="mb-2">
+                    {
+                        (itemShop.itemShopDemonSlayerGame === 0)
+                            ?
+                            <>
+                                <Image src={demonSlayerVideoGameImage}
+                                       alt="Twenty Dollar Gift Card"
+                                       fluid
+                                       rounded
+                                       className="itemImage epicItemShadow"
+                                       onClick={() => {
+                                           setDemonSlayerGame(true)
+                                           setItemCost(40)
+                                           handleShow()
+                                       }}
+                                       onPointerOver={() => setHovered(true)}
+                                       onPointerOut={() => setHovered(false)}
+                                />
+                                <p className='coinText'>
+                                    <img src={twoCoins} width={50} height={50} alt="Coins"/>
+                                    40</p>
+                            </>
+                            : <></>
+                    }
+                </Col>
+
 
                 <Modal show={show} onHide={handleClose}>
                     <Modal.Header>
