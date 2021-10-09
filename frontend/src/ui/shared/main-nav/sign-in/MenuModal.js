@@ -28,43 +28,42 @@ export const MenuModal = ({handleClose, show, auth, profile}) => {
                             <Col>
                                 <h2 className="menuTitleAnimation ">EXP NINJA</h2>
                             </Col>
-                            {/*<Col md={2} className="align-self-end">*/}
-                            {/*    <Button className="inMenuButton border-0" size="lg" onClick={handleClose}>*/}
-                            {/*        Close Menu*/}
-                            {/*    </Button>*/}
-                            {/*</Col>*/}
                         </Row>
+                        {auth ? (
+                            <div className="menuSelection">
+                                <Button className="inMenuButton border-0" size="lg" href='/'>
+                                    Home
+                                </Button>
+                                <Button className="inMenuButton border-0" size="lg" href='/profile'>
+                                    Profile
+                                </Button>
+                                <Button className="inMenuButton border-0" size="lg" href='/shop'>
+                                    Shop
+                                </Button>
+                                <Button className="inMenuButton border-0" size="lg" href='/credit'>
+                                    Credits
+                                </Button>
+                                <Button className="inMenuButton border-0" size="lg" onClick={handleClose}>
+                                    Close Menu
+                                </Button>
+                            </div>
+                        ) : (
+                            <div className="menuSelection">
+                                <Button className="inMenuButton border-0" size="lg" href='/credit'>
+                                    Credits
+                                </Button>
+                                <Button className="inMenuButton border-0" size="lg" onClick={handleClose}>
+                                    Close Menu
+                                </Button>
+                            </div>
+                        )
+                        }
 
-                        <div className="menuSelection">
-                            {/*<Row className="justify-content-end">*/}
-                            {/*    <Col sm={2} className="align-self-start">*/}
-                            <Button className="inMenuButton border-0" size="lg" onClick={handleClose}>
-                                Close Menu
-                            </Button>
-                            <Button className="inMenuButton border-0" size="lg" href='/'>
-                                Home
-                            </Button>
-                                {/*</Col>*/}
-                            {/*</Row>*/}
-                            {/*<Row className="justify-content-end">*/}
-                            {/*    <Col sm={2} className="align-self-end">*/}
-                            <Button className="inMenuButton border-0" size="lg" href='/credit'>
-                                Credits
-                            </Button>
-                            <Button className="inMenuButton border-0" size="lg" href='/credit'>
-                                Credits
-                            </Button>
-                            <Button className="inMenuButton border-0" size="lg" href='/credit'>
-                                Credits
-                            </Button>
-                            {/*    </Col>*/}
-                            {/*</Row>*/}
-                        </div>
-                        <Row
-                            // className="justify-content-between"
-                        >
+
+                        <Row>
                             {auth ? (
                                 <>
+
                                     <Col sm={4}>
                                         <ProfileInfo profile={profile}/>
                                         <SignOut/>

@@ -15,7 +15,6 @@
 }
 
 
-
 /*@keyframes slidein {*/
 /*    from {*/
 /*        margin-left: 30%;*/
@@ -62,6 +61,7 @@
     font-family: roboto-slab, serif;
     font-weight: 700;
     font-style: normal;
+    font-size: 1.5rem !important;
     background-color: darkslategrey !important;
     color: white !important;
     display: block !important;
@@ -69,11 +69,27 @@
 
 .menuSelection {
     position: absolute;
-    top: 10%;
-    /*left: 10em;*/
-    right: 5em;
-
+    top: 0rem;
+    right: 0rem;
 }
+
+@media screen and (max-width: 775px) {
+    .inMenuButton {
+        font-size: 1rem !important;
+    }
+    .menuSelection {
+        top: 75%;
+
+    }
+}
+
+/*@media screen and (min-width: 775px) {*/
+/*    .menuSelection {*/
+/*        position: absolute;*/
+/*        top: 1rem;*/
+/*        right: 1rem;*/
+/*    }*/
+/*}*/
 
 .signInOutButton {
     font-family: roboto-slab, serif;
@@ -98,7 +114,6 @@
     background-color: #f9990d !important;
     color: black !important;
 }
-
 
 
 .menuBackground {
