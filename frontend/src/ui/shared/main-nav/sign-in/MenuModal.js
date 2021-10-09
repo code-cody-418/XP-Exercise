@@ -1,5 +1,5 @@
 import React from "react";
-import {Button, Col, Container, Row, Carousel} from "react-bootstrap";
+import {Button, Col, Container, Row, Carousel, Dropdown} from "react-bootstrap";
 import {Modal} from "react-bootstrap";
 import {SignInForm} from "./SignInForm";
 import "./menuStyle.css"
@@ -21,25 +21,55 @@ export const MenuModal = ({handleClose, show, auth, profile}) => {
                 aria-labelledby="example-custom-modal-styling-title"
             >
                 <Modal.Body className="show-grid menuBackground border border-5 border-white rounded">
-                    <Container>
+
+                    <Container fluid>
+
                         <Row className="websiteName align-items-center text-xl-center">
                             <Col>
                                 <h2 className="menuTitleAnimation ">EXP NINJA</h2>
                             </Col>
-                            <Col md={2} className="align-self-end">
-                                <Button className="inMenuButton border-0" size="lg" onClick={handleClose}>
-                                    Close Menu
-                                </Button>
-                            </Col>
+                            {/*<Col md={2} className="align-self-end">*/}
+                            {/*    <Button className="inMenuButton border-0" size="lg" onClick={handleClose}>*/}
+                            {/*        Close Menu*/}
+                            {/*    </Button>*/}
+                            {/*</Col>*/}
                         </Row>
-                        <Row className="justify-content-between">
+
+                        <div className="menuSelection">
+                            {/*<Row className="justify-content-end">*/}
+                            {/*    <Col sm={2} className="align-self-start">*/}
+                            <Button className="inMenuButton border-0" size="lg" onClick={handleClose}>
+                                Close Menu
+                            </Button>
+                            <Button className="inMenuButton border-0" size="lg" href='/'>
+                                Home
+                            </Button>
+                                {/*</Col>*/}
+                            {/*</Row>*/}
+                            {/*<Row className="justify-content-end">*/}
+                            {/*    <Col sm={2} className="align-self-end">*/}
+                            <Button className="inMenuButton border-0" size="lg" href='/credit'>
+                                Credits
+                            </Button>
+                            <Button className="inMenuButton border-0" size="lg" href='/credit'>
+                                Credits
+                            </Button>
+                            <Button className="inMenuButton border-0" size="lg" href='/credit'>
+                                Credits
+                            </Button>
+                            {/*    </Col>*/}
+                            {/*</Row>*/}
+                        </div>
+                        <Row
+                            // className="justify-content-between"
+                        >
                             {auth ? (
                                 <>
                                     <Col sm={4}>
-                                        <ProfileInfo profile={profile} />
+                                        <ProfileInfo profile={profile}/>
                                         <SignOut/>
                                     </Col>
-                                    <Col sm={6}>
+                                    <Col sm={3}>
                                         <Carousel fade nextLabel="" prevLabel="">
                                             <Carousel.Item>
                                                 <img
@@ -76,25 +106,13 @@ export const MenuModal = ({handleClose, show, auth, profile}) => {
                                 <>
                                     <Col md={4} className="mb-2">
                                         <SignInForm/>
-                                        <SignUpModal />
+                                        <SignUpModal/>
                                     </Col>
                                 </>
                             )
                             }
                         </Row>
 
-                        <Row className="justify-content-end">
-                            <Col sm={2} className="align-self-start">
-                                <Button className="inMenuButton border-0" size="lg" href='/' >
-                                    Home
-                                </Button>
-                            </Col>
-                            <Col sm={2} className="align-self-end">
-                                <Button className="inMenuButton border-0" size="lg" href='/credit' >
-                                    Credits
-                                </Button>
-                            </Col>
-                        </Row>
                     </Container>
                 </Modal.Body>
             </Modal>

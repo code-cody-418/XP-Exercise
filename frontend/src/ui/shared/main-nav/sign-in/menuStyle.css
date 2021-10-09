@@ -6,8 +6,8 @@
 }
 
 .menuTitleAnimation {
-    animation-duration: 15s;
-    animation-name: slidein;
+    /*animation-duration: 15s;*/
+    /*animation-name: slidein;*/
     /*animation-iteration-count: infinite;*/
     color: #f9990d;
     font-size: 3rem !important;
@@ -16,18 +16,18 @@
 
 
 
-@keyframes slidein {
-    from {
-        margin-left: 30%;
-        /*opacity: .8;*/
-    }
+/*@keyframes slidein {*/
+/*    from {*/
+/*        margin-left: 30%;*/
+/*        !*opacity: .8;*!*/
+/*    }*/
 
-    to {
-        margin-right: 0%;
-        /*opacity: .8;*/
+/*    to {*/
+/*        margin-right: 0%;*/
+/*        !*opacity: .8;*!*/
 
-    }
-}
+/*    }*/
+/*}*/
 
 .menuButtonAnimation {
     animation-name: menuButtonAnimationColors;
@@ -64,6 +64,15 @@
     font-style: normal;
     background-color: darkslategrey !important;
     color: white !important;
+    display: block !important;
+}
+
+.menuSelection {
+    position: absolute;
+    top: 10%;
+    /*left: 10em;*/
+    right: 5em;
+
 }
 
 .signInOutButton {
