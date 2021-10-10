@@ -16,6 +16,7 @@ import {fetchProfileByProfileId} from "../../../store/profileSlice";
 import {httpConfig} from "../../shared/utils/http-config";
 import levelUpAudio from "../../../sounds/exp-up-sound.wav"
 import thirtySecondAudio from "../../../sounds/thirty-second-sound.wav"
+import coinAudio from "../../../sounds/coin-sound.wav"
 
 export const VideoPlayer = ({profile}) => {
 
@@ -73,6 +74,7 @@ export const VideoPlayer = ({profile}) => {
             setPlayingThirtySecondAudio(true)
             expUp()
             levelUp()
+            setResetAudio(false)
             if (videoPlay === true && autoWorkout === true) {
                 if (name === names.kakashi) {
                     if (kakashiIndex === 10) {
@@ -163,6 +165,7 @@ export const VideoPlayer = ({profile}) => {
                         if (reply.status === 200) {
                             // console.log(reply);
                             dispatch(fetchProfileByProfileId(profile.profileId));
+                            setPlayingCoinAudio(true)
                         }
                         // console.log(reply);
                     }
@@ -173,6 +176,7 @@ export const VideoPlayer = ({profile}) => {
     //level up sound
     const [audioLevelUp] = useState(new Audio(levelUpAudio))
     const [playingLevelUpAudio, setPlayingLevelUpAudio] = useState(false)
+
 
     useEffect(() => {
         playingLevelUpAudio ? audioLevelUp.play() : audioLevelUp.pause()
@@ -188,8 +192,18 @@ export const VideoPlayer = ({profile}) => {
         if (playingThirtySecondAudio === true) {
             return audioThirtySecond.play()
         }
-        setResetAudio(true)
+        handleReset()
     }, [playingThirtySecondAudio])
+
+    console.log("thirty audio", playingThirtySecondAudio)
+
+    //coin sound
+    const [audioCoin] = useState(new Audio(coinAudio))
+    const [playingCoinAudio, setPlayingCoinAudio] = useState(false)
+
+    useEffect(() => {
+        playingCoinAudio ? audioCoin.play() : audioCoin.pause()
+    }, [playingCoinAudio])
 
     //reset all audio
     const [resetAudio, setResetAudio] = useState(false)
@@ -197,8 +211,12 @@ export const VideoPlayer = ({profile}) => {
     useEffect(() => {
         setPlayingLevelUpAudio(false)
         setPlayingThirtySecondAudio(false)
-        // setResetAudio(false)
+        setPlayingCoinAudio(false)
     }, [resetAudio])
+
+    const handleReset = () => {
+        setResetAudio(true)
+    }
 
     console.log("reset audio", resetAudio)
 
