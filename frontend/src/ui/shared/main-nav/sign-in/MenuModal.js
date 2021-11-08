@@ -5,7 +5,7 @@ import {SignInForm} from "./SignInForm";
 import "./menuStyle.css"
 import {ProfileInfo} from "../../profile/ProfileInfo";
 import {SignOut} from "../sign-out/SignOut";
-import comingSoon from "../../../../images/Exp-Ninja-Coming-soon-01.png"
+import comingSoon from "../../../../images/shop-images/CODVanguard.png"
 import comingSoonTwo from "../../../../images/vegeta-shadow.jpg"
 import {SignUpModal} from "../sign-up/SignUpModal";
 
@@ -19,6 +19,8 @@ export const MenuModal = ({handleClose, show, auth, profile}) => {
                 onHide={handleClose}
                 dialogClassName="menu-modal"
                 aria-labelledby="example-custom-modal-styling-title"
+                className="mainModal"
+                // fullscreen={true}
             >
                 <Modal.Body className="show-grid menuBackground border border-5 border-white rounded">
 

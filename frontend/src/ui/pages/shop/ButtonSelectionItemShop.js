@@ -6,7 +6,7 @@ import {useDispatch} from "react-redux";
 import {Modal} from "react-bootstrap";
 import {fetchItemShopByProfileId} from "../../../store/itemShop/itemShopSlice";
 import tenDollarGiftCardImage from "../../../images/shop-images/tenDollarGiftCard.png"
-import twentyDollarGiftCardImage from "../../../images/shop-images/twentyDollarGiftCard.png"
+import twentyDollarGiftCardImage from "../../../images/shop-images/CODVanguard.png"
 import demonSlayerVideoGameImage from "../../../images/shop-images/demonSlayerVideoGame.png"
 import "./shopStyle.css"
 import twoCoins from "../../../images/two-coins.png"
@@ -111,7 +111,7 @@ export const ButtonSelectionItemShop = ({itemShop, profile}) => {
     const enoughCoinsToPurchase = () => {
         if (tenDollarGiftCard === true && profile.profileCoins >= 8) {
             setPurchaseStatus(true)
-        } else if (twentyDollarGiftCard === true && profile.profileCoins >= 15) {
+        } else if (twentyDollarGiftCard === true && profile.profileCoins >= 25) {
             setPurchaseStatus(true)
         } else if (demonSlayerGame === true && profile.profileCoins >= 40) {
             setPurchaseStatus(true)
@@ -199,7 +199,7 @@ export const ButtonSelectionItemShop = ({itemShop, profile}) => {
                                     className="itemImage rareItemShadow"
                                     onClick={() => {
                                         setTwentyDollarGiftCard(true)
-                                        setItemCost(15)
+                                        setItemCost(25)
                                         handleShow()
                                     }}
                                     onPointerOver={() => setHovered(true)}
@@ -207,7 +207,7 @@ export const ButtonSelectionItemShop = ({itemShop, profile}) => {
                                 />
                                 <p className='coinText'>
                                     <img src={twoCoins} width={50} height={50} alt="Coins"/>
-                                    15</p>
+                                    25</p>
                             </>
                             : <></>
                     }
@@ -241,9 +241,9 @@ export const ButtonSelectionItemShop = ({itemShop, profile}) => {
 
                 <Modal show={show} onHide={handleClose}>
                     <Modal.Header>
-                        <Modal.Title>Modal heading</Modal.Title>
+                        <Modal.Title>Shop</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+                    <Modal.Body>Your about to purchase this item!</Modal.Body>
                     <Modal.Footer>
                         <Button
                             onClick={() => {

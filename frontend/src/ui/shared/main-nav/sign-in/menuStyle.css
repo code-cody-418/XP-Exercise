@@ -1,8 +1,8 @@
 .menu-modal {
     width: 90vw !important;
     max-width: 90vw !important;
-    /*height: 50vh !important;*/
-    /*max-height: 50vh;*/
+    height: 90vh !important;
+    max-height: 90vh !important;
 }
 
 .menuTitleAnimation {
@@ -67,6 +67,11 @@
     display: block !important;
 }
 
+.mainModel {
+    width: 90vw !important;
+    height: 90vh !important;
+}
+
 .menuSelection {
     position: absolute;
     top: 0rem;
@@ -79,7 +84,8 @@
     }
     .menuSelection {
         top: 75%;
-
+        position: relative;
+        margin-bottom: 1em;
     }
 }
 
