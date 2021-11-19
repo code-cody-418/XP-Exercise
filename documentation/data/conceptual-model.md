@@ -1,17 +1,41 @@
 ### Conceptual Model
 
 ## Profile
-- profileId
+- profileId (PK)
 
 
 ## Events
-- eventId
+- eventId (PK)
 - eventName
 - eventDescription
 
-## Participation
-- participationProfileId
-- participationEventId
+## Participation (Weak Entity)
+- participationProfileId (FK)
+- participationEventId (FK)
 - participationCoinReward
+
+## Challenge
+- challengeId (PK)
+- challengeName
+- challengeCoinReward
+
+## ChallengeProfile (Weak Entity)
+- challengeProfileChallengeId (FK)
+- challengeProfileProfileId (FK)
+
+## Trainer
+- trainerId (PK)
+-trainerName
+
+## Achievements
+- achievementId (PK)
+- achievementName
+- achievementCoinReward
+
+## ProfileAchievements
+- profileAchievementsAchievementsId (FK)
+- profileAchievementsProfileId (FK)
+
+
 
 
