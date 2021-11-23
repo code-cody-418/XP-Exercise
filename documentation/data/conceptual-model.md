@@ -25,7 +25,7 @@
 
 ## Trainer
 - trainerId (PK)
--trainerName
+- trainerName
 
 ## Achievements
 - achievementId (PK)
@@ -35,6 +35,14 @@
 ## ProfileAchievements
 - profileAchievementsAchievementsId (FK)
 - profileAchievementsProfileId (FK)
+
+## ReadingWriting
+- readingWritingId
+- readingWritingProfileId
+- readingWritingQuestion
+- readingWritingAnswer
+- readingWritingFeedback
+- readingWritingCoinFeedback
 
 
 
