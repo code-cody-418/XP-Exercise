@@ -4,6 +4,7 @@
 -- never ever ever ever ever ever ever ever ever ever ever ever ever ever ever ever ever ever ever ever
 -- do this on live data!!!!
 
+DROP TABLE if exists participation;
 
 create TABLE profile
 (
@@ -45,7 +46,9 @@ create TABLE participation
 (
     participationProfileId BINARY(16) NOT NULL,
     participationEventId BINARY(16) NOT NULL,
-    participationCoinReward INT
+    participationCoinReward INT,
+    participationTime INT,
+    participationCompleted BOOLEAN
 )
 
 
