@@ -30,9 +30,23 @@ create TABLE itemShop
     itemShopDemonSlayerGame BOOLEAN NOT NULL,
     PRIMARY KEY (itemShopId),
     FOREIGN KEY (itemShopProfileId) REFERENCES profile (profileId)
+);
+
+create TABLE event
+(
+    eventId BINARY(16) NOT NULL,
+    eventName VARCHAR(64) NOT NULL,
+    eventDescription VARCHAR(500),
+    PRIMARY KEY (eventId)
+);
+
+# participation at event
+create TABLE participation
+(
+    participationProfileId BINARY(16) NOT NULL,
+    participationEventId BINARY(16) NOT NULL,
+    participationCoinReward INT
 )
-
-
 
 
 

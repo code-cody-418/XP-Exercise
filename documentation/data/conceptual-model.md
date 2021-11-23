@@ -9,7 +9,7 @@
 - eventName
 - eventDescription
 
-## Participation (Weak Entity)
+## Participation-Event (Weak Entity)
 - participationProfileId (FK)
 - participationEventId (FK)
 - participationCoinReward
