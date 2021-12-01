@@ -14,6 +14,7 @@ import {passportStrategy} from "./apis/sign-in/sign-in.controller";
 const helmet = require("helmet");
 import {signOutRoute} from "./apis/sign-out/sign-out.route";
 import {itemShopRoute} from "./apis/itemShop/itemShop.route";
+import {participationRoute} from "./apis/participation/participation.route";
 
 
 
@@ -67,6 +68,7 @@ export class App {
         this.app.use('/apis/sign-out', signOutRoute)
         this.app.use('/apis/profile', profileRoute)
         this.app.use('/apis/itemshop', itemShopRoute)
+        this.app.use('/apis/participation', participationRoute)
     }
 
     // starts the server and tells the terminal to post a message that the server is running and on what port

@@ -44,6 +44,11 @@ export const participationValidator: Schema = {
     participationCompleted: {
         isBoolean: {
             errorMessage: "Please provide a boolean"
+        },
+        optional: {
+            options: {
+                nullable: true
+            }
         }
     }
 }

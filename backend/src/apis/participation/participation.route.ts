@@ -5,6 +5,7 @@ import {getItemShopByItemShopProfileId} from "../itemShop/itemShop.controller";
 import {isLoggedIn} from "../../utils/controllers/isLoggedIn.controller";
 import {itemShopValidator} from "../itemShop/itemShop.validator";
 import {postParticipation} from "./participation.controller";
+import {participationValidator} from "./participation.validator";
 
 
 export const participationRoute = Router()
@@ -14,4 +15,4 @@ participationRoute.route("/:participationProfileId")
     )
 
 participationRoute.route('/')
-    .post(isLoggedIn, asyncValidatorController(checkSchema(itemShopValidator)), postParticipation)
+    .post(isLoggedIn, asyncValidatorController(checkSchema(participationValidator)), postParticipation)
