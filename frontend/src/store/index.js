@@ -13,7 +13,9 @@ import videoSecondsTimer from "./timer-Slices/vdeoSecondsTimer"
 import videoFinishedModal from "./VideoFinishedModalSlice";
 import itemShop from "./itemShop/itemShopSlice"
 
-//bring in reducers here
+/*
+This is where redux reducers are brought into the store
+ */
 const reducer = combineReducers({
     profile,
     auth,
