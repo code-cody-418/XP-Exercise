@@ -23,6 +23,7 @@ import {settingKorraMove} from "../../../store/trainer-Slices/korraSlice";
 import {SelectCharacterButtons} from "./SelectCharacterButtons";
 import {VideoPlayer} from "./VideoPlayer";
 import {settingVideoFinishedModal} from "../../../store/VideoFinishedModalSlice";
+import {EventParticipation} from "./EventParticipation";
 
 
 export const Home = () => {
@@ -192,6 +193,7 @@ export const Home = () => {
                     </Col>
                 </Row>
             </Container>
+            <EventParticipation authentificatedUser={authenticatedUser} />
         </>
     )
 }

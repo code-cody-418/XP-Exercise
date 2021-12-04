@@ -12,6 +12,7 @@ import thirtySecondTimer from "./timer-Slices/thirtySecondTimer"
 import videoSecondsTimer from "./timer-Slices/vdeoSecondsTimer"
 import videoFinishedModal from "./VideoFinishedModalSlice";
 import itemShop from "./itemShop/itemShopSlice"
+import participation from "./eventParticipationSlices/participationSlice"
 
 /*
 This is where redux reducers are brought into the store
@@ -29,7 +30,8 @@ const reducer = combineReducers({
     thirtySecondTimer,
     videoSecondsTimer,
     videoFinishedModal,
-    itemShop
+    itemShop,
+    participation
 
 })
 

@@ -31,6 +31,7 @@ export const postParticipation = async (request: Request, response: Response): P
 export const getParticipationByParticipationProfileId = async (request: Request, response: Response): Promise<Response> => {
     try {
         const {participationProfileId} = request.params
+        // console.log("participation profile id",participationProfileId)
         const mySqlResult = await selectParticipationByParticipationProfileId(participationProfileId)
 
         const data = mySqlResult ?? null
