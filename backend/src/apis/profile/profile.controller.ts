@@ -61,6 +61,7 @@ export async function putItemCost(request: Request, response: Response) : Promis
         const preformUpdate = async (itemCost: number) : Promise<Response> => {
             const previousProfile = await selectWholeProfileByProfileId(profileId)
             const newProfile = {...previousProfile, itemCost}
+            console.log("newProfile", newProfile)
             await updateProfileCoinsBySubtractingItemCost(newProfile)
             return response.json({status: 200, data: null, message: "Profile successfully updated"})
         }

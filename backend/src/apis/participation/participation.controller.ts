@@ -1,8 +1,11 @@
 import {Request, Response} from "express";
-import {Profile} from "../../utils/interfaces/Profile";
+import {PartialProfile, Profile} from "../../utils/interfaces/Profile";
 import {insertParticipation} from "../../utils/participation/insertParticipation";
 import {Status} from "../../utils/interfaces/Status";
 import {selectParticipationByParticipationProfileId} from "../../utils/participation/selectParticipationByParticipationProfileId";
+import {selectWholeProfileByProfileId} from "../../utils/profile/selectWholeProfileByProfileId";
+import {updateProfileCoinsByProfileId} from "../../utils/profile/updateProfileCoinsByProfileId";
+import {updateParticipationTimeByProfileId} from "../../utils/participation/updateParticipationTimeByProfileId";
 
 //This controller creates a new participation from a event name.
 export const postParticipation = async (request: Request, response: Response): Promise<Response | undefined> => {
@@ -41,5 +44,42 @@ export const getParticipationByParticipationProfileId = async (request: Request,
     } catch (error: any) {
         console.log(error)
         throw error
+    }
+}
+
+export const putParticipationTimeByParticipationProfileIdController = async (request: Request, response: Response) : Promise<Response> => {
+    try {
+        // const {participationTime} = request.body
+        const profile = <Profile>request.session.profile
+        const profileId = <string>profile.profileId
+
+        console.log("profileId", profileId)
+
+        const result = await updateParticipationTimeByProfileId(profileId)
+
+        //
+        // const updateParticipationTime = async (participationTime: number) : Promise<Response> => {
+        //     const previousProfile: Profile = await selectWholeProfileByProfileId(<string>partialProfile.profileId)
+        //     const newProfile: Profile = {...previousProfile, ...partialProfile}
+        //     await updateProfileCoinsByProfileId(newProfile)
+        //     return response.json({status: 200, data: null, message: "Profile successfully updated"})
+        // }
+
+        const status: Status = {
+            status: 200,
+            message: result ?? 'Participation Successfully updated',
+            data: null
+        }
+        return response.json(status)
+
+        // const updateFailed = (message: string) : Response => {
+        //     return response.json({status: 400, data: null, message})
+        // }
+
+        // return profileId === profileId
+            // ? preformUpdate({profileId, profileCoins, profileLevel, profileUserName, profileExp, profileAvatarUrl, profileEmail})
+            // : updateFailed("you are not allowed to preform this action")
+    } catch (error) {
+        return response.json( {status:400, data: null, message: error.message})
     }
 }

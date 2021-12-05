@@ -10,11 +10,21 @@ export const participationValidator: Schema = {
     participationProfileId: {
         isUUID: {
             errorMessage: 'Please provide a valid participationProfileId'
+        },
+        optional: {
+            options: {
+                nullable: true
+            }
         }
     },
     participationEventId: {
         isUUID: {
             errorMessage: 'Please provide a valid participationEventId'
+        },
+        optional: {
+            options: {
+                nullable: true
+            }
         }
     },
     participationCoinReward: {
