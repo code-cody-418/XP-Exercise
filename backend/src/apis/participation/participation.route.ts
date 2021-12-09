@@ -4,7 +4,7 @@ import {check, checkSchema} from "express-validator";
 import {isLoggedIn} from "../../utils/controllers/isLoggedIn.controller";
 import {
     getParticipationByParticipationProfileId,
-    postParticipation,
+    postParticipation, putParticipationCompletedByParticipationProfileIdController,
     putParticipationTimeByParticipationProfileIdController
 } from "./participation.controller";
 import {participationValidator} from "./participation.validator";
@@ -20,3 +20,6 @@ participationRoute.route('/')
 
 participationRoute.route('/updateParticipationTime')
     .put(isLoggedIn, asyncValidatorController(checkSchema(participationValidator)), putParticipationTimeByParticipationProfileIdController)
+
+participationRoute.route('/updateParticipationCompleted')
+    .put(isLoggedIn, asyncValidatorController(checkSchema(participationValidator)), putParticipationCompletedByParticipationProfileIdController)

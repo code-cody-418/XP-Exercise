@@ -1,11 +1,5 @@
 import {Schema} from "express-validator";
 
-//participationProfileId BINARY(16) NOT NULL,
-//     participationEventId BINARY(16) NOT NULL,
-//     participationCoinReward INT,
-//     participationTime INT,
-//     participationCompleted BOOLEAN
-
 export const participationValidator: Schema = {
     participationProfileId: {
         isUUID: {

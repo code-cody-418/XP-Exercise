@@ -6,6 +6,7 @@ import {selectParticipationByParticipationProfileId} from "../../utils/participa
 import {selectWholeProfileByProfileId} from "../../utils/profile/selectWholeProfileByProfileId";
 import {updateProfileCoinsByProfileId} from "../../utils/profile/updateProfileCoinsByProfileId";
 import {updateParticipationTimeByProfileId} from "../../utils/participation/updateParticipationTimeByProfileId";
+import {updateParticipationCompletedByProfileId} from "../../utils/participation/updateParticipationCompletedByProfileId";
 
 //This controller creates a new participation from a event name.
 export const postParticipation = async (request: Request, response: Response): Promise<Response | undefined> => {
@@ -53,6 +54,26 @@ export const putParticipationTimeByParticipationProfileIdController = async (req
         const profileId = <string>profile.profileId
 
         const result = await updateParticipationTimeByProfileId(profileId)
+
+        const status: Status = {
+            status: 200,
+            message: result ?? 'Participation Successfully updated',
+            data: null
+        }
+        return response.json(status)
+
+    } catch (error) {
+        return response.json( {status:400, data: null, message: error.message})
+    }
+}
+
+
+export const putParticipationCompletedByParticipationProfileIdController = async (request: Request, response: Response) : Promise<Response> => {
+    try {
+        const profile = <Profile>request.session.profile
+        const profileId = <string>profile.profileId
+
+        const result = await updateParticipationCompletedByProfileId(profileId)
 
         const status: Status = {
             status: 200,

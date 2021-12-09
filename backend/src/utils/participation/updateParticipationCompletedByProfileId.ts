@@ -1,15 +1,14 @@
-import {Profile} from "../interfaces/Profile";
 import {connect} from "../database.utils";
 
 //Update participation to complete
-export async function updateParticipationCompletedByProfileId(profile: Profile) {
+export async function updateParticipationCompletedByProfileId(profileId: string) {
     try {
 
         const mysqlConnection = await connect();
-        const query : string = 'UPDATE participation SET participationCompleted = true WHERE participationProfileId = UUID_TO_BIN(:profile)';
+        const [rows] = await mysqlConnection?.execute('UPDATE participation SET participationCompleted = true WHERE participationProfileId = UUID_TO_BIN(:profileId)', {profileId}) ;
 
-        const [rows] = await mysqlConnection.execute(query, profile);
-        return 'Profile successfully updated'
+        // const [rows] = await mysqlConnection.execute(query, {profileId});
+        return 'Participation Completed successfully updated'
     } catch (e) {
         console.error(e)
         return null
