@@ -7,6 +7,7 @@ import Naruto from "../../../3D-Models/Naruto";
 import Kakashi from "../../../3D-Models/Kakashi";
 import Korra from "../../../3D-Models/Korra";
 import backgroundHDR from "../../../images/black-hdri.HDR"
+import ChristmasTree from "../../../3D-Models/event-models/Christmas-tree";
 
 
 
@@ -43,6 +44,8 @@ export default function AnimationScene({name, kakashiAction, gokuAction, narutoA
                         <Naruto narutoAction={narutoAction} name={name}/>
                         <Kakashi kakashiAction={kakashiAction} name={name}/>
                         <Korra korraAction={korraAction} name={name}/>
+
+                        <ChristmasTree position = {[-10, 10, 0]} />
 
 
 
