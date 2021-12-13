@@ -5,7 +5,7 @@ import {fetchAuth} from "../../../store/authSlice";
 import {useDispatch, useSelector} from "react-redux";
 import "../main-nav/sign-in/menuStyle.css"
 
-export const Menu = ({profile}) => {
+export const Menu = ({profile, participation}) => {
     const auth = useSelector(state => state.auth);
     const dispatch = useDispatch();
     const effects = () => {
@@ -24,7 +24,7 @@ export const Menu = ({profile}) => {
             <Button className="menuButtonAnimation menuButton border-0 text-lg-start" onClick={handleShow}>
                 Menu
             </Button>
-            <MenuModal show={show} handleClose={handleClose} handleShow={handleShow} auth={auth} profile={profile}/>
+            <MenuModal show={show} handleClose={handleClose} handleShow={handleShow} auth={auth} profile={profile} participation={participation}/>
         </>
     )
 }

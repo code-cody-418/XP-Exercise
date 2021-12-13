@@ -24,6 +24,7 @@ import {SelectCharacterButtons} from "./SelectCharacterButtons";
 import {VideoPlayer} from "./VideoPlayer";
 import {settingVideoFinishedModal} from "../../../store/VideoFinishedModalSlice";
 import {EventParticipation} from "./EventParticipation";
+import {fetchParticipation} from "../../../store/eventParticipationSlices/participationSlice";
 
 
 export const Home = () => {
@@ -39,6 +40,8 @@ export const Home = () => {
     const narutoAction = useSelector((state) => state.narutoMove.setMove)
     const thirtySeconds = useSelector(state => state.thirtySecondTimer.setThirtySecondsTimer)
     const videoFinished = useSelector(state => state.videoFinishedModal.setVideoFinishedModal)
+    const participation = useSelector((state) => state.participation ? state.participation : [])
+
 
     //redux functionality to get profile data
     const {authenticatedUser} = useJwtToken();
@@ -46,6 +49,7 @@ export const Home = () => {
     const sideEffects = () => {
         if (authenticatedUser?.profileId) {
             dispatch(fetchProfileByProfileId(authenticatedUser.profileId));
+            dispatch(fetchParticipation(authenticatedUser.profileId))
         }
         // dispatch(fetchAuth());
     }
@@ -110,7 +114,7 @@ export const Home = () => {
             </Modal>
             <Container fluid={true}>
                 <Row>
-                    <Menu profile={profile} />
+                    <Menu profile={profile} participation={participation} />
                 </Row>
                 <Row>
                     <h1 className="trainerTitle text-center">Trainers</h1>
@@ -193,7 +197,7 @@ export const Home = () => {
                     </Col>
                 </Row>
             </Container>
-            <EventParticipation authentificatedUser={authenticatedUser} />
+            <EventParticipation authentificatedUser={authenticatedUser} participation={participation} />
         </>
     )
 }

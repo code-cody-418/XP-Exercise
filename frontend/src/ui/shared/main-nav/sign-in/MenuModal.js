@@ -8,9 +8,12 @@ import {SignOut} from "../sign-out/SignOut";
 import comingSoon from "../../../../images/shop-images/CODVanguard.png"
 import comingSoonTwo from "../../../../images/vegeta-shadow.jpg"
 import {SignUpModal} from "../sign-up/SignUpModal";
+import {useSelector} from "react-redux";
 
 
-export const MenuModal = ({handleClose, show, auth, profile}) => {
+export const MenuModal = ({handleClose, show, auth, profile, participation}) => {
+
+
 
     return (
         <>
@@ -71,37 +74,40 @@ export const MenuModal = ({handleClose, show, auth, profile}) => {
                                         <SignOut/>
                                     </Col>
                                     <Col sm={3}>
-                                        <Carousel fade nextLabel="" prevLabel="">
-                                            <Carousel.Item>
-                                                <img
-                                                    className="d-block w-100"
-                                                    src={comingSoon}
-                                                    alt="First slide"
-                                                    width="350"
-                                                    height="250"
-                                                />
-                                            </Carousel.Item>
-                                            <Carousel.Item>
-                                                <img
-                                                    className="d-block w-100"
-                                                    src={comingSoonTwo}
-                                                    alt="Second slide"
-                                                    width="350"
-                                                    height="250"
-                                                />
-                                            </Carousel.Item>
-                                            {/*<Carousel.Item>*/}
-                                            {/*    <img*/}
-                                            {/*        className="d-block w-100"*/}
-                                            {/*        src={comingSoon}*/}
-                                            {/*        alt="Third slide"*/}
-                                            {/*        width="350"*/}
-                                            {/*        height="250"*/}
-
-                                            {/*    />*/}
-                                            {/*</Carousel.Item>*/}
-                                        </Carousel>
+                                        {participation.participationTime}
                                     </Col>
+                                    {/*<Col sm={3}>*/}
+                                    {/*<Carousel fade nextLabel="" prevLabel="">*/}
+                                    {/*    <Carousel.Item>*/}
+                                    {/*        <img*/}
+                                    {/*            className="d-block w-100"*/}
+                                    {/*            src={comingSoon}*/}
+                                    {/*            alt="First slide"*/}
+                                    {/*            width="350"*/}
+                                    {/*            height="250"*/}
+                                    {/*        />*/}
+                                    {/*    </Carousel.Item>*/}
+                                    {/*    <Carousel.Item>*/}
+                                    {/*        <img*/}
+                                    {/*            className="d-block w-100"*/}
+                                    {/*            src={comingSoonTwo}*/}
+                                    {/*            alt="Second slide"*/}
+                                    {/*            width="350"*/}
+                                    {/*            height="250"*/}
+                                    {/*        />*/}
+                                    {/*    </Carousel.Item>*/}
+                                    {/*<Carousel.Item>*/}
+                                    {/*    <img*/}
+                                    {/*        className="d-block w-100"*/}
+                                    {/*        src={comingSoon}*/}
+                                    {/*        alt="Third slide"*/}
+                                    {/*        width="350"*/}
+                                    {/*        height="250"*/}
+
+                                    {/*    />*/}
+                                    {/*</Carousel.Item>*/}
+                                    {/*</Carousel>*/}
+                                    {/*</Col>*/}
                                 </>
                             ) : (
                                 <>

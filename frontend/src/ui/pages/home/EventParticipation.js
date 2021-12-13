@@ -6,20 +6,20 @@ import {httpConfig} from "../../shared/utils/http-config";
 /*
 This will update the state of a profiles participation in an event
  */
-export const EventParticipation = ({authentificatedUser}) => {
+export const EventParticipation = ({authentificatedUser, participation}) => {
 
     const dispatch = useDispatch()
 
-    const participation = useSelector((state) => state.participation ? state.participation : [])
+    // const participation = useSelector((state) => state.participation ? state.participation : [])
     const thirtySecondTimer = useSelector((state) => state.thirtySecondTimer)
 
-    const sideEffects = () => {
-        if (authentificatedUser?.profileId) {
-            dispatch(fetchParticipation(authentificatedUser.profileId))
-        }
-    }
-
-    useEffect(sideEffects, [authentificatedUser])
+    // const sideEffects = () => {
+    //     if (authentificatedUser?.profileId) {
+    //         dispatch(fetchParticipation(authentificatedUser.profileId))
+    //     }
+    // }
+    //
+    // useEffect(sideEffects, [authentificatedUser])
 
     // console.log('dispatch', dispatch)
 
