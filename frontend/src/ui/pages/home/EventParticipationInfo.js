@@ -6,7 +6,7 @@ import {httpConfig} from "../../shared/utils/http-config";
 /*
 This will update the state of a profiles participation in an event
  */
-export const EventParticipation = ({authentificatedUser, participation}) => {
+export const EventParticipationInfo = ({authentificatedUser, participation}) => {
 
     const dispatch = useDispatch()
 
@@ -45,10 +45,27 @@ export const EventParticipation = ({authentificatedUser, participation}) => {
         }
     }
 
+    const createEventParticipation = () => {
+        if (authentificatedUser === null) {
+        } else if (authentificatedUser != null) {
+            httpConfig.post(`/apis/participation`)
+                .then(reply => {
+                    if (reply.status === 200) {
+                        dispatch(fetchParticipation(authentificatedUser.profileId))
+                    }
+                })
+        }
+    }
+
+    console.log("particpation info", participation)
+
     return (
         <>
+            {
+                (participation === null) ? createEventParticipation() : <>{participation.participationTime}</>
+            }
             <p>
-                {participation.participationTime}
+                {/*{participation.participationTime}*/}
             </p>
 
         </>

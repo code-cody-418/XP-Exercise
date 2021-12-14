@@ -9,7 +9,7 @@ import comingSoon from "../../../../images/shop-images/CODVanguard.png"
 import comingSoonTwo from "../../../../images/vegeta-shadow.jpg"
 import {SignUpModal} from "../sign-up/SignUpModal";
 import {useSelector} from "react-redux";
-import {EventParticipation} from "../../../pages/home/EventParticipation";
+import {EventParticipationInfo} from "../../../pages/home/EventParticipationInfo";
 
 
 export const MenuModal = ({handleClose, show, auth, profile, participation}) => {
@@ -75,7 +75,7 @@ export const MenuModal = ({handleClose, show, auth, profile, participation}) => 
                                         <SignOut/>
                                     </Col>
                                     <Col sm={3}>
-                                        <EventParticipation />
+                                        <EventParticipationInfo participation={participation}/>
                                     </Col>
                                     {/*<Col sm={3}>*/}
                                     {/*<Carousel fade nextLabel="" prevLabel="">*/}

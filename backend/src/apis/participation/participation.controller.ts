@@ -14,8 +14,8 @@ export const postParticipation = async (request: Request, response: Response): P
         const profile = <Profile>request.session?.profile
         const participationProfileId = <string>profile.profileId
 
-        //gets the event id from a passed event Name
-        const {participationEventId} = request.body
+        //Change to match current event UUID
+        const participationEventId: string = "999b51ec-e719-470e-bb7d-d4fa6c0bbe0c"
 
         const result = await insertParticipation(participationProfileId, participationEventId)
 

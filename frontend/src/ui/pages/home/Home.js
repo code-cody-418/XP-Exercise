@@ -23,7 +23,7 @@ import {settingKorraMove} from "../../../store/trainer-Slices/korraSlice";
 import {SelectCharacterButtons} from "./SelectCharacterButtons";
 import {VideoPlayer} from "./VideoPlayer";
 import {settingVideoFinishedModal} from "../../../store/VideoFinishedModalSlice";
-import {EventParticipation} from "./EventParticipation";
+import {EventParticipationInfo} from "./EventParticipationInfo";
 import {fetchParticipation} from "../../../store/eventParticipationSlices/participationSlice";
 
 
@@ -40,7 +40,7 @@ export const Home = () => {
     const narutoAction = useSelector((state) => state.narutoMove.setMove)
     const thirtySeconds = useSelector(state => state.thirtySecondTimer.setThirtySecondsTimer)
     const videoFinished = useSelector(state => state.videoFinishedModal.setVideoFinishedModal)
-    const participation = useSelector((state) => state.participation ? state.participation : [])
+    const participation = useSelector((state) => state.participation ? state.participation : null)
 
 
     //redux functionality to get profile data
@@ -53,6 +53,8 @@ export const Home = () => {
         }
         // dispatch(fetchAuth());
     }
+
+    console.log("participaion home", participation)
 
     useEffect(sideEffects, [authenticatedUser, dispatch]);
 
@@ -197,7 +199,7 @@ export const Home = () => {
                     </Col>
                 </Row>
             </Container>
-            <EventParticipation authentificatedUser={authenticatedUser} participation={participation} />
+            <EventParticipationInfo authentificatedUser={authenticatedUser} participation={participation} />
         </>
     )
 }
