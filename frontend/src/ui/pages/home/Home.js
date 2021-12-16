@@ -54,7 +54,6 @@ export const Home = () => {
         // dispatch(fetchAuth());
     }
 
-    console.log("participaion home", participation)
 
     useEffect(sideEffects, [authenticatedUser, dispatch]);
 
@@ -199,7 +198,7 @@ export const Home = () => {
                     </Col>
                 </Row>
             </Container>
-            <EventParticipationInfo authentificatedUser={authenticatedUser} participation={participation} />
+            <EventParticipationInfo videoPlay={videoPlay} authentificatedUser={authenticatedUser} participation={participation} />
         </>
     )
 }
