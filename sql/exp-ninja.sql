@@ -4,6 +4,7 @@
 -- never ever ever ever ever ever ever ever ever ever ever ever ever ever ever ever ever ever ever ever
 -- do this on live data!!!!
 
+
 create TABLE profile
 (
     profileId BINARY(16) NOT NULL,
@@ -48,7 +49,6 @@ create TABLE participation
     participationTime INT,
     participationCompleted BOOLEAN,
     UNIQUE (participationProfileId),
-    UNIQUE (participationEventId),
     FOREIGN KEY (participationProfileId) REFERENCES profile(profileId),
     FOREIGN KEY (participationEventId) REFERENCES event(eventId),
     PRIMARY KEY (participationProfileId, ParticipationEventId)
