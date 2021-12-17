@@ -4,6 +4,7 @@ import {fetchParticipation} from "../../../store/eventParticipationSlices/partic
 import {httpConfig} from "../../shared/utils/http-config";
 import '../../shared/main-nav/sign-in/menuStyle.css'
 import {Button} from "react-bootstrap";
+import {fetchProfileByProfileId} from "../../../store/profileSlice";
 
 /*
 This will update the state of a profiles participation in an event
@@ -69,6 +70,7 @@ export const EventParticipationInfo = ({profile, participation}) => {
                     console.log("reply", reply)
                     if (reply.status === 200) {
                         dispatch(fetchParticipation(profile.profileId))
+                        dispatch(fetchProfileByProfileId(profile.profileId))
                     }
                 })
         }
@@ -102,13 +104,11 @@ export const EventParticipationInfo = ({profile, participation}) => {
         }
     }, [participation])
 
-
+//Final return from component
     if (profile === null) {
-        console.log("if")
         return <></>
     } else {
         if (participation === null) {
-            console.log("else")
             createEventParticipation()
             return <></>
         } else {
@@ -117,10 +117,10 @@ export const EventParticipationInfo = ({profile, participation}) => {
                     <h2>Christmas Event</h2>
                     <div className="progress progressLevel ms-1">
                         <div className="progress-bar progress-bar-striped bg-danger progress-bar-animated  progressText"
-                             style={{width: progressBarExp}}>
+                             style={{width: progressBarExp}}>Event Progress
                         </div>
                     </div>
-                    {(participation.participationCompleted === 1)
+                    {(participation.participationCompleted === 1 && participation.participationCoinReward === 0)
                         ? (
                             <Button onClick={() => updateParticipationCoinsReward()}>Claim Event Reward</Button>
                         ) :
