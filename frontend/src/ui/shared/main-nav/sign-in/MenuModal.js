@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Suspense} from "react";
 import {Button, Col, Container, Row, Carousel, Dropdown} from "react-bootstrap";
 import {Modal} from "react-bootstrap";
 import {SignInForm} from "./SignInForm";
@@ -10,10 +10,11 @@ import comingSoonTwo from "../../../../images/vegeta-shadow.jpg"
 import {SignUpModal} from "../sign-up/SignUpModal";
 import {useSelector} from "react-redux";
 import {EventParticipationInfo} from "../../../pages/home/EventParticipationInfo";
+import {Canvas} from "@react-three/fiber";
+import ChristmasHat01 from "../../../../3D-Models/event-models/Christmas-hat-01";
 
 
 export const MenuModal = ({handleClose, show, auth, profile, participation}) => {
-
 
 
     return (
@@ -75,7 +76,23 @@ export const MenuModal = ({handleClose, show, auth, profile, participation}) => 
                                         <SignOut/>
                                     </Col>
                                     <Col sm={3}>
-                                        <EventParticipationInfo participation={participation}/>
+                                        <EventParticipationInfo participation={participation} profile={profile}/>
+
+                                        <div className="eventCanvas">
+                                            <Canvas
+                                                camera={{position: [0, 15, 25], fov: 55}}
+                                                resize={0.5}
+                                                onCreated={({camera}) => camera.lookAt(0, -15, -35)}
+                                            >
+                                                {/*<OrbitControls />*/}
+
+                                                <ambientLight intensity={1}/>
+
+                                                <Suspense fallback={null}>
+                                                    <ChristmasHat01/>
+                                                </Suspense>
+                                            </Canvas>
+                                        </div>
                                     </Col>
                                     {/*<Col sm={3}>*/}
                                     {/*<Carousel fade nextLabel="" prevLabel="">*/}

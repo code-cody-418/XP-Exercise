@@ -141,3 +141,9 @@
     background-color: black;
     color: white;
 }
+
+
+.eventCanvas {
+    width: 35vw;
+    height: 35vh;
+}

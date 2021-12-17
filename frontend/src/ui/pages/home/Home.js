@@ -198,7 +198,7 @@ export const Home = () => {
                     </Col>
                 </Row>
             </Container>
-            <EventParticipationInfo videoPlay={videoPlay} authentificatedUser={authenticatedUser} participation={participation} />
+            <EventParticipationInfo videoPlay={videoPlay} profile={profile} participation={participation} />
         </>
     )
 }

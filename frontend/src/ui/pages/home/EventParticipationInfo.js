@@ -1,28 +1,21 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, Suspense} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchParticipation} from "../../../store/eventParticipationSlices/participationSlice";
 import {httpConfig} from "../../shared/utils/http-config";
+import {Canvas} from "@react-three/fiber";
+import ChristmasHat01 from "../../../3D-Models/event-models/Christmas-hat-01";
+import '../../shared/main-nav/sign-in/menuStyle.css'
+import {OrbitControls} from "@react-three/drei";
 import {Button} from "react-bootstrap";
 
 /*
 This will update the state of a profiles participation in an event
  */
-export const EventParticipationInfo = ({authentificatedUser, participation, videoPlay}) => {
+export const EventParticipationInfo = ({profile, participation, videoPlay}) => {
 
     const dispatch = useDispatch()
 
-    // const participation = useSelector((state) => state.participation ? state.participation : [])
     const thirtySecondTimer = useSelector((state) => state.thirtySecondTimer)
-
-    // const sideEffects = () => {
-    //     if (authentificatedUser?.profileId) {
-    //         dispatch(fetchParticipation(authentificatedUser.profileId))
-    //     }
-    // }
-    //
-    // useEffect(sideEffects, [authentificatedUser])
-
-    // console.log('dispatch', dispatch)
 
 
     //timer that updates a user participationTime during an event challenge.
@@ -33,13 +26,14 @@ export const EventParticipationInfo = ({authentificatedUser, participation, vide
     }, [thirtySecondTimer])
 
     const updateParticipationTime = () => {
-        if (authentificatedUser === null) {
-        } else if (authentificatedUser != null) {
-            console.log("is this this function firing?")
-            httpConfig.put(`/apis/participation/updateParticipationTime`, authentificatedUser)
+        console.log("profile", profile)
+        if (profile === null) {
+        } else if (profile != null) {
+            console.log("is this firing?")
+            httpConfig.put(`/apis/participation/updateParticipationTime`, profile)
                 .then(reply => {
                     if (reply.status === 200) {
-                        dispatch(fetchParticipation(authentificatedUser.profileId))
+                        dispatch(fetchParticipation(profile.profileId))
                     }
                 })
         }
@@ -47,12 +41,12 @@ export const EventParticipationInfo = ({authentificatedUser, participation, vide
 
     //this function sets a profile up to participate in an event
     const createEventParticipation = () => {
-        if (authentificatedUser === null) {
-        } else if (authentificatedUser != null) {
+        if (profile === null) {
+        } else if (profile != null) {
             httpConfig.post(`/apis/participation`)
                 .then(reply => {
                     if (reply.status === 200) {
-                        dispatch(fetchParticipation(authentificatedUser.profileId))
+                        dispatch(fetchParticipation(profile.profileId))
                     }
                 })
         }
@@ -60,12 +54,12 @@ export const EventParticipationInfo = ({authentificatedUser, participation, vide
 
     //this function updates participationCompleted
     const updateParticipationCompleted = () => {
-        if (authentificatedUser === null) {
-        } else if (authentificatedUser != null) {
+        if (profile === null) {
+        } else if (profile != null) {
             httpConfig.put('/apis/participation/updateParticipationCompleted')
                 .then(reply => {
                     if (reply.status === 200) {
-                        dispatch(fetchParticipation(authentificatedUser.profileId))
+                        dispatch(fetchParticipation(profile.profileId))
                     }
                 })
         }
@@ -76,7 +70,6 @@ export const EventParticipationInfo = ({authentificatedUser, participation, vide
         const [progressBarExp, setProgressBarExp] = useState("0%")
 
         useEffect(() => {
-            console.log("rerun")
             if (participation === null) {
             } else if (participation != null) {
                 if (participation.participationTime > 2520) {
@@ -91,11 +84,11 @@ export const EventParticipationInfo = ({authentificatedUser, participation, vide
             }
         }, [videoPlay, participation, progressBarExp])
 
-        //waits for parti
+        //updates partition completed
         useEffect(() => {
             if (participation != null) {
                 if (participation.participationCompleted === 1) {
-                }else if (participation.participationTime > 2520) {
+                } else if (participation.participationTime > 2520) {
                     updateParticipationCompleted()
                 }
             }
@@ -114,10 +107,12 @@ export const EventParticipationInfo = ({authentificatedUser, participation, vide
 
     //This Component is the logic that determines if participation needs to be created then renders the info
     const RenderParticipation = () => {
-        if (authentificatedUser === null) {
+        if (profile === null) {
+            console.log("if")
             return <></>
         } else {
             if (participation === null) {
+                console.log("else")
                 createEventParticipation()
                 return <></>
             } else {
@@ -125,17 +120,24 @@ export const EventParticipationInfo = ({authentificatedUser, participation, vide
                     <>
                         <h2>Christmas Event</h2>
                         <ParticipationProgressBar/>
-                        {participation.participationCompleted}
+                        {(participation.participationCompleted === 1)
+                            ? (
+                                <Button onClick={() => console.log("reward Claimed")}>Claim Event Reward</Button>
+                            ) :
+                            (
+                                <></>
+                            )
+                        }
                     </>
                 )
             }
         }
-
     }
 
     return (
         <>
             <RenderParticipation/>
+
         </>
     )
 }

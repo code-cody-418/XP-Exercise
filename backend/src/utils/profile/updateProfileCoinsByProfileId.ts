@@ -33,13 +33,13 @@ export async function updateProfileCoinsBySubtractingItemCost(itemCost: number) 
 
 
 //increases coins by 20
-export async function updateTwentyProfileCoinsByProfileId(profile: Profile) {
+export async function updateTwentyProfileCoinsByProfileId(profileId: string) {
     try {
 
         const mysqlConnection = await connect();
         const query : string = 'UPDATE profile SET profileCoins = profileCoins + 20 WHERE profileId = UUID_TO_BIN(:profileId)';
 
-        const [rows] = await mysqlConnection.execute(query, profile);
+        const [rows] = await mysqlConnection.execute(query, {profileId});
         return 'Profile successfully updated'
     } catch (e) {
         console.error(e)

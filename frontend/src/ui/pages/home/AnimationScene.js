@@ -10,7 +10,6 @@ import backgroundHDR from "../../../images/black-hdri.HDR"
 import ChristmasTree from "../../../3D-Models/event-models/Christmas-tree";
 
 
-
 export default function AnimationScene({name, kakashiAction, gokuAction, narutoAction, korraAction}) {
     return (
         <>
@@ -46,8 +45,6 @@ export default function AnimationScene({name, kakashiAction, gokuAction, narutoA
                         <Korra korraAction={korraAction} name={name}/>
 
                         <ChristmasTree position = {[-10, 10, 0]} />
-
-
 
                         <mesh
                             rotation={[-Math.PI / 2, 0, 0]}
