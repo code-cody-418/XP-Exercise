@@ -33,7 +33,6 @@ export const EventParticipationInfo = ({authentificatedUser, participation, vide
     }, [thirtySecondTimer])
 
     const updateParticipationTime = () => {
-
         if (authentificatedUser === null) {
         } else if (authentificatedUser != null) {
             console.log("is this this function firing?")
@@ -59,11 +58,25 @@ export const EventParticipationInfo = ({authentificatedUser, participation, vide
         }
     }
 
+    //this function updates participationCompleted
+    const updateParticipationCompleted = () => {
+        if (authentificatedUser === null) {
+        } else if (authentificatedUser != null) {
+            httpConfig.put('/apis/participation/updateParticipationCompleted')
+                .then(reply => {
+                    if (reply.status === 200) {
+                        dispatch(fetchParticipation(authentificatedUser.profileId))
+                    }
+                })
+        }
+    }
+
     //This component takes participationTime and turns it into a progress bar
     const ParticipationProgressBar = () => {
         const [progressBarExp, setProgressBarExp] = useState("0%")
 
         useEffect(() => {
+            console.log("rerun")
             if (participation === null) {
             } else if (participation != null) {
                 if (participation.participationTime > 2520) {
@@ -78,6 +91,15 @@ export const EventParticipationInfo = ({authentificatedUser, participation, vide
             }
         }, [videoPlay, participation, progressBarExp])
 
+        //waits for parti
+        useEffect(() => {
+            if (participation != null) {
+                if (participation.participationCompleted === 1) {
+                }else if (participation.participationTime > 2520) {
+                    updateParticipationCompleted()
+                }
+            }
+        }, [participation])
 
         return (
             <>
@@ -113,27 +135,7 @@ export const EventParticipationInfo = ({authentificatedUser, participation, vide
 
     return (
         <>
-            <RenderParticipation />
+            <RenderParticipation/>
         </>
-        // <>
-        //     {
-        //         //this logic determines if a new particpation should be created or render the particaipation info
-        //         (participation === null)
-        //             ?
-        //             (
-        //                 createEventParticipation()
-        //             )
-        //             :
-        //             (
-        //                 <>
-        //                     <h2>Christmas Event</h2>
-        //                     <ParticipationProgressBar/>
-        //                     {participation.participationCompleted}
-        //
-        //
-        //                 </>
-        //             )
-        //     }
-        // </>
     )
 }
