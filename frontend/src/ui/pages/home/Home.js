@@ -85,7 +85,6 @@ export const Home = () => {
     //     'https://www.youtube.com/embed/4zHK8pRl78o',
     //     'https://www.youtube.com/embed/dY09rc_8-Rc'
     // ]
-
 //_____________________________________________________________________________________________________________________
     return (
         <>
@@ -198,7 +197,7 @@ export const Home = () => {
                     </Col>
                 </Row>
             </Container>
-            <EventParticipationInfo videoPlay={videoPlay} profile={profile} participation={participation} />
+            <EventParticipationInfo profile={profile} participation={participation} />
         </>
     )
 }
