@@ -4,14 +4,20 @@ import {MenuModal} from "../main-nav/sign-in/MenuModal";
 import {fetchAuth} from "../../../store/authSlice";
 import {useDispatch, useSelector} from "react-redux";
 import "../main-nav/sign-in/menuStyle.css"
+import {fetchParticipation} from "../../../store/eventParticipationSlices/participationSlice";
+import {fetchProfileByProfileId} from "../../../store/profileSlice";
 
-export const Menu = ({profile, participation}) => {
+export const Menu = ({profile}) => {
     const auth = useSelector(state => state.auth);
+    const participation = useSelector((state) => state.participation ? state.participation : null)
     const dispatch = useDispatch();
     const effects = () => {
         dispatch(fetchAuth());
+        if (profile?.profileId) {
+            dispatch(fetchParticipation(profile.profileId))
+        }
     };
-    const inputs = [];
+    const inputs = [profile];
     useEffect(effects, inputs);
 
     const [show, setShow] = useState(false);

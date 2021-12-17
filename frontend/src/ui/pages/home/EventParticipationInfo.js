@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchParticipation} from "../../../store/eventParticipationSlices/participationSlice";
 import {httpConfig} from "../../shared/utils/http-config";
+import {Button} from "react-bootstrap";
 
 /*
 This will update the state of a profiles participation in an event
@@ -32,9 +33,10 @@ export const EventParticipationInfo = ({authentificatedUser, participation, vide
     }, [thirtySecondTimer])
 
     const updateParticipationTime = () => {
-        console.log("is this this function firing?")
+
         if (authentificatedUser === null) {
         } else if (authentificatedUser != null) {
+            console.log("is this this function firing?")
             httpConfig.put(`/apis/participation/updateParticipationTime`, authentificatedUser)
                 .then(reply => {
                     if (reply.status === 200) {
@@ -77,12 +79,10 @@ export const EventParticipationInfo = ({authentificatedUser, participation, vide
         }, [videoPlay, participation, progressBarExp])
 
 
-
-
         return (
             <>
                 <div className="progress progressLevel ms-1">
-                    <div className="progress-bar progress-bar-striped progress-bar-animated  progressText"
+                    <div className="progress-bar progress-bar-striped bg-danger progress-bar-animated  progressText"
                          style={{width: progressBarExp}}>
                     </div>
                 </div>
@@ -90,26 +90,50 @@ export const EventParticipationInfo = ({authentificatedUser, participation, vide
         )
     }
 
+    //This Component is the logic that determines if participation needs to be created then renders the info
+    const RenderParticipation = () => {
+        if (authentificatedUser === null) {
+            return <></>
+        } else {
+            if (participation === null) {
+                createEventParticipation()
+                return <></>
+            } else {
+                return (
+                    <>
+                        <h2>Christmas Event</h2>
+                        <ParticipationProgressBar/>
+                        {participation.participationCompleted}
+                    </>
+                )
+            }
+        }
+
+    }
+
     return (
         <>
-            {
-                //this logic determines if a new particpation should be created or render the particaipation info
-                (participation === null)
-                    ?
-                    (
-                        createEventParticipation()
-                    )
-                    :
-                    (
-                        <>
-                            <h2>Christmas Event</h2>
-                            <ParticipationProgressBar/>
-                            {participation.participationCompleted}
-
-
-                        </>
-                    )
-            }
+            <RenderParticipation />
         </>
+        // <>
+        //     {
+        //         //this logic determines if a new particpation should be created or render the particaipation info
+        //         (participation === null)
+        //             ?
+        //             (
+        //                 createEventParticipation()
+        //             )
+        //             :
+        //             (
+        //                 <>
+        //                     <h2>Christmas Event</h2>
+        //                     <ParticipationProgressBar/>
+        //                     {participation.participationCompleted}
+        //
+        //
+        //                 </>
+        //             )
+        //     }
+        // </>
     )
 }

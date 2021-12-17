@@ -17,14 +17,26 @@ export const postParticipation = async (request: Request, response: Response): P
         //Change to match current event UUID
         const participationEventId: string = "999b51ec-e719-470e-bb7d-d4fa6c0bbe0c"
 
-        const result = await insertParticipation(participationProfileId, participationEventId)
+        const participationActive = await selectParticipationByParticipationProfileId(participationProfileId)
 
-        const status: Status = {
-            status: 200,
-            message: result ?? 'Participation created Successfully',
-            data: null
+        if (participationActive !== undefined) {
+            const status: Status = {
+                status: 200,
+                message: 'Participation already exists',
+                data: null
+            }
+            return response.json(status)
+        }else {
+            const result = await insertParticipation(participationProfileId, participationEventId)
+
+            const status: Status = {
+                status: 200,
+                message: result ?? 'Participation created Successfully',
+                data: null
+            }
+            return response.json(status)
         }
-        return response.json(status)
+
     } catch (error: any) {
         console.log(error)
         throw error
