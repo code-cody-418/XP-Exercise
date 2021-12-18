@@ -1,13 +1,15 @@
 import React, {Suspense} from "react";
 import "../../styles.css";
 import {Canvas} from "@react-three/fiber";
-import {Environment} from "@react-three/drei";
+import {Environment, OrbitControls} from "@react-three/drei";
 import Goku01 from "../../../3D-Models/Goku01";
 import Naruto from "../../../3D-Models/Naruto";
 import Kakashi from "../../../3D-Models/Kakashi";
 import Korra from "../../../3D-Models/Korra";
 import backgroundHDR from "../../../images/black-hdri.HDR"
 import ChristmasTree from "../../../3D-Models/event-models/Christmas-tree";
+import ChristmasRedBall from "../../../3D-Models/event-models/Christmas-red-ball";
+import SnowFlakes from "../../../3D-Models/event-models/Snow-flakes";
 
 
 export default function AnimationScene({name, kakashiAction, gokuAction, narutoAction, korraAction}) {
@@ -19,7 +21,7 @@ export default function AnimationScene({name, kakashiAction, gokuAction, narutoA
                     onCreated={({camera}) => camera.lookAt(0, 0, -35)}
             >
 
-                {/*<OrbitControls />*/}
+                <OrbitControls />
                 {/*<ambientLight intensity={1} />*/}
                 <directionalLight
                     castShadow
@@ -45,6 +47,10 @@ export default function AnimationScene({name, kakashiAction, gokuAction, narutoA
                         <Korra korraAction={korraAction} name={name}/>
 
                         <ChristmasTree position = {[-10, 10, 0]} />
+
+                        <ChristmasRedBall position = {[10, 10, 0]} />
+
+                        <SnowFlakes />
 
                         <mesh
                             rotation={[-Math.PI / 2, 0, 0]}

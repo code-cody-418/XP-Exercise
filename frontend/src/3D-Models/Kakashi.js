@@ -13,6 +13,7 @@ export default function Kakashi(props) {
   const { actions } = useAnimations(animations, group)
 
 
+
   useEffect(() => {
     actions[props.kakashiAction].reset().fadeIn(0.5).play()
     return () => actions[props.kakashiAction].fadeOut(0.5)

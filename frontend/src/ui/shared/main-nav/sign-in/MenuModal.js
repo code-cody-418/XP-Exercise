@@ -12,6 +12,7 @@ import {useSelector} from "react-redux";
 import {EventParticipationInfo} from "../../../pages/home/EventParticipationInfo";
 import {Canvas} from "@react-three/fiber";
 import ChristmasHat01 from "../../../../3D-Models/event-models/Christmas-hat-01";
+import ChristmasRedBall from "../../../../3D-Models/event-models/Christmas-red-ball";
 
 
 export const MenuModal = ({handleClose, show, auth, profile, participation}) => {
@@ -89,7 +90,8 @@ export const MenuModal = ({handleClose, show, auth, profile, participation}) => 
                                                 <ambientLight intensity={1}/>
 
                                                 <Suspense fallback={null}>
-                                                    <ChristmasHat01/>
+                                                    <ChristmasHat01 />
+
                                                 </Suspense>
                                             </Canvas>
                                         </div>
