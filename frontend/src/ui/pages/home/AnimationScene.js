@@ -9,7 +9,8 @@ import Korra from "../../../3D-Models/Korra";
 import backgroundHDR from "../../../images/black-hdri.HDR"
 import ChristmasTree from "../../../3D-Models/event-models/Christmas-tree";
 import ChristmasRedBall from "../../../3D-Models/event-models/Christmas-red-ball";
-import SnowFlakes from "../../../3D-Models/event-models/Snow-flakes";
+
+import SnowFlakes02 from "../../../3D-Models/event-models/Snow-flakes-02";
 
 
 export default function AnimationScene({name, kakashiAction, gokuAction, narutoAction, korraAction}) {
@@ -21,7 +22,7 @@ export default function AnimationScene({name, kakashiAction, gokuAction, narutoA
                     onCreated={({camera}) => camera.lookAt(0, 0, -35)}
             >
 
-                <OrbitControls />
+                {/*<OrbitControls />*/}
                 {/*<ambientLight intensity={1} />*/}
                 <directionalLight
                     castShadow
@@ -48,9 +49,11 @@ export default function AnimationScene({name, kakashiAction, gokuAction, narutoA
 
                         <ChristmasTree position = {[-10, 10, 0]} />
 
-                        <ChristmasRedBall position = {[10, 10, 0]} />
+                        {/*<ChristmasRedBall position = {[10, 10, 0]} />*/}
 
-                        <SnowFlakes />
+                        <SnowFlakes02 snow={"snowFallingSeven"} />
+                        <SnowFlakes02 snow={"snowFallingEight"} />
+                        <SnowFlakes02 snow={"snowFallingNine"} />
 
                         <mesh
                             rotation={[-Math.PI / 2, 0, 0]}
