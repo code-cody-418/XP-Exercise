@@ -13,7 +13,7 @@ import {fetchParticipation} from "../../store/eventParticipationSlices/participa
 import {fetchProfileByProfileId} from "../../store/profileSlice";
 import {useDispatch} from "react-redux";
 
-export default function ChristmasPresent({participation, profile}) {
+export default function ChristmasPresent({participation, profile, presentOpened}) {
     const group = useRef()
     const {nodes, materials} = useGLTF(christmasPresent)
 
@@ -28,32 +28,21 @@ export default function ChristmasPresent({participation, profile}) {
     })
 
 
-    const present =useRef()
+    const present = useRef()
 
     //present rotation animation
     useFrame(({clock}) => {
         present.current.rotation.y = Math.sin(clock.getElapsedTime())
     })
 
-    //logic to determine if present shows when event is completed
-    const [visible, setVisible] = useState(false)
 
-    useEffect( () => {
-        if (participation === null){
-        } else {
-            if (participation.participationCompleted === 1)
-                return setVisible(true)
-            else
-                return setVisible(false)
-        }
-    }, [participation])
 
 
     return (
         <group ref={group} dispose={null}>
             <group rotation={[-Math.PI / 2, 0.1, 0]}>
                 <group rotation={[Math.PI / 2, 0, 0]}>
-                    <group position={[0, 4.09, 0]} scale={20} visible={visible}>
+                    <group position={[0, 4.09, 0]} scale={20} >
                         <animated.mesh ref={present}
                                        geometry={nodes.christmas_present_Present_0.geometry}
                                        material={materials.Present}

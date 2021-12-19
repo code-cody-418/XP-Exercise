@@ -1,4 +1,4 @@
-import React, {Suspense} from "react";
+import React, {Suspense, useEffect, useState} from "react";
 import {Button, Col, Container, Row, Carousel, Dropdown} from "react-bootstrap";
 import {Modal} from "react-bootstrap";
 import {SignInForm} from "./SignInForm";
@@ -20,25 +20,72 @@ import SnowFlakes02 from "../../../../3D-Models/event-models/Snow-flakes-02";
 import {httpConfig} from "../../utils/http-config";
 import {fetchParticipation} from "../../../../store/eventParticipationSlices/participationSlice";
 import {fetchProfileByProfileId} from "../../../../store/profileSlice";
+import Coins from "../../../../3D-Models/Coins";
+import ChristmasTree from "../../../../3D-Models/event-models/Christmas-tree";
 
 
 export const MenuModal = ({handleClose, show, auth, profile, participation}) => {
 
     const dispatch = useDispatch()
 
+    //shows coins when clicked
+    const [showCoins, setShowCoins] = useState(false)
+    const [presentOpened, setPresentOpened] = useState(false)
+
     //this function updates participationCompleted
     const updateParticipationCoinsReward = () => {
         if (profile === null) {
-        } else if (profile != null) {
+        } else if (profile != null && participation.participationCompleted === 1 && participation.participationCoinReward === 0) {
             httpConfig.put('/apis/participation/updateParticipationCoins')
                 .then(reply => {
                     if (reply.status === 200) {
+                        setPresentOpened(true)
+                        setShowCoins(true)
                         dispatch(fetchParticipation(profile.profileId))
                         dispatch(fetchProfileByProfileId(profile.profileId))
                     }
                 })
         }
     }
+
+    //determines when tree shows
+    // const [showTree, setShowTree] = useState(false)
+    //
+    // useEffect(() => {
+    //     if (participation.participationCompleted === 0) {
+    //         setShowTree(true)
+    //     } else if (showCoins === true) {
+    //         setShowTree(false)
+    //     } else if (participation.participationCompleted === 1 && participation.participationCoinReward === 1 && presentOpened === true) {
+    //         setShowTree(true)
+    //     } else {
+    //         setShowTree(true)
+    //     }
+    // })
+
+    //logic to determine if present shows when event is completed
+    const [presentVisible, setPresentVisible] = useState(false)
+    const [treeVisible, setTreeVisible] = useState(false)
+
+    useEffect(() => {
+        if (participation === null) {
+        } else {
+            if (presentOpened === true) {
+                setPresentVisible(false)
+                setTreeVisible(false)
+            } else if (participation.participationCompleted === 1 && participation.participationCoinReward === 1) {
+                setPresentVisible(false)
+                setTreeVisible(true)
+            } else if (participation.participationCompleted === 1) {
+                setPresentVisible(true)
+                setTreeVisible(false)
+            } else {
+                setPresentVisible(false)
+                setTreeVisible(true)
+            }
+        }
+    }, [participation, presentOpened])
+
 
     return (
         <>
@@ -109,23 +156,56 @@ export const MenuModal = ({handleClose, show, auth, profile, participation}) => 
                                             >
                                                 {/*<OrbitControls />*/}
 
-                                                <ambientLight intensity={1}/>
+                                                {/*<ambientLight intensity={1}/>*/}
+
+                                                <directionalLight
+                                                    castShadow
+                                                    position={[0, 15, 25]}
+                                                    intensity={1}
+                                                    shadow-mapSize-width={1024}
+                                                    shadow-mapSize-height={1024}
+                                                    shadow-camera-far={100}
+                                                    shadow-camera-left={-50}
+                                                    shadow-camera-right={50}
+                                                    shadow-camera-top={50}
+                                                    shadow-camera-bottom={-50}
+                                                />
+                                                <pointLight position={[-10, 0, -20]} intensity={0.5}/>
+                                                <pointLight position={[0, 0, 0]} intensity={1.5}/>
 
                                                 <Suspense fallback={null}>
-                                                    {/*<ChristmasHat01 />*/}
+
+                                                    <group scale={3} position={[0, -5, -5]} rotation={[0, -1.57, 0]}
+                                                           visible={treeVisible}>
+                                                        <ChristmasTree/>
+                                                    </group>
+
+                                                    <group position={[3, 5, -3]}>
+                                                        <ChristmasHat01 showCoins={showCoins}/>
+                                                    </group>
                                                     <group
                                                         onClick={() => {
                                                             updateParticipationCoinsReward()
                                                         }}
+                                                        visible={presentVisible}
                                                     >
                                                         <ChristmasPresent
+                                                            presentOpened={presentOpened}
                                                             participation={participation}
                                                             profile={profile}
                                                         />
                                                     </group>
-                                                    <SnowFlakes02 snow={"snowFallingSeven"}/>
-                                                    <SnowFlakes02 snow={"snowFallingEight"}/>
-                                                    <SnowFlakes02 snow={"snowFallingNine"}/>
+
+                                                    <Coins coinsAnimate={"animeCoinsTwo"} showCoins={showCoins}
+                                                           participation={participation}/>
+                                                    <Coins coinsAnimate={"animeCoinsThree"} showCoins={showCoins}
+                                                           participation={participation}/>
+
+                                                    <group position={[0, -10, 0]}>
+                                                        <SnowFlakes02 snow={"snowFallingSeven"}/>
+                                                        <SnowFlakes02 snow={"snowFallingEight"}/>
+                                                        <SnowFlakes02 snow={"snowFallingNine"}/>
+                                                    </group>
 
                                                 </Suspense>
                                             </Canvas>

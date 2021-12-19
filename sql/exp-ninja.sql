@@ -4,6 +4,8 @@
 -- never ever ever ever ever ever ever ever ever ever ever ever ever ever ever ever ever ever ever ever
 -- do this on live data!!!!
 
+
+
 create TABLE profile
 (
     profileId BINARY(16) NOT NULL,

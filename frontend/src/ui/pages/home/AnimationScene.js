@@ -11,7 +11,7 @@ import ChristmasTree from "../../../3D-Models/event-models/Christmas-tree";
 import ChristmasRedBall from "../../../3D-Models/event-models/Christmas-red-ball";
 
 import SnowFlakes02 from "../../../3D-Models/event-models/Snow-flakes-02";
-
+import Coins from "../../../3D-Models/Coins";
 
 
 export default function AnimationScene({name, kakashiAction, gokuAction, narutoAction, korraAction}) {
@@ -48,15 +48,17 @@ export default function AnimationScene({name, kakashiAction, gokuAction, narutoA
                         <Kakashi kakashiAction={kakashiAction} name={name}/>
                         <Korra korraAction={korraAction} name={name}/>
 
-                        <ChristmasTree position = {[-10, 10, 0]} />
-
+                        <group position={[-10, 10, 0]}>
+                            <ChristmasTree />
+                        </group>
 
 
                         {/*<ChristmasRedBall position = {[10, 10, 0]} />*/}
 
-                        <SnowFlakes02 snow={"snowFallingSeven"} />
-                        <SnowFlakes02 snow={"snowFallingEight"} />
-                        <SnowFlakes02 snow={"snowFallingNine"} />
+
+                        <SnowFlakes02 snow={"snowFallingSeven"}/>
+                        <SnowFlakes02 snow={"snowFallingEight"}/>
+                        <SnowFlakes02 snow={"snowFallingNine"}/>
 
                         <mesh
                             rotation={[-Math.PI / 2, 0, 0]}
