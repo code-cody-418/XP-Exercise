@@ -12,7 +12,6 @@ export default function SnowFlakes02({ ...props }) {
   const { nodes, materials, animations } = useGLTF(snowFlake)
   const { actions } = useAnimations(animations, group)
 
-  console.log("actions", actions)
 
   useEffect(() => {
     actions[props.snow].reset().fadeIn(0.5).play()

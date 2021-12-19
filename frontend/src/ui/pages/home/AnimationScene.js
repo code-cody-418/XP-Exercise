@@ -13,6 +13,7 @@ import ChristmasRedBall from "../../../3D-Models/event-models/Christmas-red-ball
 import SnowFlakes02 from "../../../3D-Models/event-models/Snow-flakes-02";
 
 
+
 export default function AnimationScene({name, kakashiAction, gokuAction, narutoAction, korraAction}) {
     return (
         <>
@@ -22,7 +23,7 @@ export default function AnimationScene({name, kakashiAction, gokuAction, narutoA
                     onCreated={({camera}) => camera.lookAt(0, 0, -35)}
             >
 
-                {/*<OrbitControls />*/}
+                <OrbitControls />
                 {/*<ambientLight intensity={1} />*/}
                 <directionalLight
                     castShadow
@@ -48,6 +49,8 @@ export default function AnimationScene({name, kakashiAction, gokuAction, narutoA
                         <Korra korraAction={korraAction} name={name}/>
 
                         <ChristmasTree position = {[-10, 10, 0]} />
+
+
 
                         {/*<ChristmasRedBall position = {[10, 10, 0]} />*/}
 

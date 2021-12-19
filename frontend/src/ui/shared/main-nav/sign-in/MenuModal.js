@@ -14,6 +14,10 @@ import {Canvas} from "@react-three/fiber";
 import ChristmasHat01 from "../../../../3D-Models/event-models/Christmas-hat-01";
 import ChristmasRedBall from "../../../../3D-Models/event-models/Christmas-red-ball";
 
+import {OrbitControls} from "@react-three/drei";
+import ChristmasPresent from "../../../../3D-Models/event-models/Christmas-present";
+import SnowFlakes02 from "../../../../3D-Models/event-models/Snow-flakes-02";
+
 
 export const MenuModal = ({handleClose, show, auth, profile, participation}) => {
 
@@ -90,7 +94,12 @@ export const MenuModal = ({handleClose, show, auth, profile, participation}) => 
                                                 <ambientLight intensity={1}/>
 
                                                 <Suspense fallback={null}>
-                                                    <ChristmasHat01 />
+                                                    {/*<ChristmasHat01 />*/}
+                                                    <ChristmasPresent/>
+
+                                                    <SnowFlakes02 snow={"snowFallingSeven"} />
+                                                    <SnowFlakes02 snow={"snowFallingEight"} />
+                                                    <SnowFlakes02 snow={"snowFallingNine"} />
 
                                                 </Suspense>
                                             </Canvas>
