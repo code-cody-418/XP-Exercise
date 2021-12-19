@@ -8,7 +8,7 @@ import {SignOut} from "../sign-out/SignOut";
 import comingSoon from "../../../../images/shop-images/CODVanguard.png"
 import comingSoonTwo from "../../../../images/vegeta-shadow.jpg"
 import {SignUpModal} from "../sign-up/SignUpModal";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {EventParticipationInfo} from "../../../pages/home/EventParticipationInfo";
 import {Canvas} from "@react-three/fiber";
 import ChristmasHat01 from "../../../../3D-Models/event-models/Christmas-hat-01";
@@ -17,10 +17,28 @@ import ChristmasRedBall from "../../../../3D-Models/event-models/Christmas-red-b
 import {OrbitControls} from "@react-three/drei";
 import ChristmasPresent from "../../../../3D-Models/event-models/Christmas-present";
 import SnowFlakes02 from "../../../../3D-Models/event-models/Snow-flakes-02";
+import {httpConfig} from "../../utils/http-config";
+import {fetchParticipation} from "../../../../store/eventParticipationSlices/participationSlice";
+import {fetchProfileByProfileId} from "../../../../store/profileSlice";
 
 
 export const MenuModal = ({handleClose, show, auth, profile, participation}) => {
 
+    const dispatch = useDispatch()
+
+    //this function updates participationCompleted
+    const updateParticipationCoinsReward = () => {
+        if (profile === null) {
+        } else if (profile != null) {
+            httpConfig.put('/apis/participation/updateParticipationCoins')
+                .then(reply => {
+                    if (reply.status === 200) {
+                        dispatch(fetchParticipation(profile.profileId))
+                        dispatch(fetchProfileByProfileId(profile.profileId))
+                    }
+                })
+        }
+    }
 
     return (
         <>
@@ -95,11 +113,19 @@ export const MenuModal = ({handleClose, show, auth, profile, participation}) => 
 
                                                 <Suspense fallback={null}>
                                                     {/*<ChristmasHat01 />*/}
-                                                    <ChristmasPresent/>
-
-                                                    <SnowFlakes02 snow={"snowFallingSeven"} />
-                                                    <SnowFlakes02 snow={"snowFallingEight"} />
-                                                    <SnowFlakes02 snow={"snowFallingNine"} />
+                                                    <group
+                                                        onClick={() => {
+                                                            updateParticipationCoinsReward()
+                                                        }}
+                                                    >
+                                                        <ChristmasPresent
+                                                            participation={participation}
+                                                            profile={profile}
+                                                        />
+                                                    </group>
+                                                    <SnowFlakes02 snow={"snowFallingSeven"}/>
+                                                    <SnowFlakes02 snow={"snowFallingEight"}/>
+                                                    <SnowFlakes02 snow={"snowFallingNine"}/>
 
                                                 </Suspense>
                                             </Canvas>

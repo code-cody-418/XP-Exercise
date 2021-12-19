@@ -15,7 +15,7 @@ export default function SnowFlakes02({ ...props }) {
 
   useEffect(() => {
     actions[props.snow].reset().fadeIn(0.5).play()
-    return () => actions[props.snow].fadeOut(1)
+    // return () => actions[props.snow].fadeOut(1)
   }, [actions]);
 
 

@@ -23,7 +23,7 @@ export default function AnimationScene({name, kakashiAction, gokuAction, narutoA
                     onCreated={({camera}) => camera.lookAt(0, 0, -35)}
             >
 
-                <OrbitControls />
+                {/*<OrbitControls />*/}
                 {/*<ambientLight intensity={1} />*/}
                 <directionalLight
                     castShadow
