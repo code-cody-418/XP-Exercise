@@ -78,6 +78,11 @@ export const Home = () => {
         dispatch(settingGokuMove(moves.celebration))
     }
 
+//menu modal
+    const [show, setShow] = useState(false);
+
+    const handleMenuClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     // array of youtube videos
     // const youTubePlaylists = [
@@ -114,7 +119,8 @@ export const Home = () => {
             </Modal>
             <Container fluid={true}>
                 <Row>
-                    <Menu profile={profile} participation={participation} />
+                    <Menu profile={profile} participation={participation} handleClose={handleMenuClose}
+                          handleShow={handleShow} show={show}/>
                 </Row>
                 <Row>
                     <h1 className="trainerTitle text-center">Trainers</h1>
@@ -174,7 +180,7 @@ export const Home = () => {
                     </Col>
                 </Row>
                 <Row className="justify-content-center mb-3 align-items-center">
-                    <SelectCharacterButtons />
+                    <SelectCharacterButtons/>
                     <Col md={6} lg={4} className='canvasSize me-0 pe-0'>
 
                         <AnimationScene gokuAction={gokuAction} narutoAction={narutoAction}
@@ -190,14 +196,24 @@ export const Home = () => {
                         </div>
                     </Col>
                     <Col lg={4} className='ms-0 ps-0 removeTop'>
-                        <VideoPlayer profile={profile} />
+                        <VideoPlayer profile={profile}/>
                         <div className='underCanvas'>
-                            <ProfileInfo profile={profile} videoPlay={videoPlay} />
+                            <ProfileInfo profile={profile} videoPlay={videoPlay}/>
                         </div>
                     </Col>
                 </Row>
             </Container>
-            <EventParticipationInfo profile={profile} participation={participation} />
+            <EventParticipationInfo profile={profile} participation={participation}/>
+
+            {(participation === null) ? <></> :
+                (participation.participationCompleted === 1 && participation.participationCoinReward === 0)
+                    ? (
+                        <Button onClick={() => setShow(true)}>Claim Event Reward</Button>
+                    ) :
+                    (
+                        <></>
+                    )
+            }
         </>
     )
 }

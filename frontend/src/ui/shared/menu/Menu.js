@@ -7,7 +7,7 @@ import "../main-nav/sign-in/menuStyle.css"
 import {fetchParticipation} from "../../../store/eventParticipationSlices/participationSlice";
 import {fetchProfileByProfileId} from "../../../store/profileSlice";
 
-export const Menu = ({profile}) => {
+export const Menu = ({profile, handleClose, handleShow, show}) => {
     const auth = useSelector(state => state.auth);
     const participation = useSelector((state) => state.participation ? state.participation : null)
     const dispatch = useDispatch();
@@ -20,10 +20,7 @@ export const Menu = ({profile}) => {
     const inputs = [profile];
     useEffect(effects, inputs);
 
-    const [show, setShow] = useState(false);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
 
     return (
         <>

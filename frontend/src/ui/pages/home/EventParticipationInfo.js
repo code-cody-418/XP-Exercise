@@ -82,13 +82,13 @@ export const EventParticipationInfo = ({profile, participation}) => {
 
         if (participation === null) {
         } else if (participation != null) {
-            if (participation.participationTime > 2520) {
+            if (participation.participationTime >= 2340) {
                 setProgressBarExp("100%")
-            } else if (participation.participationTime > 1680 && participation.participationTime < 2520) {
+            } else if (participation.participationTime >= 1560 && participation.participationTime < 2340) {
                 setProgressBarExp("66%")
-            } else if (participation.participationTime > 840 && participation.participationTime < 1680) {
+            } else if (participation.participationTime >= 780 && participation.participationTime < 1560) {
                 setProgressBarExp("33%")
-            } else if (participation.participationTime < 840) {
+            } else if (participation.participationTime < 780) {
                 setProgressBarExp("0%")
             }
         }
@@ -98,7 +98,7 @@ export const EventParticipationInfo = ({profile, participation}) => {
     useEffect(() => {
         if (participation != null) {
             if (participation.participationCompleted === 1) {
-            } else if (participation.participationTime > 2520) {
+            } else if (participation.participationTime >= 2340) {
                 updateParticipationCompleted()
             }
         }
@@ -120,14 +120,7 @@ export const EventParticipationInfo = ({profile, participation}) => {
                              style={{width: progressBarExp}}>Event Progress
                         </div>
                     </div>
-                    {(participation.participationCompleted === 1 && participation.participationCoinReward === 0)
-                        ? (
-                            <Button onClick={() => updateParticipationCoinsReward()}>Claim Event Reward</Button>
-                        ) :
-                        (
-                            <></>
-                        )
-                    }
+
                 </>
             )
         }
