@@ -197,23 +197,18 @@ export const Home = () => {
                     </Col>
                     <Col lg={4} className='ms-0 ps-0 removeTop'>
                         <VideoPlayer profile={profile}/>
-                        <div className='underCanvas'>
-                            <ProfileInfo profile={profile} videoPlay={videoPlay}/>
+                        <div
+                            className='underCanvas'
+                            onClick={() => setShow(true)}
+                        >
+                            <ProfileInfo profile={profile} videoPlay={videoPlay} participation={participation}/>
                         </div>
+                        <EventParticipationInfo profile={profile} participation={participation}/>
                     </Col>
                 </Row>
             </Container>
-            <EventParticipationInfo profile={profile} participation={participation}/>
 
-            {(participation === null) ? <></> :
-                (participation.participationCompleted === 1 && participation.participationCoinReward === 0)
-                    ? (
-                        <Button onClick={() => setShow(true)}>Claim Event Reward</Button>
-                    ) :
-                    (
-                        <></>
-                    )
-            }
+
         </>
     )
 }

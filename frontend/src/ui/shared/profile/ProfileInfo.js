@@ -2,10 +2,13 @@ import React, {useEffect, useState} from "react";
 import twoCoins from "../../../images/two-coins.png"
 import "../../styles.css"
 import {fetchProfileByProfileId} from "../../../store/profileSlice";
+import {Button} from "react-bootstrap";
+import present from "../../../images/present.png"
+import {EventParticipationInfo} from "../../pages/home/EventParticipationInfo";
 
 
 // shows profile information on state change
-export const ProfileInfo = ({profile, videoPlay}) => {
+export const ProfileInfo = ({profile, videoPlay, participation}) => {
     const [progressBarExp, setProgressBarExp] = useState("0%")
 
     useEffect(() => {
@@ -46,13 +49,25 @@ export const ProfileInfo = ({profile, videoPlay}) => {
         return (
             <>
 
-                <button type="button" className="btn btn-dark position-relative profileUserNameText">
+                <button
+                    type="button"
+                    className="btn btn-dark position-relative profileUserNameText"
+                >
                 <span>
                     <img src={profile.profileAvatarUrl} alt={"Profile Avatar"}/>
                 </span>
                     {profile.profileUserName}
                     <span className='position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark'>
-                  {profile.profileLevel}
+                        {(participation === null) ? <></> :
+                            (participation.participationCompleted === 1 && participation.participationCoinReward === 0)
+                                ? (
+                                    <img className="eventImage" src={present} alt={"Present"} width={75} height={75}/>
+                                ) :
+                                (
+                                    profile.profileLevel
+                                )
+                        }
+
                 </span></button>
                 <div className="progress progressLevel ms-1">
                     <div className="progress-bar progress-bar-striped progress-bar-animated  progressText"
@@ -62,6 +77,8 @@ export const ProfileInfo = ({profile, videoPlay}) => {
                 <p className='coinText'>
                     <img src={twoCoins} width={50} height={50} alt="Coins"/>
                     {profile.profileCoins}</p>
+
+
             </>
         )
     }

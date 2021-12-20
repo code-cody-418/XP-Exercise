@@ -5,6 +5,8 @@ import {httpConfig} from "../../shared/utils/http-config";
 import '../../shared/main-nav/sign-in/menuStyle.css'
 import {Button} from "react-bootstrap";
 import {fetchProfileByProfileId} from "../../../store/profileSlice";
+import "../../styles.css"
+import christmasSound from "../../../sounds/christmas-happy-music.wav"
 
 /*
 This will update the state of a profiles participation in an event
@@ -55,6 +57,7 @@ export const EventParticipationInfo = ({profile, participation}) => {
             httpConfig.put('/apis/participation/updateParticipationCompleted')
                 .then(reply => {
                     if (reply.status === 200) {
+                        setPlayingParticipationCompletedAudio(true)
                         dispatch(fetchParticipation(profile.profileId))
                     }
                 })
@@ -104,6 +107,15 @@ export const EventParticipationInfo = ({profile, participation}) => {
         }
     }, [participation])
 
+    //participation completed sound
+    const [audioParticipationCompleted] = useState(new Audio(christmasSound))
+    const [playingParticipationCompletedAudio, setPlayingParticipationCompletedAudio] = useState(false)
+
+
+    useEffect(() => {
+        playingParticipationCompletedAudio ? audioParticipationCompleted.play() : audioParticipationCompleted.pause()
+    }, [playingParticipationCompletedAudio])
+
 //Final return from component
     if (profile === null) {
         return <></>
@@ -114,7 +126,7 @@ export const EventParticipationInfo = ({profile, participation}) => {
         } else {
             return (
                 <>
-                    <h2>Christmas Event</h2>
+                    <h2 className="eventTitle" >Christmas Event</h2>
                     <div className="progress progressLevel ms-1">
                         <div className="progress-bar progress-bar-striped bg-danger progress-bar-animated  progressText"
                              style={{width: progressBarExp}}>Event Progress

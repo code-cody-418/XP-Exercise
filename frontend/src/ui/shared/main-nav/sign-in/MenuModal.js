@@ -22,6 +22,7 @@ import {fetchParticipation} from "../../../../store/eventParticipationSlices/par
 import {fetchProfileByProfileId} from "../../../../store/profileSlice";
 import Coins from "../../../../3D-Models/Coins";
 import ChristmasTree from "../../../../3D-Models/event-models/Christmas-tree";
+import christmasSound from "../../../../sounds/christmas-happy-music.wav";
 
 
 export const MenuModal = ({handleClose, show, auth, profile, participation}) => {
@@ -39,6 +40,7 @@ export const MenuModal = ({handleClose, show, auth, profile, participation}) => 
             httpConfig.put('/apis/participation/updateParticipationCoins')
                 .then(reply => {
                     if (reply.status === 200) {
+                        setPlayingParticipationCompletedAudio(true)
                         setPresentOpened(true)
                         setShowCoins(true)
                         dispatch(fetchParticipation(profile.profileId))
@@ -48,20 +50,14 @@ export const MenuModal = ({handleClose, show, auth, profile, participation}) => 
         }
     }
 
-    //determines when tree shows
-    // const [showTree, setShowTree] = useState(false)
-    //
-    // useEffect(() => {
-    //     if (participation.participationCompleted === 0) {
-    //         setShowTree(true)
-    //     } else if (showCoins === true) {
-    //         setShowTree(false)
-    //     } else if (participation.participationCompleted === 1 && participation.participationCoinReward === 1 && presentOpened === true) {
-    //         setShowTree(true)
-    //     } else {
-    //         setShowTree(true)
-    //     }
-    // })
+    //participation completed sound
+    const [audioParticipationCompleted] = useState(new Audio(christmasSound))
+    const [playingParticipationCompletedAudio, setPlayingParticipationCompletedAudio] = useState(false)
+
+
+    useEffect(() => {
+        playingParticipationCompletedAudio ? audioParticipationCompleted.play() : audioParticipationCompleted.pause()
+    }, [playingParticipationCompletedAudio])
 
     //logic to determine if present shows when event is completed
     const [presentVisible, setPresentVisible] = useState(false)
@@ -85,6 +81,11 @@ export const MenuModal = ({handleClose, show, auth, profile, participation}) => 
             }
         }
     }, [participation, presentOpened])
+
+
+    const [hovered, setHovered] = useState(false)
+
+    useEffect(() => void (document.body.style.cursor = hovered ? "pointer" : "auto"), [hovered])
 
 
     return (
@@ -142,7 +143,7 @@ export const MenuModal = ({handleClose, show, auth, profile, participation}) => 
                                 <>
 
                                     <Col sm={4}>
-                                        <ProfileInfo profile={profile}/>
+                                        <ProfileInfo profile={profile} participation={participation}/>
                                         <SignOut/>
                                     </Col>
                                     <Col sm={3}>
@@ -188,6 +189,8 @@ export const MenuModal = ({handleClose, show, auth, profile, participation}) => 
                                                             updateParticipationCoinsReward()
                                                         }}
                                                         visible={presentVisible}
+                                                        onPointerOver={() => setHovered(true)}
+                                                        onPointerOut={() => setHovered(false)}
                                                     >
                                                         <ChristmasPresent
                                                             presentOpened={presentOpened}
