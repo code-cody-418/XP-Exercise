@@ -1,7 +1,7 @@
 export interface Participation {
     participationProfileId: string,
     participationEventId: string,
-    participationCoinReward: number,
+    participationCoinReward: boolean,
     participationTime: number,
     participationCompleted: boolean
 

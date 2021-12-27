@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Suspense, useEffect, useState} from "react";
 import {Button, Col, Container, Row, Carousel, Dropdown} from "react-bootstrap";
 import {Modal} from "react-bootstrap";
 import {SignInForm} from "./SignInForm";
@@ -8,9 +8,85 @@ import {SignOut} from "../sign-out/SignOut";
 import comingSoon from "../../../../images/shop-images/CODVanguard.png"
 import comingSoonTwo from "../../../../images/vegeta-shadow.jpg"
 import {SignUpModal} from "../sign-up/SignUpModal";
+import {useDispatch, useSelector} from "react-redux";
+import {EventParticipationInfo} from "../../../pages/home/EventParticipationInfo";
+import {Canvas} from "@react-three/fiber";
+import ChristmasHat01 from "../../../../3D-Models/event-models/Christmas-hat-01";
+import ChristmasRedBall from "../../../../3D-Models/event-models/Christmas-red-ball";
+
+import {OrbitControls} from "@react-three/drei";
+import ChristmasPresent from "../../../../3D-Models/event-models/Christmas-present";
+import SnowFlakes02 from "../../../../3D-Models/event-models/Snow-flakes-02";
+import {httpConfig} from "../../utils/http-config";
+import {fetchParticipation} from "../../../../store/eventParticipationSlices/participationSlice";
+import {fetchProfileByProfileId} from "../../../../store/profileSlice";
+import Coins from "../../../../3D-Models/Coins";
+import ChristmasTree from "../../../../3D-Models/event-models/Christmas-tree";
+import christmasSound from "../../../../sounds/christmas-happy-music.wav";
 
 
-export const MenuModal = ({handleClose, show, auth, profile}) => {
+export const MenuModal = ({handleClose, show, auth, profile, participation}) => {
+
+    const dispatch = useDispatch()
+
+    //shows coins when clicked
+    const [showCoins, setShowCoins] = useState(false)
+    const [presentOpened, setPresentOpened] = useState(false)
+
+    //this function updates participationCompleted
+    const updateParticipationCoinsReward = () => {
+        if (profile === null) {
+        } else if (profile != null && participation.participationCompleted === 1 && participation.participationCoinReward === 0) {
+            httpConfig.put('/apis/participation/updateParticipationCoins')
+                .then(reply => {
+                    if (reply.status === 200) {
+                        setPlayingParticipationCompletedAudio(true)
+                        setPresentOpened(true)
+                        setShowCoins(true)
+                        dispatch(fetchParticipation(profile.profileId))
+                        dispatch(fetchProfileByProfileId(profile.profileId))
+                    }
+                })
+        }
+    }
+
+    //participation completed sound
+    const [audioParticipationCompleted] = useState(new Audio(christmasSound))
+    const [playingParticipationCompletedAudio, setPlayingParticipationCompletedAudio] = useState(false)
+
+
+    useEffect(() => {
+        playingParticipationCompletedAudio ? audioParticipationCompleted.play() : audioParticipationCompleted.pause()
+    }, [playingParticipationCompletedAudio])
+
+    //logic to determine if present shows when event is completed
+    const [presentVisible, setPresentVisible] = useState(false)
+    const [treeVisible, setTreeVisible] = useState(false)
+
+    useEffect(() => {
+        if (participation === null) {
+        } else {
+            if (presentOpened === true) {
+                setPresentVisible(false)
+                setTreeVisible(false)
+            } else if (participation.participationCompleted === 1 && participation.participationCoinReward === 1) {
+                setPresentVisible(false)
+                setTreeVisible(true)
+            } else if (participation.participationCompleted === 1) {
+                setPresentVisible(true)
+                setTreeVisible(false)
+            } else {
+                setPresentVisible(false)
+                setTreeVisible(true)
+            }
+        }
+    }, [participation, presentOpened])
+
+
+    const [hovered, setHovered] = useState(false)
+
+    useEffect(() => void (document.body.style.cursor = hovered ? "pointer" : "auto"), [hovered])
+
 
     return (
         <>
@@ -67,41 +143,109 @@ export const MenuModal = ({handleClose, show, auth, profile}) => {
                                 <>
 
                                     <Col sm={4}>
-                                        <ProfileInfo profile={profile}/>
+                                        <ProfileInfo profile={profile} participation={participation}/>
                                         <SignOut/>
                                     </Col>
                                     <Col sm={3}>
-                                        <Carousel fade nextLabel="" prevLabel="">
-                                            <Carousel.Item>
-                                                <img
-                                                    className="d-block w-100"
-                                                    src={comingSoon}
-                                                    alt="First slide"
-                                                    width="350"
-                                                    height="250"
-                                                />
-                                            </Carousel.Item>
-                                            <Carousel.Item>
-                                                <img
-                                                    className="d-block w-100"
-                                                    src={comingSoonTwo}
-                                                    alt="Second slide"
-                                                    width="350"
-                                                    height="250"
-                                                />
-                                            </Carousel.Item>
-                                            {/*<Carousel.Item>*/}
-                                            {/*    <img*/}
-                                            {/*        className="d-block w-100"*/}
-                                            {/*        src={comingSoon}*/}
-                                            {/*        alt="Third slide"*/}
-                                            {/*        width="350"*/}
-                                            {/*        height="250"*/}
+                                        <EventParticipationInfo participation={participation} profile={profile}/>
 
-                                            {/*    />*/}
-                                            {/*</Carousel.Item>*/}
-                                        </Carousel>
+                                        <div className="eventCanvas">
+                                            <Canvas
+                                                camera={{position: [0, 15, 25], fov: 55}}
+                                                resize={0.5}
+                                                onCreated={({camera}) => camera.lookAt(0, -15, -35)}
+                                            >
+                                                {/*<OrbitControls />*/}
+
+                                                {/*<ambientLight intensity={1}/>*/}
+
+                                                <directionalLight
+                                                    castShadow
+                                                    position={[0, 15, 25]}
+                                                    intensity={1}
+                                                    shadow-mapSize-width={1024}
+                                                    shadow-mapSize-height={1024}
+                                                    shadow-camera-far={100}
+                                                    shadow-camera-left={-50}
+                                                    shadow-camera-right={50}
+                                                    shadow-camera-top={50}
+                                                    shadow-camera-bottom={-50}
+                                                />
+                                                <pointLight position={[-10, 0, -20]} intensity={0.5}/>
+                                                <pointLight position={[0, 0, 0]} intensity={1.5}/>
+
+                                                <Suspense fallback={null}>
+
+                                                    <group scale={3} position={[0, -5, -5]} rotation={[0, -1.57, 0]}
+                                                           visible={treeVisible}>
+                                                        <ChristmasTree/>
+                                                    </group>
+
+                                                    <group position={[3, 5, -3]}>
+                                                        <ChristmasHat01 showCoins={showCoins}/>
+                                                    </group>
+                                                    <group
+                                                        onClick={() => {
+                                                            updateParticipationCoinsReward()
+                                                        }}
+                                                        visible={presentVisible}
+                                                        onPointerOver={() => setHovered(true)}
+                                                        onPointerOut={() => setHovered(false)}
+                                                    >
+                                                        <ChristmasPresent
+                                                            presentOpened={presentOpened}
+                                                            participation={participation}
+                                                            profile={profile}
+                                                        />
+                                                    </group>
+
+                                                    <Coins coinsAnimate={"animeCoinsTwo"} showCoins={showCoins}
+                                                           participation={participation}/>
+                                                    <Coins coinsAnimate={"animeCoinsThree"} showCoins={showCoins}
+                                                           participation={participation}/>
+
+                                                    <group position={[0, -10, 0]}>
+                                                        <SnowFlakes02 snow={"snowFallingSeven"}/>
+                                                        <SnowFlakes02 snow={"snowFallingEight"}/>
+                                                        <SnowFlakes02 snow={"snowFallingNine"}/>
+                                                    </group>
+
+                                                </Suspense>
+                                            </Canvas>
+                                        </div>
                                     </Col>
+                                    {/*<Col sm={3}>*/}
+                                    {/*<Carousel fade nextLabel="" prevLabel="">*/}
+                                    {/*    <Carousel.Item>*/}
+                                    {/*        <img*/}
+                                    {/*            className="d-block w-100"*/}
+                                    {/*            src={comingSoon}*/}
+                                    {/*            alt="First slide"*/}
+                                    {/*            width="350"*/}
+                                    {/*            height="250"*/}
+                                    {/*        />*/}
+                                    {/*    </Carousel.Item>*/}
+                                    {/*    <Carousel.Item>*/}
+                                    {/*        <img*/}
+                                    {/*            className="d-block w-100"*/}
+                                    {/*            src={comingSoonTwo}*/}
+                                    {/*            alt="Second slide"*/}
+                                    {/*            width="350"*/}
+                                    {/*            height="250"*/}
+                                    {/*        />*/}
+                                    {/*    </Carousel.Item>*/}
+                                    {/*<Carousel.Item>*/}
+                                    {/*    <img*/}
+                                    {/*        className="d-block w-100"*/}
+                                    {/*        src={comingSoon}*/}
+                                    {/*        alt="Third slide"*/}
+                                    {/*        width="350"*/}
+                                    {/*        height="250"*/}
+
+                                    {/*    />*/}
+                                    {/*</Carousel.Item>*/}
+                                    {/*</Carousel>*/}
+                                    {/*</Col>*/}
                                 </>
                             ) : (
                                 <>

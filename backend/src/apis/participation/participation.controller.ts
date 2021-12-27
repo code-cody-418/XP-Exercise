@@ -4,9 +4,13 @@ import {insertParticipation} from "../../utils/participation/insertParticipation
 import {Status} from "../../utils/interfaces/Status";
 import {selectParticipationByParticipationProfileId} from "../../utils/participation/selectParticipationByParticipationProfileId";
 import {selectWholeProfileByProfileId} from "../../utils/profile/selectWholeProfileByProfileId";
-import {updateProfileCoinsByProfileId} from "../../utils/profile/updateProfileCoinsByProfileId";
+import {
+    updateProfileCoinsByProfileId,
+    updateTwentyProfileCoinsByProfileId
+} from "../../utils/profile/updateProfileCoinsByProfileId";
 import {updateParticipationTimeByProfileId} from "../../utils/participation/updateParticipationTimeByProfileId";
 import {updateParticipationCompletedByProfileId} from "../../utils/participation/updateParticipationCompletedByProfileId";
+import {updateParticipationCoinRewardByProfileId} from "../../utils/participation/updateParticipationCoinRewardByProfileId";
 
 //This controller creates a new participation from a event name.
 export const postParticipation = async (request: Request, response: Response): Promise<Response | undefined> => {
@@ -14,17 +18,29 @@ export const postParticipation = async (request: Request, response: Response): P
         const profile = <Profile>request.session?.profile
         const participationProfileId = <string>profile.profileId
 
-        //gets the event id from a passed event Name
-        const {participationEventId} = request.body
+        //Change to match current event UUID
+        const participationEventId: string = "999b51ec-e719-470e-bb7d-d4fa6c0bbe0c"
 
-        const result = await insertParticipation(participationProfileId, participationEventId)
+        const participationActive = await selectParticipationByParticipationProfileId(participationProfileId)
 
-        const status: Status = {
-            status: 200,
-            message: result ?? 'Participation created Successfully',
-            data: null
+        if (participationActive !== undefined) {
+            const status: Status = {
+                status: 200,
+                message: 'Participation already exists',
+                data: null
+            }
+            return response.json(status)
+        }else {
+            const result = await insertParticipation(participationProfileId, participationEventId)
+
+            const status: Status = {
+                status: 200,
+                message: result ?? 'Participation created Successfully',
+                data: null
+            }
+            return response.json(status)
         }
-        return response.json(status)
+
     } catch (error: any) {
         console.log(error)
         throw error
@@ -81,6 +97,43 @@ export const putParticipationCompletedByParticipationProfileIdController = async
             data: null
         }
         return response.json(status)
+
+    } catch (error) {
+        return response.json( {status:400, data: null, message: error.message})
+    }
+}
+
+export const putParticipationCoinsByProfileIdController = async (request: Request, response: Response) : Promise<Response | undefined>  => {
+    try {
+        const profile = <Profile>request.session.profile
+        const profileId = <string>profile.profileId
+
+
+        const mySqlResult = await selectParticipationByParticipationProfileId(profileId)
+
+        const alreadyCompleted = mySqlResult.participationCoinReward
+
+        if (alreadyCompleted === 0) {
+            const result = await updateParticipationCoinRewardByProfileId(profileId)
+
+            const resultCoins = await updateTwentyProfileCoinsByProfileId(profileId)
+
+            const status: Status = {
+                status: 200,
+                message: result ?? 'Twenty Coins Successfully updated',
+                data: null
+            }
+            return response.json(status)
+        } else {
+            const status: Status = {
+                status: 200,
+                message: 'Already completed event',
+                data: null
+            }
+            return response.json(status)
+        }
+
+
 
     } catch (error) {
         return response.json( {status:400, data: null, message: error.message})

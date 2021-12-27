@@ -67,7 +67,7 @@ export const VideoPlayer = ({profile}) => {
 
     //This function is very important. It sets a thirty second timer that resets when it reaches -1
     //When the timer resets it adds exp and levels up the profile. In addition it increments an index
-    //for an array of trainer moves.
+    //for an array of trainer moves. It also deals with sounds.
     useEffect(() => {
         if (thirtySeconds === -1) {
             setThirtySeconds(30)
@@ -182,7 +182,7 @@ export const VideoPlayer = ({profile}) => {
         playingLevelUpAudio ? audioLevelUp.play() : audioLevelUp.pause()
     }, [playingLevelUpAudio])
 
-    console.log("level up audio", playingLevelUpAudio)
+    // console.log("level up audio", playingLevelUpAudio)
 
     //thirty second sound
     const [audioThirtySecond] = useState(new Audio(thirtySecondAudio))
@@ -195,7 +195,7 @@ export const VideoPlayer = ({profile}) => {
         handleReset()
     }, [playingThirtySecondAudio])
 
-    console.log("thirty audio", playingThirtySecondAudio)
+    // console.log("thirty audio", playingThirtySecondAudio)
 
     //coin sound
     const [audioCoin] = useState(new Audio(coinAudio))
@@ -218,7 +218,7 @@ export const VideoPlayer = ({profile}) => {
         setResetAudio(true)
     }
 
-    console.log("reset audio", resetAudio)
+    // console.log("reset audio", resetAudio)
 
     return (
         <>

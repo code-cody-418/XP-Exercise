@@ -23,7 +23,8 @@ import {settingKorraMove} from "../../../store/trainer-Slices/korraSlice";
 import {SelectCharacterButtons} from "./SelectCharacterButtons";
 import {VideoPlayer} from "./VideoPlayer";
 import {settingVideoFinishedModal} from "../../../store/VideoFinishedModalSlice";
-import {EventParticipation} from "./EventParticipation";
+import {EventParticipationInfo} from "./EventParticipationInfo";
+import {fetchParticipation} from "../../../store/eventParticipationSlices/participationSlice";
 
 
 export const Home = () => {
@@ -39,6 +40,8 @@ export const Home = () => {
     const narutoAction = useSelector((state) => state.narutoMove.setMove)
     const thirtySeconds = useSelector(state => state.thirtySecondTimer.setThirtySecondsTimer)
     const videoFinished = useSelector(state => state.videoFinishedModal.setVideoFinishedModal)
+    const participation = useSelector((state) => state.participation ? state.participation : null)
+
 
     //redux functionality to get profile data
     const {authenticatedUser} = useJwtToken();
@@ -46,9 +49,11 @@ export const Home = () => {
     const sideEffects = () => {
         if (authenticatedUser?.profileId) {
             dispatch(fetchProfileByProfileId(authenticatedUser.profileId));
+            dispatch(fetchParticipation(authenticatedUser.profileId))
         }
         // dispatch(fetchAuth());
     }
+
 
     useEffect(sideEffects, [authenticatedUser, dispatch]);
 
@@ -73,6 +78,11 @@ export const Home = () => {
         dispatch(settingGokuMove(moves.celebration))
     }
 
+//menu modal
+    const [show, setShow] = useState(false);
+
+    const handleMenuClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     // array of youtube videos
     // const youTubePlaylists = [
@@ -80,7 +90,6 @@ export const Home = () => {
     //     'https://www.youtube.com/embed/4zHK8pRl78o',
     //     'https://www.youtube.com/embed/dY09rc_8-Rc'
     // ]
-
 //_____________________________________________________________________________________________________________________
     return (
         <>
@@ -110,7 +119,8 @@ export const Home = () => {
             </Modal>
             <Container fluid={true}>
                 <Row>
-                    <Menu profile={profile} />
+                    <Menu profile={profile} participation={participation} handleClose={handleMenuClose}
+                          handleShow={handleShow} show={show}/>
                 </Row>
                 <Row>
                     <h1 className="trainerTitle text-center">Trainers</h1>
@@ -170,7 +180,7 @@ export const Home = () => {
                     </Col>
                 </Row>
                 <Row className="justify-content-center mb-3 align-items-center">
-                    <SelectCharacterButtons />
+                    <SelectCharacterButtons/>
                     <Col md={6} lg={4} className='canvasSize me-0 pe-0'>
 
                         <AnimationScene gokuAction={gokuAction} narutoAction={narutoAction}
@@ -186,14 +196,19 @@ export const Home = () => {
                         </div>
                     </Col>
                     <Col lg={4} className='ms-0 ps-0 removeTop'>
-                        <VideoPlayer profile={profile} />
-                        <div className='underCanvas'>
-                            <ProfileInfo profile={profile} videoPlay={videoPlay} />
+                        <VideoPlayer profile={profile}/>
+                        <div
+                            className='underCanvas'
+                            onClick={() => setShow(true)}
+                        >
+                            <ProfileInfo profile={profile} videoPlay={videoPlay} participation={participation}/>
                         </div>
+                        <EventParticipationInfo profile={profile} participation={participation}/>
                     </Col>
                 </Row>
             </Container>
-            <EventParticipation authentificatedUser={authenticatedUser} />
+
+
         </>
     )
 }

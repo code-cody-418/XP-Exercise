@@ -31,7 +31,7 @@ const reducer = combineReducers({
     videoSecondsTimer,
     videoFinishedModal,
     itemShop,
-    participation
+    participation,
 
 })
 
