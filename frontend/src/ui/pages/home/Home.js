@@ -119,8 +119,7 @@ export const Home = () => {
             </Modal>
             <Container fluid={true}>
                 <Row>
-                    <Menu profile={profile} participation={participation} handleClose={handleMenuClose}
-                          handleShow={handleShow} show={show}/>
+                    <Menu profile={profile} />
                 </Row>
                 <Row>
                     <h1 className="trainerTitle text-center">Trainers</h1>

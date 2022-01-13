@@ -5,9 +5,13 @@ import { fetchProfileByProfileId } from "../../../store/profileSlice";
 import { Button } from "react-bootstrap";
 import present from "../../../images/present.png";
 import { EventParticipationInfo } from "../../pages/home/EventParticipationInfo";
+import { useSelector } from "react-redux";
 
 // shows profile information on state change
-export const ProfileInfo = ({ profile, videoPlay, participation }) => {
+export const ProfileInfo = ({ profile, videoPlay }) => {
+
+    const participation = useSelector((state) => state.participation ? state.participation : null)
+
   const [progressBarExp, setProgressBarExp] = useState("0%");
 
   //this updates the exp bar 
