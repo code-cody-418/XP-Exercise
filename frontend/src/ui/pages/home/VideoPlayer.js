@@ -219,10 +219,16 @@ export const VideoPlayer = ({profile}) => {
     }
 
     // console.log("reset audio", resetAudio)
+    // array of youtube videos
+    const youTubePlaylists = [
+        'https://www.youtube.com/embed/3ZHwkpyvDqE',
+        'https://www.youtube.com/embed/4zHK8pRl78o',
+        'https://www.youtube.com/embed/dY09rc_8-Rc'
+    ]
 
     return (
         <>
-            <ReactPlayer url={animeMontage}
+            <ReactPlayer url={youTubePlaylists}
 
                          width={'100%'}
                          height={'400px'}
