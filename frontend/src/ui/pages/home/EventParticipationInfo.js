@@ -1,9 +1,8 @@
-import React, {useEffect, useState, Suspense} from "react";
+import React, {useEffect, useState,} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchParticipation} from "../../../store/eventParticipationSlices/participationSlice";
 import {httpConfig} from "../../shared/utils/http-config";
 import '../../shared/main-nav/sign-in/menuStyle.css'
-import {Button} from "react-bootstrap";
 import {fetchProfileByProfileId} from "../../../store/profileSlice";
 import "../../styles.css"
 import christmasSound from "../../../sounds/christmas-happy-music.wav"
@@ -126,7 +125,7 @@ export const EventParticipationInfo = ({profile, participation}) => {
         } else {
             return (
                 <>
-                    <h2 className="eventTitle" >Christmas Event</h2>
+                    <h2 className="eventTitle" >Event</h2>
                     <div className="progress progressLevel ms-1">
                         <div className="progress-bar progress-bar-striped bg-danger progress-bar-animated  progressText"
                              style={{width: progressBarExp}}>Event Progress

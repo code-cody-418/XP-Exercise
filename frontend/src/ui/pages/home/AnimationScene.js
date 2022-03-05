@@ -48,18 +48,7 @@ export default function AnimationScene({name, kakashiAction, gokuAction, narutoA
                         <Kakashi kakashiAction={kakashiAction} name={name}/>
                         <Korra korraAction={korraAction} name={name}/>
 
-                        <group position={[-10, 10, 0]}>
-                            <ChristmasTree />
-                        </group>
-
-
-                        {/*<ChristmasRedBall position = {[10, 10, 0]} />*/}
-
-
-                        <SnowFlakes02 snow={"snowFallingSeven"}/>
-                        <SnowFlakes02 snow={"snowFallingEight"}/>
-                        <SnowFlakes02 snow={"snowFallingNine"}/>
-
+                        
                         <mesh
                             rotation={[-Math.PI / 2, 0, 0]}
                             position={[0, 0, 0]}
@@ -68,6 +57,18 @@ export default function AnimationScene({name, kakashiAction, gokuAction, narutoA
                             <planeBufferGeometry attach='geometry' args={[20, 90]}/>
                             {/*<shadowMaterial attach='material' opacity={0.3} />*/}
                             <meshStandardMaterial attach='material' color={"#add4e3"}/>
+
+
+                        {/* christamas event */}
+                        {/* <group position={[-10, 10, 0]}>
+                        <ChristmasTree />
+                        </group> */}
+                        {/*<ChristmasRedBall position = {[10, 10, 0]} />*/}
+                        {/* <SnowFlakes02 snow={"snowFallingSeven"}/>
+                        <SnowFlakes02 snow={"snowFallingEight"}/>
+                        <SnowFlakes02 snow={"snowFallingNine"}/> */}
+
+
                         </mesh>
                     </group>
                 </Suspense>
