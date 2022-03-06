@@ -1,18 +1,12 @@
 import React, {Suspense} from "react";
 import "../../styles.css";
 import {Canvas} from "@react-three/fiber";
-import {Environment, OrbitControls} from "@react-three/drei";
+import {Environment} from "@react-three/drei";
 import Goku01 from "../../../3D-Models/Goku01";
 import Naruto from "../../../3D-Models/Naruto";
 import Kakashi from "../../../3D-Models/Kakashi";
 import Korra from "../../../3D-Models/Korra";
 import backgroundHDR from "../../../images/black-hdri.HDR"
-import ChristmasTree from "../../../3D-Models/event-models/Christmas-tree";
-import ChristmasRedBall from "../../../3D-Models/event-models/Christmas-red-ball";
-
-import SnowFlakes02 from "../../../3D-Models/event-models/Snow-flakes-02";
-import Coins from "../../../3D-Models/Coins";
-
 
 export default function AnimationScene({name, kakashiAction, gokuAction, narutoAction, korraAction}) {
     return (

@@ -25,6 +25,7 @@ import { VideoPlayer } from "./VideoPlayer";
 import { settingVideoFinishedModal } from "../../../store/VideoFinishedModalSlice";
 import { EventParticipationInfo } from "./EventParticipationInfo";
 import { fetchParticipation } from "../../../store/eventParticipationSlices/participationSlice";
+import "../../hud-home.css";
 
 export const Home = () => {
   //redux dispatch to manage the state of the trainer name, move and video play
@@ -124,7 +125,8 @@ export const Home = () => {
           )}
         </Modal.Footer>
       </Modal>
-      <Container fluid={true}>
+
+      {/* <Container fluid={true} className="hudOverLay">
         <Row>
           <Menu profile={profile} />
         </Row>
@@ -195,14 +197,7 @@ export const Home = () => {
         </Row>
         <Row className="justify-content-center mb-3 align-items-center">
           <SelectCharacterButtons />
-          <Col md={6} lg={4} className="canvasSize me-0 pe-0">
-            <AnimationScene
-              gokuAction={gokuAction}
-              narutoAction={narutoAction}
-              kakashiAction={kakashiAction}
-              korraAction={korraAction}
-              name={name}
-            />
+          <Col md={6} lg={4} className="me-0 pe-0">
             <div className="underCanvas">
               <Button className="thirtySecondTimerButton mt-0">
                 {thirtySeconds}
@@ -231,7 +226,107 @@ export const Home = () => {
             />
           </Col>
         </Row>
-      </Container>
+      </Container> */}
+      <div className="menuHud">
+        <Menu profile={profile} />
+      </div>
+      <div className="trainerSelectHud">
+        <img
+          src={goku}
+          alt="Goku training"
+          onPointerOver={() => setHovered(true)}
+          onPointerOut={() => setHovered(false)}
+          onClick={() => {
+            dispatch(settingName(names.goku));
+            dispatch(settingGokuMove(moves.idle));
+          }}
+          className="rounded-circle border border-dark mx-auto d-block"
+          width="75"
+          height="75"
+        />
+
+        <img
+          src={naruto}
+          alt="Naruto training"
+          onPointerOver={() => setHovered(true)}
+          onPointerOut={() => setHovered(false)}
+          onClick={() => {
+            dispatch(settingName(names.naruto));
+            dispatch(settingNarutoMove(moves.idle));
+          }}
+          className="rounded-circle border border-dark mx-auto d-block"
+          width="75"
+          height="75"
+        />
+
+        <img
+          src={kakashi}
+          alt="Kakashi training"
+          onPointerOver={() => setHovered(true)}
+          onPointerOut={() => setHovered(false)}
+          onClick={() => {
+            dispatch(settingName(names.kakashi));
+            dispatch(settingKakashiMove(moves.idle));
+          }}
+          className="rounded-circle border border-dark mx-auto d-block"
+          width="75"
+          height="75"
+        />
+
+        <img
+          src={korra}
+          alt="Korra training"
+          onPointerOver={() => setHovered(true)}
+          onPointerOut={() => setHovered(false)}
+          onClick={() => {
+            dispatch(settingName(names.korra));
+            dispatch(settingKorraMove(moves.idle));
+          }}
+          className="rounded-circle border border-dark mx-auto d-block"
+          width="75"
+          height="75"
+        />
+      </div>
+
+      <div className="timerHud">
+        <Button className="thirtySecondTimerButton mt-0">
+          {thirtySeconds}
+        </Button>
+        <DisplayAction
+          gokuAction={gokuAction}
+          narutoAction={narutoAction}
+          kakashiAction={kakashiAction}
+          korraAction={korraAction}
+          name={name}
+        />
+      </div>
+
+      <div className="profileInfoHud">
+        <ProfileInfo
+          profile={profile}
+          videoPlay={videoPlay}
+          participation={participation}
+        />
+      </div>
+
+      <div className="eventInfoHud">
+        <EventParticipationInfo
+          profile={profile}
+          participation={participation}
+        />
+      </div>
+
+      <div className="videoHud">
+        <VideoPlayer profile={profile} />
+      </div>
+
+      <AnimationScene
+        gokuAction={gokuAction}
+        narutoAction={narutoAction}
+        kakashiAction={kakashiAction}
+        korraAction={korraAction}
+        name={name}
+      />
     </>
   );
 };

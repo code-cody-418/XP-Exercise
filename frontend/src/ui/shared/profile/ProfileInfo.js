@@ -1,25 +1,26 @@
 import React, { useEffect, useState } from "react";
 import twoCoins from "../../../images/two-coins.png";
 import "../../styles.css";
-import { fetchProfileByProfileId } from "../../../store/profileSlice";
-import { Button } from "react-bootstrap";
 import present from "../../../images/present.png";
-import { EventParticipationInfo } from "../../pages/home/EventParticipationInfo";
 import { useSelector } from "react-redux";
 
 // shows profile information on state change
 export const ProfileInfo = ({ profile, videoPlay }) => {
-
-    const participation = useSelector((state) => state.participation ? state.participation : null)
+  const participation = useSelector((state) =>
+    state.participation ? state.participation : null
+  );
 
   const [progressBarExp, setProgressBarExp] = useState("0%");
 
-  //this updates the exp bar 
+  //this updates the exp bar
   useEffect(() => {
     if (profile === null) {
     } else if (profile != null) {
-        console.log("profile exp index of", profile.profileExp )
-        console.log("profile exp index of", (profile.profileExp + "").indexOf("20"))
+      console.log("profile exp index of", profile.profileExp);
+      console.log(
+        "profile exp index of",
+        (profile.profileExp + "").indexOf("20")
+      );
 
       //this has two parts. First it checks whether user is less than 100 exp and updates bar based on that, then if user is over 100 exp it updates based on the tenth digit of exp
       if (profile.profileExp <= 100) {

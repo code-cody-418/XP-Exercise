@@ -14,15 +14,17 @@ body,
 
 body {
     /*background: #7b7979 !important;*/
-    background-image: url('../images/blue_wavy_line_with_light_effect_background.png');
+    /* background-image: url('../images/blue_wavy_line_with_light_effect_background.png'); */
     font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
     helvetica neue, helvetica, ubuntu, roboto, noto, segoe ui, arial, sans-serif;
 }
 
 .canvasSize {
-    /*width: 100%;*/
-    height: 400px;
+    /* position: absolute; */
+    width: 100vw;
+    height: 100vh;
 }
+
 
 .trainerTitle {
     color: #add4e3;
@@ -73,11 +75,11 @@ body {
     /*opacity: 85%;*/
 }
 
-.underCanvas {
+/* .underCanvas {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
-}
+} */
 
 .actionText {
     color: white;

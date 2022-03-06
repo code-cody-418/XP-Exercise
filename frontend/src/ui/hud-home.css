@@ -1,0 +1,65 @@
+.menuHud {
+    position: absolute;
+    right: 0;
+    z-index: 1;
+}
+
+.trainerSelectHud {
+    position: absolute;
+    top: 7%;
+    right: 0;
+    z-index: 1;
+}
+
+.timerHud {
+    position: absolute;
+    bottom: 0;
+    left: 46%;
+    z-index: 1;
+}
+
+.profileInfoHud {
+    width: 10vw !important;
+    position: absolute;
+    top: 5%;
+    left: 2%;
+    z-index: 1;
+}
+
+.eventInfoHud {
+    position: absolute;
+    top: 5%;
+    left: 15%;
+    z-index: 1;
+}
+
+.videoHud {
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    z-index: 1;
+}
+
+@media screen and (max-width: 900px) {
+    .profileInfoHud {
+        display: none;
+    }
+    .eventInfoHud{
+        display: none;
+    }
+    .videoHud{
+        display: none;
+    }
+}
+
+@media  screen and (max-width: 700px) {
+    .timerHud {
+        left: 40%;
+    }
+}
+
+@media  screen and (max-width: 700px) {
+    .timerHud {
+        left: 35%;
+    }
+}
