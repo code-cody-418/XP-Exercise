@@ -1,12 +1,13 @@
 import React, { Suspense } from "react";
 import "../../styles.css";
 import { Canvas } from "@react-three/fiber";
-import { Environment } from "@react-three/drei";
+import { Environment, OrbitControls } from "@react-three/drei";
 import Goku01 from "../../../3D-Models/Goku01";
 import Naruto from "../../../3D-Models/Naruto";
 import Kakashi from "../../../3D-Models/Kakashi";
 import Korra from "../../../3D-Models/Korra";
 import backgroundHDR from "../../../images/black-hdri.HDR";
+import { FloorGym } from "./3D-Components/gym/FloorGym";
 
 export default function AnimationScene({
   name,
@@ -23,7 +24,7 @@ export default function AnimationScene({
           resize={0.5}
           onCreated={({ camera }) => camera.lookAt(0, 0, -35)}
         >
-          {/*<OrbitControls />*/}
+          <OrbitControls />
           {/*<ambientLight intensity={1} />*/}
           <directionalLight
             castShadow
@@ -47,14 +48,7 @@ export default function AnimationScene({
               <Kakashi kakashiAction={kakashiAction} name={name} />
               <Korra korraAction={korraAction} name={name} />
 
-              <mesh
-                rotation={[-Math.PI / 2, 0, 0]}
-                position={[0, 0, 0]}
-                receiveShadow
-              >
-                <planeBufferGeometry attach="geometry" args={[20, 90]} />
-                {/*<shadowMaterial attach='material' opacity={0.3} />*/}
-                <meshStandardMaterial attach="material" color={"#add4e3"} />
+              <FloorGym rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]} args={[300, 500]} />
 
                 {/* christamas event */}
                 {/* <group position={[-10, 10, 0]}>
@@ -64,7 +58,7 @@ export default function AnimationScene({
                 {/* <SnowFlakes02 snow={"snowFallingSeven"}/>
                         <SnowFlakes02 snow={"snowFallingEight"}/>
                         <SnowFlakes02 snow={"snowFallingNine"}/> */}
-              </mesh>
+              
             </group>
           </Suspense>
         </Canvas>
