@@ -288,6 +288,10 @@ export const Home = () => {
         />
       </div>
 
+      <div className="characterButtonHud">
+        <SelectCharacterButtons />
+      </div>
+
       <div className="timerHud">
         <Button className="thirtySecondTimerButton mt-0">
           {thirtySeconds}
