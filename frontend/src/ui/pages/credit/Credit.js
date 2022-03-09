@@ -168,6 +168,8 @@ export const Credit = () => {
                 </div>
             </div>
 
+            {/* add gym floor texture */}
+
         </>
     )
 }

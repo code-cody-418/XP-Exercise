@@ -17,7 +17,6 @@ export const FloorGym = ({position, rotation, args}) => {
     <>
       <mesh rotation={rotation} position={position} receiveShadow>
         <planeBufferGeometry args={args} />
-        {/*<shadowMaterial attach='material' opacity={0.3} />*/}
         <meshStandardMaterial map={concreteTexture} />
       </mesh>
     </>
