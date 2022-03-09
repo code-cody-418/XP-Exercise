@@ -7,7 +7,7 @@ import Naruto from "../../../3D-Models/Naruto";
 import Kakashi from "../../../3D-Models/Kakashi";
 import Korra from "../../../3D-Models/Korra";
 import backgroundHDR from "../../../images/black-hdri.HDR";
-import { FloorGym } from "./3D-Components/gym/FloorGym";
+import { Gym } from "./3D-Components/gym/Gym";
 
 export default function AnimationScene({
   name,
@@ -48,17 +48,7 @@ export default function AnimationScene({
               <Kakashi kakashiAction={kakashiAction} name={name} />
               <Korra korraAction={korraAction} name={name} />
 
-              <FloorGym rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]} args={[300, 500]} />
-
-                {/* christamas event */}
-                {/* <group position={[-10, 10, 0]}>
-                        <ChristmasTree />
-                        </group> */}
-                {/*<ChristmasRedBall position = {[10, 10, 0]} />*/}
-                {/* <SnowFlakes02 snow={"snowFallingSeven"}/>
-                        <SnowFlakes02 snow={"snowFallingEight"}/>
-                        <SnowFlakes02 snow={"snowFallingNine"}/> */}
-              
+              <Gym />
             </group>
           </Suspense>
         </Canvas>
