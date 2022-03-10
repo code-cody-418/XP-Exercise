@@ -1,0 +1,8 @@
+.target {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    z-index: 1;
+    /* bottom: auto; */
+
+}
