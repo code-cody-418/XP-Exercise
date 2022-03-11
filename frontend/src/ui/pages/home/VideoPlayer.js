@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import animeMontage from "../../../videos/Anime Training Montage AMV.mp4";
+import animeMontage from "../../../videos/Anime-Training-Montage-AMV.mp4";
 import {settingVideoPlay} from "../../../store/videoPlaySlice";
 import {names} from "../../shared/interfaces/names";
 import {settingKakashiMove} from "../../../store/trainer-Slices/kakashiSlice";
@@ -17,6 +17,7 @@ import {httpConfig} from "../../shared/utils/http-config";
 import levelUpAudio from "../../../sounds/exp-up-sound.wav"
 import thirtySecondAudio from "../../../sounds/thirty-second-sound.wav"
 import coinAudio from "../../../sounds/coin-sound.wav"
+import "./3D-Components/video/video.css"
 
 export const VideoPlayer = ({profile}) => {
 
@@ -228,8 +229,11 @@ export const VideoPlayer = ({profile}) => {
 
     return (
         <>
-            <ReactPlayer url={youTubePlaylists}
-
+            <video src={animeMontage} id="videoPlayer" className="videoPlayer" />
+                
+            
+            {/* <ReactPlayer url={animeMontage}
+                        className="videoPlayer"
                          width={'100%'}
                          height={'400px'}
                          playing={videoPlay}
@@ -256,7 +260,8 @@ export const VideoPlayer = ({profile}) => {
                          controls={true}
                 // muted={true}
                 // onProgress={}
-            />
+            /> */}
         </>
     )
 }
+

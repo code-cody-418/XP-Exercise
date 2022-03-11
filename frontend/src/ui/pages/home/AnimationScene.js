@@ -9,6 +9,7 @@ import Korra from "../../../3D-Models/Korra";
 import { Gym } from "./3D-Components/gym/Gym";
 import { Debug, Physics } from "@react-three/cannon";
 import { MovingPlayer } from "./3D-Components/player/MovingPlayer";
+import { Video } from "./3D-Components/video/Video";
 
 export default function AnimationScene({
   name,
@@ -25,7 +26,7 @@ export default function AnimationScene({
         resize={0.5}
         onCreated={({ camera }) => camera.lookAt(0, 0, -35)}
       >
-        {/* <OrbitControls /> */}
+        <OrbitControls />
         {/*<ambientLight intensity={1} />*/}
         <directionalLight
           castShadow
@@ -48,8 +49,9 @@ export default function AnimationScene({
               <Naruto narutoAction={narutoAction} name={name} />
               <Kakashi kakashiAction={kakashiAction} name={name} />
               <Korra korraAction={korraAction} name={name} />
-              <MovingPlayer />
+              {/* <MovingPlayer /> */}
               <Gym />
+              <Video />
             </Debug>
           </Physics>
         </Suspense>
