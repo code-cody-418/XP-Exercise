@@ -42,6 +42,8 @@ export default function AnimationScene({
         />
         <pointLight position={[-10, 0, -20]} intensity={0.5} />
         <pointLight position={[0, 0, 0]} intensity={1.5} />
+        
+        <Video />
         <Suspense fallback={null}>
           <Physics>
             <Debug color="black" scale={1.1}>
@@ -51,7 +53,7 @@ export default function AnimationScene({
               <Korra korraAction={korraAction} name={name} />
               {/* <MovingPlayer /> */}
               <Gym />
-              <Video />
+              
             </Debug>
           </Physics>
         </Suspense>

@@ -1,28 +1,31 @@
 import React, { useRef, useState } from "react";
 import animeMontage from "../../../../../videos/Anime-Training-Montage-AMV.mp4";
 import * as THREE from "three";
+import { useAspect } from "@react-three/drei";
 
 export const Video = () => {
-    const video = document.getElementById("videoPlayer");
+  const [video] = useState(() => {
+    const vid = document.querySelector("video");
+    return vid;
+  });
 
-    console.log("video", video);
-
-//   const [video] = useState(() => {
-//     const vid = document.createElement("video");
-//     vid.src = animeMontage;
-//     vid.crossOrigin = "Annonymous";
-
-//     return vid;
-//   });
+  const size = useAspect(1800, 1000);
+  // const [video] = useState(() => {
+  //   const vid = document.createElement('video')
+  //   vid.src = animeMontage;
+  //   vid.crossOrigin = "Anonymous";
+  //   vid.loop = true
+  //   return vid;
+  // });
 
   return (
     <>
-      <mesh>
-        <planeGeometry />
-        <meshStandardMaterial emissive={"white"} side={THREE.DoubleSide}>
+      <mesh scale={size} position={[0, 15, -80]}>
+        <planeBufferGeometry />
+        <meshBasicMaterial>
           <videoTexture attach="map" args={[video]} />
-          <videoTexture attach="emissiveMap" args={[video]} />
-        </meshStandardMaterial>
+          {/* <videoTexture attach="emissiveMap" args={[video]} /> */}
+        </meshBasicMaterial>
       </mesh>
     </>
   );
