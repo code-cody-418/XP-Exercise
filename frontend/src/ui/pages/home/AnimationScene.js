@@ -43,7 +43,7 @@ export default function AnimationScene({
         <pointLight position={[-10, 0, -20]} intensity={0.5} />
         <pointLight position={[0, 0, 0]} intensity={1.5} />
         
-        <Video />
+        <Video name={"video"} />
         <Suspense fallback={null}>
           <Physics>
             <Debug color="black" scale={1.1}>

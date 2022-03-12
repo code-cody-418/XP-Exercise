@@ -16,10 +16,10 @@ export const Gym = () => {
         position={[0, 0, 0]}
         args={[300, 500]}
       />
-      <WallsGym position={[0, 50, -250]} rotation={[0, 0, 0]} args={[300, 100]} whiteMarbleTexture={whiteMarbleTexture} />
-      <WallsGym position={[0, 50, 250]} rotation={[0, 0, 0]} args={[300, 100]} whiteMarbleTexture={whiteMarbleTexture} />
-      <WallsGym position={[150, 50, 0]} rotation={[0, Math.PI / 2, 0]} args={[500, 100]} whiteMarbleTexture={whiteMarbleTexture} />
-      <WallsGym position={[-150, 50, 0]} rotation={[0, Math.PI / 2, 0]} args={[500, 100]} whiteMarbleTexture={whiteMarbleTexture} />
+      <WallsGym name={"back-wall"} position={[0, 50, -250]} rotation={[0, 0, 0]} args={[300, 100]} whiteMarbleTexture={whiteMarbleTexture} />
+      <WallsGym name={"front-wall"} position={[0, 50, 250]} rotation={[0, 0, 0]} args={[300, 100]} whiteMarbleTexture={whiteMarbleTexture} />
+      <WallsGym name={"right-wall"} position={[150, 50, 0]} rotation={[0, Math.PI / 2, 0]} args={[500, 100]} whiteMarbleTexture={whiteMarbleTexture} />
+      <WallsGym name={"left-wall"} position={[-150, 50, 0]} rotation={[0, Math.PI / 2, 0]} args={[500, 100]} whiteMarbleTexture={whiteMarbleTexture} />
     </>
   );
 };

@@ -1,9 +1,7 @@
 import React, { useRef, useState } from "react";
-import animeMontage from "../../../../../videos/Anime-Training-Montage-AMV.mp4";
-import * as THREE from "three";
 import { useAspect } from "@react-three/drei";
 
-export const Video = () => {
+export const Video = ({name}) => {
   const [video] = useState(() => {
     const vid = document.querySelector("video");
     return vid;
@@ -20,7 +18,7 @@ export const Video = () => {
 
   return (
     <>
-      <mesh scale={size} position={[0, 15, -80]}>
+      <mesh name={name} scale={size} position={[0, 15, -249]}>
         <planeBufferGeometry />
         <meshBasicMaterial>
           <videoTexture attach="map" args={[video]} />
