@@ -59,7 +59,7 @@ export const SelectCharacterButtons = () => {
     } else if (name === names.kakashi && autoWorkout === false) {
         return (
             <>
-                <Col md={2} lg={1} className='mx-0 px-0'>
+                {/* <Col md={2} lg={1} className='mx-0 px-0'> */}
                     <Button
                         className='characterButton'
                         onClick={() => {
@@ -71,37 +71,37 @@ export const SelectCharacterButtons = () => {
                             onClick={() => dispatch(settingKakashiMove(moves.idle))}>Chillin</Button>
                     <Button className='characterButton'
                             onClick={() => dispatch(settingKakashiMove(moves.armStretch))}>Arm Stretch</Button>
-                </Col>
-                <Col md={2} lg={1} className='mx-0 px-0'>
+                {/* </Col> */}
+                {/* <Col md={2} lg={1} className='mx-0 px-0'> */}
                     <Button className='characterButton'
                             onClick={() => dispatch(settingKakashiMove(moves.neckStretch))}>Neck Stretch</Button>
                     <Button className='characterButton'
                             onClick={() => dispatch(settingKakashiMove(moves.touchToes))}>Toe Touch</Button>
                     <Button className='characterButton'
                             onClick={() => dispatch(settingKakashiMove(moves.pushUp))}>Push Ups</Button>
-                </Col>
-                <Col md={2} lg={1} className='mx-0 px-0'>
+                {/* </Col> */}
+                {/* <Col md={2} lg={1} className='mx-0 px-0'> */}
                     <Button className='characterButton'
                             onClick={() => dispatch(settingKakashiMove(moves.sitUps))}>Sit-ups</Button>
                     <Button className='characterButton'
                             onClick={() => dispatch(settingKakashiMove(moves.jumpingJack))}>Jumping Jacks</Button>
                     <Button className='characterButton'
                             onClick={() => dispatch(settingKakashiMove(moves.kick))}>Kick</Button>
-                </Col>
-                <Col md={2} lg={1} className='mx-0 px-0'>
+                {/* </Col>
+                <Col md={2} lg={1} className='mx-0 px-0'> */}
                     <Button className='characterButton'
                             onClick={() => dispatch(settingKakashiMove(moves.squat))}>Squat</Button>
                     <Button className='characterButton'
                             onClick={() => dispatch(settingKakashiMove(moves.bicepCurl))}>Bicep Curl</Button>
                     <Button className='characterButton'
                             onClick={() => dispatch(settingKakashiMove(moves.coolDown))}>Cool Down</Button>
-                </Col>
+                {/* </Col> */}
             </>
         )
     } else if (name === names.naruto && autoWorkout === false) {
         return (
             <>
-                <Col md={2} lg={1} className='mx-0 px-0'>
+                {/* <Col md={2} lg={1} className='mx-0 px-0'> */}
                     <Button
                         className='characterButton'
                         onClick={() => {
@@ -115,16 +115,16 @@ export const SelectCharacterButtons = () => {
                     <Button className='characterButton'
                             onClick={() => dispatch(settingNarutoMove(moves.touchToes))}>Touch
                         Toes</Button>
-                </Col>
-                <Col md={2} lg={1} className='mx-0 px-0'>
+                {/* </Col> */}
+                {/* <Col md={2} lg={1} className='mx-0 px-0'> */}
                     <Button className='characterButton'
                             onClick={() => dispatch(settingNarutoMove(moves.upRock))}>Uprock</Button>
                     <Button className='characterButton'
                             onClick={() => dispatch(settingNarutoMove(moves.footwork))}>Footwork</Button>
                     <Button className='characterButton'
                             onClick={() => dispatch(settingNarutoMove(moves.freeze))}>Freeze</Button>
-                </Col>
-                <Col md={2} lg={1} className='mx-0 px-0'>
+                {/* </Col> */}
+                {/* <Col md={2} lg={1} className='mx-0 px-0'> */}
                     <Button className='characterButton'
                             onClick={() => dispatch(settingNarutoMove(moves.jumpingJack))}>Jumping
                         Jacks</Button>
@@ -132,8 +132,8 @@ export const SelectCharacterButtons = () => {
                             onClick={() => dispatch(settingNarutoMove(moves.bikeCrunch))}>Crunch's</Button>
                     <Button className='characterButton' onClick={() => dispatch(settingNarutoMove(moves.sitUps))}>Sit
                         Ups</Button>
-                </Col>
-                <Col md={2} lg={1} className='mx-0 px-0'>
+                {/* </Col> */}
+                {/* <Col md={2} lg={1} className='mx-0 px-0'> */}
                     <Button className='characterButton' onClick={() => dispatch(settingNarutoMove(moves.pushUp))}>Push
                         Up</Button>
                     <Button className='characterButton'
@@ -141,13 +141,13 @@ export const SelectCharacterButtons = () => {
                         Curl</Button>
                     <Button className='characterButton' onClick={() => dispatch(settingNarutoMove(moves.coolDown))}>Cool
                         Down</Button>
-                </Col>
+                {/* </Col> */}
             </>
         )
     } else if (name === names.goku && autoWorkout === false) {
         return (
             <>
-                <Col md={2} lg={1} className='mx-0 px-0'>
+                {/* <Col md={2} lg={1} className='mx-0 px-0'> */}
                     <Button
                         className='characterButton'
                         onClick={() => {
@@ -159,8 +159,8 @@ export const SelectCharacterButtons = () => {
                         Toes</Button>
                     <Button className='characterButton' onClick={() => dispatch(settingGokuMove(moves.armStretch))}>Arm
                         Stretch</Button>
-                </Col>
-                <Col md={2} lg={1} className='mx-0 px-0'>
+                {/* </Col> */}
+                {/* <Col md={2} lg={1} className='mx-0 px-0'> */}
                     <Button className='characterButton'
                             onClick={() => dispatch(settingGokuMove(moves.jumpingJack))}>Jumping
                         Jacks</Button>
@@ -168,29 +168,29 @@ export const SelectCharacterButtons = () => {
                             onClick={() => dispatch(settingGokuMove(moves.jab))}>Jab</Button>
                     <Button className='characterButton'
                             onClick={() => dispatch(settingGokuMove(moves.hook))}>Hook</Button>
-                </Col>
-                <Col md={2} lg={1} className='mx-0 px-0'>
+                {/* </Col> */}
+                {/* <Col md={2} lg={1} className='mx-0 px-0'> */}
                     <Button className='characterButton' onClick={() => dispatch(settingGokuMove(moves.punchCombo))}>Punch
                         Combo</Button>
                     <Button className='characterButton' onClick={() => dispatch(settingGokuMove(moves.bicepCurl))}>Bicep
                         Curl</Button>
                     <Button className='characterButton'
                             onClick={() => dispatch(settingGokuMove(moves.plank))}>Plank</Button>
-                </Col>
-                <Col md={2} lg={1} className='mx-0 px-0'>
+                {/* </Col> */}
+                {/* <Col md={2} lg={1} className='mx-0 px-0'> */}
                     <Button className='characterButton' onClick={() => dispatch(settingGokuMove(moves.sitUps))}>Sit
                         Ups</Button>
                     <Button className='characterButton' onClick={() => dispatch(settingGokuMove(moves.pushUp))}>Push
                         Ups</Button>
                     <Button className='characterButton' onClick={() => dispatch(settingGokuMove(moves.coolDown))}>Cool
                         Down</Button>
-                </Col>
+                {/* </Col> */}
             </>
         )
     } else if (name === names.korra && autoWorkout === false) {
         return (
             <>
-                <Col md={2} lg={1} className='mx-0 px-0'>
+                {/* <Col md={2} lg={1} className='mx-0 px-0'> */}
                     <Button
                         className='characterButton'
                         onClick={() => {
@@ -202,8 +202,8 @@ export const SelectCharacterButtons = () => {
                     <Button className='characterButton'
                             onClick={() => dispatch(settingKorraMove(moves.armStretch))}>Arm
                         Stretch</Button>
-                </Col>
-                <Col md={2} lg={1} className='mx-0 px-0'>
+                {/* </Col> */}
+                {/* <Col md={2} lg={1} className='mx-0 px-0'> */}
                     <Button className='characterButton' onClick={() => dispatch(settingKorraMove(moves.touchToes))}>Touch
                         Toes</Button>
 
@@ -213,8 +213,8 @@ export const SelectCharacterButtons = () => {
                             onClick={() => dispatch(settingKorraMove(moves.crossJumps))}>Cross
                         Jumps</Button>
 
-                </Col>
-                <Col md={2} lg={1} className='mx-0 px-0'>
+                {/* </Col> */}
+                {/* <Col md={2} lg={1} className='mx-0 px-0'> */}
                     <Button className='characterButton'
                             onClick={() => dispatch(settingKorraMove(moves.crossRotation))}>Cross
                         Rotations</Button>
@@ -222,13 +222,13 @@ export const SelectCharacterButtons = () => {
                         Ups</Button>
                     <Button className='characterButton' onClick={() => dispatch(settingKorraMove(moves.sitUps))}>Sit
                         Ups</Button>
-                </Col>
-                <Col md={2} lg={1} className='mx-0 px-0'>
+                {/* </Col> */}
+                {/* <Col md={2} lg={1} className='mx-0 px-0'> */}
                     <Button className='characterButton' onClick={() => dispatch(settingKorraMove(moves.bicepCurl))}>Bicep
                         Curl</Button>
                     <Button className='characterButton' onClick={() => dispatch(settingKorraMove(moves.coolDown))}>Cool
                         Down</Button>
-                </Col>
+                {/* </Col> */}
             </>
         )
     }

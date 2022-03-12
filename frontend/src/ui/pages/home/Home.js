@@ -313,12 +313,12 @@ export const Home = () => {
         />
       </div>
 
-      <div className="eventInfoHud">
+      {/* <div className="eventInfoHud">
         <EventParticipationInfo
           profile={profile}
           participation={participation}
         />
-      </div>
+      </div> */}
 
       <div className="videoHud">
         <VideoPlayer profile={profile} />

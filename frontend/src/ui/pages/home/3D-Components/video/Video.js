@@ -7,7 +7,7 @@ export const Video = ({name}) => {
     return vid;
   });
 
-  const size = useAspect(1800, 1000);
+  // const size = useAspect(1800, 1000);
   // const [video] = useState(() => {
   //   const vid = document.createElement('video')
   //   vid.src = animeMontage;
@@ -18,7 +18,7 @@ export const Video = ({name}) => {
 
   return (
     <>
-      <mesh name={name} scale={size} position={[0, 15, -249]}>
+      <mesh name={name} scale={[300, 100, 0]} position={[0, 50, -249]}>
         <planeBufferGeometry />
         <meshBasicMaterial>
           <videoTexture attach="map" args={[video]} />
