@@ -1,5 +1,3 @@
-// import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-// import {FormDebugger} from "../../FormDebugger";
 import React from "react";
 import "./menuStyle.css"
 import {Button} from "react-bootstrap";
@@ -10,12 +8,9 @@ export const SignInFormContent = (props) => {
 		values,
 		errors,
 		touched,
-		dirty,
-		isSubmitting,
 		handleChange,
 		handleBlur,
 		handleSubmit,
-		handleReset
 	} = props;
 	return (
 		<>

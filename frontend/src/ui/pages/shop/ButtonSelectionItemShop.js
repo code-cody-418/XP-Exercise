@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {Button, Col, Container, Image, Row} from "react-bootstrap";
+import {Button, Col, Image} from "react-bootstrap";
 import {httpConfig} from "../../shared/utils/http-config";
 import {fetchProfileByProfileId} from "../../../store/profileSlice";
 import {useDispatch} from "react-redux";

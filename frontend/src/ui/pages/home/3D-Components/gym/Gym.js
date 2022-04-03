@@ -1,7 +1,6 @@
 import React from "react";
 import { FloorGym } from "./FloorGym";
 import { WallsGym } from "./WallsGym";
-import * as THREE from "three"
 import whiteMarble from "../../../../../textures/White_Marble.jpg"
 import { useTexture } from "@react-three/drei";
 

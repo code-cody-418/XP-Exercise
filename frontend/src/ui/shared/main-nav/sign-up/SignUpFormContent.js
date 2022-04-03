@@ -1,5 +1,3 @@
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {FormDebugger} from "../../utils/FormDebugger";
 import React from "react";
 import {Button} from "react-bootstrap";
 

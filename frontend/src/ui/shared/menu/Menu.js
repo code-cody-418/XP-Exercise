@@ -5,7 +5,6 @@ import {fetchAuth} from "../../../store/authSlice";
 import {useDispatch, useSelector} from "react-redux";
 import "../main-nav/sign-in/menuStyle.css"
 import {fetchParticipation} from "../../../store/eventParticipationSlices/participationSlice";
-import {fetchProfileByProfileId} from "../../../store/profileSlice";
 
 export const Menu = () => {
 

@@ -9,14 +9,14 @@ import {useFrame} from "@react-three/fiber";
 
 export default function SnowFlakes02({ ...props }) {
   const group = useRef()
-  const { nodes, materials, animations } = useGLTF(snowFlake)
+  const { nodes, animations } = useGLTF(snowFlake)
   const { actions } = useAnimations(animations, group)
 
 
   useEffect(() => {
     actions[props.snow].reset().play()
     // return () => actions[props.snow].fadeOut(1)
-  }, [actions]);
+  }, [actions, props]);
 
 
   const allSnowFlakes = useRef()

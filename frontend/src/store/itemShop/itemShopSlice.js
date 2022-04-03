@@ -1,6 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {httpConfig} from "../../ui/shared/utils/http-config";
-import profileSlice from "../profileSlice";
 
 const itemShopSlice = createSlice({
     name: "itemShop",

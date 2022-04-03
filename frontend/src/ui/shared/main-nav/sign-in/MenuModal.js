@@ -4,8 +4,6 @@ import {
   Col,
   Container,
   Row,
-  Carousel,
-  Dropdown,
 } from "react-bootstrap";
 import { Modal } from "react-bootstrap";
 import { SignInForm } from "./SignInForm";
@@ -13,17 +11,14 @@ import "./menuStyle.css";
 import { ProfileInfo } from "../../profile/ProfileInfo";
 import { SignOut } from "../sign-out/SignOut";
 import { SignUpModal } from "../sign-up/SignUpModal";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { EventParticipationInfo } from "../../../pages/home/EventParticipationInfo";
 import { Canvas } from "@react-three/fiber";
-import ChristmasHat01 from "../../../../3D-Models/event-models/Christmas-hat-01";
 import ChristmasPresent from "../../../../3D-Models/event-models/Christmas-present";
-import SnowFlakes02 from "../../../../3D-Models/event-models/Snow-flakes-02";
 import { httpConfig } from "../../utils/http-config";
 import { fetchParticipation } from "../../../../store/eventParticipationSlices/participationSlice";
 import { fetchProfileByProfileId } from "../../../../store/profileSlice";
 import Coins from "../../../../3D-Models/Coins";
-import ChristmasTree from "../../../../3D-Models/event-models/Christmas-tree";
 import christmasSound from "../../../../sounds/christmas-happy-music.wav";
 
 export const MenuModal = ({

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Menu } from "../../shared/menu/Menu";
-import { Button, Col, Container, Row, Modal } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
 import goku from "../../../images/goku-trainer.png";
 import naruto from "../../../images/naruto.png";
 import kakashi from "../../../images/kakashi-01.png";
@@ -23,7 +23,6 @@ import { settingKorraMove } from "../../../store/trainer-Slices/korraSlice";
 import { SelectCharacterButtons } from "./SelectCharacterButtons";
 import { VideoPlayer } from "./VideoPlayer";
 import { settingVideoFinishedModal } from "../../../store/VideoFinishedModalSlice";
-import { EventParticipationInfo } from "./EventParticipationInfo";
 import { fetchParticipation } from "../../../store/eventParticipationSlices/participationSlice";
 import "../../hud-home.css";
 

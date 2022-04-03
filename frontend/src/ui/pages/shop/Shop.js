@@ -10,7 +10,7 @@ import {ButtonSelectionItemShop} from "./ButtonSelectionItemShop";
 import {ProfileInfo} from "../../shared/profile/ProfileInfo";
 
 
-export const Shop = ({}) => {
+export const Shop = () => {
 
     const dispatch = useDispatch()
 
