@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 import "../../styles.css";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
+import { OrbitControls, Stats } from "@react-three/drei";
 import Goku01 from "../../../3D-Models/Goku01";
 import Naruto from "../../../3D-Models/Naruto";
 import Kakashi from "../../../3D-Models/Kakashi";
@@ -57,6 +57,7 @@ export default function AnimationScene({
             </Debug>
           </Physics>
         </Suspense>
+        <Stats />
       </Canvas>
     </>
   );

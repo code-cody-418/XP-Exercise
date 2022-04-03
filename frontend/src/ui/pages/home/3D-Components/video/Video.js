@@ -1,5 +1,5 @@
-import React, { useRef, useState } from "react";
-import { useAspect } from "@react-three/drei";
+import React, { useState } from "react";
+
 
 export const Video = ({name}) => {
   const [video] = useState(() => {
