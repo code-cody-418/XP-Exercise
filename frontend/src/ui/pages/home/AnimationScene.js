@@ -26,7 +26,7 @@ export default function AnimationScene({
         resize={0.5}
         onCreated={({ camera }) => camera.lookAt(0, 0, -35)}
       >
-        <OrbitControls />
+        {/* <OrbitControls /> */}
         {/*<ambientLight intensity={1} />*/}
         <directionalLight
           castShadow
@@ -46,7 +46,7 @@ export default function AnimationScene({
         <Video name={"video"} />
         <Suspense fallback={null}>
           <Physics>
-            <Debug color="black" scale={1.1}>
+            {/* <Debug color="black" scale={1.1}> */}
               <Goku01 gokuAction={gokuAction} name={name} />
               <Naruto narutoAction={narutoAction} name={name} />
               <Kakashi kakashiAction={kakashiAction} name={name} />
@@ -54,7 +54,7 @@ export default function AnimationScene({
               {/* <MovingPlayer /> */}
               <Gym />
               
-            </Debug>
+            {/* </Debug> */}
           </Physics>
         </Suspense>
         <Stats />
