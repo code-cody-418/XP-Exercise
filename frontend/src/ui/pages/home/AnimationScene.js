@@ -57,7 +57,7 @@ export default function AnimationScene({
             {/* </Debug> */}
           </Physics>
         </Suspense>
-        <Stats />
+        {/* <Stats /> */}
       </Canvas>
     </>
   );
