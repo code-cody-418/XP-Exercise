@@ -35,7 +35,7 @@ export const Profile = () => {
     //gets the item shop
     const itemShop = useSelector(state => state.itemShop)
 
-    console.log("item shop", itemShop)
+    // console.log("item shop", itemShop)
 
     if (itemShop === null) {
         return <></>

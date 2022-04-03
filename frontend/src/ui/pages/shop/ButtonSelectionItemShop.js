@@ -125,7 +125,7 @@ export const ButtonSelectionItemShop = ({itemShop, profile}) => {
 
     // console.log("ten dollar gift card purchased state", tenDollarGiftCardPurchased)
 
-    console.log("new item shop", newItemShop)
+    // console.log("new item shop", newItemShop)
 
     //sets state of all items to false when modal is closed
     const cancelPurchase = () => {

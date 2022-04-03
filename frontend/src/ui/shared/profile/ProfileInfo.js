@@ -16,11 +16,11 @@ export const ProfileInfo = ({ profile, videoPlay }) => {
   useEffect(() => {
     if (profile === null) {
     } else if (profile != null) {
-      console.log("profile exp index of", profile.profileExp);
-      console.log(
-        "profile exp index of",
-        (profile.profileExp + "").indexOf("20")
-      );
+      // console.log("profile exp index of", profile.profileExp);
+      // console.log(
+      //   "profile exp index of",
+      //   (profile.profileExp + "").indexOf("20")
+      // );
 
       //this has two parts. First it checks whether user is less than 100 exp and updates bar based on that, then if user is over 100 exp it updates based on the tenth digit of exp
       if (profile.profileExp <= 100) {

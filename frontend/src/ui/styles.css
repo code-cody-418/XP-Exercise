@@ -13,8 +13,8 @@ body,
 }
 
 body {
-    /*background: #7b7979 !important;*/
-    /* background-image: url('../images/blue_wavy_line_with_light_effect_background.png'); */
+    /* background: #7b7979 !important; */
+    background-image: url('../images/blue_wavy_line_with_light_effect_background.png');
     font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
     helvetica neue, helvetica, ubuntu, roboto, noto, segoe ui, arial, sans-serif;
 }
