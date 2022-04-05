@@ -24,6 +24,12 @@ body {
     height: 400px;
 }
 
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .trainerTitle {
     color: #add4e3;
     font-family: trajan-pro-3, serif;
