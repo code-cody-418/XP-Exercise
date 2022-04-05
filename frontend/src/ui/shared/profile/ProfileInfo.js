@@ -18,11 +18,9 @@ export const ProfileInfo = ({ profile, videoPlay }) => {
   useEffect(() => {
     if (profile === null) {
     } else if (profile != null) {
-        console.log("profile exp index of", profile.profileExp )
-        console.log("profile exp index of", (profile.profileExp + "").indexOf("20"))
-
       //this has two parts. First it checks whether user is less than 100 exp and updates bar based on that, then if user is over 100 exp it updates based on the tenth digit of exp
       if (profile.profileExp <= 100) {
+        console.log('if ran');
         if ((profile.profileExp + "").indexOf("00") === 0) {
           setProgressBarExp("100%");
         } else if ((profile.profileExp + "").indexOf("90") === 0) {
@@ -44,26 +42,27 @@ export const ProfileInfo = ({ profile, videoPlay }) => {
         } else if ((profile.profileExp + "").indexOf("10") === 0) {
           setProgressBarExp("10%");
         }
-      } else {
-        if ((profile.profileExp + "").indexOf("00", 1) === 1) {
+      } else {  
+        console.log('else ran');
+        if ((profile.profileExp + "").indexOf("00", 1) >= 0) {
           setProgressBarExp("100%");
-        } else if ((profile.profileExp + "").indexOf("90", 1) === 1) {
+        } else if ((profile.profileExp + "").indexOf("90", 1) >= 0) {
           setProgressBarExp("90%");
-        } else if ((profile.profileExp + "").indexOf("80", 1) === 1) {
+        } else if ((profile.profileExp + "").indexOf("80", 1) >= 0) {
           setProgressBarExp("80%");
-        } else if ((profile.profileExp + "").indexOf("70", 1) === 1) {
+        } else if ((profile.profileExp + "").indexOf("70", 1) >= 0) {
           setProgressBarExp("70%");
-        } else if ((profile.profileExp + "").indexOf("60", 1) === 1) {
+        } else if ((profile.profileExp + "").indexOf("60", 1) >= 0) {
           setProgressBarExp("60%");
-        } else if ((profile.profileExp + "").indexOf("50", 1) === 1) {
+        } else if ((profile.profileExp + "").indexOf("50", 1) >= 0) {
           setProgressBarExp("50%");
-        } else if ((profile.profileExp + "").indexOf("40", 1) === 1) {
+        } else if ((profile.profileExp + "").indexOf("40", 1) >= 0) {
           setProgressBarExp("40%");
-        } else if ((profile.profileExp + "").indexOf("30", 1) === 1) {
+        } else if ((profile.profileExp + "").indexOf("30", 1) >= 0) {
           setProgressBarExp("30%");
-        } else if ((profile.profileExp + "").indexOf("20", 1) === 1) {
+        } else if ((profile.profileExp + "").indexOf("20", 1) >= 0) {
           setProgressBarExp("20%");
-        } else if ((profile.profileExp + "").indexOf("10", 1) === 1) {
+        } else if ((profile.profileExp + "").indexOf("10", 1) >= 0) {
           setProgressBarExp("10%");
         }
       }
