@@ -34,10 +34,10 @@ services:
     build: ./sql
     env_file:
       - .env
-    command: --default-authentication-plugin=mysql_native_password
+    # command: --default-authentication-plugin=mysql_native_password  
     volumes:
       - compose-lesson:/var/lib/mysql
     ports:
-      - 33006:3306  
+      - 3306:3306  
 volumes:
   compose-lesson:
